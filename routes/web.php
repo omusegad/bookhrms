@@ -19,11 +19,7 @@ use App\Http\Controllers\Auth\RegisterController;
 |
 */
 
-Route::resource('/employees',EmployeeController::class);
-Route::resource('/leaves', LeaveController::class);
-Route::resource('/regions', RegionController::class);
-Route::resource('/regions-dccs', DccController::class);
-Route::resource('/regions-lccs', LccController::class);
+
 
 
 Auth::routes();
@@ -31,8 +27,12 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/', function () {
         return view('dashboard');
     })->name('dashboard');
+    Route::resource('/employees',EmployeeController::class);
+    Route::resource('/leaves', LeaveController::class);
+    Route::resource('/regions', RegionController::class);
+    Route::resource('/regions-dccs', DccController::class);
+    Route::resource('/regions-lccs', LccController::class);
 
-//    Route::get('/employees',[EmployeeController::class, 'index'])->name('employees');
 
    
 });

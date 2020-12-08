@@ -48,8 +48,8 @@ class RegisterController extends Controller
      * @return \Illuminate\Contracts\Validation\Validator
      */
     protected function validator(array $data){
-       // dd($data);
-        return Validator::make($data, [
+        dd($data); 
+        $d = Validator::make($data, [
             "fName"             => ['required', 'string', 'max:255'],
             "lName"             => ['required', 'string', 'max:255'],
             "otherNames"        => ['string', 'max:255'],
@@ -57,7 +57,7 @@ class RegisterController extends Controller
             'email'             => ['required', 'string', 'email', 'max:255', 'unique:users'],
             "phoneNumber"       => ['required','regex:/^([0-9\s\-\+\(\)]*)$/'],
             "altPhoneNumber"    => ['regex:/^([0-9\s\-\+\(\)]*)$/'],
-            "emergency_contact" => ['required','regex:/^([0-9\s\-\+\(\)]*)$/'],
+            "emergencyPhoneNumber" => ['required','regex:/^([0-9\s\-\+\(\)]*)$/'],
             "nhifNo"            => ['required', 'string', 'max:255'],
             "nssfNo"            => ['required', 'string', 'max:255'],
             "nationalID"        => ['required'],
@@ -77,13 +77,13 @@ class RegisterController extends Controller
             "next_of_kin_fname"     => ['required', 'string', 'max:255'],
             "next_of_kin_lname"     => ['required', 'string', 'max:255'],
             "next_of_kin_otherNames"     => ['string', 'max:255'],
-            "next_of_kin_phoneNumber"    => ['regex:/^([0-9\s\-\+\(\)]*)$/'],
+            "next_of_kin_phoneNumber"    => ['required','regex:/^([0-9\s\-\+\(\)]*)$/'],
             "next_of_kin_altPhoneNumber" => ['regex:/^([0-9\s\-\+\(\)]*)$/'],
             "next_of_kin_nationId"       => ['required'],
-            'password' => ['required', 'string',  'confirmed']
+            'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
      
-       
+       dd($d);
     }
 
     /**
@@ -92,9 +92,8 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \App\Models\User
      */
-    protected function create(array $data)
-    {
-        dd($data);
+    protected function create(array $data){
+       // dd($data);
         return User::create([
             'fName' => $data['fName'],
             'lName' => $data['lName'],
@@ -103,7 +102,7 @@ class RegisterController extends Controller
             'employeeID' => $data['employeeID'],
             'phoneNumber' => $data['phoneNumber'],
             'altPhoneNumber' => $data['altPhoneNumber'],
-            'emergency_contact' => $data['emergency_contact'],
+            'emergency_contact' => $data['emergencyPhoneNumber'],
             'nhifNo' => $data['nhifNo'],
             'nssfNo' => $data['nssfNo'],
             'nationalID' => $data['nationalID'],
@@ -128,39 +127,10 @@ class RegisterController extends Controller
             'password' => Hash::make($data['password']),
         ]);
     }
+ 
+
+
 }
 
 
 
-
-            // "fName"             => ['required', 'string', 'max:255'],
-            // "lName"             => ['required', 'string', 'max:255'],
-            // "otherNames"        => ['string', 'max:255'],
-            // "employeeID"        => ['string', 'max:255'],
-            // 'email'             => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            // "phoneNumber"       => ['required','numeric','regex:/^([0-9\s\-\+\(\)]*)$/','min:10'],
-            // "altPhoneNumber"    => ['regex:/^([0-9\s\-\+\(\)]*)$/','min:10'],
-            // "emergency_contact" => ['required','numeric','regex:/^([0-9\s\-\+\(\)]*)$/','min:10'],
-            // "nhifNo"            => ['required', 'string', 'max:255'],
-            // "nssfNo"            => ['required', 'string', 'max:255'],
-            // "nationalID"        => ['required','numeric','digits:10'],
-            // "aic_jobgroups_id"  => ['required'],
-            // "present_residence" => ['required', 'string', 'max:255'],
-            // "permanent_residence" => ['required', 'string', 'max:255'],
-            // "home_county"         => ['required', 'string', 'max:255'],
-            // "joining_position"    => ['required', 'string', 'max:255'],
-            // "date_of_birth"       => ['required', 'date'],
-            // "joining_date"        => ['required', 'date'],
-            // "spouse_fname"        => ['string', 'max:255'],
-            // "spouse_lname"        => ['string', 'max:255'],
-            // "spouse_otherNames"   => ['string', 'max:255'],
-            // "spouse_phoneNumber"    => ['numeric','regex:/^([0-9\s\-\+\(\)]*)$/','min:10'],
-            // "spouse_altphoneNumber" => ['numeric','regex:/^([0-9\s\-\+\(\)]*)$/','min:10'],
-            // "spouse_nationalId"     => ['numeric','digits:10'],
-            // "next_of_kin_fname"     => ['required', 'string', 'max:255'],
-            // "next_of_kin_lname"     => ['required', 'string', 'max:255'],
-            // "next_of_kin_otherNames"     => ['string', 'max:255'],
-            // "next_of_kin_phoneNumber"    => ['required','numeric','regex:/^([0-9\s\-\+\(\)]*)$/','min:10'],
-            // "next_of_kin_altPhoneNumber" => ['numeric','regex:/^([0-9\s\-\+\(\)]*)$/','min:10'],
-            // "next_of_kin_nationId"       => ['numeric','required','digits:10'],
-            // 'password' => ['required', 'string', 'min:8', 'confirmed'],
