@@ -1,7 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\DccController;
+use App\Http\Controllers\LccController;
 use App\Http\Controllers\LeaveController;
+use App\Http\Controllers\RegionController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\Auth\RegisterController;
 
@@ -17,6 +20,10 @@ use App\Http\Controllers\Auth\RegisterController;
 */
 Route::get('/employees',[EmployeeController::class, 'index'])->name('employees');
 Route::get('/leaves',[LeaveController::class, 'index'])->name('leaves');
+Route::resource('/regions', RegionController::class);
+Route::resource('/regions-dccs', DccController::class);
+Route::resource('/regions-lccs', LccController::class);
+
 
 
 
