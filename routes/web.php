@@ -30,8 +30,8 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('/employees',EmployeeController::class);
     Route::resource('/leaves', LeaveController::class);
     Route::resource('/regions', RegionController::class);
-    Route::resource('/regions-dccs', DccController::class);
-    Route::resource('/regions-lccs', LccController::class);
+    Route::resource('/dccs-regions', DccController::class);
+    Route::resource('/lccs-regions', LccController::class);
 
 
    

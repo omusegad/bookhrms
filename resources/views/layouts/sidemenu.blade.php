@@ -17,8 +17,8 @@
 								</a>
 								<ul style="display: none;">
 							    	<li><a href="{{ url('/regions') }}">All Regions</a></li>
-									<li><a href="{{ url('/regions-dccs') }}">DCCs</a></li>
-									<li><a href="{{ url('/regions-lccs') }}">LCCs</a></li>
+									<li><a href="{{ url('/dccs-regions') }}">DCCs</a></li>
+									<li><a href="{{ url('/lccs-regions') }}">LCCs</a></li>
 								</ul>
 							</li>
 

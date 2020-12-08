@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Region;
+use App\Models\Dccregions;
+use App\Models\Lccregions;
 use Illuminate\Http\Request;
 
 class RegionController extends Controller
@@ -11,20 +14,14 @@ class RegionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-      return view('regions.index');
+    public function index(){
+        $regions      = Region::All();
+        $totalRegions = Region::All()->count(); // total regions
+        $totalDcc     = Dccregions::All()->count(); //totall dccs 
+        $totaLcc      = Lccregions::All()->count(); //total Lcss
+        return view('regions.index', compact('regions','totalRegions','totalDcc','totaLcc'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        return view('regions.create');
-    }
 
     /**
      * Store a newly created resource in storage.
@@ -34,7 +31,10 @@ class RegionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Region::create([
+            'rName' => $request->rName,
+        ]);
+        return back()->with('message','Region has been created successfully!');
     }
 
     /**
