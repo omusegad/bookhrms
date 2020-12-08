@@ -18,13 +18,12 @@ use App\Http\Controllers\Auth\RegisterController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/employees',[EmployeeController::class, 'index'])->name('employees');
-Route::get('/leaves',[LeaveController::class, 'index'])->name('leaves');
+
+Route::resource('/employees',EmployeeController::class);
+Route::resource('/leaves', LeaveController::class);
 Route::resource('/regions', RegionController::class);
 Route::resource('/regions-dccs', DccController::class);
 Route::resource('/regions-lccs', LccController::class);
-
-
 
 
 Auth::routes();

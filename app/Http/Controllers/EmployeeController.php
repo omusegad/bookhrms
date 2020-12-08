@@ -16,7 +16,7 @@ class EmployeeController extends Controller
     {
 
         $users = User::all();
-        dd($users);
+        //dd($users);
         return view('employees.index', compact('users'));
     }
 
