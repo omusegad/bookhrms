@@ -38,7 +38,7 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('/job-groups', JobgroupController::class);
     Route::resource('/nssf-details', NssfController::class);
     Route::resource('/nhif-details', NhifController::class);
-
+   // all routes 
    
 });
 
