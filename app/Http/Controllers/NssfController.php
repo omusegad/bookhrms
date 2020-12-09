@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Nssf;
+use App\Models\Employees;
 use Illuminate\Http\Request;
 
 class NssfController extends Controller
@@ -13,18 +15,11 @@ class NssfController extends Controller
      */
     public function index()
     {
-        return view('nssf.index');
+        $nssf = Nssf::all();
+        $employees = Employees::all()->count();
+        return view('nssf.index', compact('nssf','employees'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
 
     /**
      * Store a newly created resource in storage.
@@ -34,7 +29,10 @@ class NssfController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Nssf::create([
+            'amount'       => $request->nssfAmount,
+        ]);
+        return back()->with('message','Region has been created successfully!');
     }
 
     /**

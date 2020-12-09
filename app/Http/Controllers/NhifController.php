@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Nhif;
+use App\Models\Employees;
 use Illuminate\Http\Request;
 
 class NhifController extends Controller
@@ -13,7 +15,9 @@ class NhifController extends Controller
      */
     public function index()
     {
-        return view('nhif.index');
+        $nhif = Nhif::all();
+        $employees = Employees::all()->count();
+        return view('nhif.index', compact('nhif','employees'));
     }
 
     /**
@@ -34,7 +38,10 @@ class NhifController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Nhif::create([
+            'amount'       => $request->nhifAmount,
+        ]);
+        return back()->with('message','Region has been created successfully!');
     }
 
     /**

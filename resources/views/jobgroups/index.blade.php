@@ -70,18 +70,28 @@
                                 <thead>
                                     <tr>
                                         <th>ID</th>
-                                        <th>LCC Name</th>
+                                        <th>Job Group</th>
+                                        <th>Grade</th>
+                                        <th>Qualifications</th>
+                                        <th>Basic Salary</th>
+                                        <th>House Allowance</th>
+                                        <th>Airtime</th>
                                         <th class="text-center">Status</th>
                                         <th class="text-right">Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                              
+                                @php ($count = 1)
+                                 @foreach($jobGroups as $data)
                                     <tr>
-                                        <td>
-                                          
-                                        </td>
-                                        <td> </td>
+                                        <td>{{$count++}}</td>
+                                        <td>{{ $data->jonGroupName}}</td>
+                                        <td>{{ $data->job_grade}}</td>
+                                        <td>{{ $data->level}}</td>
+                                        <td>{{ $data->basic_salary}}</td>
+                                        <td>{{ $data->hse_allowance}}</td>
+                                        <td>{{ $data->transport_allowance}}</td>
+                                        <td>{{ $data->airtime}}</td>
                                         <td>Active </td>
                                         <td class="text-right">
                                             <div class="dropdown dropdown-action">
@@ -94,7 +104,7 @@
                                         </td>
                                     </tr>
                                  
-                                  
+                                  @endforeach
                                 </tbody>
                             </table>
                         </div>
@@ -122,18 +132,43 @@
                             <form method="POST" action="{{route('job-groups.store')}}">
                                 @csrf
                                 <div class="form-group">
-                                    <input class="form-control" placeholder="Enter Job Group Name" type="text" required name="dccName">
+                                    <input class="form-control" placeholder="Enter Job Group Name" type="text" required name="jonGroupName">
                                 </div>
                                 <div class="form-group">
-                                    <label>Choose Region <span class="text-danger">*</span></label>
-                                     
-                                    <select name="dccID" class="select form-control">
-                                    <option value="" disabled selected>Choose Option</option>
-                                    <option value="">One</option>
-                                    <option value="">Two</option>
-                                    <option value="">Three</option>
+                                    <label>Choose Grading <span class="text-danger">*</span></label>
+                                    <select name="job_grade" class="select form-control">
+                                    <option value="" disabled selected>Choose Grading</option>
+                                    <option value="unlicenced">unlicenced</option>
+                                    <option value="licenced">licenced</option>
+                                    <option value="ordained">ordained</option>
+                                    <option value="intern">intern</option>
+                                    <option value="by_years">by_years</option>
                                     </select>
                                 </div>
+                                <div class="form-group">
+                                    <label>Choose Qualifications <span class="text-danger">*</span></label>
+                                    <select name="level" class="select form-control">
+                                    <option value="" disabled selected>Choose Qualification</option>
+                                    <option value="certificate">certificate</option>
+                                    <option value="diploma">diploma</option>
+                                    <option value="degree">degree</option>
+                                    <option value="postgraduate">postgraduate</option>
+                                    <option value="masters">masters</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <input class="form-control" placeholder="Basic Salary" type="text" required name="basic_salary">
+                                </div>
+                                <div class="form-group">
+                                    <input class="form-control" placeholder="House Allowance" type="text" required name="hse_allowance">
+                                </div>
+                                <div class="form-group">
+                                    <input class="form-control" placeholder="Transport Allowance" type="text" required name="transport_allowance">
+                                </div>
+                                <div class="form-group">
+                                    <input class="form-control" placeholder="Airtime" type="text" required name="airtime">
+                                </div>
+                               
                                 <div class="submit-section">
                                     <button type="submit" class="btn btn-primary submit-btn">Submit</button>
                                 </div>

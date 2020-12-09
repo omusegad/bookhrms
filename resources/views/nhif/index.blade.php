@@ -21,15 +21,15 @@
                 <div class="page-header">
                     <div class="row align-items-center">
                         <div class="col">
-                            <h3 class="page-title">Local Church Council</h3>
+                            <h3 class="page-title">NHIF Details</h3>
                             <ul class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
-                                <li class="breadcrumb-item active">Local Church Council</li>
+                                <li class="breadcrumb-item active">NHIF Details</li>
                             </ul>
                         </div>
                         <div class="col-auto float-right ml-auto">
                             <a href="#" class="btn add-btn" data-toggle="modal" data-target="#add_leave">
-                                <i class="fa fa-plus"></i> Add Lcc
+                                <i class="fa fa-plus"></i> Add Nhif
                             </a>
                         </div>
                     </div>
@@ -40,8 +40,8 @@
                 <div class="row">
                     <div class="col-md-3">
                         <div class="stats-info">
-                            <h6>Total Job Groups</h6>
-                            <h4></h4>
+                            <h6>Total Employees</h6>
+                            <h4>{{$employees ? $employees: "0" }}</h4>
                         </div>
                     </div>
                     <div class="col-md-3">
@@ -64,26 +64,25 @@
               
                 
                 <div class="row">
-                    <div class="col-md-12">
+                    <div class="col-md-9">
                         <div class="table-responsive">
                         <table class="table table-striped custom-table mb-0 datatable">
                                 <thead>
                                     <tr>
                                         <th>ID</th>
-                                        <th>LCC Name</th>
+                                        <th>Amount</th>
                                         <th class="text-center">Status</th>
                                         <th class="text-right">Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                               
                                 @php ($count = 1)
-                                @foreach($lcc as $data)
+                                @foreach($nhif as $data)
                                     <tr>
                                         <td>
                                            {{$count++}}
                                         </td>
-                                        <td>{{ $data->lccName }} </td>
+                                        <td>{{ $data->amount }} </td>
                                         <td>Active </td>
                                         <td class="text-right">
                                             <div class="dropdown dropdown-action">
@@ -110,7 +109,7 @@
                 <div class="modal-dialog modal-dialog-centered" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title">Add Leave</h5>
+                            <h5 class="modal-title">Add Nhif</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
@@ -121,20 +120,10 @@
                                 {{session('message')}}
                               </div>
                             @endif
-                            <form method="POST" action="{{route('lccs-regions.store')}}">
+                            <form method="POST" action="{{route('nhif-details.store')}}">
                                 @csrf
                                 <div class="form-group">
-                                    <input class="form-control" placeholder="Enter Lcc Name" type="text" required name="dccName">
-                                </div>
-                                <div class="form-group">
-                                    <label>Choose Region <span class="text-danger">*</span></label>
-                                     
-                                    <select name="dccID" class="select form-control">
-                                    <option value="" disabled selected>Choose Dcc Option</option>
-                                      @foreach($dcc as $data)
-                                        <option value="{{$data->id}}">{{$data->dccName}}</option>
-                                      @endforeach
-                                    </select>
+                                    <input class="form-control" placeholder="Enter Lcc Name" type="text" required name="nhifAmount">
                                 </div>
                                 <div class="submit-section">
                                     <button type="submit" class="btn btn-primary submit-btn">Submit</button>

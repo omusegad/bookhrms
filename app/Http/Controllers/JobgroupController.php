@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Jobgroup;
 use Illuminate\Http\Request;
 
 class JobgroupController extends Controller
@@ -13,7 +14,8 @@ class JobgroupController extends Controller
      */
     public function index()
     {
-       return view('jobgroups.index');
+        $jobGroups = Jobgroup::all();
+        return view('jobgroups.index', compact('jobGroups'));
     }
 
     /**
@@ -32,9 +34,18 @@ class JobgroupController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
-        //
+    public function store(Request $request){
+        // dd($request->all());
+        Jobgroup::create([
+            'jonGroupName'        => $request->jonGroupName,
+            'job_grade'           => $request->job_grade,
+            'basic_salary'        => $request->basic_salary,
+            'level'               => $request->level,
+            'hse_allowance'       => $request->hse_allowance,
+            'transport_allowance' => $request->transport_allowance,
+            'airtime'              => $request->airtime,
+        ]);
+        return back()->with('message','Region has been created successfully!');
     }
 
     /**
