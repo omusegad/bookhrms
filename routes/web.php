@@ -5,10 +5,12 @@ use App\Http\Controllers\DccController;
 use App\Http\Controllers\LccController;
 use App\Http\Controllers\NhifController;
 use App\Http\Controllers\NssfController;
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\LeaveController;
 use App\Http\Controllers\RegionController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\JobgroupController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\Auth\RegisterController;
 
 /*
@@ -27,9 +29,8 @@ use App\Http\Controllers\Auth\RegisterController;
 
 Auth::routes();
 Route::middleware(['auth'])->group(function () {
-    Route::get('/', function () {
-        return view('dashboard');
-    })->name('dashboard');
+    Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
+    Route::get('/admin', [AdminController::class, 'index']);
     Route::resource('/employees',EmployeeController::class);
     Route::resource('/leaves', LeaveController::class);
     Route::resource('/regions', RegionController::class);

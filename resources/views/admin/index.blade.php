@@ -1,8 +1,7 @@
-
-
 @extends('layouts.app')
 
 @section('content')
+
 <!-- Page Wrapper -->
 <div class="page-wrapper">
 			
@@ -13,14 +12,14 @@
                 <div class="page-header">
                     <div class="row align-items-center">
                         <div class="col">
-                            <h3 class="page-title">Employee</h3>
+                            <h3 class="page-title">Users</h3>
                             <ul class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
-                                <li class="breadcrumb-item active">Employee</li>
+                                <li class="breadcrumb-item active">Users</li>
                             </ul>
                         </div>
                         <div class="col-auto float-right ml-auto">
-                        <a href="{{ url('/employees/create') }}" class="btn add-btn"><i class="fa fa-plus"></i> Add Employee</a>
+                        <a href="#" class="btn add-btn"><i class="fa fa-plus"></i> Add User</a>
                             <div class="view-icons">
                                 <a href="employees.html" class="grid-view btn btn-link"><i class="fa fa-th"></i></a>
                                 <a href="employees-list.html" class="list-view btn btn-link active"><i class="fa fa-bars"></i></a>
@@ -68,36 +67,35 @@
                             <table class="table table-striped custom-table datatable">
                                 <thead>
                                     <tr>
+                                        <th>ID</th>
                                         <th>Name</th>
-                                        <th>Employee ID</th>
                                         <th>Email</th>
-                                        <th>Mobile</th>
-                                        <th class="text-nowrap">Join Date</th>
                                         <th>Role</th>
                                         <th class="text-right no-sort">Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
+                                @php ($count = 1)
                               @foreach($users as $user)                               
                                 <tr>
+                                <td>{{$count++}}</td>
                                     <td>
                                         <h2 class="table-avatar">
                                             <a href="profile.html" class="avatar"><img alt="" src="assets/img/profiles/avatar-02.jpg"></a>
-                                            <a href="profile.html">{{$user->fName }} {{$user->lName }}<span>Web Designer</span></a>
+                                            <a href="profile.html">{{$user->name }}<span>Web Designer</span></a>
                                         </h2>
                                     </td>
-                                    <td>{{$user->employeeID }}</td>
-                                    <td>{{$user->fName }}</td>
-                                    <td>{{$user->phoneNumber }}</td>
-                                    <td>{{$user->joining_date }}</td>
+                                    
+                                    <td>{{$user->email }}</td>
+                                
                                     <td>
                                         <div class="dropdown">
                                             <a href="" class="btn btn-white btn-sm btn-rounded dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Web Developer </a>
                                             <div class="dropdown-menu">
-                                                <a class="dropdown-item" href="#">Software Engineer</a>
-                                                <a class="dropdown-item" href="#">Software Tester</a>
-                                                <a class="dropdown-item" href="#">Frontend Developer</a>
-                                                <a class="dropdown-item" href="#">UI/UX Developer</a>
+                                                <a class="dropdown-item" href="#">Admin</a>
+                                                <a class="dropdown-item" href="#">Pastor</a>
+                                                <a class="dropdown-item" href="#">Bishop</a>
+                                                <a class="dropdown-item" href="#">Revarent</a>
                                             </div>
                                         </div>
                                     </td>
@@ -149,5 +147,4 @@
             
         </div>
         <!-- /Page Wrapper -->
-        
- @endsection
+@endsection

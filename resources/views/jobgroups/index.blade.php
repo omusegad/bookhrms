@@ -21,15 +21,15 @@
                 <div class="page-header">
                     <div class="row align-items-center">
                         <div class="col">
-                            <h3 class="page-title">Local Church Council</h3>
+                            <h3 class="page-title">Job Groups</h3>
                             <ul class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
-                                <li class="breadcrumb-item active">Local Church Council</li>
+                                <li class="breadcrumb-item active">Job Groups</li>
                             </ul>
                         </div>
                         <div class="col-auto float-right ml-auto">
                             <a href="#" class="btn add-btn" data-toggle="modal" data-target="#add_leave">
-                                <i class="fa fa-plus"></i> Add Lcc
+                                <i class="fa fa-plus"></i> Add Job Group
                             </a>
                         </div>
                     </div>
@@ -76,14 +76,12 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                               
-                                @php ($count = 1)
-                                @foreach($lcc as $data)
+                              
                                     <tr>
                                         <td>
-                                           {{$count++}}
+                                          
                                         </td>
-                                        <td>{{ $data->lccName }} </td>
+                                        <td> </td>
                                         <td>Active </td>
                                         <td class="text-right">
                                             <div class="dropdown dropdown-action">
@@ -95,7 +93,7 @@
                                             </div>
                                         </td>
                                     </tr>
-                                    @endforeach
+                                 
                                   
                                 </tbody>
                             </table>
@@ -121,19 +119,19 @@
                                 {{session('message')}}
                               </div>
                             @endif
-                            <form method="POST" action="{{route('lccs-regions.store')}}">
+                            <form method="POST" action="{{route('job-groups.store')}}">
                                 @csrf
                                 <div class="form-group">
-                                    <input class="form-control" placeholder="Enter Lcc Name" type="text" required name="dccName">
+                                    <input class="form-control" placeholder="Enter Job Group Name" type="text" required name="dccName">
                                 </div>
                                 <div class="form-group">
                                     <label>Choose Region <span class="text-danger">*</span></label>
                                      
                                     <select name="dccID" class="select form-control">
-                                    <option value="" disabled selected>Choose Dcc Option</option>
-                                      @foreach($dcc as $data)
-                                        <option value="{{$data->id}}">{{$data->dccName}}</option>
-                                      @endforeach
+                                    <option value="" disabled selected>Choose Option</option>
+                                    <option value="">One</option>
+                                    <option value="">Two</option>
+                                    <option value="">Three</option>
                                     </select>
                                 </div>
                                 <div class="submit-section">

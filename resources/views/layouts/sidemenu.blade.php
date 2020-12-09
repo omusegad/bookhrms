@@ -6,8 +6,8 @@
 							<li class="submenu">
 								<a href="#"><i class="la la-dashboard"></i> <span> Dashboard</span> <span class="menu-arrow"></span></a>
 								<ul style="display: none;">
-									<li><a href="index.html">Admin Dashboard</a></li>
-									<li><a href="employee-dashboard.html">Employee Dashboard</a></li>
+									<li><a href="{{ url('/admin') }}">Admin</a></li>
+									<li><a href="{{ route('dashboard') }}">Dashboard</a></li>
 								</ul>
 							</li>
 							<li class="submenu">
@@ -21,7 +21,7 @@
 									<li><a href="{{ url('/lccs-regions') }}">LCCs</a></li>
 								</ul>
 							</li>
-							<li class="submenu">
+							<li>
 								<a href="{{ url('/job-groups') }}">
 									<i class="la la-dashboard"></i>
 									 <span> Job Groups</span> 
