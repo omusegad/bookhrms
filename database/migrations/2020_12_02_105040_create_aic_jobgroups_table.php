@@ -15,19 +15,19 @@ class CreateAicJobgroupsTable extends Migration
     {
         Schema::create('aic_jobgroups', function (Blueprint $table) {
             $table->id();
+            $table->unsignedInteger('users_id')->unsigned();
             $table->foreign('id')->references('id')->on('users');
-            $table->integer('aic_lcc_id')->unsigned();
-            $table->integer('aic_dccs_id')->unsigned();
+            $table->unsignedInteger('aic_nhif_details_id')->unsigned();
+            $table->foreign('id')->references('id')->on('aic_nhif_details');
+            $table->unsignedInteger('aic_nssf_details_id')->unsigned();
+            $table->foreign('id')->references('id')->on('aic_nssf_details');
             $table->enum('job_grade', array('unlicenced', 'licenced', 'ordained','intern','by_years'));
             $table->enum('level', array('certificate', 'diploma','degree','postgraduate','masters'));
-            $table->json('jobGroup_salaryAmnt')->nullable();
+            $table->float('jobGroup_salaryAmnt');
             $table->float('basic_salary');
             $table->float('hse_allowance');
             $table->float('transport_allowance');
             $table->float('airtime');
-            $table->float('nhifContAmount');
-            $table->float('nssfContAmount');
-            $table->string('kraPin');
             $table->timestamps();
         });
     }

@@ -15,7 +15,6 @@ class CreateAicNhifDetailsTable extends Migration
     {
         Schema::create('aic_nhif_details', function (Blueprint $table) {
             $table->id();
-            $table->foreign('id')->references('id')->on('users');
             $table->float("amount");
             $table->enum('status', array('active', 'inactive'));
             $table->timestamps();

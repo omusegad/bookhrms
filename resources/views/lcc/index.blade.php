@@ -128,9 +128,12 @@
                                 </div>
                                 <div class="form-group">
                                     <label>Choose Region <span class="text-danger">*</span></label>
-                                    <select class="select">
-                                        <option>Select Leave Type</option>
-                                        <option>Casual Leave 12 Days</option>
+                                     
+                                    <select name="dccID" class="select form-control">
+                                    <option value="" disabled selected>Choose Dcc Option</option>
+                                      @foreach($dcc as $data)
+                                        <option value="{{$data->id}}">{{$data->dccName}}</option>
+                                      @endforeach
                                     </select>
                                 </div>
                                 <div class="submit-section">

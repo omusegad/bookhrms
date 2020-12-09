@@ -17,11 +17,11 @@ class DccController extends Controller
     public function index()
     {
         $dcc = Dccregions::All();
-        //dd($dcc->regions);
+        $regions = Region::All();
         $totalRegions = Region::All()->count(); // total regions 
         $totalDcc     = Dccregions::All()->count(); //totall dccs 
         $totaLcc      = Lccregions::All()->count(); //total Lcss
-        return view('dcc.index', compact('dcc','totalRegions','totalDcc','totaLcc'));
+        return view('dcc.index', compact('dcc','regions','totalRegions','totalDcc','totaLcc'));
     }
 
     
@@ -32,11 +32,11 @@ class DccController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
+    public function store(Request $request){
+       
         Dccregions::create([
             'dccName'        => $request->dccName,
-            'aic_regions_id' => 2,
+            'aic_regions_id' => $request->regionID,
         ]);
         return back()->with('message','Region has been created successfully!');
     }

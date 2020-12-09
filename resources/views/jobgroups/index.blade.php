@@ -21,15 +21,15 @@
                 <div class="page-header">
                     <div class="row align-items-center">
                         <div class="col">
-                            <h3 class="page-title">Distric Church Council</h3>
+                            <h3 class="page-title">Local Church Council</h3>
                             <ul class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
-                                <li class="breadcrumb-item active">Distric Church Council</li>
+                                <li class="breadcrumb-item active">Local Church Council</li>
                             </ul>
                         </div>
                         <div class="col-auto float-right ml-auto">
                             <a href="#" class="btn add-btn" data-toggle="modal" data-target="#add_leave">
-                                <i class="fa fa-plus"></i> Add Dcc
+                                <i class="fa fa-plus"></i> Add Lcc
                             </a>
                         </div>
                     </div>
@@ -40,20 +40,20 @@
                 <div class="row">
                     <div class="col-md-3">
                         <div class="stats-info">
-                            <h6>Total Regions</h6>
-                            <h4>{{$totalRegions ? $totalRegions: "0" }}</h4>
+                            <h6>Total Job Groups</h6>
+                            <h4></h4>
                         </div>
                     </div>
                     <div class="col-md-3">
                         <div class="stats-info">
-                            <h6>Total DCCs</h6>
-                            <h4>{{$totalDcc ? $totalDcc : "0"  }}</h4>
+                            <h6>Total</h6>
+                            <h4></h4>
                         </div>
                     </div>
                     <div class="col-md-3">
                         <div class="stats-info">
-                            <h6>Total LCCs</h6>
-                            <h4>{{$totaLcc ? $totaLcc : "0"  }}</h4>
+                            <h6>Total</h6>
+                            <h4></h4>
                         </div>
                     </div>
                 
@@ -70,20 +70,20 @@
                                 <thead>
                                     <tr>
                                         <th>ID</th>
-                                        <th>DCC Name</th>
+                                        <th>LCC Name</th>
                                         <th class="text-center">Status</th>
                                         <th class="text-right">Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                              
+                               
                                 @php ($count = 1)
-                                @foreach($dcc as $data)
+                                @foreach($lcc as $data)
                                     <tr>
                                         <td>
                                            {{$count++}}
                                         </td>
-                                        <td>{{ $data->dccName }} </td>
+                                        <td>{{ $data->lccName }} </td>
                                         <td>Active </td>
                                         <td class="text-right">
                                             <div class="dropdown dropdown-action">
@@ -121,18 +121,18 @@
                                 {{session('message')}}
                               </div>
                             @endif
-                            <form method="POST" action="{{route('dccs-regions.store')}}">
+                            <form method="POST" action="{{route('lccs-regions.store')}}">
                                 @csrf
                                 <div class="form-group">
-                                    <input class="form-control" placeholder="Enter Dcc Name" type="text" required name="dccName">
+                                    <input class="form-control" placeholder="Enter Lcc Name" type="text" required name="dccName">
                                 </div>
                                 <div class="form-group">
-                                    <label >Choose Region <span class="text-danger">*</span></label>
-                                    
-                                    <select name="regionID" class="select form-control">
-                                    <option value="" disabled selected>Choose Region</option>
-                                      @foreach($regions as $data)
-                                        <option value="{{$data->id}}">{{$data->rName}}</option>
+                                    <label>Choose Region <span class="text-danger">*</span></label>
+                                     
+                                    <select name="dccID" class="select form-control">
+                                    <option value="" disabled selected>Choose Dcc Option</option>
+                                      @foreach($dcc as $data)
+                                        <option value="{{$data->id}}">{{$data->dccName}}</option>
                                       @endforeach
                                     </select>
                                 </div>

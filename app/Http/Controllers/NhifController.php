@@ -2,12 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Region;
-use App\Models\Dccregions;
-use App\Models\Lccregions;
 use Illuminate\Http\Request;
 
-class LccController extends Controller
+class NhifController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,16 +13,18 @@ class LccController extends Controller
      */
     public function index()
     {
-
-        $lcc = Lccregions::All();
-        $dcc     = Dccregions::All(); //totall dccs 
-        $totalRegions = Region::All()->count(); // total regions 
-        $totalDcc     = Dccregions::All()->count(); //totall dccs 
-        $totaLcc      = Lccregions::All()->count(); //total Lcss
-        return view('lcc.index', compact('lcc','dcc','totalRegions','totalDcc','totaLcc'));
-
+        return view('nhif.index');
     }
 
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        //
+    }
 
     /**
      * Store a newly created resource in storage.
@@ -35,11 +34,7 @@ class LccController extends Controller
      */
     public function store(Request $request)
     {
-        Lccregions::create([
-            'lccName'       => $request->dccName,
-            'aic_dccs_id'   => $request->dccID,
-        ]);
-        return back()->with('message','Region has been created successfully!');
+        //
     }
 
     /**
