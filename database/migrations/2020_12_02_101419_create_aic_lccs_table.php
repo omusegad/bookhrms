@@ -15,7 +15,7 @@ class CreateAicLccsTable extends Migration
     {
         Schema::create('aic_lccs', function (Blueprint $table) {
             $table->id();
-            $table->unsignedInteger('aic_dccs_id')->unsigned();
+            $table->unsignedInteger('aic_dccs_id')();
             $table->foreign('id')->references('id')->on('aic_dccs');
             $table->string('lccName');
             $table->enum('status', array('active', 'inactive'))->default('active');

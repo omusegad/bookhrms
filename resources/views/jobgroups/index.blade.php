@@ -76,7 +76,7 @@
                                         <th>Basic Salary</th>
                                         <th>House Allowance</th>
                                         <th>Airtime</th>
-                                        <th class="text-center">Status</th>
+                                        <!-- <th class="text-center">Status</th> -->
                                         <th class="text-right">Actions</th>
                                     </tr>
                                 </thead>
@@ -92,7 +92,6 @@
                                         <td>{{ $data->hse_allowance}}</td>
                                         <td>{{ $data->transport_allowance}}</td>
                                         <td>{{ $data->airtime}}</td>
-                                        <td>Active </td>
                                         <td class="text-right">
                                             <div class="dropdown dropdown-action">
                                                 <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="material-icons">more_vert</i></a>

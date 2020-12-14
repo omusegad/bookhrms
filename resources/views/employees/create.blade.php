@@ -1,8 +1,7 @@
-
-
 @extends('layouts.app')
 
 @section('content')
+
 <!-- Page Wrapper -->
 <div class="page-wrapper">
 			
@@ -28,12 +27,12 @@
             <div class="card">
                 <div class="card-header">{{ __('Register Employee') }}</div>
                 <div class="card-body">
-                    <form method="POST" action="{{ route('register') }}">
+                    <form method="POST" action="{{ url('/employees.create') }}">
                         @csrf
                         <div class="row">
                             <div class="col-md-4">
-                                <input id="fName" placeholder="First Name" type="text" class="form-group form-control @error('fName') is-invalid @enderror" name="fName" value="{{ old('fName') }}"  autocomplete="fName" autofocus>
-                                @error('fName')
+                                <input id="fname" placeholder="First Name" type="text" class="form-group form-control @error('fname') is-invalid @enderror" name="fname" value="{{ old('fname') }}"  autocomplete="fname" autofocus>
+                                @error('fname')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -57,7 +56,7 @@
                             </div>
                           
                             <div class="col-md-4">
-                                <input id="email" placeholder="Email" type="email" class="form-group form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}"  autocomplete="email">
+                            <input id="email" type="email" placeholder="Email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
                                 @error('email')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -120,7 +119,7 @@
                             </div>
 
                             <div class="col-md-4">
-                                <input id="present_residence" placeholder="Current Residence" type="text" class="form-group form-control @error('present_residence') is-invalid @enderror" name="present_residence" value="{{ old('present_residence') }}"   autocomplete="present_residence">
+                                <input id="present_residence" placeholder="Current Address" type="text" class="form-group form-control @error('present_residence') is-invalid @enderror" name="present_residence" value="{{ old('present_residence') }}"   autocomplete="present_residence">
                                 @error('present_residence')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -192,7 +191,7 @@
                             </div>
 
                             <div class="col-md-4">
-                              <label for="gender">Marital Status</label>
+                              <label for="marital_status">Marital Status</label>
                                 <select class="browser-default custom-select" name="marital_status">
                                     <option value="" disabled selected>Select Option</option>
                                     <option value="male">Married</option>
@@ -203,8 +202,8 @@
                                 </select>
                             </div>
                             <div class="col-md-4">
-                              <label for="marital_status">Employee Status</label>
-                                <select class="browser-default custom-select" name="marital_status">
+                              <label for="employee_status">Employee Status</label>
+                                <select class="browser-default custom-select" name="employee_status">
                                     <option value="" disabled selected>Select Option</option>
                                     <option value="active">Active</option>
                                     <option value="suspended">Suspended</option>
@@ -331,6 +330,11 @@
                                     </span>
                                 @enderror
                             </div>
+                        </div>
+                       
+                            <hr>
+                            <h6>Login Datails</h6>
+                        <div class="row">
                             <div class="col-md-4">
                                 <input id="password" placeholder="Password" type="password" class="form-group form-control @error('password') is-invalid @enderror" name="password" value="{{ old('password') }}" autocomplete="new-password">
                                 @error('password')
@@ -345,28 +349,22 @@
                         </div>
 
                         <div class="form-group row mb-0">
-                            <div class="col-md-6 pull-right">
+                            <div class="col-md-12 text-right">
                                 <button type="submit" class="btn btn-primary">
                                     {{ __('Register') }}
                                 </button>
                             </div>
                         </div>
+
                     </form>
                 </div>
             </div>
         </div>
     </div>
+  </div>       <!-- /Page Content --> 
+</div><!-- /Page Wrapper -->
 
-                
-               
 
-            </div>
-            <!-- /Page Content -->
-            
-          
-           
-            
-            
-        </div>
-        <!-- /Page Wrapper -->
- @endsection
+
+
+@endsection

@@ -11,7 +11,9 @@ use App\Http\Controllers\RegionController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\JobgroupController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\LeaveTypesController;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\LeaveSettingsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,6 +35,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/admin', [AdminController::class, 'index']);
     Route::resource('/employees',EmployeeController::class);
     Route::resource('/leaves', LeaveController::class);
+    Route::resource('/leave-types', LeaveTypesController::class);
+    Route::resource('/leave-settings', LeaveSettingsController::class);
     Route::resource('/regions', RegionController::class);
     Route::resource('/dccs-regions', DccController::class);
     Route::resource('/lccs-regions', LccController::class);

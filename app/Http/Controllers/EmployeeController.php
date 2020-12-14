@@ -38,7 +38,43 @@ class EmployeeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return User::create([
+            "fname" =>  $data['fname'],
+            "lName" =>  $data['lName'],
+            "otherNames" =>  $data['otherNames'],
+            'email' => $data['email'],
+            "phoneNumber" => $data['phoneNumber'],
+            "altPhoneNumber" => $data['altPhoneNumber'],
+            "emergencyPhoneNumber" => $data['emergencyPhoneNumber'],
+            "nhifNo" =>  $data['nhifNo'],
+            "nssfNo" => $data['nssfNo'],
+            "created_by" => 1, //Auth::user()->id,
+            "nationalID" => $data['nationalID'],
+            "current_address" => $data['present_residence'],
+            "permanent_residence" => $data['permanent_residence'],
+            "home_county" => $data['home_county'],
+            "employeeID" =>  $data['employeeID'],
+            "joining_position" => $data['joining_position'],
+            "date_of_birth" =>$data['date_of_birth'],
+            "aic_jobgroups_id" => $data['jobgroupid'],
+            "gender" =>  $data['gender'],
+            "marital_status" =>  $data['marital_status'],
+            "joining_date" => $data['joining_date'],
+            "spouse_fname" => $data['spouse_fname'],
+            "spouse_lname" => $data['spouse_lname'],
+            "spouse_otherNames" => $data['spouse_otherNames'],
+            "spouse_phoneNumber" => $data['spouse_phoneNumber'],
+            "spouse_altphoneNumber" => $data['spouse_altphoneNumber'],
+            "spouse_nationalId" => $data['spouse_nationalId'],
+            "next_of_kin_fname" =>  $data['next_of_kin_fname'],
+            "next_of_kin_lname" => $data['next_of_kin_lname'],
+            "next_of_kin_otherNames"  =>  $data['next_of_kin_otherNames'], 
+            "next_of_kin_phoneNumber" => $data['next_of_kin_phoneNumber'],
+            "next_of_kin_altPhoneNumber" => $data['next_of_kin_altPhoneNumber'],
+            "next_of_kin_nationId" => $data['next_of_kin_nationId'],
+            "employee_status" => $data['employee_status'],
+            'password' => Hash::make($data['password']),
+        ]);
     }
 
     /**

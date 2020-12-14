@@ -16,7 +16,7 @@ class CreateAicLeaveApplicationsTable extends Migration
         Schema::create('aic_leave_applications', function (Blueprint $table) {
             $table->id();
             $table->foreign('id')->references('id')->on('users');
-			$table->integer('leave_category_id');
+			$table->integer('leave_category_id')->index();
 			$table->date('start_date');
 			$table->date('end_date');
 			$table->text('reason');

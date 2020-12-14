@@ -5,10 +5,10 @@
 @section('content')
 <!-- Page Wrapper -->
 <div class="page-wrapper">
-			
+		
             <!-- Page Content -->
             <div class="content container-fluid">
-            
+    
                 <!-- Page Header -->
                 <div class="page-header">
                     <div class="row align-items-center">
@@ -87,6 +87,7 @@
                                         </h2>
                                     </td>
                                     <td>{{$user->employeeID }}</td>
+                                    <td>{{$user->email }}</td>
                                     <td>{{$user->fName }}</td>
                                     <td>{{$user->phoneNumber }}</td>
                                     <td>{{$user->joining_date }}</td>
@@ -149,5 +150,4 @@
             
         </div>
         <!-- /Page Wrapper -->
-        
  @endsection
