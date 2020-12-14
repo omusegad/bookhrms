@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class EmployeeController extends Controller
 {
@@ -36,8 +38,44 @@ class EmployeeController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
+    public function store(Request $request){
+        $data = $request->validate([
+            "fname" =>  ['required', 'string', 'max:255'],
+            "lName" =>  ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'password' => ['required', 'string', 'min:6', 'confirmed'],
+            "otherNames" =>  [ 'string', 'max:255'],
+            "phoneNumber" => ['required', 'digits:10'],
+            "altPhoneNumber" => ['required', 'digits:10'],
+            "emergencyPhoneNumber" => ['required', 'digits:10'],
+            "nhifNo" => ['required', 'numeric'],
+            "nssfNo" => ['required', 'numeric'],
+            "nationalID" => ['required', 'numeric'],
+            "present_residence" =>  ['required', 'string', 'max:255'],
+            "permanent_residence" => ['required', 'string', 'max:255'],
+            "home_county" =>  ['required', 'string', 'max:255'],
+            "employeeID" =>  ['required', 'numeric'],
+            "joining_position" =>  ['required', 'string', 'max:255'],
+            "date_of_birth" => ["date"],
+            "jobgroupid" => ['required'],
+            "gender" =>  ['required'],
+            "marital_status" =>  ['required'],
+            "marital_status" =>  ['required', 'string', 'max:255'],
+            "joining_date" =>["date"],
+            "spouse_fname" =>  ['required', 'string', 'max:255'],
+            "spouse_lname" =>  ['required', 'string', 'max:255'],
+            "spouse_otherNames" => ['required', 'string', 'max:255'],
+            "spouse_phoneNumber" => ['required', 'digits:10'],
+            "spouse_altphoneNumber" => ['required', 'digits:10'],
+            "spouse_nationalId" => ['required','numeric'],
+            "next_of_kin_fname" =>  ['required', 'string', 'max:255'],
+            "next_of_kin_lname" =>  ['required', 'string', 'max:255'],
+            "next_of_kin_otherNames"  =>  ['required', 'string', 'max:255'],
+            "next_of_kin_phoneNumber" =>['required', 'digits:10'],
+            "next_of_kin_altPhoneNumber" => ['required', 'digits:10'],
+            "next_of_kin_nationId" => ['required', 'numeric']
+        ]);
+
         return User::create([
             "fname" =>  $data['fname'],
             "lName" =>  $data['lName'],
@@ -48,7 +86,7 @@ class EmployeeController extends Controller
             "emergencyPhoneNumber" => $data['emergencyPhoneNumber'],
             "nhifNo" =>  $data['nhifNo'],
             "nssfNo" => $data['nssfNo'],
-            "created_by" => 1, //Auth::user()->id,
+            "created_by" => Auth::user()->id,
             "nationalID" => $data['nationalID'],
             "current_address" => $data['present_residence'],
             "permanent_residence" => $data['permanent_residence'],
@@ -59,6 +97,7 @@ class EmployeeController extends Controller
             "aic_jobgroups_id" => $data['jobgroupid'],
             "gender" =>  $data['gender'],
             "marital_status" =>  $data['marital_status'],
+            "employee_status" => $data['employee_status'],
             "joining_date" => $data['joining_date'],
             "spouse_fname" => $data['spouse_fname'],
             "spouse_lname" => $data['spouse_lname'],
@@ -72,9 +111,9 @@ class EmployeeController extends Controller
             "next_of_kin_phoneNumber" => $data['next_of_kin_phoneNumber'],
             "next_of_kin_altPhoneNumber" => $data['next_of_kin_altPhoneNumber'],
             "next_of_kin_nationId" => $data['next_of_kin_nationId'],
-            "employee_status" => $data['employee_status'],
             'password' => Hash::make($data['password']),
         ]);
+        return back()->with('message','Region has been created successfully!');
     }
 
     /**
@@ -85,7 +124,8 @@ class EmployeeController extends Controller
      */
     public function show($id)
     {
-        //
+        $employee = User::where('id',$id)->first();
+        return view('employees.show', compact('employee'));
     }
 
     /**
@@ -94,9 +134,9 @@ class EmployeeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
-    {
-        //
+    public function edit($id){
+        $employee = User::findOrFail($id);
+        return view('employees.edit', compact('employee'));
     }
 
     /**

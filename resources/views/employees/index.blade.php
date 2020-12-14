@@ -20,7 +20,7 @@
                             </ul>
                         </div>
                         <div class="col-auto float-right ml-auto">
-                        <a href="{{ url('/employees/create') }}" class="btn add-btn"><i class="fa fa-plus"></i> Add Employee</a>
+                        <a href="{{ route('employees.create') }}" class="btn add-btn"><i class="fa fa-plus"></i> Add Employee</a>
                             <div class="view-icons">
                                 <a href="employees.html" class="grid-view btn btn-link"><i class="fa fa-th"></i></a>
                                 <a href="employees-list.html" class="list-view btn btn-link active"><i class="fa fa-bars"></i></a>
@@ -106,7 +106,7 @@
                                         <div class="dropdown dropdown-action">
                                             <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="material-icons">more_vert</i></a>
                                             <div class="dropdown-menu dropdown-menu-right">
-                                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#edit_employee"><i class="fa fa-pencil m-r-5"></i> Edit</a>
+                                                <a class="dropdown-item" href="{{ route('employees.edit',$user->id)}}"><i class="fa fa-pencil m-r-5"></i> Edit</a>
                                                 <a class="dropdown-item" href="#" data-toggle="modal" data-target="#delete_employee"><i class="fa fa-trash-o m-r-5"></i> Delete</a>
                                             </div>
                                         </div>
