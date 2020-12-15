@@ -48,22 +48,16 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                @php ($count = 1)
+                                @foreach($leave as $data)
                                     <tr>
                                         <td>
-                                            1
+                                            {{$count++}}
                                         </td>
-                                        <td>Casual Leave</td>
-                                        <td>12 Days</td>
+                                        <td>{{$data->leaveType}}</td>
+                                        <td>{{ $data->leaveDays}} Days</td>
                                         <td>
-                                            <div class="dropdown action-label">
-                                                <a class="btn btn-white btn-sm btn-rounded dropdown-toggle" href="#" data-toggle="dropdown" aria-expanded="false">
-                                                    <i class="fa fa-dot-circle-o text-success"></i> Active
-                                                </a>
-                                                <div class="dropdown-menu dropdown-menu-right">
-                                                    <a href="#" class="dropdown-item"><i class="fa fa-dot-circle-o text-success"></i> Active</a>
-                                                    <a href="#" class="dropdown-item"><i class="fa fa-dot-circle-o text-danger"></i> Inactive</a>
-                                                </div>
-                                            </div>
+                                           {{$data->status}}
                                         </td>
                                         <td class="text-right">
                                             <div class="dropdown dropdown-action">
@@ -75,60 +69,8 @@
                                             </div>
                                         </td>
                                     </tr>
-                                    <tr>
-                                        <td>
-                                            2
-                                        </td>
-                                        <td>Medical Leave</td>
-                                        <td>12 Days</td>
-                                        <td>
-                                            <div class="dropdown action-label">
-                                                <a class="btn btn-white btn-sm btn-rounded dropdown-toggle" href="#" data-toggle="dropdown" aria-expanded="false">
-                                                    <i class="fa fa-dot-circle-o text-danger"></i> Inactive
-                                                </a>
-                                                <div class="dropdown-menu dropdown-menu-right">
-                                                    <a class="dropdown-item" href="#"><i class="fa fa-dot-circle-o text-success"></i> Active</a>
-                                                    <a class="dropdown-item" href="#"><i class="fa fa-dot-circle-o text-danger"></i> Inactive</a>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td class="text-right">
-                                            <div class="dropdown dropdown-action">
-                                                <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="material-icons">more_vert</i></a>
-                                                <div class="dropdown-menu dropdown-menu-right">
-                                                    <a class="dropdown-item" href="#" data-toggle="modal" data-target="#edit_leavetype"><i class="fa fa-pencil m-r-5"></i> Edit</a>
-                                                    <a class="dropdown-item" href="#" data-toggle="modal" data-target="#delete_leavetype"><i class="fa fa-trash-o m-r-5"></i> Delete</a>
-                                                </div>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            3
-                                        </td>
-                                        <td>Loss of Pay</td>
-                                        <td>-</td>
-                                        <td>
-                                            <div class="dropdown action-label">
-                                                <a class="btn btn-white btn-sm btn-rounded dropdown-toggle" href="#" data-toggle="dropdown" aria-expanded="false">
-                                                    <i class="fa fa-dot-circle-o text-success"></i> Active
-                                                </a>
-                                                <div class="dropdown-menu dropdown-menu-right">
-                                                    <a class="dropdown-item" href="#"><i class="fa fa-dot-circle-o text-success"></i> Active</a>
-                                                    <a class="dropdown-item" href="#"><i class="fa fa-dot-circle-o text-danger"></i> Inactive</a>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td class="text-right">
-                                            <div class="dropdown dropdown-action">
-                                                <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="material-icons">more_vert</i></a>
-                                                <div class="dropdown-menu dropdown-menu-right">
-                                                    <a class="dropdown-item" href="#" data-toggle="modal" data-target="#edit_leavetype"><i class="fa fa-pencil m-r-5"></i> Edit</a>
-                                                    <a class="dropdown-item" href="#" data-toggle="modal" data-target="#delete_leavetype"><i class="fa fa-trash-o m-r-5"></i> Delete</a>
-                                                </div>
-                                            </div>
-                                        </td>
-                                    </tr>
+                                @endforeach
+                              
                                 </tbody>
                             </table>
                         </div>
@@ -148,14 +90,15 @@
                             </button>
                         </div>
                         <div class="modal-body">
-                            <form>
+                        <form method="POST" action="{{route('leave-types.store')}}">
+                                 @csrf
                                 <div class="form-group">
                                     <label>Leave Type <span class="text-danger">*</span></label>
-                                    <input class="form-control" type="text">
+                                    <input class="form-control" name="leaveType" type="text">
                                 </div>
                                 <div class="form-group">
                                     <label>Number of days <span class="text-danger">*</span></label>
-                                    <input class="form-control" type="text">
+                                    <input class="form-control" name="leaveDays" type="text">
                                 </div>
                                 <div class="submit-section">
                                     <button class="btn btn-primary submit-btn">Submit</button>

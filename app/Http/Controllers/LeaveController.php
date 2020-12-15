@@ -32,9 +32,17 @@ class LeaveController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
-        //
+    public function store(Request $request){
+        $data = $request->all();
+        Lccregions::create([
+            'user_id'       => $request->dccName,
+            'aic_leave_type_id'   => $request->dccID,
+            'start_date'   => $request->dccID,
+            'end_date'   => $request->dccID,
+            'reason'   => $request->dccID,
+            'leave_status'   => $request->dccID,
+        ]);
+        return back()->with('message','Leave application successfully!');
     }
 
     /**

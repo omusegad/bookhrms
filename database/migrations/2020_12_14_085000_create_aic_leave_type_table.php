@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateAicEmployeesDocumentsTable extends Migration
+class CreateAicLeaveTypeTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,11 @@ class CreateAicEmployeesDocumentsTable extends Migration
      */
     public function up()
     {
-        Schema::create('aic_employees_documents', function (Blueprint $table) {
+        Schema::create('aic_leave_type', function (Blueprint $table) {
             $table->id();
-            $table->unsignedInteger('id')->references('id')->on('users');
-            $table->string('docName');
-            $table->string('docUrl');
+            $table->String("leaveType");
+            $table->float("leaveDays")->nullable();
+            $table->enum('status', array('active', 'inactive'))->default('active');
             $table->timestamps();
         });
     }
@@ -29,6 +29,6 @@ class CreateAicEmployeesDocumentsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('aic_employees_documents');
+        Schema::dropIfExists('aic_leave_type');
     }
 }

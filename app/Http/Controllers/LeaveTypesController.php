@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\LeaveType;
 use Illuminate\Http\Request;
 
 class LeaveTypesController extends Controller
@@ -11,9 +12,9 @@ class LeaveTypesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        return view('leaves.leavetypes');
+    public function index() {
+        $leave = LeaveType::all();
+        return view('leaves.leavetypes', compact('leave'));
     }
 
     /**
@@ -32,9 +33,17 @@ class LeaveTypesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
-        //
+    public function store(Request $request){
+        // $data = $request->validate([
+        //     "leaveType" => ['required', 'String'],
+        //     "leaveDays" => ['numeric'],
+        // ]);
+        $data = $request->all();
+        LeaveType::create([
+            'leaveType' => $data['leaveType'],
+            'leaveDays' => $data['leaveDays'],
+        ]);
+        return back()->with('message','Region has been created successfully!');
     }
 
     /**

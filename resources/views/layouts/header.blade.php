@@ -28,22 +28,6 @@
             
             <!-- Header Menu -->
             <ul class="nav user-menu">
-            
-                <!-- Search -->
-                <li class="nav-item">
-                    <div class="top-nav-search">
-                        <a href="javascript:void(0);" class="responsive-search">
-                            <i class="fa fa-search"></i>
-                       </a>
-                        <form action="search.html">
-                            <input class="form-control" type="text" placeholder="Search here">
-                            <button class="btn" type="submit"><i class="fa fa-search"></i></button>
-                        </form>
-                    </div>
-                </li>
-                <!-- /Search -->
-        
-            
                 <!-- Notifications -->
                 <li class="nav-item dropdown">
                     <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
@@ -238,9 +222,10 @@
 
                 <li class="nav-item dropdown has-arrow main-drop">
                     <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
-                        <span class="user-img"><img src="assets/img/profiles/avatar-21.jpg" alt="">
+                        <span class="user-img">
+                            <img src="public/img/profiles/avatar-21.jpg" alt="">
                         <span class="status online"></span></span>
-                        <span>  Admin  </span> 
+                        <span>  {{ Auth::user()->fname}}  </span> 
                     </a>
                     <div class="dropdown-menu">
                         <a class="dropdown-item" href="profile.html">My Profile</a>
@@ -251,7 +236,7 @@
                                         {{ __('Logout') }}
                                     </a>
 
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                    <form  action="{{ route('logout') }}" method="POST" class="d-none">
                                         @csrf
                                     </form>
                        

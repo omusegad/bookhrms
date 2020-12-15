@@ -11,17 +11,15 @@ class CreateAicLeaveApplicationsTable extends Migration
      *
      * @return void
      */
-    public function up()
-    {
+    public function up(){
         Schema::create('aic_leave_applications', function (Blueprint $table) {
             $table->id();
-            $table->foreign('id')->references('id')->on('users');
-			$table->integer('leave_category_id')->index();
+            $table->unsignedInteger('user_id')->index();
+			$table->unsignedInteger('aic_leave_type_id')->index();
 			$table->date('start_date');
 			$table->date('end_date');
 			$table->text('reason');
-			$table->tinyInteger('publication_status')->default(0);
-			$table->tinyInteger('deletion_status')->default(0);
+            $table->enum('leave_status', array('pending', 'approved','declined'))->default('pending');
             $table->timestamps();
         });
     }
