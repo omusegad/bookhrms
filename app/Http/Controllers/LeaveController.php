@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\LeaveType;
 use Illuminate\Http\Request;
+use App\Models\LeaveApplication;
+use Illuminate\Support\Facades\Auth;
+use Carbon\Carbon;
 
 class LeaveController extends Controller
 {
@@ -13,7 +17,9 @@ class LeaveController extends Controller
      */
     public function index()
     {
-        return view('leaves.index');
+        $leaveTpes = LeaveType::all();
+        $leaves    = LeaveApplication::with('users','leavetype')->get();
+        return view('leaves.index', compact('leaveTpes','leaves'));
     }
 
     /**
@@ -34,13 +40,14 @@ class LeaveController extends Controller
      */
     public function store(Request $request){
         $data = $request->all();
-        Lccregions::create([
-            'user_id'       => $request->dccName,
-            'aic_leave_type_id'   => $request->dccID,
-            'start_date'   => $request->dccID,
-            'end_date'   => $request->dccID,
-            'reason'   => $request->dccID,
-            'leave_status'   => $request->dccID,
+       // dd($data);
+       LeaveApplication::create([
+            'user_id'            => Auth::user()->id,
+            'aic_leave_type_id'  => $data['aic_leave_type_id'],
+            'start_date'     => Carbon::parse(strtotime($data['start_date'])),
+            'end_date'       => Carbon::parse(strtotime($data['end_date'])),
+            'days'           => $data['days'],
+            'reason'         => $data['reason'],
         ]);
         return back()->with('message','Leave application successfully!');
     }

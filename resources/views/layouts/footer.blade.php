@@ -9,7 +9,7 @@
 
     <!-- Select2 JS -->
     <script src="{{ asset('public/js/select2.min.js') }}"></script>
-    <script src="{{ asset('public/js/dataTables.bootstrap4.min.js' }}"></script>
+    <script src="{{ asset('public/js/dataTables.bootstrap4.min.js') }}"></script>
 
     <!-- Datetimepicker JS -->
     <script src="{{ asset('public/js/moment.min.js') }}"></script>

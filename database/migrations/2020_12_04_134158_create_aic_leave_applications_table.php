@@ -17,7 +17,8 @@ class CreateAicLeaveApplicationsTable extends Migration
             $table->unsignedInteger('user_id')->index();
 			$table->unsignedInteger('aic_leave_type_id')->index();
 			$table->date('start_date');
-			$table->date('end_date');
+            $table->date('end_date');
+            $table->float('days');
 			$table->text('reason');
             $table->enum('leave_status', array('pending', 'approved','declined'))->default('pending');
             $table->timestamps();

@@ -52,7 +52,7 @@
 								    <li><a  href="{{ url('/leaves') }}">All Leaves</a></li>
 									<li><a href="{{ url('/leave-types') }}">Leave Types</a></li>
 									<li><a href="{{ url('/leave-settings') }}">Leave Setting</a></li>
-									<li><a href="#">Leave Application</a></li>
+									<li><a href="{{ url('/leaves') }}">Leave Application</a></li>
 								</ul>
 							</li>
 							
