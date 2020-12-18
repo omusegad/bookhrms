@@ -4,15 +4,15 @@
 
 <!-- Page Wrapper -->
 <div class="page-wrapper">
-			
+
             <!-- Page Content -->
             <div class="content container-fluid">
-            
+
                 <!-- Page Header -->
                 <div class="page-header">
                     <div class="row">
                         <div class="col-sm-12">
-                            <h3 class="page-title">Welcome   {{ Auth::user()->name }}!</h3>
+                            <h3 class="page-title">Welcome   {{ Auth::user()->fname }}!</h3>
                             <ul class="breadcrumb">
                                 <li class="breadcrumb-item active">Dashboard</li>
                             </ul>
@@ -20,7 +20,7 @@
                     </div>
                 </div>
                 <!-- /Page Header -->
-            
+
                 <div class="row">
                     <div class="col-md-6 col-sm-6 col-lg-6 col-xl-3">
                         <div class="card dash-widget">
@@ -67,7 +67,7 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="row">
                     <div class="col-md-12">
                         <div class="row">
@@ -90,7 +90,7 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="row">
                     <div class="col-md-12">
                         <div class="card-group m-b-30">
@@ -111,13 +111,13 @@
                                     <p class="mb-0">Overall Employees 218</p>
                                 </div>
                             </div>
-                        
-                        
-                    
+
+
+
                         </div>
-                    </div>	
+                    </div>
                 </div>
-                
+
                 <!-- Statistics Widget -->
                 <div class="row">
                     <div class="col-md-12 col-lg-12 col-xl-4 d-flex">
@@ -159,9 +159,9 @@
                             </div>
                         </div>
                     </div>
-                    
-                
-                    
+
+
+
                     <div class="col-md-12 col-lg-6 col-xl-4 d-flex">
                         <div class="card flex-fill">
                             <div class="card-body">
@@ -208,10 +208,10 @@
                     </div>
                 </div>
                 <!-- /Statistics Widget -->
-                
-          
-          
-            
+
+
+
+
             </div>
             <!-- /Page Content -->
 

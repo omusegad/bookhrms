@@ -41,6 +41,31 @@ class LeaveController extends Controller
     public function store(Request $request){
         $data = $request->all();
        // dd($data);
+
+       //get application by submitted leave category
+    //    $checkExistLeave = LeaveApplication::where('id', $data['aic_leave_type_id'])
+    //                       -> where(Auth::user()->id, $data['user_id'])
+    //                       ->first();
+    //    $leaveType       = LeaveType::where('id', $data['aic_leave_type_id'])->first();
+
+       //dd($leaveType['id']);
+
+    //    dd($checkExistLeave);
+
+    //    switch ($leaveType['id']) {
+    //     case label1:
+    //       code to be executed if n=label1;
+    //       break;
+    //     case label2:
+    //       code to be executed if n=label2;
+    //       break;
+    //     case label3:
+    //       code to be executed if n=label3;
+    //       break;
+    //     default:
+    //       return "";
+    //   }
+
        LeaveApplication::create([
             'user_id'            => Auth::user()->id,
             'aic_leave_type_id'  => $data['aic_leave_type_id'],

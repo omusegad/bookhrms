@@ -24,7 +24,7 @@
 											<li><a href="{{ url('/lccs-regions') }}">LCCs</a></li>
 										</ul>
 									</li>
-								
+
 									<li><a href="{{ url('/nhif-details') }}">NHIF Details</a></li>
 									<li><a href="{{ url('/nssf-details') }}">NSSF Details</a></li>
 								</ul>
@@ -36,11 +36,11 @@
 								</a>
 								<ul style="display: none;">
 								    <li><a  href="{{ url('/employees') }}">All Employees</a></li>
-								
-									<li><a href="leaves-employee.html">Leaves (Employee)</a></li>
+
+									<li><a href="{{ url('/salaries') }}">Salaries</a></li>
 									<li><a href="leave-settings.html">Leave Settings</a></li>
 									<li><a href="attendance.html">Attendance (Admin)</a></li>
-							
+
 								</ul>
 							</li>
 							<li class="submenu">
@@ -55,7 +55,7 @@
 									<li><a href="{{ url('/leaves') }}">Leave Application</a></li>
 								</ul>
 							</li>
-							
+
 						</ul>
 					</div>
                 </div>

@@ -148,7 +148,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label>Number of days <span class="text-danger">*</span></label>
-                                    <input id="days" class="form-control" name="days" readonly  type="text">
+                                    <input id="days" class="form-control" name="days"  type="text">
                                 </div>
                                 <div class="form-group">
                                     <label>Remaining Leaves <span class="text-danger">*</span></label>

@@ -15,6 +15,7 @@ class CreateUsersTable extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
+            $table->string('aic_jobgroups_id');
             $table->string('fname');
             $table->string('lName');
             $table->string('email')->unique();
@@ -36,7 +37,6 @@ class CreateUsersTable extends Migration
             $table->text('avatar')->nullable();
             $table->text('nhifNo')->nullable();
             $table->text('nssfNo')->nullable();
-            $table->string('aic_jobgroups_id');
             $table->enum('gender', array('female', 'male'));
             $table->enum('marital_status', array('married', 'single', 'divorced','separated','widowed'));
             $table->date('joining_date');
@@ -62,6 +62,7 @@ class CreateUsersTable extends Migration
             $table->string('next_of_kin_altPhoneNumber')->nullable();
             $table->string('next_of_kin_nationId')->nullable();
             $table->enum('employee_status', array('active', 'suspended', 'fired'))->default('active');
+            $table->String('education_level');
         });
     }
 

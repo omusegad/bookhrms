@@ -14,6 +14,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\LeaveTypesController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\LeaveSettingsController;
+use App\Http\Controllers\EmployeeSalaryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -43,7 +44,9 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('/job-groups', JobgroupController::class);
     Route::resource('/nssf-details', NssfController::class);
     Route::resource('/nhif-details', NhifController::class);
-   // all routes 
-   
+    Route::resource('/salaries', EmployeeSalaryController::class);
+
+   // all routes
+
 });
 

@@ -16,12 +16,8 @@ class CreateAicJobgroupsTable extends Migration
         Schema::create('aic_jobgroups', function (Blueprint $table) {
             $table->id();
             $table->string('jonGroupName');
+            $table->enum('education', array('certificate', 'diploma','degree','postgraduate','masters'));
             $table->enum('job_grade', array('unlicenced', 'licenced', 'ordained','intern','by_years'));
-            $table->enum('level', array('certificate', 'diploma','degree','postgraduate','masters'));
-            $table->float('basic_salary');
-            $table->float('hse_allowance');
-            $table->float('transport_allowance');
-            $table->float('airtime');
             $table->timestamps();
         });
     }
