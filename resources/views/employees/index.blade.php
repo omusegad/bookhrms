@@ -5,10 +5,10 @@
 @section('content')
 <!-- Page Wrapper -->
 <div class="page-wrapper">
-		
+
             <!-- Page Content -->
             <div class="content container-fluid">
-    
+
                 <!-- Page Header -->
                 <div class="page-header">
                     <div class="row align-items-center">
@@ -29,24 +29,24 @@
                     </div>
                 </div>
                 <!-- /Page Header -->
-                
+
                 <!-- Search Filter -->
                 <div class="row filter-row">
-                    <div class="col-sm-6 col-md-3">  
+                    <div class="col-sm-6 col-md-3">
                         <div class="form-group form-focus">
                             <input type="text" class="form-control floating">
                             <label class="focus-label">Employee ID</label>
                         </div>
                     </div>
-                    <div class="col-sm-6 col-md-3">  
+                    <div class="col-sm-6 col-md-3">
                         <div class="form-group form-focus">
                             <input type="text" class="form-control floating">
                             <label class="focus-label">Employee Name</label>
                         </div>
                     </div>
-                    <div class="col-sm-6 col-md-3"> 
+                    <div class="col-sm-6 col-md-3">
                         <div class="form-group form-focus select-focus">
-                            <select class="select floating"> 
+                            <select class="select floating">
                                 <option>Select Designation</option>
                                 <option>Web Developer</option>
                                 <option>Web Designer</option>
@@ -56,16 +56,16 @@
                             <label class="focus-label">Designation</label>
                         </div>
                     </div>
-                    <div class="col-sm-6 col-md-3">  
-                        <a href="#" class="btn btn-success btn-block"> Search </a>  
-                    </div>     
+                    <div class="col-sm-6 col-md-3">
+                        <a href="#" class="btn btn-success btn-block"> Search </a>
+                    </div>
                 </div>
                 <!-- /Search Filter -->
-                
+
                 <div class="row">
                     <div class="col-md-12">
                         <div class="table-responsive">
-                            <table class="table table-striped custom-table datatable">
+                            <table id="employee" class="table table-striped custom-table ">
                                 <thead>
                                     <tr>
                                         <th>Name</th>
@@ -78,12 +78,12 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                              @foreach($users as $user)                               
+                              @foreach($users as $user)
                                 <tr>
                                     <td>
                                         <h2 class="table-avatar">
                                             <a href="profile.html" class="avatar"><img alt="" src="assets/img/profiles/avatar-02.jpg"></a>
-                                            <a href="profile.html">{{$user->fName }} {{$user->lName }}<span>Web Designer</span></a>
+                                            <a href="{{ route('employee-profile.show',$user->id)}}">{{$user->fName }} {{$user->lName }}<span>Web Designer</span></a>
                                         </h2>
                                     </td>
                                     <td>{{$user->employeeID }}</td>
@@ -114,7 +114,7 @@
                                 </tr>
 
                                 @endforeach
-                                  
+
                                 </tbody>
                             </table>
                         </div>
@@ -122,7 +122,7 @@
                 </div>
             </div>
             <!-- /Page Content -->
-        
+
             <!-- Delete Employee Modal -->
             <div class="modal custom-modal fade" id="delete_employee" role="dialog">
                 <div class="modal-dialog modal-dialog-centered">
@@ -147,7 +147,7 @@
                 </div>
             </div>
             <!-- /Delete Employee Modal -->
-            
+
         </div>
         <!-- /Page Wrapper -->
  @endsection

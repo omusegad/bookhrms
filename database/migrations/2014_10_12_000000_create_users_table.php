@@ -30,19 +30,19 @@ class CreateUsersTable extends Migration
             $table->string('employeeID')->nullable();
             $table->date('date_of_birth')->nullable();
             $table->string('probation_period')->nullable();
-            $table->string('phoneNumber');
-            $table->string('emergencyPhoneNumber');
+            $table->string('phoneNumber')->nullable();
+            $table->string('emergencyPhoneNumber')->nullable();
             $table->string('altPhoneNumber')->nullable();
             $table->text('experience')->nullable();
             $table->text('avatar')->nullable();
             $table->text('nhifNo')->nullable();
             $table->text('nssfNo')->nullable();
             $table->enum('gender', array('female', 'male'));
-            $table->enum('marital_status', array('married', 'single', 'divorced','separated','widowed'));
+            $table->enum('marital_status', array('married', 'single', 'divorced','separated','widowed'))->nullable();
             $table->date('joining_date');
             $table->date('confirmation_date')->nullable();
             $table->date('department')->nullable();
-            $table->string('current_address');
+            $table->string('current_address')->nullable();
             $table->string('permanent_address')->nullable();
             $table->string('bankName')->nullable();
             $table->string('bankBranch')->nullable();
@@ -55,14 +55,14 @@ class CreateUsersTable extends Migration
             $table->string('spouse_phoneNumber')->nullable();
             $table->string('spouse_altphoneNumber')->nullable();
             $table->string('spouse_nationalId')->nullable();
-            $table->string('next_of_kin_fname');
-            $table->string('next_of_kin_lname');
+            $table->string('next_of_kin_fname')->nullable();
+            $table->string('next_of_kin_lname')->nullable();
             $table->string('next_of_kin_otherNames')->nullable();
-            $table->string('next_of_kin_phoneNumber');
+            $table->string('next_of_kin_phoneNumber')->nullable();
             $table->string('next_of_kin_altPhoneNumber')->nullable();
             $table->string('next_of_kin_nationId')->nullable();
             $table->enum('employee_status', array('active', 'suspended', 'fired'))->default('active');
-            $table->String('education_level');
+            $table->String('education_level')->nullable();
         });
     }
 

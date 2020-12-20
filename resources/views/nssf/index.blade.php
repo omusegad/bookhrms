@@ -1,22 +1,13 @@
-<x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-           # {{ __('Dashboard') }}
-        </h2>
-    </x-slot>
-</x-app-layout>
-
-
 
 @extends('layouts.app')
 
 @section('content')
 	<!-- Page Wrapper -->
     <div class="page-wrapper">
-			
+
             <!-- Page Content -->
             <div class="content container-fluid">
-            
+
                 <!-- Page Header -->
                 <div class="page-header">
                     <div class="row align-items-center">
@@ -35,7 +26,7 @@
                     </div>
                 </div>
                 <!-- /Page Header -->
-                
+
                 <!-- Leave Statistics -->
                 <div class="row">
                     <div class="col-md-3">
@@ -56,17 +47,17 @@
                             <h4></h4>
                         </div>
                     </div>
-                
+
                 </div>
                 <!-- /Leave Statistics -->
-                
-                
-              
-                
+
+
+
+
                 <div class="row">
                     <div class="col-md-9">
                         <div class="table-responsive">
-                        <table class="table table-striped custom-table mb-0 datatable">
+                        <table id="nssf" class="table table-striped custom-table mb-0">
                                 <thead>
                                     <tr>
                                         <th>ID</th>
@@ -76,7 +67,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                               
+
                                 @php ($count = 1)
                                 @foreach($nssf as $data)
                                     <tr>
@@ -96,7 +87,7 @@
                                         </td>
                                     </tr>
                                     @endforeach
-                                  
+
                                 </tbody>
                             </table>
                         </div>
@@ -104,7 +95,7 @@
                 </div>
             </div>
             <!-- /Page Content -->
-            
+
             <!-- Add Leave Modal -->
             <div id="add_leave" class="modal custom-modal fade" role="dialog">
                 <div class="modal-dialog modal-dialog-centered" role="document">
@@ -135,7 +126,7 @@
                 </div>
             </div>
             <!-- /Add Leave Modal -->
-            
+
             <!-- Edit Leave Modal -->
             <div id="edit_leave" class="modal custom-modal fade" role="dialog">
                 <div class="modal-dialog modal-dialog-centered" role="document">
@@ -213,7 +204,7 @@
                 </div>
             </div>
             <!-- /Approve Leave Modal -->
-            
+
             <!-- Delete Leave Modal -->
             <div class="modal custom-modal fade" id="delete_approve" role="dialog">
                 <div class="modal-dialog modal-dialog-centered">
@@ -238,7 +229,7 @@
                 </div>
             </div>
             <!-- /Delete Leave Modal -->
-            
+
         </div>
         <!-- /Page Wrapper -->
  @endsection

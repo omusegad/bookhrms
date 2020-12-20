@@ -15,6 +15,7 @@ use App\Http\Controllers\LeaveTypesController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\LeaveSettingsController;
 use App\Http\Controllers\EmployeeSalaryController;
+use App\Http\Controllers\EmployeeProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,12 +29,11 @@ use App\Http\Controllers\EmployeeSalaryController;
 */
 
 
-
-
 Auth::routes();
 Route::middleware(['auth'])->group(function () {
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
     Route::get('/admin', [AdminController::class, 'index']);
+    Route::resource('/employee-profile', EmployeeProfileController::class);
     Route::resource('/employees',EmployeeController::class);
     Route::resource('/leaves', LeaveController::class);
     Route::resource('/leave-types', LeaveTypesController::class);
@@ -45,7 +45,6 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('/nssf-details', NssfController::class);
     Route::resource('/nhif-details', NhifController::class);
     Route::resource('/salaries', EmployeeSalaryController::class);
-
    // all routes
 
 });

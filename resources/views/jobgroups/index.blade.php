@@ -1,18 +1,13 @@
-<x-app-layout>
-   
-</x-app-layout>
-
-
 
 @extends('layouts.app')
 
 @section('content')
 	<!-- Page Wrapper -->
     <div class="page-wrapper">
-			
+
             <!-- Page Content -->
             <div class="content container-fluid">
-            
+
                 <!-- Page Header -->
                 <div class="page-header">
                     <div class="row align-items-center">
@@ -31,7 +26,7 @@
                     </div>
                 </div>
                 <!-- /Page Header -->
-                
+
                 <!-- Leave Statistics -->
                 <div class="row">
                     <div class="col-md-3">
@@ -52,26 +47,22 @@
                             <h4></h4>
                         </div>
                     </div>
-                
+
                 </div>
                 <!-- /Leave Statistics -->
-                
-                
-              
-                
+
+
+
+
                 <div class="row">
                     <div class="col-md-12">
                         <div class="table-responsive">
-                        <table class="table table-striped custom-table mb-0 datatable">
+                        <table id="jobgroup" class="table table-striped custom-table mb-0">
                                 <thead>
                                     <tr>
                                         <th>ID</th>
                                         <th>Job Group</th>
-                                        <th>Grade</th>
-                                        <th>Qualifications</th>
-                                        <th>Basic Salary</th>
-                                        <th>House Allowance</th>
-                                        <th>Airtime</th>
+                                        <th>Status</th>
                                         <!-- <th class="text-center">Status</th> -->
                                         <th class="text-right">Actions</th>
                                     </tr>
@@ -82,12 +73,7 @@
                                     <tr>
                                         <td>{{$count++}}</td>
                                         <td>{{ $data->jonGroupName}}</td>
-                                        <td>{{ $data->job_grade}}</td>
-                                        <td>{{ $data->level}}</td>
-                                        <td>{{ $data->basic_salary}}</td>
-                                        <td>{{ $data->hse_allowance}}</td>
-                                        <td>{{ $data->transport_allowance}}</td>
-                                        <td>{{ $data->airtime}}</td>
+                                        <td>{{ $data->statu}}</td>
                                         <td class="text-right">
                                             <div class="dropdown dropdown-action">
                                                 <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="material-icons">more_vert</i></a>
@@ -98,7 +84,7 @@
                                             </div>
                                         </td>
                                     </tr>
-                                 
+
                                   @endforeach
                                 </tbody>
                             </table>
@@ -107,7 +93,7 @@
                 </div>
             </div>
             <!-- /Page Content -->
-            
+
             <!-- Add Leave Modal -->
             <div id="add_leave" class="modal custom-modal fade" role="dialog">
                 <div class="modal-dialog modal-dialog-centered" role="document">
@@ -163,7 +149,7 @@
                                 <div class="form-group">
                                     <input class="form-control" placeholder="Airtime" type="text" required name="airtime">
                                 </div>
-                               
+
                                 <div class="submit-section">
                                     <button type="submit" class="btn btn-primary submit-btn">Submit</button>
                                 </div>
@@ -173,7 +159,7 @@
                 </div>
             </div>
             <!-- /Add Leave Modal -->
-            
+
             <!-- Edit Leave Modal -->
             <div id="edit_leave" class="modal custom-modal fade" role="dialog">
                 <div class="modal-dialog modal-dialog-centered" role="document">
@@ -251,7 +237,7 @@
                 </div>
             </div>
             <!-- /Approve Leave Modal -->
-            
+
             <!-- Delete Leave Modal -->
             <div class="modal custom-modal fade" id="delete_approve" role="dialog">
                 <div class="modal-dialog modal-dialog-centered">
@@ -276,7 +262,7 @@
                 </div>
             </div>
             <!-- /Delete Leave Modal -->
-            
+
         </div>
         <!-- /Page Wrapper -->
  @endsection

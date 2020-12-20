@@ -8,7 +8,7 @@
 							<li class="submenu">
 								<a href="#"><i class="la la-dashboard"></i> <span> Settings</span> <span class="menu-arrow"></span></a>
 								<ul style="display: none;">
-									<li><a href="{{ url('/admin') }}">Users</a></li>
+									<li><a href="{{ url('/admin') }}">Admins</a></li>
 									<li>
 										<a href="{{ url('/job-groups') }}">
 										  Job Groups
@@ -36,11 +36,8 @@
 								</a>
 								<ul style="display: none;">
 								    <li><a  href="{{ url('/employees') }}">All Employees</a></li>
-
+									<li><a href=" {{ route('employees.create') }}">Add Employees</a></li>
 									<li><a href="{{ url('/salaries') }}">Salaries</a></li>
-									<li><a href="leave-settings.html">Leave Settings</a></li>
-									<li><a href="attendance.html">Attendance (Admin)</a></li>
-
 								</ul>
 							</li>
 							<li class="submenu">

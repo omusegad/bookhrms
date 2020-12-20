@@ -1,10 +1,3 @@
-<x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-           # {{ __('Dashboard') }}
-        </h2>
-    </x-slot>
-</x-app-layout>
 
 
 
@@ -13,10 +6,10 @@
 @section('content')
 	<!-- Page Wrapper -->
     <div class="page-wrapper">
-			
+
             <!-- Page Content -->
             <div class="content container-fluid">
-            
+
                 <!-- Page Header -->
                 <div class="page-header">
                     <div class="row">
@@ -30,15 +23,15 @@
                     </div>
                 </div>
                 <!-- /Page Header -->
-                
+
                 <div class="row">
                     <div class="col-md-12">
-                    
+
                         <!-- Annual Leave -->
                         <div class="card leave-box" id="leave_annual">
                             <div class="card-body">
                                 <div class="h3 card-title with-switch">
-                                    Annual 											
+                                    Annual
                                     <div class="onoffswitch">
                                         <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="switch_annual" checked>
                                         <label class="onoffswitch-label" for="switch_annual">
@@ -48,7 +41,7 @@
                                     </div>
                                 </div>
                                 <div class="leave-item">
-                                
+
                                     <!-- Annual Days Leave -->
                                     <div class="leave-row">
                                         <div class="leave-left">
@@ -64,7 +57,7 @@
                                         </div>
                                     </div>
                                     <!-- /Annual Days Leave -->
-                                    
+
                                     <!-- Carry Forward -->
                                     <div class="leave-row">
                                         <div class="leave-left">
@@ -95,7 +88,7 @@
                                         </div>
                                     </div>
                                     <!-- /Carry Forward -->
-                                    
+
                                     <!-- Earned Leave -->
                                     <div class="leave-row">
                                         <div class="leave-left">
@@ -120,9 +113,9 @@
                                         </div>
                                     </div>
                                     <!-- /Earned Leave -->
-                                    
+
                                 </div>
-                                
+
                                 <!-- Custom Policy -->
                                 <div class="custom-policy">
                                     <div class="leave-header">
@@ -164,16 +157,16 @@
                                     </div>
                                 </div>
                                 <!-- /Custom Policy -->
-                                
+
                             </div>
                         </div>
                         <!-- /Annual Leave -->
-                        
+
                         <!-- Sick Leave -->
                         <div class="card leave-box" id="leave_sick">
                             <div class="card-body">
                                 <div class="h3 card-title with-switch">
-                                    Sick 											
+                                    Sick
                                     <div class="onoffswitch">
                                         <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="switch_sick" checked>
                                         <label class="onoffswitch-label" for="switch_sick">
@@ -202,12 +195,12 @@
                             </div>
                         </div>
                         <!-- /Sick Leave -->
-                        
+
                         <!-- Hospitalisation Leave -->
                         <div class="card leave-box" id="leave_hospitalisation">
                             <div class="card-body">
                                 <div class="h3 card-title with-switch">
-                                    Hospitalisation 											
+                                    Hospitalisation
                                     <div class="onoffswitch">
                                         <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="switch_hospitalisation">
                                         <label class="onoffswitch-label" for="switch_hospitalisation">
@@ -217,7 +210,7 @@
                                     </div>
                                 </div>
                                 <div class="leave-item">
-                                
+
                                     <!-- Annual Days Leave -->
                                     <div class="leave-row">
                                         <div class="leave-left">
@@ -235,9 +228,9 @@
                                         </div>
                                     </div>
                                     <!-- /Annual Days Leave -->
-                                    
+
                                 </div>
-                                
+
                                 <!-- Custom Policy -->
                                 <div class="custom-policy">
                                     <div class="leave-header">
@@ -279,11 +272,11 @@
                                     </div>
                                 </div>
                                 <!-- /Custom Policy -->
-                                
+
                             </div>
                         </div>
                         <!-- /Hospitalisation Leave -->
-                        
+
                         <!-- Maternity Leave -->
                         <div class="card leave-box" id="leave_maternity">
                             <div class="card-body">
@@ -317,7 +310,7 @@
                             </div>
                         </div>
                         <!-- /Maternity Leave -->
-                        
+
                         <!-- Paternity Leave -->
                         <div class="card leave-box" id="leave_paternity">
                             <div class="card-body">
@@ -351,12 +344,12 @@
                             </div>
                         </div>
                         <!-- /Paternity Leave -->
-                        
+
                         <!-- Custom Create Leave -->
                         <div class="card leave-box mb-0" id="leave_custom01">
                             <div class="card-body">
                                 <div class="h3 card-title with-switch">
-                                    LOP 											
+                                    LOP
                                     <div class="onoffswitch">
                                         <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="switch_custom01" checked>
                                         <label class="onoffswitch-label" for="switch_custom01">
@@ -367,7 +360,7 @@
                                     <button class="btn btn-danger leave-delete-btn" type="button">Delete</button>
                                 </div>
                                 <div class="leave-item">
-                                
+
                                     <!-- Annual Days Leave -->
                                     <div class="leave-row">
                                         <div class="leave-left">
@@ -383,7 +376,7 @@
                                         </div>
                                     </div>
                                     <!-- /Annual Days Leave -->
-                                    
+
                                     <!-- Carry Forward -->
                                     <div class="leave-row">
                                         <div class="leave-left">
@@ -414,7 +407,7 @@
                                         </div>
                                     </div>
                                     <!-- /Carry Forward -->
-                                    
+
                                     <!-- Earned Leave -->
                                     <div class="leave-row">
                                         <div class="leave-left">
@@ -439,9 +432,9 @@
                                         </div>
                                     </div>
                                     <!-- /Earned Leave -->
-                                    
+
                                 </div>
-                                
+
                                 <!-- Custom Policy -->
                                 <div class="custom-policy">
                                     <div class="leave-header">
@@ -483,17 +476,17 @@
                                     </div>
                                 </div>
                                 <!-- /Custom Policy -->
-                                
+
                             </div>
                         </div>
                         <!-- /Custom Create Leave -->
-                        
+
                     </div>
                 </div>
-                    
+
             </div>
             <!-- /Page Content -->
-            
+
             <!-- Add Custom Policy Modal -->
             <div id="add_custom_policy" class="modal custom-modal fade" role="dialog">
                 <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
@@ -547,7 +540,7 @@
                 </div>
             </div>
             <!-- /Add Custom Policy Modal -->
-            
+
             <!-- Edit Custom Policy Modal -->
             <div id="edit_custom_policy" class="modal custom-modal fade" role="dialog">
                 <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
@@ -601,7 +594,7 @@
                 </div>
             </div>
             <!-- /Edit Custom Policy Modal -->
-            
+
             <!-- Delete Custom Policy Modal -->
             <div class="modal custom-modal fade" id="delete_custom_policy" role="dialog">
                 <div class="modal-dialog modal-dialog-centered">
@@ -626,7 +619,7 @@
                 </div>
             </div>
             <!-- /Delete Custom Policy Modal -->
-            
+
         </div>
         <!-- /Page Wrapper -->
 

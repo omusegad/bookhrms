@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Jobgroup;
+use App\Models\User;
 use Illuminate\Http\Request;
 
-class JobgroupController extends Controller
+class EmployeeProfileController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +14,7 @@ class JobgroupController extends Controller
      */
     public function index()
     {
-        $jobGroups = Jobgroup::all();
-        return view('jobgroups.index', compact('jobGroups'));
+        //
     }
 
     /**
@@ -25,7 +24,7 @@ class JobgroupController extends Controller
      */
     public function create()
     {
-        //
+
     }
 
     /**
@@ -34,12 +33,9 @@ class JobgroupController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request){
-        // dd($request->all());
-        Jobgroup::create([
-            'jonGroupName'        => $request->jonGroupName
-        ]);
-        return back()->with('message','Job group created successfully!');
+    public function store(Request $request)
+    {
+
     }
 
     /**
@@ -48,9 +44,9 @@ class JobgroupController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
-    {
-        //
+    public function show($id){
+        $user = User::find($id)->first();
+        return view('profile.show', compact('user'));
     }
 
     /**

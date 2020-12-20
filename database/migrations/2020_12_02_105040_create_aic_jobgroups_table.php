@@ -16,8 +16,7 @@ class CreateAicJobgroupsTable extends Migration
         Schema::create('aic_jobgroups', function (Blueprint $table) {
             $table->id();
             $table->string('jonGroupName');
-            $table->enum('education', array('certificate', 'diploma','degree','postgraduate','masters'));
-            $table->enum('job_grade', array('unlicenced', 'licenced', 'ordained','intern','by_years'));
+            $table->enum('status', array('active', 'inactive'));
             $table->timestamps();
         });
     }

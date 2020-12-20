@@ -1,22 +1,13 @@
-<x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-           # {{ __('Dashboard') }}
-        </h2>
-    </x-slot>
-</x-app-layout>
-
-
 
 @extends('layouts.app')
 
 @section('content')
 	<!-- Page Wrapper -->
     <div class="page-wrapper">
-			
+
             <!-- Page Content -->
             <div class="content container-fluid">
-            
+
                 <!-- Page Header -->
                 <div class="page-header">
                     <div class="row align-items-center">
@@ -33,7 +24,7 @@
                     </div>
                 </div>
                 <!-- /Page Header -->
-                
+
                 <div class="row">
                     <div class="col-md-12">
                         <div class="table-responsive">
@@ -70,7 +61,7 @@
                                         </td>
                                     </tr>
                                 @endforeach
-                              
+
                                 </tbody>
                             </table>
                         </div>
@@ -78,7 +69,7 @@
                 </div>
             </div>
             <!-- /Page Content -->
-            
+
             <!-- Add Leavetype Modal -->
             <div id="add_leavetype" class="modal custom-modal fade" role="dialog">
                 <div class="modal-dialog modal-dialog-centered" role="document">
@@ -109,7 +100,7 @@
                 </div>
             </div>
             <!-- /Add Leavetype Modal -->
-            
+
             <!-- Edit Leavetype Modal -->
             <div id="edit_leavetype" class="modal custom-modal fade" role="dialog">
                 <div class="modal-dialog modal-dialog-centered" role="document">
@@ -139,7 +130,7 @@
                 </div>
             </div>
             <!-- /Edit Leavetype Modal -->
-            
+
             <!-- Delete Leavetype Modal -->
             <div class="modal custom-modal fade" id="delete_leavetype" role="dialog">
                 <div class="modal-dialog modal-dialog-centered">
@@ -164,7 +155,7 @@
                 </div>
             </div>
             <!-- /Delete Leavetype Modal -->
-            
+
         </div>
         <!-- /Page Wrapper -->
 @endsection
