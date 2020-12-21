@@ -46,7 +46,7 @@ class EmployeeProfileController extends Controller
      */
     public function show($id){
         $user = User::find($id)->first();
-        return view('profile.show', compact('user'));
+        return view('employees.show', compact('user'));
     }
 
     /**
@@ -57,7 +57,8 @@ class EmployeeProfileController extends Controller
      */
     public function edit($id)
     {
-        //
+        $user = User::find($id)->first();
+        return view('employees.edit', compact('user'));
     }
 
     /**
@@ -82,4 +83,29 @@ class EmployeeProfileController extends Controller
     {
         //
     }
+
+    private function calculateLeaveDays($holidays){
+
+        $date = "12/31/14"; // start holidate appllication date
+        $MyDateCarbon = Carbon::parse($date);
+
+        $MyDateCarbon->addWeekdays(3);
+
+        for ($i = 1; $i <= 3; $i++;) {
+
+            if (in_array(Carbon::parse($date)->addWeekdays($i)->toDateString(), $holidays)) {
+
+                $MyDateCarbon->addDay();
+
+            }
+        }
+
+        dd($MyDateCarbon);
+
+    }
+
+
+
+
 }
+

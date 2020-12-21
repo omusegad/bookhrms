@@ -35,9 +35,9 @@
 									 <span> Employees</span> <span class="menu-arrow"></span>
 								</a>
 								<ul style="display: none;">
-								    <li><a  href="{{ url('/employees') }}">All Employees</a></li>
-									<li><a href=" {{ route('employees.create') }}">Add Employees</a></li>
-									<li><a href="{{ url('/salaries') }}">Salaries</a></li>
+								    <li><a  href="{{ route('employees.index') }}">All Employees</a></li>
+                                    <li><a href=" {{ route('employees.create') }}">Add Employees</a></li>
+									<li><a href=" {{ route('employees.show',[auth()->user()->id]) }}">Profile</a></li>
 								</ul>
 							</li>
 							<li class="submenu">
@@ -49,7 +49,18 @@
 								    <li><a  href="{{ url('/leaves') }}">All Leaves</a></li>
 									<li><a href="{{ url('/leave-types') }}">Leave Types</a></li>
 									<li><a href="{{ url('/leave-settings') }}">Leave Setting</a></li>
-									<li><a href="{{ url('/leaves') }}">Leave Application</a></li>
+                                    <li><a href="{{ url('/leaves') }}">Leave Application</a></li>
+                                    <li><a href="{{ url('/holidays') }}">Holidays</a></li>
+
+								</ul>
+                            </li>
+                            <li class="submenu">
+								<a href="#">
+								<i class="la la-dashboard"></i>
+									 <span> Salaries</span> <span class="menu-arrow"></span>
+								</a>
+								<ul style="display: none;">
+									<li><a href="{{ url('/salaries') }}">Salaries</a></li>
 								</ul>
 							</li>
 

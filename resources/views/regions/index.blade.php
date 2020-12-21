@@ -113,7 +113,7 @@
                             <form method="POST" action="{{route('regions.store')}}">
                                 @csrf
                                 <div class="form-group">
-                                    <input class="form-control" placeholder="Enter Region name" type="text" required name="rName">
+                                    <input class="form-control" placeholder="Region name" type="text" required name="rName">
                                 </div>
                                 <div class="submit-section">
                                     <button type="submit" class="btn btn-primary submit-btn">Submit</button>

@@ -3,7 +3,7 @@
 @section('content')
 <!-- Page Wrapper -->
 <div class="page-wrapper">
-			
+
 <!-- Page Content -->
 <div class="content container-fluid">
     <!-- Page Header -->
@@ -26,7 +26,7 @@
         </div>
     </div>
     <!-- /Page Header -->
-                
+
 
     <div class="row mt-5 justify-content-center">
         <div class="col-md-12">
@@ -40,13 +40,12 @@
                     </div>
                     @endif
                     <!-- Only fields withe errors are to be validated -->
-                    <form method="POST" action="{{ route('employee.edit') }}">
+                    <form method="POST" action="{{ route('employees.edit', $employee->id) }}">
                         @csrf
-                        <input type="hidden" name="ids" value="{{ $employee->id }}">
                         <div class="row">
                             <div class="col-md-4">
-                                <input id="fName" placeholder="First Name" type="text" class="form-group form-control @error('fName') is-invalid @enderror" name="fName" value="{{ $employee->fName }}"  autocomplete="fName" autofocus>
-                                @error('fName')
+                                <input id="fname" placeholder="First Name" type="text" class="form-group form-control @error('fname') is-invalid @enderror" name="fname" value="{{ $employee->fName }}"  autocomplete="fname" autofocus>
+                                @error('fname')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -68,7 +67,7 @@
                                     </span>
                                 @enderror
                             </div>
-                          
+
                             <div class="col-md-4">
                                 <input id="email" placeholder="Email" type="email" class="form-group form-control @error('email') is-invalid @enderror" name="email" value="{{ $employee->email }}"  autocomplete="email">
                                 @error('email')
@@ -77,7 +76,7 @@
                                     </span>
                                 @enderror
                             </div>
-                        
+
                             <div class="col-md-4">
                                 <input id="phonenumber" placeholder="Phone Number" type="text" class="form-group form-control @error('phoneNumber') is-invalid @enderror" name="phoneNumber" value="{{ $employee->phoneNumber }}"    autocomplete="phoneNumber">
                                 @error('phoneNumber')
@@ -104,7 +103,7 @@
                                     </span>
                                 @enderror
                             </div>
-                           
+
                             <div class="col-md-4">
                                 <input id="nhifNo" placeholder="NHIF" type="text" class="form-group form-control @error('nhifNo') is-invalid @enderror" name="nhifNo"  value="{{ $employee->nhifNo }}"   autocomplete="nhifNo">
                                 @error('nhifNo')
@@ -240,7 +239,7 @@
 
                         <hr>
                          <h6>Spouce Details Section</h6>
-                        <div class="row">  
+                        <div class="row">
                             <div class="col-md-4">
                                 <input id="spouse_fname" placeholder="Spouse First Name" type="text" class="form-group form-control @error('spouse_fname') is-invalid @enderror" name="spouse_fname"  value="{{ $employee->spouse_fname }}"   autocomplete="spouse_fname">
                                 @error('spouse_fname')
@@ -295,7 +294,7 @@
 
                         <hr>
                         <h6>Next of Kin Details Section</h6>
-                        <div class="row">  
+                        <div class="row">
                             <div class="col-md-4">
                                 <input id="next_of_kin_fname" placeholder="Next of Kin First Name" type="text" class="form-group form-control @error('next_of_kin_fname') is-invalid @enderror" name="next_of_kin_fname"  value="{{ $employee->next_of_kin_fname }}"  autocomplete="next_of_kin_fname">
                                 @error('next_of_kin_fname')
@@ -344,7 +343,7 @@
                                     </span>
                                 @enderror
                             </div>
-                            
+
                         </div>
 
                         <div class="form-group row mb-0">
@@ -360,16 +359,16 @@
         </div>
     </div>
 
-                
-               
+
+
 
             </div>
             <!-- /Page Content -->
-            
-          
-           
-            
-            
+
+
+
+
+
         </div>
         <!-- /Page Wrapper -->
  @endsection

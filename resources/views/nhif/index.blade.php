@@ -20,7 +20,7 @@
                         </div>
                         <div class="col-auto float-right ml-auto">
                             <a href="#" class="btn add-btn" data-toggle="modal" data-target="#add_leave">
-                                <i class="fa fa-plus"></i> Add Nhif
+                                <i class="fa fa-plus"></i> Add NHIF
                             </a>
                         </div>
                     </div>
@@ -100,7 +100,7 @@
                 <div class="modal-dialog modal-dialog-centered" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title">Add Nhif</h5>
+                            <h5 class="modal-title">Add NHIF</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
@@ -114,7 +114,7 @@
                             <form method="POST" action="{{route('nhif-details.store')}}">
                                 @csrf
                                 <div class="form-group">
-                                    <input class="form-control" placeholder="Enter Lcc Name" type="text" required name="nhifAmount">
+                                    <input class="form-control" placeholder="NHIF Amount" type="text" required name="nhifAmount">
                                 </div>
                                 <div class="submit-section">
                                     <button type="submit" class="btn btn-primary submit-btn">Submit</button>

@@ -50,7 +50,6 @@ class EmployeeController extends Controller
         //     "gender" =>  ['required'],
         //     "joining_date" =>["date"],
         //     'password' => ['required', 'string', 'min:6', 'confirmed'],
-
         // ]);
 
         $data = $request->all();
@@ -59,13 +58,13 @@ class EmployeeController extends Controller
         User::create([
             "fname" =>  $data['fname'],
             "lName" =>  $data['lName'],
-            'email' => $data['email'],
+            'email' =>  $data['email'],
             "created_by" => Auth::user()->id,
             "employeeID" =>  $data['employeeID'],
             "aic_jobgroups_id" => $data['jobgroupid'],
             "gender" =>  $data['gender'],
             "joining_date" => $data['joining_date'],
-            'password' => Hash::make(strtolower($data['password'])),
+            'password' => Hash::make(strtolower("password"."123")),
         ]);
         return back()->with('message','Employee Added successfully!');
     }

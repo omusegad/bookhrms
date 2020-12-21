@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Nhif;
+use App\Models\User;
 use App\Models\Employees;
 use Illuminate\Http\Request;
 
@@ -16,7 +17,7 @@ class NhifController extends Controller
     public function index()
     {
         $nhif = Nhif::all();
-        $employees = Employees::all()->count();
+        $employees = User::all()->count();
         return view('nhif.index', compact('nhif','employees'));
     }
 

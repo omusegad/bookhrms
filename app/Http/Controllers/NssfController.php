@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Nssf;
-use App\Models\Employees;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class NssfController extends Controller
@@ -16,7 +16,7 @@ class NssfController extends Controller
     public function index()
     {
         $nssf = Nssf::all();
-        $employees = Employees::all()->count();
+        $employees = User::all()->count();
         return view('nssf.index', compact('nssf','employees'));
     }
 

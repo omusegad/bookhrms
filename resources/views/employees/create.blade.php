@@ -13,10 +13,16 @@
             <div class="col">
                 <h3 class="page-title">Employee</h3>
                 <ul class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
+                    <li class="breadcrumb-item">
+                        <a href="{{ route('dashboard')}}">Dashboard</a>
+                    </li>
                     <li class="breadcrumb-item active">Employee</li>
                 </ul>
             </div>
+            <div class="col-auto float-right ml-auto">
+                <a href="{{ route('employees.index')}}">All Employee</a>
+            </div>
+
         </div>
     </div>
     <!-- /Page Header -->
@@ -112,20 +118,8 @@
                                     </span>
                                 @enderror
                             </div>
-                            <div class="col-md-4">
-                                <label for="password">Password </label>
-                                <input id="password" placeholder="Password" value="password321" type="password" class="form-group form-control @error('password') is-invalid @enderror" name="password" value="{{ old('password') }}" autocomplete="new-password"  data-toggle="password">
-                                @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                            <div class="col-md-4">
-                                <label for="">Confirm Password </label>
-                                <input id="password-confirm" placeholder="Confirm Password" value="password321" type="password" class="form-group form-control" name="password_confirmation" value="{{ old('password_confirmation') }}"  autocomplete="new-password">
-                            </div>
-                            
+
+
                         </div>
 
                         <div class="form-group row mb-0">

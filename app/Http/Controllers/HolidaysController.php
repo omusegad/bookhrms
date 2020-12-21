@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Jobgroup;
+use Carbon\Carbon;
+use App\Models\Holiday;
 use Illuminate\Http\Request;
 
-class JobgroupController extends Controller
+class HolidaysController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +15,8 @@ class JobgroupController extends Controller
      */
     public function index()
     {
-        $jobGroups = Jobgroup::all();
-        return view('jobgroups.index', compact('jobGroups'));
+        $holidays = Holiday::all();
+        return view('holiday.index', compact('holidays'));
     }
 
     /**
@@ -34,12 +35,15 @@ class JobgroupController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request){
-        $data =  dd($request->all());
-        Jobgroup::create([
-            'jonGroupName'        => $data['jonGroupName']
+    public function store(Request $request)
+    {
+        $data = $request->all();
+        Holiday::create([
+            'hName'       => $data['hName'],
+            'holidayDate' => Carbon::parse(strtotime($data['holidayDate'])),
         ]);
-        return back()->with('message','Job group created successfully!');
+        return back()->with('message','Holiday created successfully!');
+        //
     }
 
     /**

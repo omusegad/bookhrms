@@ -1,12 +1,3 @@
-<x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-           # {{ __('Dashboard') }}
-        </h2>
-    </x-slot>
-</x-app-layout>
-
-
 
 @extends('layouts.app')
 
@@ -21,7 +12,7 @@
                 <div class="page-header">
                     <div class="row align-items-center">
                         <div class="col">
-                            <h3 class="page-title">Distric Church Council</h3>
+                            <h3 class="page-title">District Church Council</h3>
                             <ul class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
                                 <li class="breadcrumb-item active">Distric Church Council</li>
@@ -29,7 +20,7 @@
                         </div>
                         <div class="col-auto float-right ml-auto">
                             <a href="#" class="btn add-btn" data-toggle="modal" data-target="#add_leave">
-                                <i class="fa fa-plus"></i> Add Dcc
+                                <i class="fa fa-plus"></i> Add DCC
                             </a>
                         </div>
                     </div>
@@ -64,7 +55,7 @@
 
 
                 <div class="row">
-                    <div class="col-md-12">
+                    <div class="col-md-9">
                         <div class="table-responsive">
                         <table id="dcc" class="table table-striped custom-table mb-0">
                                 <thead>
@@ -110,7 +101,7 @@
                 <div class="modal-dialog modal-dialog-centered" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title">Add Leave</h5>
+                            <h5 class="modal-title">Add DCC</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
@@ -124,7 +115,7 @@
                             <form method="POST" action="{{route('dccs-regions.store')}}">
                                 @csrf
                                 <div class="form-group">
-                                    <input class="form-control" placeholder="Enter Dcc Name" type="text" required name="dccName">
+                                    <input class="form-control" placeholder="DCC Name" type="text" required name="dccName">
                                 </div>
                                 <div class="form-group">
                                     <label >Choose Region <span class="text-danger">*</span></label>

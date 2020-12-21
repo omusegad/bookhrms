@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateAicJobgroupsTable extends Migration
+class CreateHolidaysTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,11 @@ class CreateAicJobgroupsTable extends Migration
      */
     public function up()
     {
-        Schema::create('aic_jobgroups', function (Blueprint $table) {
+        Schema::create('holidays', function (Blueprint $table) {
             $table->id();
-            $table->string('jonGroupName');
-            $table->enum('status', array('active', 'inactive'))->default('active');
+            $table->string('hName');
+            $table->date('holidayDate');
+            $table->enum('reapeatAnnually', array('yes', 'no'))->default('yes');
             $table->timestamps();
         });
     }
@@ -28,6 +29,6 @@ class CreateAicJobgroupsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('aic_jobgroups');
+        Schema::dropIfExists('holidays');
     }
 }

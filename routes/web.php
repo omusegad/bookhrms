@@ -9,6 +9,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\LeaveController;
 use App\Http\Controllers\RegionController;
 use App\Http\Controllers\EmployeeController;
+use App\Http\Controllers\HolidaysController;
 use App\Http\Controllers\JobgroupController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\LeaveTypesController;
@@ -33,7 +34,6 @@ Auth::routes();
 Route::middleware(['auth'])->group(function () {
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
     Route::get('/admin', [AdminController::class, 'index']);
-    Route::resource('/employee-profile', EmployeeProfileController::class);
     Route::resource('/employees',EmployeeController::class);
     Route::resource('/leaves', LeaveController::class);
     Route::resource('/leave-types', LeaveTypesController::class);
@@ -45,7 +45,8 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('/nssf-details', NssfController::class);
     Route::resource('/nhif-details', NhifController::class);
     Route::resource('/salaries', EmployeeSalaryController::class);
-   // all routes
+    Route::resource('/holidays', HolidaysController::class);
+
 
 });
 

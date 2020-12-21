@@ -55,7 +55,7 @@
 
 
                 <div class="row">
-                    <div class="col-md-12">
+                    <div class="col-md-9">
                         <div class="table-responsive">
                         <table id="jobgroup" class="table table-striped custom-table mb-0">
                                 <thead>
@@ -73,7 +73,7 @@
                                     <tr>
                                         <td>{{$count++}}</td>
                                         <td>{{ $data->jonGroupName}}</td>
-                                        <td>{{ $data->statu}}</td>
+                                        <td> {{$data->status ? $data->status: " " }}</td>
                                         <td class="text-right">
                                             <div class="dropdown dropdown-action">
                                                 <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="material-icons">more_vert</i></a>
@@ -84,7 +84,6 @@
                                             </div>
                                         </td>
                                     </tr>
-
                                   @endforeach
                                 </tbody>
                             </table>
@@ -99,7 +98,7 @@
                 <div class="modal-dialog modal-dialog-centered" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title">Add Leave</h5>
+                            <h5 class="modal-title">Add Job</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
@@ -114,40 +113,6 @@
                                 @csrf
                                 <div class="form-group">
                                     <input class="form-control" placeholder="Enter Job Group Name" type="text" required name="jonGroupName">
-                                </div>
-                                <div class="form-group">
-                                    <label>Choose Grading <span class="text-danger">*</span></label>
-                                    <select name="job_grade" class="select form-control">
-                                    <option value="" disabled selected>Choose Grading</option>
-                                    <option value="unlicenced">unlicenced</option>
-                                    <option value="licenced">licenced</option>
-                                    <option value="ordained">ordained</option>
-                                    <option value="intern">intern</option>
-                                    <option value="by_years">by_years</option>
-                                    </select>
-                                </div>
-                                <div class="form-group">
-                                    <label>Choose Qualifications <span class="text-danger">*</span></label>
-                                    <select name="level" class="select form-control">
-                                    <option value="" disabled selected>Choose Qualification</option>
-                                    <option value="certificate">certificate</option>
-                                    <option value="diploma">diploma</option>
-                                    <option value="degree">degree</option>
-                                    <option value="postgraduate">postgraduate</option>
-                                    <option value="masters">masters</option>
-                                    </select>
-                                </div>
-                                <div class="form-group">
-                                    <input class="form-control" placeholder="Basic Salary" type="text" required name="basic_salary">
-                                </div>
-                                <div class="form-group">
-                                    <input class="form-control" placeholder="House Allowance" type="text" required name="hse_allowance">
-                                </div>
-                                <div class="form-group">
-                                    <input class="form-control" placeholder="Transport Allowance" type="text" required name="transport_allowance">
-                                </div>
-                                <div class="form-group">
-                                    <input class="form-control" placeholder="Airtime" type="text" required name="airtime">
                                 </div>
 
                                 <div class="submit-section">
