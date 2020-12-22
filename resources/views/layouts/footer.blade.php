@@ -20,9 +20,7 @@
 
 
     <script src="{{ asset('js/app.js') }}"></script>
-    <script type="text/javascript">
-        $("#password").password('toggle');
-    </script>
+
 
 
  </body>

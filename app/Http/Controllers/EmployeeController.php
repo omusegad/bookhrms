@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Region;
 use App\Models\Jobgroup;
+use App\Models\Dccregions;
+use App\Models\Lccregions;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -18,7 +21,8 @@ class EmployeeController extends Controller
     public function index()
     {
 
-        $users = User::all();
+        $users = User::with('region','dcc','lcc','jobgroup')->get();
+       // dd($users);
         return view('employees.index', compact('users'));
     }
 
@@ -30,7 +34,10 @@ class EmployeeController extends Controller
     public function create()
     {
         $jobgroup = Jobgroup::all();
-        return view('employees.create', compact('jobgroup'));
+        $regions  = Region::all();
+        $dcc      = Dccregions::all();
+        $lcc      = Lccregions::all();
+        return view('employees.create', compact('regions','jobgroup','dcc','lcc'));
     }
 
     /**
@@ -61,7 +68,10 @@ class EmployeeController extends Controller
             'email' =>  $data['email'],
             "created_by" => Auth::user()->id,
             "employeeID" =>  $data['employeeID'],
-            "aic_jobgroups_id" => $data['jobgroupid'],
+            "aic_jobgroups_id" => $data['aic_jobgroups_id'],
+            "aic_regions_id" => $data['aic_regions_id'],
+            "aic_dccs_id" => $data['aic_dccs_id'],
+            "aic_lccs_id" => $data['aic_lccs_id'],
             "gender" =>  $data['gender'],
             "joining_date" => $data['joining_date'],
             'password' => Hash::make(strtolower("password"."123")),

@@ -8,7 +8,9 @@
 							<li class="submenu">
 								<a href="#"><i class="la la-dashboard"></i> <span> Settings</span> <span class="menu-arrow"></span></a>
 								<ul style="display: none;">
-									<li><a href="{{ url('/admin') }}">Admins</a></li>
+                                    <li><a href="{{ url('/admin') }}">Admins</a></li>
+									<li><a href="{{ route('roles.index') }}">Roles</a></li>
+
 									<li>
 										<a href="{{ url('/job-groups') }}">
 										  Job Groups
@@ -46,11 +48,11 @@
 									 <span> Leaves </span> <span class="menu-arrow"></span>
 								</a>
 								<ul style="display: none;">
-								    <li><a  href="{{ url('/leaves') }}">All Leaves</a></li>
-									<li><a href="{{ url('/leave-types') }}">Leave Types</a></li>
-									<li><a href="{{ url('/leave-settings') }}">Leave Setting</a></li>
-                                    <li><a href="{{ url('/leaves') }}">Leave Application</a></li>
-                                    <li><a href="{{ url('/holidays') }}">Holidays</a></li>
+								    <li><a  href="{{ route('leaves.index') }}">All Leaves</a></li>
+									<li><a href="{{ route('leave-types.index') }}">Leave Types</a></li>
+									<li><a href="{{ route('leave-settings.index') }}">Leave Setting</a></li>
+                                    <li><a href="{{ route('leaves.create') }}">Leave Application</a></li>
+                                    <li><a href="{{ route('holidays.index') }}">Holidays</a></li>
 
 								</ul>
                             </li>

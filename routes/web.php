@@ -7,6 +7,7 @@ use App\Http\Controllers\NhifController;
 use App\Http\Controllers\NssfController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\LeaveController;
+use App\Http\Controllers\RolesController;
 use App\Http\Controllers\RegionController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\HolidaysController;
@@ -29,11 +30,14 @@ use App\Http\Controllers\EmployeeProfileController;
 |
 */
 
+//Route::resource('/employees',EmployeeController::class);
+
 
 Auth::routes();
 Route::middleware(['auth'])->group(function () {
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
     Route::get('/admin', [AdminController::class, 'index']);
+    Route::resource('roles', RolesController::class);
     Route::resource('/employees',EmployeeController::class);
     Route::resource('/leaves', LeaveController::class);
     Route::resource('/leave-types', LeaveTypesController::class);

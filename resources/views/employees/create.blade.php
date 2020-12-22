@@ -89,9 +89,39 @@
                                 @enderror
                             </div>
 
-                            <div class="col-md-4">
+                            <div class="col-md-6">
+                                <label for="jobgroupid">Region</label>
+                                  <select class="browser-default custom-select" name="aic_regions_id">
+                                      <option value="" disabled selected>Choose Region</option>
+                                      @foreach($regions as $item)
+                                        <option value="{{$item->id}}">{{$item->rName}}</option>
+                                      @endforeach
+                                  </select>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label for="jobgroupid">LCC</label>
+                                  <select class="browser-default custom-select" name="aic_dccs_id">
+                                      <option value="" disabled selected>Choose DCC</option>
+                                      @foreach($dcc as $item)
+                                        <option value="{{$item->id}}">{{$item->dccName}}</option>
+                                      @endforeach
+                                  </select>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label for="jobgroupid">LCC</label>
+                                  <select class="browser-default custom-select" name="aic_lccs_id">
+                                      <option value="" disabled selected>Choose LCC</option>
+                                      @foreach($lcc as $item)
+                                        <option value="{{$item->id}}">{{$item->lccName}}</option>
+                                      @endforeach
+                                  </select>
+                            </div>
+
+                            <div class="col-md-6">
                               <label for="jobgroupid">Job Group</label>
-                                <select class="browser-default custom-select" name="jobgroupid">
+                                <select class="browser-default custom-select" name="aic_jobgroups_id">
                                     <option value="" disabled selected>Choose Job Group</option>
                                     @foreach($jobgroup as $item)
                                       <option value="{{$item->id}}">{{$item->jonGroupName}}</option>
@@ -100,7 +130,7 @@
                             </div>
 
 
-                            <div class="col-md-4">
+                            <div class="col-md-6">
                                 <label for="gender">Gender</label>
                                   <select class="browser-default custom-select" name="gender">
                                       <option value="" disabled selected>Choose Gender</option>
@@ -109,7 +139,7 @@
                                   </select>
                               </div>
 
-                            <div class="col-md-4">
+                            <div class="col-md-6">
                               <label for="joining_date">Joining Date </label>
                                 <input id="joining_date" type="date" class="form-group form-control @error('joining_date') is-invalid @enderror" name="joining_date" value="{{ old('joining_date') }}"  autocomplete="joining_date">
                                 @error('joining_date')

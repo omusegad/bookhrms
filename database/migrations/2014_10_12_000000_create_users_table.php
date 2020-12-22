@@ -15,7 +15,11 @@ class CreateUsersTable extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->string('aic_jobgroups_id');
+            $table->string('employeeID');
+            $table->unsignedInteger('aic_jobgroups_id')->index();
+            $table->unsignedInteger('aic_regions_id')->index();
+            $table->unsignedInteger('aic_dccs_id')->index();
+            $table->unsignedInteger('aic_lccs_id')->index();
             $table->string('fname');
             $table->string('lName');
             $table->string('email')->unique();
@@ -27,7 +31,6 @@ class CreateUsersTable extends Migration
             $table->string('otherNames')->nullable();
             $table->string('father_name')->nullable();
 			$table->string('mother_name')->nullable();
-            $table->string('employeeID')->nullable();
             $table->date('date_of_birth')->nullable();
             $table->string('probation_period')->nullable();
             $table->string('phoneNumber')->nullable();

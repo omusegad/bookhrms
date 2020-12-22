@@ -125,7 +125,7 @@ class RegisterController extends Controller
             "spouse_nationalId" => $data['spouse_nationalId'],
             "next_of_kin_fname" =>  $data['next_of_kin_fname'],
             "next_of_kin_lname" => $data['next_of_kin_lname'],
-            "next_of_kin_otherNames"  =>  $data['next_of_kin_otherNames'], 
+            "next_of_kin_otherNames"  =>  $data['next_of_kin_otherNames'],
             "next_of_kin_phoneNumber" => $data['next_of_kin_phoneNumber'],
             "next_of_kin_altPhoneNumber" => $data['next_of_kin_altPhoneNumber'],
             "next_of_kin_nationId" => $data['next_of_kin_nationId'],

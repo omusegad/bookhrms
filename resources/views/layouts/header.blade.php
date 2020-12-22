@@ -1,15 +1,15 @@
 <!-- Header -->
 <div class="header">
-			
+
             <!-- Logo -->
             <div class="header-left">
                 <a href="#" class="logo text-white">
-                    AIC NANDI AREA 
+                    AIC NANDI AREA
                     <!-- <img src="{{ asset('img/aic_logo.png') }}" width="1000" height="40" alt=""> -->
                 </a>
             </div>
             <!-- /Logo -->
-            
+
             <a id="toggle_btn" href="javascript:void(0);">
                 <span class="bar-icon">
                     <span></span>
@@ -17,15 +17,15 @@
                     <span></span>
                 </span>
             </a>
-            
+
             <!-- Header Title -->
             <div class="page-title-box">
                 <h3>By Peak and Dale </h3>
             </div>
             <!-- /Header Title -->
-            
+
             <a id="mobile_btn" class="mobile_btn" href="#sidebar"><i class="fa fa-bars"></i></a>
-            
+
             <!-- Header Menu -->
             <ul class="nav user-menu">
                 <!-- Notifications -->
@@ -113,7 +113,7 @@
                     </div>
                 </li>
                 <!-- /Notifications -->
-                
+
                 <!-- Message Notifications -->
                 <li class="nav-item dropdown">
                     <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
@@ -225,26 +225,26 @@
                         <span class="user-img">
                             <img src="public/img/profiles/avatar-21.jpg" alt="">
                         <span class="status online"></span></span>
-                        <span>  {{ Auth::user()->fname}}  </span> 
+                        <span>  {{ Auth::user()->fname}}  </span>
                     </a>
                     <div class="dropdown-menu">
                         <a class="dropdown-item" href="profile.html">My Profile</a>
                         <a class="dropdown-item" href="settings.html">Settings</a>
                         <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
-                                    </a>
+                        onclick="event.preventDefault();
+                                        document.getElementById('logout-form').submit();">
+                            {{ __('Logout') }}
+                        </a>
 
-                                    <form  action="{{ route('logout') }}" method="POST" class="d-none">
-                                        @csrf
-                                    </form>
-                       
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                            @csrf
+                        </form>
+
                     </div>
                 </li>
             </ul>
             <!-- /Header Menu -->
-            
+
             <!-- Mobile Menu -->
             <div class="dropdown mobile-user-menu">
                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-ellipsis-v"></i></a>
@@ -255,6 +255,6 @@
                 </div>
             </div>
             <!-- /Mobile Menu -->
-            
+
         </div>
         <!-- /Header -->
