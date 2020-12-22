@@ -9,6 +9,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\LeaveController;
 use App\Http\Controllers\RolesController;
 use App\Http\Controllers\RegionController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\HolidaysController;
 use App\Http\Controllers\JobgroupController;
@@ -39,6 +40,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/admin', [AdminController::class, 'index']);
     Route::resource('roles', RolesController::class);
     Route::resource('/employees',EmployeeController::class);
+    Route::resource('/employees-profile',ProfileController::class);
+
     Route::resource('/leaves', LeaveController::class);
     Route::resource('/leave-types', LeaveTypesController::class);
     Route::resource('/leave-settings', LeaveSettingsController::class);
