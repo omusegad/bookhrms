@@ -27,24 +27,24 @@
                 </div>
                 <!-- /Page Header -->
 
-                <!-- Leave Statistics -->
-                <div class="row">
+                 <!-- Leave Statistics -->
+                 <div class="row">
                     <div class="col-md-3">
                         <div class="stats-info">
-                            <h6>Total Job Groups</h6>
-                            <h4></h4>
+                            <h6>Total Regions</h6>
+                            <h4>{{$totalRegions ? $totalRegions: "0" }}</h4>
                         </div>
                     </div>
                     <div class="col-md-3">
                         <div class="stats-info">
-                            <h6>Total</h6>
-                            <h4></h4>
+                            <h6>Total DCCs</h6>
+                            <h4>{{$totalDcc ? $totalDcc : "0"  }}</h4>
                         </div>
                     </div>
                     <div class="col-md-3">
                         <div class="stats-info">
-                            <h6>Total</h6>
-                            <h4></h4>
+                            <h6>Total LCCs</h6>
+                            <h4>{{$totaLcc ? $totaLcc : "0"  }}</h4>
                         </div>
                     </div>
 

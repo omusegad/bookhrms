@@ -15,8 +15,7 @@ class CreateAicDccsTable extends Migration
     {
         Schema::create('aic_dccs', function (Blueprint $table) {
             $table->id();
-            $table->unsignedInteger('aic_regions_id')->unsigned();
-            $table->foreign('id')->references('id')->on('aic_regions');
+            $table->unsignedInteger('aic_regions_id')->index();
             $table->string('dccName');
             $table->enum('status', array('active', 'inactive'))->default('active');
             $table->timestamps();

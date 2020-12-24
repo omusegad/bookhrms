@@ -100,7 +100,7 @@
                             </div>
 
                             <div class="col-md-6">
-                                <label for="jobgroupid">LCC</label>
+                                <label for="jobgroupid">DCC</label>
                                   <select class="browser-default custom-select" name="aic_dccs_id">
                                       <option value="" disabled selected>Choose DCC</option>
                                       @foreach($dcc as $item)

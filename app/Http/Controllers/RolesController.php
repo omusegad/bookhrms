@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Roles;
 use Illuminate\Http\Request;
 
 class RolesController extends Controller
@@ -13,8 +14,9 @@ class RolesController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index(){
-        $users = User::with('region','dcc','lcc','jobgroup')->get();
-        return  view('roles.index', compact('users'));
+        $users = User::all();
+        $roles = Roles::all();
+        return  view('roles.index', compact('users','roles'));
     }
 
     /**
@@ -33,9 +35,12 @@ class RolesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
-        //
+    public function store(Request $request){
+        $data = $request->all();
+        dd($data);
+        $user = User::where('id', );
+        $user->assignRole('Employee');
+        return back();
     }
 
     /**

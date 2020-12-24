@@ -44,7 +44,7 @@
                                     <a href="activities.html">
                                         <div class="media">
                                             <span class="avatar">
-                                                <img alt="" src="assets/img/profiles/avatar-02.jpg">
+                                                <img alt="" src="{{url('img/profiles/avatar-02.jpg')}}">
                                             </span>
                                             <div class="media-body">
                                                 <p class="noti-details"><span class="noti-title">John Doe</span> added new task <span class="noti-title">Patient appointment booking</span></p>

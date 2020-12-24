@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Region;
 use App\Models\Jobgroup;
+use App\Models\Dccregions;
+use App\Models\Lccregions;
 use Illuminate\Http\Request;
 
 class JobgroupController extends Controller
@@ -15,7 +18,10 @@ class JobgroupController extends Controller
     public function index()
     {
         $jobGroups = Jobgroup::all();
-        return view('jobgroups.index', compact('jobGroups'));
+        $totalRegions = Region::All()->count(); // total regions
+        $totalDcc     = Dccregions::All()->count(); //totall dccs
+        $totaLcc      = Lccregions::All()->count();
+        return view('jobgroups.index', compact('jobGroups','totalRegions', 'totalDcc','totaLcc'));
     }
 
     /**
@@ -35,7 +41,7 @@ class JobgroupController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request){
-        $data =  dd($request->all());
+        $data =  $request->all();
         Jobgroup::create([
             'jonGroupName'        => $data['jonGroupName']
         ]);
