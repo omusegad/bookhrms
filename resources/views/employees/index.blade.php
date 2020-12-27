@@ -68,6 +68,7 @@
                             <table id="employee" class="table table-striped custom-table ">
                                 <thead>
                                     <tr>
+                                        <th>ID</th>
                                         <th>Employee ID</th>
                                         <th>Name</th>
                                         <th>Email</th>
@@ -75,8 +76,10 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    @php ($count = 1)
                               @foreach($users as $user)
                                 <tr>
+                                    <td>{{$count++ }}</td>
                                     <td>{{$user->employeeID }}</td>
                                     <td>
                                         <h2 class="table-avatar">

@@ -42,7 +42,7 @@ class CreateUsersTable extends Migration
             $table->text('nssfNo')->nullable();
             $table->enum('gender', array('female', 'male'));
             $table->enum('marital_status', array('married', 'single', 'divorced','separated','widowed'))->nullable();
-            $table->date('joining_date');
+            $table->date('joining_date')->nullable();
             $table->date('confirmation_date')->nullable();
             $table->date('department')->nullable();
             $table->string('current_address')->nullable();

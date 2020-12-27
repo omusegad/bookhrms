@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Rap2hpoutre\FastExcel\FastExcel;
 use App\Models\User;
 use App\Models\Region;
 use App\Models\Jobgroup;
@@ -47,7 +48,7 @@ class EmployeeController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request){
-        // $data = $request->validate([
+        // $data = $this->validate([
         //     "fname" =>  ['required', 'string', 'max:255'],
         //     "lName" =>  ['required', 'string', 'max:255'],
         //     'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
@@ -59,8 +60,28 @@ class EmployeeController extends Controller
         //     'password' => ['required', 'string', 'min:6', 'confirmed'],
         // ]);
 
+        // bulk uploads codes
+        // $data = request('employeeUpload');
+        // $employees = (new FastExcel)->import($data);
+
+        // foreach($employees as $alphabet => $collection) {
+        //     //dump($collection);
+        //     $rand = rand(2,100);
+        //     User::create([
+        //         'fname'      =>  $collection["fname"],
+        //         'lName'      =>  $collection["lName"],
+        //         'aic_jobgroups_id' => 1,
+        //         'aic_regions_id'   => 1,
+        //         'aic_dccs_id'      => 1,
+        //         'aic_lccs_id'      => 1,
+        //         'email'      =>   $collection["fname"].$collection["lName"]. $rand."@gmail.com",
+        //         "employeeID" =>  $collection["empl"],
+        //         'gender'     =>  $collection["gender"],
+        //         'password'   =>   Hash::make(strtolower("password"."123")),
+        //        ]);
+        // }
+
         $data = $request->all();
-       // dd($data);
 
         User::create([
             "fname" =>  $data['fname'],
@@ -205,4 +226,6 @@ class EmployeeController extends Controller
     {
         //
     }
+
+
 }

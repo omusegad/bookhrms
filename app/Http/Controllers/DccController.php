@@ -18,13 +18,13 @@ class DccController extends Controller
     {
         $dcc = Dccregions::All();
         $regions = Region::All();
-        $totalRegions = Region::All()->count(); // total regions 
-        $totalDcc     = Dccregions::All()->count(); //totall dccs 
+        $totalRegions = Region::All()->count(); // total regions
+        $totalDcc     = Dccregions::All()->count(); //totall dccs
         $totaLcc      = Lccregions::All()->count(); //total Lcss
         return view('dcc.index', compact('dcc','regions','totalRegions','totalDcc','totaLcc'));
     }
 
-    
+
 
     /**
      * Store a newly created resource in storage.
@@ -33,7 +33,7 @@ class DccController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request){
-       
+
         Dccregions::create([
             'dccName'        => $request->dccName,
             'aic_regions_id' => $request->regionID,
@@ -60,7 +60,8 @@ class DccController extends Controller
      */
     public function edit($id)
     {
-        //
+        $dcc = DccRegions::findorFail($id);
+        return view('dcc.edit', compact('dcc'));
     }
 
     /**

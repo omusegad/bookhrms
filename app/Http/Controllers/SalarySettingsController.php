@@ -2,23 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Nhif;
-use App\Models\User;
-use App\Models\Employees;
 use Illuminate\Http\Request;
 
-class NhifController extends Controller
+class SalarySettingsController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        $nhif = Nhif::all();
-        $employees = User::all()->count();
-        return view('nhif.index', compact('nhif','employees'));
+    public function index(){
+        return view('salaries.settings.index');
     }
 
     /**
@@ -26,9 +20,8 @@ class NhifController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
-        //
+    public function create(){
+
     }
 
     /**
@@ -37,12 +30,18 @@ class NhifController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
-        Nhif::create([
-            'amount'       => $request->nhifAmount,
+    public function store(Request $request){
+        $data = $request->all();
+        dd($data);
+        DB::table('aic_nhif_details')->insert([
+            'amount'    => $data['nhifAmount'],
         ]);
-        return back()->with('message','Region has been created successfully!');
+
+        DB::table('aic_nssf_details')->insert([
+            'amount'    => $data['nssfAmount']
+        ]);
+
+        return back();
     }
 
     /**

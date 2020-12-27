@@ -18,9 +18,9 @@ class LccController extends Controller
     {
 
         $lcc = Lccregions::All();
-        $dcc     = Dccregions::All(); //totall dccs 
-        $totalRegions = Region::All()->count(); // total regions 
-        $totalDcc     = Dccregions::All()->count(); //totall dccs 
+        $dcc     = Dccregions::All(); //totall dccs
+        $totalRegions = Region::All()->count(); // total regions
+        $totalDcc     = Dccregions::All()->count(); //totall dccs
         $totaLcc      = Lccregions::All()->count(); //total Lcss
         return view('lcc.index', compact('lcc','dcc','totalRegions','totalDcc','totaLcc'));
 
@@ -59,9 +59,9 @@ class LccController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
-    {
-        //
+    public function edit($id){
+        $lcc = Lccregions::findorFail($id);
+        return view('lcc.edit', compact('lcc'));
     }
 
     /**

@@ -71,23 +71,23 @@
                            <div class="col-6">
                                <label>From <span class="text-danger">*</span></label>
                                <div class="cal-icon">
-                                   <input  id="start_date" name="start_date" class="form-control datetimepicker" type="text">
+                                   <input  id="start_date" name="start_date" onchange="daysdifference()" class="form-control datetimepicker" type="text">
                            </div>
                         </div>
 
                         <div class="col-6">
                                <label>To <span class="text-danger">*</span></label>
                                <div class="cal-icon">
-                                   <input  id="end_date" name="end_date" class="form-control datetimepicker" type="text">
+                                   <input  id="end_date" name="end_date" onchange="daysdifference()" class="form-control datetimepicker" type="text">
                            </div>
                         </div>
                         <div class="col-6">
                                <label>Number of days <span class="text-danger">*</span></label>
-                               <input id="days" class="form-control" name="days"  type="text">
+                               <input id="days"  class="form-control" name="numDays"  type="text">
                         </div>
                         <div class="col-6">
                                <label>Remaining Leaves <span class="text-danger">*</span></label>
-                               <input class="form-control" readonly value="12" type="text">
+                               <input  class="form-control" readonly value="" type="text">
                         </div>
                         <div class="col-6">
                                <label>Leave Reason <span class="text-danger">*</span></label>
@@ -109,5 +109,6 @@
 
         </div>
         <!-- /Page Wrapper -->
+
 
 @endsection

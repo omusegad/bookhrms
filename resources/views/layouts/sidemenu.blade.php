@@ -26,9 +26,6 @@
 											<li><a href="{{ url('/lccs-regions') }}">LCCs</a></li>
 										</ul>
 									</li>
-
-									<li><a href="{{ url('/nhif-details') }}">NHIF Details</a></li>
-									<li><a href="{{ url('/nssf-details') }}">NSSF Details</a></li>
 								</ul>
 							</li>
 							<li class="submenu">
@@ -62,7 +59,8 @@
 									 <span> Salaries</span> <span class="menu-arrow"></span>
 								</a>
 								<ul style="display: none;">
-									<li><a href="{{ url('/salaries') }}">Salaries</a></li>
+                                    <li><a href="{{ route('salaries.index') }}">Salaries</a></li>
+                                    <li><a href="{{ route('salary-settings.index') }}">Salary Settings</a></li>
 								</ul>
 							</li>
 

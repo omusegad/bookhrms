@@ -18,6 +18,7 @@ use App\Http\Controllers\LeaveTypesController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\LeaveSettingsController;
 use App\Http\Controllers\EmployeeSalaryController;
+use App\Http\Controllers\SalarySettingsController;
 use App\Http\Controllers\EmployeeProfileController;
 
 /*
@@ -41,7 +42,6 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('roles', RolesController::class);
     Route::resource('/employees',EmployeeController::class);
     Route::resource('/employees-profile',ProfileController::class);
-
     Route::resource('/leaves', LeaveController::class);
     Route::resource('/leave-types', LeaveTypesController::class);
     Route::resource('/leave-settings', LeaveSettingsController::class);
@@ -49,9 +49,8 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('/dccs-regions', DccController::class);
     Route::resource('/lccs-regions', LccController::class);
     Route::resource('/job-groups', JobgroupController::class);
-    Route::resource('/nssf-details', NssfController::class);
-    Route::resource('/nhif-details', NhifController::class);
     Route::resource('/salaries', EmployeeSalaryController::class);
+    Route::resource('/salary-settings', SalarySettingsController::class);
     Route::resource('/holidays', HolidaysController::class);
 
 

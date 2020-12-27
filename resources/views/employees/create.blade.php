@@ -20,7 +20,10 @@
                 </ul>
             </div>
             <div class="col-auto float-right ml-auto">
-                <a href="{{ route('employees.index')}}">All Employee</a>
+                <a class="btn add-btn" href="#" data-toggle="modal" data-target="#edit_leave">
+                    Import Employees
+                </a>
+                {{-- <a class="btn add-btn" href="{{ route('employees.index')}}">All Employee</a> --}}
             </div>
 
         </div>
@@ -168,6 +171,42 @@
   </div>       <!-- /Page Content -->
 </div><!-- /Page Wrapper -->
 
+
+  <!-- Edit Leave Modal -->
+  <div id="edit_leave" class="modal custom-modal fade" role="dialog">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Upload Employees</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+             <form action="{{ route('employees.store') }}" method="post" enctype="multipart/form-data">
+                @csrf
+                <div class="default-file-upload">
+                    <div class="custom-file-upload">
+                        <h1>
+                    Custom File Upload
+                    </h1>
+                    <label for="file-upload" class="custom-file-upload1">
+                        <i class="fa fa-cloud-upload"></i> Custom Upload
+                    </label>
+                    <input name="employeeUpload" id="file-upload" type="file" accept=".xlsx"/>
+                    </div>
+                    <div class="submit-section">
+                        <button type="submit" class="btn btn-primary submit-btn">Submit</button>
+                    </div>
+                </div>
+
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /Edit Leave Modal -->
 
 
 

@@ -68,7 +68,7 @@
 
             <!-- Add Leave Modal -->
             <div id="add_leave" class="modal custom-modal fade" role="dialog">
-                <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-dialog modal-dialog-centered col-lg-8" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
                             <h5 class="modal-title">Asign Role</h5>
@@ -100,11 +100,41 @@
                                           <select class="browser-default custom-select" name="roleID">
                                               <option value="" disabled selected>Choose Employee</option>
                                               @foreach($roles as $item)
-                                                <option value="{{$item->id}}">{{$item->name}}</option>
+                                                <option  value="{{$item->id}}">{{$item->name}}</option>
                                               @endforeach
                                           </select>
                                     </div>
 
+                                </div>
+                                <div class="table-responsive m-t-15">
+                                    <center><h4>Give Permission</h4> </center>
+                                    <table class="table table-striped custom-table">
+                                        <thead>
+                                            <tr>
+                                                <th class="text-center">Read</th>
+                                                <th class="text-center">Edit</th>
+                                                <th class="text-center">Create</th>
+                                                <th class="text-center">Delete</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+
+                                            <tr>
+                                                <td class="text-center">
+                                                    <input value="1" name="readID" type="checkbox">
+                                                </td>
+                                                <td class="text-center">
+                                                    <input  value="2" name="editID" type="checkbox">
+                                                </td>
+                                                <td class="text-center">
+                                                    <input  value="3" name="createID" type="checkbox">
+                                                </td>
+                                                <td class="text-center">
+                                                    <input  value="4" name="deleteID" type="checkbox">
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
                                 </div>
                                 <div class="submit-section">
                                     <button type="submit" class="btn btn-primary submit-btn">Submit</button>

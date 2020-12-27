@@ -17,7 +17,7 @@ class RegionController extends Controller
     public function index(){
         $regions      = Region::All();
         $totalRegions = Region::All()->count(); // total regions
-        $totalDcc     = Dccregions::All()->count(); //totall dccs 
+        $totalDcc     = Dccregions::All()->count(); //totall dccs
         $totaLcc      = Lccregions::All()->count(); //total Lcss
         return view('regions.index', compact('regions','totalRegions','totalDcc','totaLcc'));
     }
@@ -56,7 +56,8 @@ class RegionController extends Controller
      */
     public function edit($id)
     {
-        //
+        $region = Region::findorFail($id);
+        return view('regions.edit', compact('region'));
     }
 
     /**
