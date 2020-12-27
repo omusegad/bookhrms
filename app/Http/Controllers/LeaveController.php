@@ -42,22 +42,32 @@ class LeaveController extends Controller
      */
     public function store(Request $request){
         $data = $request->all();
-        $start_date = Carbon::parse(strtotime($data['start_date']));
-        $end_date   = Carbon::parse(strtotime($data['end_date']));
-        $days       = $this->getDays($start_date, $end_date);
-        dd( $days );
-        $holidays   = Holiday::all();
 
-        //dd($days);
+        // get leave type details
+        // $getLeaveType = LeaveType::where('id', $data['aic_leave_type_id'])->first();
+        // dd($leaveTypes);
 
-       LeaveApplication::create([
-            'user_id'            => Auth::user()->id,
-            'aic_leave_type_id'  => $data['aic_leave_type_id'],
-            'start_date'     => Carbon::parse(strtotime($data['start_date'])),
-            'end_date'       => Carbon::parse(strtotime($data['end_date'])),
-            'days'           => $data['days'],
-            'reason'         => $data['reason'],
-        ]);
+        // check if leave type application exists
+        $getExistingApplication = LeaveApplication::where('aic_leave_type_id', $data['aic_leave_type_id'])
+                                   ->where('user_id', Auth::user()->id)
+                                   ->first();
+
+        if(is_null($getExistingApplication)){
+            return true;
+        }
+
+        dd($existingApplication);
+
+
+        //$holidays   = Holiday::all();
+        LeaveApplication::create([
+                'user_id'            => Auth::user()->id,
+                'aic_leave_type_id'  => $data['aic_leave_type_id'],
+                'start_date'     => Carbon::parse(strtotime($data['start_date'])),
+                'end_date'       => Carbon::parse(strtotime($data['end_date'])),
+                'days'           => $data['numDays'],
+                'reason'         => $data['reason'],
+            ]);
         return back()->with('message','Leave application successfully!');
     }
 

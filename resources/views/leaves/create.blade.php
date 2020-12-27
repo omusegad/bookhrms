@@ -19,7 +19,9 @@
                             </ul>
                         </div>
                         <div class="col-auto float-right ml-auto">
-                            <a href="{{route('leaves.index')}}" class="btn add-btn"><i class="fa fa-plus"></i> all Leave</a>
+                            <a href="{{route('leaves.index')}}" class="btn add-btn">
+                                <i class="fa fa-plus"></i> All Leave
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -63,6 +65,7 @@
                             <div class="col-6">
                                <label>Leave Type <span class="text-danger">*</span></label>
                                <select name="aic_leave_type_id" class="select">
+                                <option value="" disabled selected>Choose Leave Type</option>
                                  @foreach($leaveTpes as $types)
                                    <option value="{{$types->id}}">{{$types->leaveType}}</option>
                                  @endforeach

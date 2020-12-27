@@ -1,12 +1,3 @@
-<x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-           # {{ __('Dashboard') }}
-        </h2>
-    </x-slot>
-</x-app-layout>
-
-
 
 @extends('layouts.app')
 
@@ -50,7 +41,7 @@
                 <input class="form-control" value="barrycuda" type="password">
             </div>
         </div>
-        <div class="col-md-6">  
+        <div class="col-md-6">
             <div class="form-group">
                 <label class="col-form-label">Client ID <span class="text-danger">*</span></label>
                 <input class="form-control floating" value="CLT-0001" type="text">

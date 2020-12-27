@@ -24,7 +24,7 @@ class CreateEmployeeSalaryTable extends Migration
             $table->float("hse_allowance");
             $table->float("transport_allowance");
             $table->float("airtime_allowance");
-            $table->string("total_salary")->nullable();
+            $table->float("net_salary")->nullable();
             $table->timestamps();
         });
     }

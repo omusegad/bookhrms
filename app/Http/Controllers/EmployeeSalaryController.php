@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Nhif;
+use App\Models\Nssf;
 use App\Models\User;
 use App\Models\Salary;
 use App\Models\Jobgroup;
@@ -19,6 +21,7 @@ class EmployeeSalaryController extends Controller
         $employees = User::all();
         $jobgroup  = Jobgroup::all();
         $salaries  = Salary::with('users')->get();
+        //dd($salaries);
         return view('salaries.index', compact('salaries','employees', 'jobgroup'));
     }
 
@@ -41,19 +44,43 @@ class EmployeeSalaryController extends Controller
     public function store(Request $request)
     {
         $data = $request->all();
-        $totalSalary  = ($data['basic_salary'] + $data['hse_allowance'] + $data['transport_allowance']) + $data['airtime_allowance'];
+        $basicSalary         = $data['basic_salary'];
+        $hse_allowance       = $data['hse_allowance'];
+        $trasnport_allowance = $data['transport_allowance'];
+        $airtime             = $data['airtime_allowance'];
+
+        // calculate total gross salalary
+        $grossSalary = $this->getGrossSalary($basicSalary,$hse_allowance,$trasnport_allowance,$airtime);
+       // dd($grossSalary);
+
+        // get NHIF Deductions
+        $nhif = Nhif::where("status", "active")->pluck('amount')->first();
+
+        // get NSSF Deduction
+        $nssf = Nssf::where("status", "active")->pluck('amount')->first();
+
+
+        // calaculate total sallary without P.A.Y.E //  this needs Paye deductions
+        $netSalary = ( $grossSalary - ($nhif  + $nssf));
+       // dd($netSalary);
+
+        /*=========
+          Now ted you will have to create a table with paye details group them for easy calculations
+          Then you will featch this data from table and calculate net salasyr from unfinished net salo above
+        ===================*/
+
 
         Salary::create([
-            'user_id'        => 1 , //$data['user_id']
+            'user_id'        => $data['user_id'],
             'education'      => $data['education'],
             'grade'          => $data['grade'],
             'job_group'           => $data['job_group'],
-            'basic_salary'        => $data['basic_salary'],
+            'basic_salary'        => $basicSalary,
             'current_salary'      => $data['current_salary'],
-            'hse_allowance'       => $data['hse_allowance'],
-            'transport_allowance' => $data['transport_allowance'],
-            'airtime_allowance'   => $data['airtime_allowance'],
-            'total_salary'   => $totalSalary,
+            'hse_allowance'       => $hse_allowance,
+            'transport_allowance' => $trasnport_allowance,
+            'airtime_allowance'   => $airtime,
+            'net_salary'        =>  $netSalary,
         ]);
         return back()->with('message','Salary created successfully!');
     }
@@ -102,4 +129,10 @@ class EmployeeSalaryController extends Controller
     {
         //
     }
+
+    private function getGrossSalary($basicSalary,$hse_allowance,$trasnport_allowance,$airtime){
+      return ($basicSalary + $hse_allowance + $trasnport_allowance + $airtime);
+    }
+
+
 }

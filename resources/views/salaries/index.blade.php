@@ -80,7 +80,7 @@
                                     <th>Email</th>
                                     <th>Join Date</th>
                                     <th>Role</th>
-                                    <th>Salary</th>
+                                    <th>Net Salary</th>
                                     <th>Payslip</th>
                                     <th class="text-right">Action</th>
                                 </tr>
@@ -110,7 +110,7 @@
                                             </div>
                                         </div>
                                     </td>
-                                    <td>Ksh {{$item->total_salary }}</td>
+                                    <td>Ksh {{$item->net_salary }}</td>
                                     <td><a class="btn btn-sm btn-primary" href="salary-view.html">Generate Slip</a></td>
                                     <td class="text-right">
                                         <div class="dropdown dropdown-action">

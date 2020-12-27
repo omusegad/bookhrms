@@ -76,7 +76,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @php ($count = 1)
+                             @php ($count = 1)
                               @foreach($users as $user)
                                 <tr>
                                     <td>{{$count++ }}</td>
