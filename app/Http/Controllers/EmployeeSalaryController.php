@@ -8,6 +8,8 @@ use App\Models\User;
 use App\Models\Salary;
 use App\Models\Jobgroup;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use App\Models\MonthlyTaxableIncome;
 
 class EmployeeSalaryController extends Controller
 {
@@ -44,6 +46,8 @@ class EmployeeSalaryController extends Controller
     public function store(Request $request)
     {
         $data = $request->all();
+
+        $user_id             = $data['user_id'];
         $basicSalary         = $data['basic_salary'];
         $hse_allowance       = $data['hse_allowance'];
         $trasnport_allowance = $data['transport_allowance'];
@@ -51,7 +55,6 @@ class EmployeeSalaryController extends Controller
 
         // calculate total gross salalary
         $grossSalary = $this->getGrossSalary($basicSalary,$hse_allowance,$trasnport_allowance,$airtime);
-       // dd($grossSalary);
 
         // get NHIF Deductions
         $nhif = Nhif::where("status", "active")->pluck('amount')->first();
@@ -59,30 +62,47 @@ class EmployeeSalaryController extends Controller
         // get NSSF Deduction
         $nssf = Nssf::where("status", "active")->pluck('amount')->first();
 
+        //get and calcullate P.A.Y.
+        $payeTax = $this->calculatePaye($grossSalary);
 
         // calaculate total sallary without P.A.Y.E //  this needs Paye deductions
-        $netSalary = ( $grossSalary - ($nhif  + $nssf));
-       // dd($netSalary);
+        $netSalary = ( $grossSalary - ($nhif  + $nssf + $payeTax ));
 
-        /*=========
-          Now ted you will have to create a table with paye details group them for easy calculations
-          Then you will featch this data from table and calculate net salasyr from unfinished net salo above
-        ===================*/
+        // Check if salary exists
+        $existingSalary = Salary::where('user_id',  $user_id)->first();
+        if($existingSalary){
 
+            DB::table('employee_salary')->update([
+                'user_id'             => $user_id,
+                'education'           => $data['education'],
+                'grade'               => $data['grade'],
+                'job_group'           => $data['job_group'],
+                'basic_salary'        => $basicSalary,
+                'current_salary'      => $data['current_salary'],
+                'hse_allowance'       => $hse_allowance,
+                'transport_allowance' => $trasnport_allowance,
+                'airtime_allowance'   => $airtime,
+                'net_salary'          =>  $netSalary,
+            ]);
 
-        Salary::create([
-            'user_id'        => $data['user_id'],
-            'education'      => $data['education'],
-            'grade'          => $data['grade'],
-            'job_group'           => $data['job_group'],
-            'basic_salary'        => $basicSalary,
-            'current_salary'      => $data['current_salary'],
-            'hse_allowance'       => $hse_allowance,
-            'transport_allowance' => $trasnport_allowance,
-            'airtime_allowance'   => $airtime,
-            'net_salary'        =>  $netSalary,
-        ]);
-        return back()->with('message','Salary created successfully!');
+            return back()->with('message','Salary Updated successfully!');
+        }else{
+
+            Salary::Create([
+                'user_id'        =>  $user_id,
+                'education'      => $data['education'],
+                'grade'          => $data['grade'],
+                'job_group'           => $data['job_group'],
+                'basic_salary'        => $basicSalary,
+                'current_salary'      => $data['current_salary'],
+                'hse_allowance'       => $hse_allowance,
+                'transport_allowance' => $trasnport_allowance,
+                'airtime_allowance'   => $airtime,
+                'net_salary'        =>  $netSalary,
+            ]);
+            return back()->with('message','Salary created successfully!');
+        }
+
     }
 
     /**
@@ -104,7 +124,7 @@ class EmployeeSalaryController extends Controller
      */
     public function edit($id)
     {
-        //
+
     }
 
     /**
@@ -114,9 +134,22 @@ class EmployeeSalaryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
-    {
-        //
+    public function update(Request $request, $id){
+        $data = Salary::where('user_id', $id)->first();
+        dd($data);
+
+        Salary::update([
+            'user_id'             =>   $data['user_id'],
+            'education'           => $data['education'],
+            'grade'               => $data['grade'],
+            'job_group'           => $data['job_group'],
+            'basic_salary'        => $basicSalary,
+            'current_salary'      => $data['current_salary'],
+            'hse_allowance'       => $hse_allowance,
+            'transport_allowance' => $trasnport_allowance,
+            'airtime_allowance'   => $airtime,
+            'net_salary'          =>  $netSalary,
+        ]);
     }
 
     /**
@@ -132,6 +165,32 @@ class EmployeeSalaryController extends Controller
 
     private function getGrossSalary($basicSalary,$hse_allowance,$trasnport_allowance,$airtime){
       return ($basicSalary + $hse_allowance + $trasnport_allowance + $airtime);
+    }
+
+    private function calculatePaye($grossSalary){
+
+        //$getPaye = MonthlyTaxableIncome::all();
+
+        $bandOne   = 24000;
+        $bandTwo   = 40666.67;
+        $bandThree = 57333.34;
+
+        switch ($grossSalary) {
+            case $grossSalary > 0 && $grossSalary <= $bandOne:
+              return (($grossSalary * 10)/100);
+              break;
+            case ($grossSalary > $bandOne && $grossSalary <= $bandTwo):
+              return (($grossSalary * 15)/100);
+              break;
+            case ($grossSalary > $bandTwo && $grossSalary <= $bandThree):
+              return (($grossSalary * 20)/100);
+              break;
+            case ($grossSalary > $bandThree):
+              return (($grossSalary * 25)/100);
+              break;
+            default:
+              return " ";
+        }
     }
 
 

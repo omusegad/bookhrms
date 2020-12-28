@@ -32,7 +32,7 @@ class SalarySettingsController extends Controller
      */
     public function store(Request $request){
         $data = $request->all();
-        dd($data);
+       // dd($data);
         DB::table('aic_nhif_details')->insert([
             'amount'    => $data['nhifAmount'],
         ]);

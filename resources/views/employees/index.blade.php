@@ -83,7 +83,6 @@
                                     <td>{{$user->employeeID }}</td>
                                     <td>
                                         <h2 class="table-avatar">
-                                            <a href="profile.html" class="avatar"><img alt="" src="assets/img/profiles/avatar-02.jpg"></a>
                                             <a href="{{ route('employees.edit',$user->id)}}">{{$user->fName }} {{$user->lName }}<span>Dep: </span></a>
                                         </h2>
                                     </td>
