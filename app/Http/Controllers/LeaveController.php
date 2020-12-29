@@ -7,6 +7,7 @@ use App\Models\Holiday;
 use App\Models\LeaveType;
 use Illuminate\Http\Request;
 use App\Models\LeaveApplication;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 
 class LeaveController extends Controller
@@ -42,33 +43,68 @@ class LeaveController extends Controller
      */
     public function store(Request $request){
         $data = $request->all();
+        $leaveTypeId = $data['aic_leave_type_id'];
+        $appliedDays = $data['appliedDays'];
+        $start_date  = Carbon::parse(strtotime($data['start_date']));
+        $end_date    = Carbon::parse(strtotime($data['end_date']));
+        $reason      = $data['reason'];
 
-        // get leave type details
-        // $getLeaveType = LeaveType::where('id', $data['aic_leave_type_id'])->first();
-        // dd($leaveTypes);
+        // check if leave record exists
+        $existingLeaveApplication = $this->getExistingLeaveApplication($leaveTypeId);
+        if($existingLeaveApplication){
+            $remaingLeaveDays = $this->getRemaningLeaveDays($leaveTypeId);
+            //Calculate remianing Leave days
+            if($remaingLeaveDays === 0 && $remaingLeaveDays != null){
+                return back()->with('message','Leave application not successful, your remaining days : '.$remaingLeaveDays );
+            }
+            if($remaingLeaveDays > 0 ){
+               if($appliedDays > $remaingLeaveDays){
+                  return back()->with('message','Days applied for is more than your remaining : '.$remaingLeaveDays . " days");
+               }else{
+                    $currentDays =( $remaingLeaveDays - $appliedDays );
+                    DB::table('aic_leave_applications')->where("aic_leave_type_id", $leaveTypeId)->update([
+                        'remainingDays' =>  $currentDays,
+                        'appliedDays'   =>  $appliedDays,
+                        'start_date'     =>  $start_date,
+                        'end_date'       =>  $end_date,
+                        'aic_leave_type_id' => $leaveTypeId,
+                        'reason'            => $reason
+                    ]);
+                    return back()->with('message','Leave application successfully!');
+                 }
 
-        // check if leave type application exists
-        $getExistingApplication = LeaveApplication::where('aic_leave_type_id', $data['aic_leave_type_id'])
-                                   ->where('user_id', Auth::user()->id)
-                                   ->first();
-
-        if(is_null($getExistingApplication)){
-            return true;
+            }
+            // dd($remmianigDays);
+        }else{
+            $getLeaveType = LeaveType::where('id',$leaveTypeId)->first();
+            if($getLeaveType['leaveType'] === "Study"){
+                 LeaveApplication::create([
+                    'user_id'            => Auth::user()->id,
+                    'aic_leave_type_id'  => $leaveTypeId,
+                    'start_date'         => $start_date,
+                    'end_date'           => $end_date,
+                    'appliedDays'        => $appliedDays,
+                    'reason'             => $reason,
+                ]);
+                return back()->with('message','Leave application successfully!');
+            }else{
+                $newRemainingDays =( $getLeaveType['leaveDays'] - $appliedDays );
+                LeaveApplication::create([
+                    'user_id'            => Auth::user()->id,
+                    'aic_leave_type_id'  => $leaveTypeId,
+                    'start_date'         => $start_date,
+                    'end_date'           => $end_date,
+                    'appliedDays'        => $appliedDays,
+                    'remainingDays'      => $newRemainingDays,
+                    'reason'             => $reason,
+                ]);
+                return back()->with('message','Leave application successfully!');
+            }
         }
 
-        dd($existingApplication);
-
-
         //$holidays   = Holiday::all();
-        LeaveApplication::create([
-                'user_id'            => Auth::user()->id,
-                'aic_leave_type_id'  => $data['aic_leave_type_id'],
-                'start_date'     => Carbon::parse(strtotime($data['start_date'])),
-                'end_date'       => Carbon::parse(strtotime($data['end_date'])),
-                'days'           => $data['numDays'],
-                'reason'         => $data['reason'],
-            ]);
-        return back()->with('message','Leave application successfully!');
+
+
     }
 
     /**
@@ -122,6 +158,20 @@ class LeaveController extends Controller
         //Number of days
         $noDays = $startDate->diffInDays($endDate);
         return $noDays;
+    }
+
+
+    //check if leave type application exists
+    private function getExistingLeaveApplication($leaveTypeId){
+        return LeaveApplication::where(
+                'aic_leave_type_id',
+                $leaveTypeId)
+                ->where('user_id', Auth::user()->id)
+                ->first();
+    }
+
+    private function getRemaningLeaveDays($leaveTypeId){
+        return LeaveApplication::where("aic_leave_type_id", $leaveTypeId)->pluck("remainingDays")->first();
     }
 
      //The total number of days between the two dates. We compute the no. of seconds and divide it to 60*60*24

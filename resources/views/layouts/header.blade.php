@@ -31,7 +31,7 @@
                 <li class="nav-item dropdown has-arrow main-drop">
                     <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
                         <span class="user-img">
-                            <img src="public/img/profiles/avatar-21.jpg" alt="">
+                            {{-- <img src="public/img/profiles/avatar-21.jpg" alt=""> --}}
                         <span class="status online"></span></span>
                         <span>  {{ Auth::user()->fname}}  </span>
                     </a>

@@ -23,7 +23,7 @@ class EmployeeSalaryController extends Controller
         $employees = User::all();
         $jobgroup  = Jobgroup::all();
         $salaries  = Salary::with('users')->get();
-        //dd($salaries);
+       // dd($salaries);
         return view('salaries.index', compact('salaries','employees', 'jobgroup'));
     }
 
@@ -122,9 +122,10 @@ class EmployeeSalaryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
-    {
-
+    public function edit($id){
+        $salary   = Salary::findOrFail($id)->first();
+        $jobgroup = Jobgroup::all();
+        return view('salaries.edit', compact('salary', 'jobgroup'));
     }
 
     /**
@@ -135,21 +136,19 @@ class EmployeeSalaryController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id){
-        $data = Salary::where('user_id', $id)->first();
-        dd($data);
 
+        $data = Salary::findOrFail($id)->first();
         Salary::update([
-            'user_id'             =>   $data['user_id'],
             'education'           => $data['education'],
             'grade'               => $data['grade'],
             'job_group'           => $data['job_group'],
-            'basic_salary'        => $basicSalary,
-            'current_salary'      => $data['current_salary'],
-            'hse_allowance'       => $hse_allowance,
-            'transport_allowance' => $trasnport_allowance,
-            'airtime_allowance'   => $airtime,
-            'net_salary'          =>  $netSalary,
+            'basic_salary'        => $data['basic_salary'],
+            'hse_allowance'       => $data['hse_allowance'],
+            'transport_allowance' => $data['transport_allowance'],
+            'airtime_allowance'   => $data['airtime_allowance'],
+            'net_salary'          => $netSalary,
         ]);
+        return back()->with('message','Salary updated successfully!');
     }
 
     /**
@@ -170,7 +169,6 @@ class EmployeeSalaryController extends Controller
     private function calculatePaye($grossSalary){
 
         //$getPaye = MonthlyTaxableIncome::all();
-
         $bandOne   = 24000;
         $bandTwo   = 40666.67;
         $bandThree = 57333.34;

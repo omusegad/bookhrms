@@ -19,9 +19,7 @@
                             </ul>
                         </div>
                         <div class="col-auto float-right ml-auto">
-                            <a href="{{route('leaves.index')}}" class="btn add-btn">
-                                <i class="fa fa-plus"></i> All Leave
-                            </a>
+                            <a href="{{route('leaves.index')}}" class="btn add-btn"> All Leave</a>
                         </div>
                     </div>
                 </div>
@@ -56,6 +54,16 @@
                 </div>
                 <!-- /Leave Statistics -->
 
+                <div class="row">
+                    <div class="col-lg-12">
+                        @if ($message = Session::get('message'))
+                            <div class="alert alert-danger">
+                                <p>{{ Session::get('message') }}</p>
+                            </div>
+                        @endif
+                    </div>
+                </div>
+
                 <div>
 
                         <form method="POST" action="{{route('leaves.store')}}">
@@ -73,20 +81,20 @@
                         </div>
                            <div class="col-6">
                                <label>From <span class="text-danger">*</span></label>
-                               <div class="cal-icon">
-                                   <input  id="start_date" name="start_date" onchange="daysdifference()" class="form-control datetimepicker" type="text">
+                               <div class="">
+                                   <input  id="start_date" name="start_date"  class="form-control" type="date">
                            </div>
                         </div>
 
                         <div class="col-6">
                                <label>To <span class="text-danger">*</span></label>
-                               <div class="cal-icon">
-                                   <input  id="end_date" name="end_date" onchange="daysdifference()" class="form-control datetimepicker" type="text">
+                               <div class="">
+                                   <input  id="end_date" name="end_date"  class="form-control" type="date">
                            </div>
                         </div>
                         <div class="col-6">
-                               <label>Number of days <span class="text-danger">*</span></label>
-                               <input id="days"  class="form-control" name="numDays"  type="text">
+                               <label>Applied days <span class="text-danger">*</span></label>
+                               <input id="days"  class="form-control " readonly name="appliedDays"  type="text">
                         </div>
                         <div class="col-6">
                                <label>Remaining Leaves <span class="text-danger">*</span></label>
