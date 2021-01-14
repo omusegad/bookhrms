@@ -3,7 +3,7 @@
                 <div class="sidebar-inner slimscroll">
 					<div id="sidebar-menu" class="sidebar-menu">
 						<ul>
-						<li><a href="{{ url('/organogram') }}"><i class="la la-dashboard"></i> <span> Nandi Aic Organogram </span></a></li>
+						<li><a href="{{ url('/organogram') }}"><i class="la la-dashboard"></i> <span> Nandi Aic Structure </span></a></li>
 
 							<li><a href="{{ route('dashboard') }}">
 							<i class="la la-dashboard"></i> <span> Dashboard </span></a></li>
@@ -63,6 +63,7 @@
 								<ul style="display: none;">
                                     <li><a href="{{ route('salaries.index') }}">Salaries</a></li>
                                     <li><a href="{{ route('salary-settings.index') }}">Salary Settings</a></li>
+									<li><a href="{{ route('payroll.index') }}">Payroll</a></li>
 								</ul>
 							</li>
 

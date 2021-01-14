@@ -19,7 +19,7 @@
                                 <li class="breadcrumb-item active">Employee</li>
                             </ul>
                         </div>
-                        <div class="col-auto float-right ml-auto">
+                    <div class="col-auto float-right ml-auto">
                         <a href="{{ route('employees.create') }}" class="btn add-btn"><i class="fa fa-plus"></i> Add Employee</a>
                             <div class="view-icons">
                                 <a href="employees.html" class="grid-view btn btn-link"><i class="fa fa-th"></i></a>

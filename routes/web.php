@@ -9,6 +9,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\LeaveController;
 use App\Http\Controllers\RolesController;
 use App\Http\Controllers\RegionController;
+use App\Http\Controllers\PayrollController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\HolidaysController;
@@ -41,7 +42,6 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
     Route::get('/admin', [AdminController::class, 'index']);
     Route::get('/organogram', [OrganogramController::class, 'index']);
-
     Route::resource('roles', RolesController::class);
     Route::resource('/employees',EmployeeController::class);
     Route::resource('/employees-profile',ProfileController::class);
@@ -55,6 +55,8 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('/salaries', EmployeeSalaryController::class);
     Route::resource('/salary-settings', SalarySettingsController::class);
     Route::resource('/holidays', HolidaysController::class);
+    Route::resource('/payroll', PayrollController::class);
+
 
 
 });
