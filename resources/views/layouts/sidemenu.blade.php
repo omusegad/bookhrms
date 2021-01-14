@@ -3,6 +3,8 @@
                 <div class="sidebar-inner slimscroll">
 					<div id="sidebar-menu" class="sidebar-menu">
 						<ul>
+						<li><a href="{{ url('/organogram') }}"><i class="la la-dashboard"></i> <span> Nandi Aic Organogram </span></a></li>
+
 							<li><a href="{{ route('dashboard') }}">
 							<i class="la la-dashboard"></i> <span> Dashboard </span></a></li>
 							<li class="submenu">

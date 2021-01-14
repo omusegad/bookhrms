@@ -15,6 +15,7 @@ use App\Http\Controllers\HolidaysController;
 use App\Http\Controllers\JobgroupController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\LeaveTypesController;
+use App\Http\Controllers\OrganogramController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\LeaveSettingsController;
 use App\Http\Controllers\EmployeeSalaryController;
@@ -39,6 +40,8 @@ Auth::routes();
 Route::middleware(['auth'])->group(function () {
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
     Route::get('/admin', [AdminController::class, 'index']);
+    Route::get('/organogram', [OrganogramController::class, 'index']);
+
     Route::resource('roles', RolesController::class);
     Route::resource('/employees',EmployeeController::class);
     Route::resource('/employees-profile',ProfileController::class);

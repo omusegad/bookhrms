@@ -23,10 +23,17 @@ class EmployeeSalaryController extends Controller
         $employees = User::all();
         $jobgroup  = Jobgroup::all();
         $salaries  = Salary::with('users')->get();
-        $salaries  = Salary::with('users')->get();
-       
+        $totalBasicSalary  = Salary::sum('basic_salary');
+        $totalHseAllowance  = Salary::sum('hse_allowance');
+        $totalTransportAllowance  = Salary::sum('transport_allowance');
+        $totalAirtimeAllowance  = Salary::sum('airtime_allowance');
+        $totalNhifAllowance  = Salary::sum('nhif');
+        $totalIncomeTax  = Salary::sum('incomeTax');
+        $totalPayee  = Salary::sum('payee');
+        $totalNetPay  = Salary::sum('net_salary');
 
-        return view('salaries.index', compact('salaries','employees', 'jobgroup'));
+
+        return view('salaries.index', compact('salaries','totalAirtimeAllowance','totalNetPay','totalPayee','totalIncomeTax','totalNhifAllowance','totalTransportAllowance','totalHseAllowance','totalBasicSalary','employees', 'jobgroup'));
     }
 
     /**

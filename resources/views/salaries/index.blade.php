@@ -24,6 +24,101 @@
                 </div>
             </div>
             <!-- /Page Header -->
+
+            <div class="row">
+                    <div class="col-md-6 col-sm-6 col-lg-6 col-xl-3">
+                        <div class="card dash-widget">
+                            <div class="card-body">
+                            <span class="dash-widget-icon"><i class="fa fa-usd"></i></span>
+                                <div class="dash-widget-info">
+                                    <h5>Ksh {{$totalBasicSalary ? number_format($totalBasicSalary): "0" }}</h5>
+                                    <span>Total Basic Salary</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-sm-6 col-lg-6 col-xl-3">
+                        <div class="card dash-widget">
+                            <div class="card-body">
+                                <span class="dash-widget-icon"><i class="fa fa-usd"></i></span>
+                                <div class="dash-widget-info">
+                                    <h5>Ksh {{$totalHseAllowance ? number_format($totalHseAllowance): "0" }}</h5>
+                                    <span>Total House Allowance</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-sm-6 col-lg-6 col-xl-3">
+                        <div class="card dash-widget">
+                            <div class="card-body">
+                            <span class="dash-widget-icon"><i class="fa fa-usd"></i></span>
+                                <div class="dash-widget-info">
+                                    <h5>Ksh {{$totalTransportAllowance ? number_format($totalTransportAllowance): "0" }}</h5>
+                                    <span>Total Transport Allowance</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-sm-6 col-lg-6 col-xl-3">
+                        <div class="card dash-widget">
+                            <div class="card-body">
+                            <span class="dash-widget-icon"><i class="fa fa-usd"></i></span>
+                                <div class="dash-widget-info">
+                                    <h5> Ksh {{$totalAirtimeAllowance ? number_format($totalAirtimeAllowance): "0" }}</h5>
+                                    <span>Total Airtime Allowance</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-sm-6 col-lg-6 col-xl-3">
+                        <div class="card dash-widget">
+                            <div class="card-body">
+                            <span class="dash-widget-icon"><i class="fa fa-usd"></i></span>
+                                <div class="dash-widget-info">
+                                    <h5> Ksh {{$totalIncomeTax ? number_format($totalIncomeTax): "0" }}</h5>
+                                    <span>Total Income Tax</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-sm-6 col-lg-6 col-xl-3">
+                        <div class="card dash-widget">
+                            <div class="card-body">
+                            <span class="dash-widget-icon"><i class="fa fa-usd"></i></span>
+                                <div class="dash-widget-info">
+                                    <h5> Ksh {{$totalNhifAllowance ? number_format($totalNhifAllowance): "0" }}</h5>
+                                    <span>Total NHIF</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-sm-6 col-lg-6 col-xl-3">
+                        <div class="card dash-widget">
+                            <div class="card-body">
+                            <span class="dash-widget-icon"><i class="fa fa-usd"></i></span>
+                                <div class="dash-widget-info">
+                                    <h5> Ksh {{$totalPayee ? number_format($totalPayee): "0" }}</h5>
+                                    <span>Total P.A.Y.E</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-sm-6 col-lg-6 col-xl-3">
+                        <div class="card dash-widget">
+                            <div class="card-body">
+                            <span class="dash-widget-icon"><i class="fa fa-usd"></i></span>
+                                <div class="dash-widget-info">
+                                    <h5> Ksh {{$totalNetPay ? number_format($totalNetPay): "0" }}</h5>
+                                    <span>Total Employee Net Salary</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
             <div class="row">
               <div class="col-md-12">
                 @if ($message = Session::get('message_nssf'))
@@ -63,7 +158,6 @@
                                     <th>P.A.Y.E</th>
                                     <th>Pay After Tax</th>
                                     <th>Net Salary</th>
-                                    <th>Payslip</th>
                                     <th class="text-right">Action</th>
                                 </tr>
                             </thead>
@@ -89,7 +183,6 @@
                                     <td>Ksh {{number_format($item->payee, 2) }}</td>
                                     <td>Ksh {{number_format($item->payAfterTax, 2) }}</td>
                                     <td>Ksh {{number_format($item->net_salary, 2) }}</td>
-                                    <td><a class="btn btn-sm btn-primary" href="salary-view.html">Generate Slip</a></td>
                                     <td class="text-right">
                                         <div class="dropdown dropdown-action">
                                             <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="material-icons">more_vert</i></a>
