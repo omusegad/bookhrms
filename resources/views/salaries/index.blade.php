@@ -11,15 +11,20 @@
             <!-- Page Header -->
             <div class="page-header">
                 <div class="row align-items-center">
-                    <div class="col">
+                    <div class="col-md-7">
                         <h3 class="page-title">Employee Salary</h3>
                         <ul class="breadcrumb">
                             <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
                             <li class="breadcrumb-item active">Salary</li>
                         </ul>
                     </div>
-                    <div class="col-auto float-right ml-auto">
+                    <div class="col-auto float-right ml-auto col-md-5">
+                       <form method="POST" action="{{ route('payroll.store')}}">
+                       @csrf
+                        <button class="btn btn-success add-btn">Generate Payroll</button>
+                        </form>
                         <a href="#" class="btn add-btn" data-toggle="modal" data-target="#add_salary"><i class="fa fa-plus"></i> Add Salary</a>
+                        
                     </div>
                 </div>
             </div>

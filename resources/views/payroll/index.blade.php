@@ -146,7 +146,7 @@
                             <thead>
                                 <tr>
                                     <th>Employee ID</th>
-                                    <th>Employee Name</th>
+                                    <th>Employee</th>
                                     <th>Basic Pay</th>
                                     <th>Gross Pay</th>
                                     <th>Personal Relief</th>
