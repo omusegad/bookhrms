@@ -9,6 +9,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\LeaveController;
 use App\Http\Controllers\RolesController;
 use App\Http\Controllers\RegionController;
+use App\Http\Controllers\SalaryController;
 use App\Http\Controllers\PayrollController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\EmployeeController;
@@ -36,7 +37,6 @@ use App\Http\Controllers\EmployeeProfileController;
 
 //Route::resource('/employees',EmployeeController::class);
 
-
 Auth::routes();
 Route::middleware(['auth'])->group(function () {
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
@@ -52,7 +52,8 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('/dccs-regions', DccController::class);
     Route::resource('/lccs-regions', LccController::class);
     Route::resource('/job-groups', JobgroupController::class);
-    Route::resource('/salaries', EmployeeSalaryController::class);
+    //Route::resource('/salaries', EmployeeSalaryController::class);
+    Route::resource('/salaries', SalaryController::class);
     Route::resource('/salary-settings', SalarySettingsController::class);
     Route::resource('/holidays', HolidaysController::class);
     Route::resource('/payroll', PayrollController::class);

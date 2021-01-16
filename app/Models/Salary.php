@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Salary extends Model
 {
     use HasFactory;
-    public $table = 'employee_salary';
+    public $table = 'salaries';
     protected $guarded  = [
         'id','created_at','updated_at'
     ];

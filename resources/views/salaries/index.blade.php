@@ -11,20 +11,15 @@
             <!-- Page Header -->
             <div class="page-header">
                 <div class="row align-items-center">
-                    <div class="col-md-7">
+                    <div class="col">
                         <h3 class="page-title">Employee Salary</h3>
                         <ul class="breadcrumb">
                             <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
                             <li class="breadcrumb-item active">Salary</li>
                         </ul>
                     </div>
-                    <div class="col-auto float-right ml-auto col-md-5">
-                       <form method="POST" action="{{ route('payroll.store')}}">
-                       @csrf
-                        <button class="btn btn-success add-btn">Generate Payroll</button>
-                        </form>
+                    <div class="col-auto float-right ml-auto">
                         <a href="#" class="btn add-btn" data-toggle="modal" data-target="#add_salary"><i class="fa fa-plus"></i> Add Salary</a>
-                        
                     </div>
                 </div>
             </div>
@@ -38,6 +33,17 @@
                                 <div class="dash-widget-info">
                                     <h5>Ksh {{$totalBasicSalary ? number_format($totalBasicSalary): "0" }}</h5>
                                     <span>Total Basic Salary</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-sm-6 col-lg-6 col-xl-3">
+                        <div class="card dash-widget">
+                            <div class="card-body">
+                            <span class="dash-widget-icon"><i class="fa fa-usd"></i></span>
+                                <div class="dash-widget-info">
+                                    <h5> Ksh {{$totalNetPay ? number_format($totalNetPay): "0" }}</h5>
+                                    <span>Total Employee Net Salary</span>
                                 </div>
                             </div>
                         </div>
@@ -109,17 +115,7 @@
                         </div>
                     </div>
 
-                    <div class="col-md-6 col-sm-6 col-lg-6 col-xl-3">
-                        <div class="card dash-widget">
-                            <div class="card-body">
-                            <span class="dash-widget-icon"><i class="fa fa-usd"></i></span>
-                                <div class="dash-widget-info">
-                                    <h5> Ksh {{$totalNetPay ? number_format($totalNetPay): "0" }}</h5>
-                                    <span>Total Employee Net Salary</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                   
                 </div>
 
 
@@ -149,20 +145,21 @@
                         <table class="table table-striped custom-table table-bordered" id="salaries">
                             <thead>
                                 <tr>
-                                    <th>ID</th>
+                                    <th>Serial No.</th>
                                     <th>Employee</th>
                                     <th>Employee ID</th>
-                                    <th>Job Group</th>
+                                    {{-- <th>Job Group</th> --}}
                                     <th>Basic Salary</th>
                                     <th>House Allowance</th>
                                     <th>Transport Allowance</th>
                                     <th>Airtime Allowance</th>
                                     <th>Personal Relief</th>
                                     <th>NHIF</th>
-                                    <th>Income Tax</th>
+                                    {{-- <th>Income Tax</th> --}}
                                     <th>P.A.Y.E</th>
-                                    <th>Pay After Tax</th>
+                                    {{-- <th>Pay After Tax</th> --}}
                                     <th>Net Salary</th>
+                                    <th>Other Deductions</th>
                                     <th class="text-right">Action</th>
                                 </tr>
                             </thead>
@@ -177,17 +174,18 @@
                                         </h2>
                                     </td>
                                     <td>{{$item->users['employeeID'] }}</td>
-                                    <td>{{$item->job_group }}</td>
+                                    {{-- <td>{{$item->job_group }}</td> --}}
                                     <td>Ksh {{number_format($item->basic_salary,2) }}</td>
                                     <td>Ksh {{number_format($item->hse_allowance, 2) }}</td>
                                     <td>Ksh {{number_format($item->transport_allowance,2) }}</td>
                                     <td>Ksh {{number_format($item->airtime_allowance,2) }}</td>
                                     <td>Ksh {{number_format($item->personalRelief, 2) }}</td>
                                     <td>Ksh {{number_format($item->nhif, 2) }}</td>
-                                    <td>Ksh {{number_format($item->incomeTax, 2) }}</td>
+                                    {{-- <td>Ksh {{number_format($item->incomeTax, 2) }}</td> --}}
                                     <td>Ksh {{number_format($item->payee, 2) }}</td>
-                                    <td>Ksh {{number_format($item->payAfterTax, 2) }}</td>
+                                    {{-- <td>Ksh {{number_format($item->payAfterTax, 2) }}</td> --}}
                                     <td>Ksh {{number_format($item->net_salary, 2) }}</td>
+                                    <td>0</td>
                                     <td class="text-right">
                                         <div class="dropdown dropdown-action">
                                             <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="material-icons">more_vert</i></a>
