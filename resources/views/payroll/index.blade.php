@@ -145,16 +145,13 @@
                         <table class="table table-striped custom-table table-bordered" id="salaries">
                             <thead>
                                 <tr>
-                                    <th>Employee ID</th>
-                                    <th>Employee</th>
-                                    <th>Basic Pay</th>
-                                    <th>Gross Pay</th>
-                                    <th>Personal Relief</th>
-                                    <th>NHIF</th>
-                                    <th>NSSF</th>
-                                    <th>P.A.Y.E</th>
-                                    <th>Pay After Tax</th>
-                                    <th>Net Salary</th>
+                                    <th>Serial No</th>
+                                    <th>Beneficiary Name</th>
+                                    <th>Bank & Branch</th>
+                                    <th>Bank Code</th>
+                                    <th>Beneficiary Account Number</th>
+                                    <th>Net Pay</th>
+                                    <th>References</th>
                                     <th class="text-right">Action</th>
                                 </tr>
                             </thead>

@@ -13,8 +13,7 @@
 								</a>
 								<ul style="display: none;">
 								    <li><a  href="{{ route('employees.index') }}">All Employees</a></li>
-                                    {{-- <li><a href=" {{ route('employees.create') }}">Add Employees</a></li> --}}
-									<li><a href=" {{ route('employees.show',[auth()->user()->id]) }}">Profile</a></li>
+									<li><a href="{{ route('employees.show',[auth()->user()->id]) }}">Profile</a></li>
 								</ul>
 							</li>
 							<li class="submenu">
@@ -24,7 +23,8 @@
 								</a>
 								<ul style="display: none;">
                                     <li><a href="{{ route('salaries.index') }}">Salaries</a></li>
-                                    <li><a href="{{ route('salary-settings.index') }}">Salary Settings</a></li>
+									<li><a href="{{ route('salary-settings.index') }}">Salary Settings</a></li>
+									<li><a href="{{ route('payroll.index') }}">Payroll</a></li>
 								</ul>
 							</li>
 							<li class="submenu">

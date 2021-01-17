@@ -24,44 +24,42 @@
     <script type="text/javascript">
 
         $(document).ready(function(){
-            // var start_date = $("#stat_date").val();
-            // var end_date = $("#end_date").val();
-            // console.log(start_date);
-            // console.log(end_date);
 
-            // var days = daysdifference(start_date, end_date);
-
-            // console.log(days);
-
-            // function daysdifference(firstDate, secondDate){
-            //     var startDay = new Date(firstDate);
-            //     var endDay = new Date(secondDate);
-
-            //     var millisBetween = startDay.getTime() - endDay.getTime();
-            //     var days = millisBetween / (1000 * 3600 * 24);
-
-            //     return Math.round(Math.abs(days));
-            // }
-
-        $('#start_date, #end_date').change(function(){
-            var start_date = new Date($("#start_date").val());
-            var end_date = new Date($("#end_date").val());
-            console.log(start_date,end_date);
-            var days = 1000*60*60*24; //  days
-            var daysdifference = end_date - start_date;
-            var number_of_days = Math.floor(daysdifference/days);
-            document.getElementById('days').value = number_of_days;
-            console.log(number_of_days + ' days');
-        });
+            $('#start_date, #end_date').change(function(){
+                var start_date = new Date($("#start_date").val());
+                var end_date = new Date($("#end_date").val());
+                console.log(start_date,end_date);
+                var days = 1000*60*60*24; //  days
+                var daysdifference = end_date - start_date;
+                var number_of_days = Math.floor(daysdifference/days);
+                document.getElementById('days').value = number_of_days;
+                console.log(number_of_days + ' days');
+            });
 
         $(".alert").fadeTo(3000, 1000).slideUp(1000, function(){
             $(".alert").slideUp(1000);
         });
+
+        $("#employeesTable, #jobgroup, #leaves, #salaries, #regions, #lcc, #dcc").DataTable( {
+        dom: 'Bfrtip',
+        buttons: [
+           'csv', 'excel', 'pdf', 'print']
+         } );
+
+
+         $('#payroll').on('click', function(){
+            var colnum = $(this).attr('data-col');
+            $('input[data-col='+colnum+']').prop('checked', this.checked);
+        })
+
+
+
+
     });
 
     </script>
 
-
+   @livewireScripts
  </body>
 </html>
 

@@ -34,8 +34,9 @@
 		<link rel="stylesheet" href="{{ asset('css/select2.min.css') }}">
 		
 		<!-- Datetimepicker CSS -->
-		<link rel="stylesheet" href="{{ asset('css/bootstrap-datetimepicker.min.css') }}">
-		
+        <link rel="stylesheet" href="{{ asset('css/bootstrap-datetimepicker.min.css') }}">
+        
+		@livewireStyles
 		<!-- Main CSS -->
         <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 </head>

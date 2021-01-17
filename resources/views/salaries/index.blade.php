@@ -19,7 +19,8 @@
                         </ul>
                     </div>
                     <div class="col-auto float-right ml-auto">
-                        <a href="#" class="btn add-btn" data-toggle="modal" data-target="#add_salary"><i class="fa fa-plus"></i> Add Salary</a>
+                        <a href="#" class="btn add-btn" data-toggle="modal" data-target="#add_salary">
+                            <i class="fa fa-plus"></i> Add Salary</a>
                     </div>
                 </div>
             </div>
@@ -118,8 +119,6 @@
                    
                 </div>
 
-
-
             <div class="row">
               <div class="col-md-12">
                 @if ($message = Session::get('message_nssf'))
@@ -135,7 +134,6 @@
                         <strong>{{ $message }}</strong>
                     </div>
                 @endif
-            
                 </div>
             </div>
 
@@ -145,47 +143,65 @@
                         <table class="table table-striped custom-table table-bordered" id="salaries">
                             <thead>
                                 <tr>
-                                    <th>Serial No.</th>
-                                    <th>Employee</th>
+                                    <th>#</th>
                                     <th>Employee ID</th>
-                                    {{-- <th>Job Group</th> --}}
-                                    <th>Basic Salary</th>
-                                    <th>House Allowance</th>
-                                    <th>Transport Allowance</th>
-                                    <th>Airtime Allowance</th>
-                                    <th>Personal Relief</th>
-                                    <th>NHIF</th>
-                                    {{-- <th>Income Tax</th> --}}
-                                    <th>P.A.Y.E</th>
-                                    {{-- <th>Pay After Tax</th> --}}
-                                    <th>Net Salary</th>
-                                    <th>Other Deductions</th>
+                                    <th>Staff Name</th>
+                                    <th>Bank Name</th>
+                                    <th>Bank Branch</th>
+                                    <th>Bank Code</th>
+                                    <th>Acount Number</th>
+                                    <th>Basic Pay (Ksh)</th>
+                                    <th>Transport Allowance (Ksh)</th>
+                                    <th>House Allowance (Ksh)</th>
+                                    <th>Airtime ( Ksh)</th>
+                                    <th>Hospitality Allowance (Ksh)</th>
+                                    <th>Gross Pay (Ksh)</th>
+                                    <th>P.A.Y.E (Ksh)</th>
+                                    <th>Personal Relief (Ksh)</th>
+                                    <th>Income Tax (Ksh)</th>
+                                    <th>NSSF (Ksh)</th>
+                                    <th>NHIF (Ksh)</th>
+                                    <th>Net Pay (Ksh)</th>
+                                    <th>Reference</th>
+                                    <th>Approval Status</th>
+                                    <th>Status</th>
                                     <th class="text-right">Action</th>
                                 </tr>
                             </thead>
                             <tbody>
+                                <form method="POST" action="{{route('payroll.store')}}">
+                                @csrf
+
                                 @php ($count = 1)
                                 @foreach ($salaries as $item)
+        
                                 <tr>
-                                    <td>{{$count++}}</td>
                                     <td>
-                                        <h2 class="table-avatar">
-                                            <a href="#">{{$item->users['fname'] }} {{$item->users['lName'] }}</a>
-                                        </h2>
+                                        <input type="checkbox" name="{{$item->users['lName'] }}" value="{{$item->users['id'] }}">
                                     </td>
                                     <td>{{$item->users['employeeID'] }}</td>
-                                    {{-- <td>{{$item->job_group }}</td> --}}
-                                    <td>Ksh {{number_format($item->basic_salary,2) }}</td>
-                                    <td>Ksh {{number_format($item->hse_allowance, 2) }}</td>
-                                    <td>Ksh {{number_format($item->transport_allowance,2) }}</td>
-                                    <td>Ksh {{number_format($item->airtime_allowance,2) }}</td>
-                                    <td>Ksh {{number_format($item->personalRelief, 2) }}</td>
-                                    <td>Ksh {{number_format($item->nhif, 2) }}</td>
-                                    {{-- <td>Ksh {{number_format($item->incomeTax, 2) }}</td> --}}
-                                    <td>Ksh {{number_format($item->payee, 2) }}</td>
-                                    {{-- <td>Ksh {{number_format($item->payAfterTax, 2) }}</td> --}}
-                                    <td>Ksh {{number_format($item->net_salary, 2) }}</td>
-                                    <td>0</td>
+                                    <td>
+                                      <a href="#">{{$item->users['fname'] }} {{$item->users['lName'] }}</a>
+                                    </td>
+                                    <td> {{$item->bankName }}</td>
+                                    <td> {{$item->bankBranch }}</td>
+                                    <td> {{$item->bankCode }}</td>
+                                    <td> {{$item->beneficiaryAccountNumber }}</td>
+                                    <td> {{number_format($item->basic_salary) }}</td>
+                                    <td> {{number_format($item->transport_allowance) }}</td>
+                                    <td> {{number_format($item->hse_allowance) }}</td>
+                                    <td> {{number_format($item->airtime_allowance) }}</td>
+                                    <td> {{number_format($item->hospitality_allowance) }}</td>
+                                    <td> {{number_format($item->gross_pay) }}</td>
+                                    <td> {{number_format($item->payee) }}</td>
+                                    <td> {{number_format($item->personalRelief) }}</td>
+                                    <td> {{number_format($item->incomeTax) }}</td>
+                                    <td> {{number_format($item->nssf) }}</td>
+                                    <td> {{number_format($item->nhif) }}</td>
+                                    <td> {{number_format($item->net_pay) }}</td>
+                                    <td> {{$item->reference }}</td>
+                                    <td> {{$item->approval_status }}</td>
+                                    <td> {{$item->status }}</td>
                                     <td class="text-right">
                                         <div class="dropdown dropdown-action">
                                             <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="material-icons">more_vert</i></a>
@@ -195,7 +211,13 @@
                                         </div>
                                     </td>
                                 </tr>
+                               
+                                
                               @endforeach
+                              <div class="submit-section text-right">
+                                <button class="btn btn-primary">Generate Payroll</button>
+                            </div>
+                        </form>
                             </tbody>
                         </table>
                     </div>
@@ -229,19 +251,7 @@
                                         </select>
                                     </div>
                                 </div>
-                                <div class="col-sm-6">
-                                    <div class="form-group">
-                                        <label>Education</label>
-                                        <select name="education" class="select">
-                                            <option value="" disabled selected>Choose Education</option>
-                                            <option value="certificate" >Certificate</option>
-                                            <option value="diploma">Diploma</option>
-                                            <option value="degree">Degree</option>
-                                            <option value="psotgraduate">Postgraduate</option>
-                                            <option value="masters">Masters</option>
-                                        </select>
-                                    </div>
-                                </div>
+                        
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <label>Job Group</label>
@@ -253,25 +263,6 @@
                                         </select>
                                     </div>
                                 </div>
-                                <div class="col-sm-6">
-                                    <div class="form-group">
-                                        <label>Grade</label>
-                                        <select name="grade" class="select">
-                                            <option value="" disabled selected>Select Grade</option>
-                                            <option value="unlicensed">unlicensed</option>
-                                            <option value="Ladies 1-5">Ladies 1-5</option>
-                                            <option value="licenced">licenced</option>
-                                            <option value="Ladies 6-10">Ladies 6-10</option>
-                                            <option value="ordained">ordained</option>
-                                            <option value="Ladies 11 and above">Ladies 11 and above</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-sm-4">
-                                    <div class="form-group">
-                                        <input name="current_salary" placeholder="Current Salary" class="form-control" type="text">
-                                    </div>
-                                 </div>
                                  <div class="col-sm-4">
                                     <div class="form-group">
                                         <input name="basic_salary" placeholder="Basic Salary" class="form-control" type="text">
@@ -290,6 +281,72 @@
                                <div class="col-sm-4">
                                     <div class="form-group">
                                         <input name="airtime_allowance" Placeholder="Airtime Amount" class="form-control" type="text">
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <input name="hospitality_allowance" Placeholder="Hospitality" class="form-control" type="text">
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <input name="gross_pay" Placeholder="Gross Pay" class="form-control" type="text">
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <input name="payee" Placeholder="P.A.Y.E" class="form-control" type="text">
+                                    </div>
+                                </div>
+                              
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <input name="personalRelief" Placeholder="Personal Relief" class="form-control" type="text">
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <input name="incomeTax" Placeholder="Income Tax" class="form-control" type="text">
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <input name="nhif" Placeholder="NHIF Amount" class="form-control" type="text">
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <input name="net_pay" Placeholder="Net Pay" class="form-control" type="text">
+                                    </div>
+                                </div>
+                                 <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <input name="bank" value="KCB KAPSABET"  class="form-control" type="text">
+                                    </div>
+                                </div>
+                                 <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <input name="bankName" value="KCB KAPSABET"  class="form-control" type="text">
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <input name="bankBranch" value="KCB KAPSABET"  class="form-control" type="text">
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <input name="bankCode" value="01166" class="form-control" type="text">
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <input name="beneficiaryAccountNumber" Placeholder="Beneficiary Account Number" class="form-control" type="text">
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <input name="reference" Placeholder="" value="Salary" class="form-control" type="text">
                                     </div>
                                 </div>
                             </div>

@@ -30,7 +30,7 @@ class SalaryController extends Controller
         $totalNhifAllowance  = Salary::sum('nhif');
         $totalIncomeTax  = Salary::sum('incomeTax');
         $totalPayee  = Salary::sum('payee');
-        $totalNetPay  = Salary::sum('net_salary');
+        $totalNetPay  = Salary::sum('net_pay');
 
         return view('salaries.index', compact('salaries','totalAirtimeAllowance','totalNetPay','totalPayee','totalIncomeTax','totalNhifAllowance','totalTransportAllowance','totalHseAllowance','totalBasicSalary','employees', 'jobgroup'));
     }
@@ -54,77 +54,59 @@ class SalaryController extends Controller
     public function store(Request $request){
 
         $data = $request->all();
-
-        $user_id             = $data['user_id'];
-        $basicSalary         = $data['basic_salary'];
-        $hse_allowance       = $data['hse_allowance'];
-        $transport_allowance = $data['transport_allowance'];
-        $airtime             = $data['airtime_allowance'];
-
-        ///Get active nssf band
-        $nssf  = Nssf::where('status', 'active')->pluck('amount')->first();
-
-        if($nssf == null){
-            return back()->with('message_nssf','Kindly activate NSSF Rate');
-        }
-
-        // get total gross salary
-        $grossSalary = $this->getGrossSalary($basicSalary,$hse_allowance,$transport_allowance,$airtime);
-
-        // calculate taxable pay 
-        $taxablePay = ($grossSalary - $nssf);
-        //Get NHIF band and charges
-        $nhif = Nhif::select('from_salary','to_salary','monthlyCharges')->get();
-      
-        // calculate nhif charges based on salary 
-        $nhif_charges = $this->calculate_nhif_amount($taxablePay,$nhif);
-
-        //get salary details 
-        $salary_data = $this->calculateNetSalaryPay($taxablePay,$nhif_charges);
-       // dd( $salary_data );
+       ///Get active nssf band
+       $nssf  = Nssf::where('status', 'active')->pluck('amount')->first();
       
         //Check if salary exists
-        $existingSalary = Salary::where('user_id',  $user_id)->first();
+        $existingSalary = Salary::where('user_id', $data['user_id'])->first();
         if($existingSalary){
 
-            DB::table('employee_salary')->update([
-                'user_id'             => $user_id,
-                'education'           => $data['education'],
-                'grade'               => $data['grade'],
+            DB::table('salaries')->update([
+                'user_id'             => $data['user_id'],
                 'job_group'           => $data['job_group'],
-                'basic_salary'        => $basicSalary,
-                'current_salary'      => $data['current_salary'],
-                'hse_allowance'       => $hse_allowance,
-                'transport_allowance' => $transport_allowance,
-                'airtime_allowance'   => $airtime,
-                'net_salary'          => $salary_data['netPay'],
-                'payee'               => $salary_data['payee'],
-                'incomeTax'           => $salary_data['incomeTax'],
-                'personalRelief'      => $salary_data['personalRelief'],
-                'payAfterTax'         => $salary_data['payAfterTax'],
-                'nhif'                => $salary_data['nhif']
+                'basic_salary'        => $data['basic_salary'],
+                'transport_allowance' => $data['transport_allowance'],
+                'hse_allowance'       => $data['hse_allowance'],
+                'airtime_allowance'   => $data['airtime_allowance'],
+                'hospitality_allowance' => $data['hospitality_allowance'],
+                'gross_pay'         => $data['gross_pay'],
+                'payee'                => $data['payee'],
+                'personalRelief'      => $data['personalRelief'],
+                'incomeTax'           => $data['incomeTax'],
+                'nhif'                => $data['nhif'],
+                'nssf'                => $nssf,
+                'net_pay'             => $data['net_pay'],
+                'bankName'            => $data['bankName'],
+                'bankBranch'          => $data['bankBranch'],
+                'bankCode'            => $data['bankCode'],
+                'beneficiaryAccountNumber' => $data['beneficiaryAccountNumber'],
+                'reference'  => $data['reference']
+
             ]);
 
             return back()->with('message','Salary Updated successfully!');
         }else{
 
             Salary::Create([
-                'user_id'        =>  $user_id,
-                'education'      => $data['education'],
-                'grade'          => $data['grade'],
+                'user_id'        => $data['user_id'],
                 'job_group'           => $data['job_group'],
-                'basic_salary'        => $basicSalary,
-                'current_salary'      => $data['current_salary'],
-                'hse_allowance'       => $hse_allowance,
-                'transport_allowance' => $transport_allowance,
-                'airtime_allowance'   => $airtime,
-                'airtime_allowance'   => $airtime,
-                'net_salary'          => $salary_data['netPay'],
-                'payee'               => $salary_data['payee'],
-                'incomeTax'           => $salary_data['incomeTax'],
-                'personalRelief'      => $salary_data['personalRelief'],
-                'payAfterTax'         => $salary_data['payAfterTax'],
-                'nhif'                => $salary_data['nhif']
+                'basic_salary'        => $data['basic_salary'],
+                'transport_allowance' => $data['transport_allowance'],
+                'hse_allowance'       => $data['hse_allowance'],
+                'airtime_allowance'   => $data['airtime_allowance'],
+                'hospitality_allowance' => $data['hospitality_allowance'],
+                'gross_pay'         => $data['gross_pay'],
+                'payee'                => $data['payee'],
+                'personalRelief'      => $data['personalRelief'],
+                'incomeTax'           => $data['incomeTax'],
+                'nhif'                => $data['nhif'],
+                'nssf'                => $nssf,
+                'net_pay'             => $data['net_pay'],
+                'bankBranch'          => $data['bankBranch'],
+                'bankName'            => $data['bankName'],
+                'bankCode'            => $data['bankCode'],
+                'beneficiaryAccountNumber' => $data['beneficiaryAccountNumber'],
+                'reference'  => $data['reference']
             ]);
             return back()->with('message','Salary created successfully!');
         }
@@ -337,6 +319,14 @@ class SalaryController extends Controller
         }
 
     }
+
+
+    // public function getMonthListFromDate(Carbon $start){
+    //     foreach (CarbonPeriod::create($start, '1 month', Carbon::today()) as $month) {
+    //         $months[$month->format('m-Y')] = $month->format('F Y');
+    //     }
+    //     return $months;
+    // }
 
 
 

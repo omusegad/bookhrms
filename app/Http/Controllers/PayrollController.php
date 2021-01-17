@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Salary;
 use App\Models\Payroll;
 use Illuminate\Http\Request;
 
@@ -14,15 +15,15 @@ class PayrollController extends Controller
      */
     public function index(){
 
-        $payroll = Payroll::with('user')->get();
-        $totalBasicSalary  = Payroll::sum('basic_salary');
-        $totalGrossPay  = Payroll::sum('gross_pay');
-        $totalnhif  = Payroll::sum('nhifAmount');
-        $totalnssf  = Payroll::sum('nssfAmount');
-        $totalPayee  = Payroll::sum('payee');
-        $totalAfterTaxPay  = Payroll::sum('total_salary');
-        $totalNetSalary  = Payroll::sum('net_salary');
-        return view('payroll.index', compact('payroll','totalBasicSalary','totalGrossPay','totalnhif','totalnssf','totalPayee','totalAfterTaxPay','totalNetSalary'));
+        // $payroll = Payroll::with('user')->get();
+        // $totalBasicSalary  = Payroll::sum('basic_salary');
+        // $totalnhif  = Payroll::sum('nhifAmount');
+        // $totalnssf  = Payroll::sum('nssfAmount');
+        // $totalPayee  = Payroll::sum('payee');
+        // $totalAfterTaxPay  = Payroll::sum('total_salary');
+        // $totalNetSalary  = Payroll::sum('net_salary');
+        
+        return view('payroll.index');
     }
 
     /**
@@ -43,7 +44,21 @@ class PayrollController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->all();
+        // return  $data;
+        foreach($data as $item){
+            Payroll::create([
+                'user_id'    =>  $data[''],
+                'approvedBy' =>  Auth::user()->id,
+                'salary_id'  =>  $data[''],
+                'month'      => now()->month,
+                'year'       => now()->year,
+            ]);
+           
+        }
+       
+       return redirect()->route('payroll');
+
     }
 
     /**

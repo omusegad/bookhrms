@@ -94,7 +94,7 @@
                     </div>
                 </div>
 
-                <div class="row">
+                {{-- <div class="row">
                     <div class="col-md-12">
                         <div class="card-group m-b-30">
                             <div class="card">
@@ -119,11 +119,11 @@
 
                         </div>
                     </div>
-                </div>
+                </div> --}}
 
                 <!-- Statistics Widget -->
                 <div class="row">
-                    <div class="col-md-12 col-lg-12 col-xl-4 d-flex">
+                    {{-- <div class="col-md-12 col-lg-12 col-xl-4 d-flex">
                         <div class="card flex-fill dash-statistics">
                             <div class="card-body">
                                 <h5 class="card-title">Statistics</h5>
@@ -161,7 +161,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
 
 
 
