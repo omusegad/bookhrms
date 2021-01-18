@@ -33,7 +33,7 @@ class CreateEmployeeSalariesTable extends Migration
             $table->string('bankName');
             $table->string('bankBranch');
             $table->string('bankCode');
-            $table->float('beneficiaryAccountNumber');
+            $table->string('beneficiaryAccountNumber');
             $table->string('reference');
             $table->enum('approval_status', array('pending','approved','disapproved','processed'))->default('pending');
             $table->enum('status', array('active', 'inactive'))->default('active');

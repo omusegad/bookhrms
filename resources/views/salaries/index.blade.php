@@ -121,19 +121,14 @@
 
             <div class="row">
               <div class="col-md-12">
-                @if ($message = Session::get('message_nssf'))
-                    <div class="alert alert-danger alert-block">
-                        <button type="button" class="close" data-dismiss="alert">×</button>
-                        <strong>{{ $message }}</strong>
-                    </div>
-                @endif
-
                 @if ($message = Session::get('message'))
                     <div class="alert alert-danger alert-block">
                         <button type="button" class="close" data-dismiss="alert">×</button>
                         <strong>{{ $message }}</strong>
                     </div>
                 @endif
+
+              
                 </div>
             </div>
 
@@ -170,14 +165,11 @@
                             </thead>
                             <tbody>
                                 <form method="POST" action="{{route('payroll.store')}}">
-                                @csrf
-
-                                @php ($count = 1)
+                                  @csrf
                                 @foreach ($salaries as $item)
-        
                                 <tr>
                                     <td>
-                                        <input type="checkbox" name="{{$item->users['lName'] }}" value="{{$item->users['id'] }}">
+                                        <input type="checkbox" name="userID[]" value="{{$item->users['id'] }}">
                                     </td>
                                     <td>{{$item->users['employeeID'] }}</td>
                                     <td>
@@ -270,7 +262,7 @@
                                 </div>
                                 <div class="col-sm-4">
                                     <div class="form-group">
-                                        <input name="hse_allowance" placeholder="House Allowanace" class="form-control" type="text">
+                                        <input name="hse_allowance" placeholder="House Allowance" class="form-control" type="text">
                                     </div>
                                </div>
                                <div class="col-sm-4">
@@ -319,34 +311,31 @@
                                         <input name="net_pay" Placeholder="Net Pay" class="form-control" type="text">
                                     </div>
                                 </div>
-                                 <div class="col-sm-4">
-                                    <div class="form-group">
-                                        <input name="bank" value="KCB KAPSABET"  class="form-control" type="text">
-                                    </div>
-                                </div>
-                                 <div class="col-sm-4">
-                                    <div class="form-group">
-                                        <input name="bankName" value="KCB KAPSABET"  class="form-control" type="text">
-                                    </div>
-                                </div>
-                                <div class="col-sm-4">
-                                    <div class="form-group">
-                                        <input name="bankBranch" value="KCB KAPSABET"  class="form-control" type="text">
-                                    </div>
-                                </div>
-                                <div class="col-sm-4">
-                                    <div class="form-group">
-                                        <input name="bankCode" value="01166" class="form-control" type="text">
-                                    </div>
-                                </div>
                                 <div class="col-sm-4">
                                     <div class="form-group">
                                         <input name="beneficiaryAccountNumber" Placeholder="Beneficiary Account Number" class="form-control" type="text">
                                     </div>
                                 </div>
+                            
+                                 <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <input name="bankName" value="KCB KAPSABET"  class="form-control" type="text" readonly>
+                                    </div>
+                                </div>
                                 <div class="col-sm-4">
                                     <div class="form-group">
-                                        <input name="reference" Placeholder="" value="Salary" class="form-control" type="text">
+                                        <input name="bankBranch" value="KCB KAPSABET"  class="form-control" type="text" readonly>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <input name="bankCode" value="01166" class="form-control" type="text" readonly>
+                                    </div>
+                                </div>
+                               
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <input name="reference" Placeholder="" value="Salary" class="form-control" type="text" readonly>
                                     </div>
                                 </div>
                             </div>
