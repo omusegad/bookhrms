@@ -12,7 +12,7 @@
             <div class="page-header">
                 <div class="row align-items-center">
                     <div class="col">
-                        <h3 class="page-title">Employee Payroll</h3>
+                        <h3 class="page-title">Employee Salaries & Payroll</h3>
                         <ul class="breadcrumb">
                             <li class="breadcrumb-item">
                                 <a href="{{ route('dashboard') }}">Dashboard</a>
@@ -43,11 +43,13 @@
 								<div class="card">
 									<div class="card-body">
 										<ul class="nav nav-tabs nav-tabs-top">
-											<li class="nav-item"><a class="nav-link active" href="#top-tab1" data-toggle="tab">Payroll</a></li>
-											<li class="nav-item"><a class="nav-link" href="#top-tab2" data-toggle="tab">Payslips</a></li>
-										</ul>
+                                            <li class="nav-item"><a class="nav-link" href="#top-tab2" data-toggle="tab">Payroll</a></li>
+                                            <li class="nav-item"><a class="nav-link" href="#top-tab3" data-toggle="tab">Payslips</a></li>
+                                        </ul>
+                                        
 										<div class="tab-content">
-											<div class="tab-pane show active" id="top-tab1">
+                                           
+											<div class="tab-pane show active" id="top-tab2">
                                                 <div class="table-responsive">
                                                     <table id="payroll" class="table table-striped custom-table table-bordered" id="salaries">
                                                         <thead>
@@ -81,9 +83,8 @@
                                                         </tbody>
                                                     </table>
                                                 </div>
-                                            </div>
-                                            
-											<div class="tab-pane" id="top-tab2">
+											</div>
+											<div class="tab-pane" id="top-tab3">
                                                 <div class="table-responsive">
                                                     <table id="payslips" class="table table-striped custom-table table-bordered" id="salaries">
                                                         <thead>
@@ -130,7 +131,8 @@
                                                         </tbody>
                                                     </table>
                                                 </div>
-											</div>
+                                            </div>
+                                           
 										</div>
 									</div>
 								</div>

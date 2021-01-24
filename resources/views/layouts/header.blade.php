@@ -3,9 +3,8 @@
 
             <!-- Logo -->
             <div class="header-left">
-                <a href="#" class="logo text-white">
-                    AIC NANDI AREA
-                    <!-- <img src="{{ asset('img/aic_logo.png') }}" width="1000" height="40" alt=""> -->
+                <a href="{{ route('dashboard') }}" class="logo">
+                    <img src="{{ asset('public/img/nandi-logo.jpg') }}">
                 </a>
             </div>
             <!-- /Logo -->
@@ -19,8 +18,8 @@
             </a>
 
             <!-- Header Title -->
-            <div class="page-title-box">
-                <h3>By Peak and Dale </h3>
+            <div class="page-title-box text-white">
+                <h6>By Peak and Dale </h6>
             </div>
             <!-- /Header Title -->
 

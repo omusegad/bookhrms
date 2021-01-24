@@ -1138,16 +1138,18 @@ table.dataTable thead > tr > td.sorting {
 .header .header-left {
 	float: left;
 	height: 60px;
-	padding: 0 20px;
 	position: relative;
 	text-align: center;
 	width: 230px;
 	z-index: 1;
 	transition: all 0.2s ease-in-out;
 }
+a.logo img {
+    width: 100%;
+    height: auto;
+}
 .header .header-left .logo {
 	display: inline-block;
-	line-height: 60px;
 }
 .bar-icon {
     display: inline-block;

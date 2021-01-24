@@ -144,7 +144,7 @@
                                     <th>Bank Name</th>
                                     <th>Bank Branch</th>
                                     <th>Bank Code</th>
-                                    <th>Acount Number</th>
+                                    <th>Account Number</th>
                                     <th>Basic Pay (Ksh)</th>
                                     <th>Transport Allowance (Ksh)</th>
                                     <th>House Allowance (Ksh)</th>
@@ -207,7 +207,7 @@
                                 
                               @endforeach
                               <div class="submit-section text-right">
-                                <button class="btn btn-primary">Generate Payroll</button>
+                                <button type="submit" class="btn btn-primary">Generate Payroll</button>
                             </div>
                         </form>
                             </tbody>

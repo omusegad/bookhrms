@@ -2,15 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use Rap2hpoutre\FastExcel\FastExcel;
 use App\Models\User;
 use App\Models\Region;
+use App\Models\Salary;
 use App\Models\Jobgroup;
 use App\Models\Dccregions;
 use App\Models\Lccregions;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Rap2hpoutre\FastExcel\FastExcel;
 
 class EmployeeController extends Controller
 {
@@ -62,30 +63,46 @@ class EmployeeController extends Controller
 
 
       //  bulk uploads codes
-        // $data = request('employeeUpload');
-        // $employees = (new FastExcel)->import($data);
+        $data = request('employeeUpload');
+        $employees = (new FastExcel)->import($data);
 
-        // foreach($employees as $alphabet => $collection) {
-        //   //  dd($collection);
+        //dd( $employees);
 
+        foreach($employees as $alphabet => $collection) {
+        //dd($collection);
 
-        //     User::create([
-        //         'fname'      =>  $collection["FirstName"],
-        //         'lName'      =>  $collection["Surname"],
-        //         'aic_jobgroups_id' => 1,
-        //         'aic_regions_id'   => 1,
-        //         'aic_dccs_id'      => 1,
-        //         'aic_lccs_id'      => 1,
-        //         'education'     =>  "x",
-        //         'email'         =>   str_replace(' ', '', strtolower($collection["FirstName"].".".$collection["Surname"]."@aicnandi.org")),
-        //         "employeeID"    =>  $collection["Employee_no"],
-        //         "employee_type" => "HQ",
-        //         'password'   =>   Hash::make(strtolower($collection["FirstName"]."#". $collection["Employee_no"])),
-        //        ]);
-        // }
+         $user = User::where('employeeID',$collection['emplno'])->first();
+        if($user==null){
+            continue;
+        }
 
+          Salary::create([
+                'emplno'      =>  $collection["emplno"] ?  $collection["emplno"] : 0,
+                'user_id'      =>  $user['id'],
+                'basic_salary'      =>  $collection["Bsalary"] ?   $collection["Bsalary"] : 0,
+                'transport_allowance' =>  $collection["transpt"] ? $collection["transpt"] : 0,
+                'hse_allowance'      =>  $collection["Hseallow"] ? $collection["Hseallow"] : 0,
+                'airtime_allowance'  =>  $collection["Airtime"] ? $collection["Airtime"] : 0,
+                'job_group'      =>  1,
+                'bankCode'      =>  00000,
+                'reference'      =>  "Salary",
+                //'hospitality_allowance'      =>  $collection["hospitality"] ?  $collection["hospitality"] : 0,
+                'gross_pay'      =>  $collection["Grosssalary"] ?  $collection["Grosssalary"] : 0,
+                'payee'      =>  $collection["PAYE"] ? $collection["PAYE"] : 0,
+                'personalRelief'      =>  $collection["Monthlyrelief"] ?  $collection["Monthlyrelief"] : 0,
+                'incomeTax'      =>  $collection["incometax"] ?  $collection["incometax"] : 0,
+                'nssf'      =>  $collection["NSSF"] ? $collection["NSSF"] : 0,
+                'nhif'      =>  $collection["NHIF"] ? $collection["NHIF"] : 0,
+                'net_pay' => $collection["NetSalary"] ?  $collection["NetSalary"] : 0 ,
+                'bankName' =>$collection["BankName"] ? $collection["BankName"] : 0 ,
+                'bankBranch' =>$collection["branch"] ? $collection["branch"] : 0 ,
+                'beneficiaryAccountNumber' => $collection["AccountNo"] ?  $collection["AccountNo"] : 0,
+               ]);
+          
+        }
+
+exit;
        $data = $request->all();
-
         User::create([
             "fname" =>  $data['fname'],
             "lName" =>  $data['lName'],

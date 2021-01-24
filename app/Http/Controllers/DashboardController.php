@@ -6,6 +6,7 @@ use App\Models\User;
 use App\Models\Region;
 use App\Models\Dccregions;
 use App\Models\Lccregions;
+use App\Models\Salary;
 use Illuminate\Http\Request;
 
 use Spatie\Permission\Models\Role;
@@ -21,7 +22,10 @@ class DashboardController extends Controller{
         $employees    = User::All()->count(); // total regions
         $totalDcc     = Dccregions::All()->count(); //totall dccs
         $totaLcc      = Lccregions::All()->count(); //total Lcss
-        return view('dashboard', compact('employees','totalRegions','totalDcc','totaLcc'));
+        $male         = User::where('gender','male')->count(); //total male gender
+        $female       = User::where('gender','female')->count(); //total female
+        $totalSalaries = Salary::sum('basic_salary');
+        return view('dashboard', compact('employees','totalRegions','totalDcc','totaLcc','male','female','totalSalaries'));
     }
 
 }

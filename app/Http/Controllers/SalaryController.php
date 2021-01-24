@@ -33,7 +33,8 @@ class SalaryController extends Controller
         $totalNetPay  = Salary::sum('net_pay');
 
         return view('salaries.index', compact('salaries','totalAirtimeAllowance','totalNetPay','totalPayee','totalIncomeTax','totalNhifAllowance','totalTransportAllowance','totalHseAllowance','totalBasicSalary','employees', 'jobgroup'));
-    }
+   
+      }
 
     /**
      * Show the form for creating a new resource.

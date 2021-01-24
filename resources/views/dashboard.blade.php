@@ -28,7 +28,7 @@
                                 <span class="dash-widget-icon"><i class="fa fa-group"></i></span>
                                 <div class="dash-widget-info">
                                     <h3>{{$employees ? $employees: "0" }}</h3>
-                                    <span>Employees</span>
+                                    <span><a href="{{ route('employees.index') }}">Employees</a></span>
                                 </div>
                             </div>
                         </div>
@@ -39,8 +39,8 @@
                                 <span class="dash-widget-icon"><i class="fa fa-map-marker"></i></span>
                                 <div class="dash-widget-info">
                                      <h3>{{$totalRegions ? $totalRegions: "0" }}</h3> 
-                                    <!--<h3>6</h3>-->
-                                    <span>Regions</span>
+                                    {{-- <!--<h3>6</h3>--> --}}
+                                    <span><a href="{{ url('/regions') }}">Regions</a></span>
                                 </div>
                             </div>
                         </div>
@@ -50,9 +50,9 @@
                             <div class="card-body">
                                 <span class="dash-widget-icon"><i class="fa fa-map-pin"></i></span>
                                 <div class="dash-widget-info">
-                                    {{-- <h3>{{$totalDcc ? $totalDcc: "0" }}</h3> --}}
-                                    <h3>56</h3>
-                                    <span>DCCs</span>
+                                    <h3>{{$totalDcc ? $totalDcc: "0" }}</h3>
+                                    {{-- <h3>56</h3> --}}
+                                    <span><a href="{{ url('/dccs-regions') }}">DCCs</a></span>
                                 </div>
                             </div>
                         </div>
@@ -62,9 +62,9 @@
                             <div class="card-body">
                                 <span class="dash-widget-icon"><i class="fa fa-home"></i></span>
                                 <div class="dash-widget-info">
-                                    {{-- <h3>{{$totaLcc ? $totaLcc: "0" }}</h3> --}}
-                                    <h3>371</h3>
-                                    <span>LCCs</span>
+                                    <h3>{{$totaLcc ? $totaLcc: "0" }}</h3>
+                                    {{-- <h3>371</h3> --}}
+                                    <span><a href="{{ url('/lccs-regions') }}">LCCs</a></span>
                                 </div>
                             </div>
                         </div>
@@ -74,19 +74,24 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="row">
-                            <div class="col-md-6 text-center">
+                            <div class="col-md-6">
                                 <div class="card">
                                     <div class="card-body">
                                         <h3 class="card-title">Total Salary Budget</h3>
-                                        <div id="bar-charts">ksh. 700,000</div>
+                                        <div id="bar-charts">ksh. {{ $totalSalaries ? $totalSalaries : "0" }}</div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-6 text-center">
+                            <div class="col-md-6">
                                 <div class="card">
                                     <div class="card-body">
-                                        <h3 class="card-title">Total Salary Income</h3>
-                                        <div id="line-charts">Ksh. 800,000</div>
+                                        <h3 class="card-title">Gender</h3>
+                                        <div class="row" id="bar-charts">
+                                            <div class="col-md-12">
+                                                <h4>Male: {{ $male ? $male : "0" }}</h4>
+                                                <h4>Female: {{ $female ? $female : "0" }}</h4>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -165,7 +170,7 @@
 
 
 
-                    <div class="col-md-12 col-lg-6 col-xl-4 d-flex">
+                    <div class="col-md-12 col-lg-6 col-xl-6 d-flex">
                         <div class="card flex-fill">
                             <div class="card-body">
                                 <h4 class="card-title">Today Absent <span class="badge bg-inverse-danger ml-2">5</span></h4>
@@ -210,7 +215,7 @@
                         </div>
                     </div>
 
-                    <div class="col-md-12 col-lg-12 col-xl-4 d-flex">
+                    <div class="col-md-12 col-lg-12 col-xl-6 d-flex">
                         <div class="card flex-fill dash-statistics">
                             <div class="card-body">
                                 <h5 class="card-title">Overview</h5>

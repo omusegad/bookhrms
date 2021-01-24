@@ -8,28 +8,31 @@
 							
 							<li class="submenu">
 								<a href="#">
-								<i class="la la-dashboard"></i>
+								<i class="fa fa-users"></i>
 									 <span> Employees</span> <span class="menu-arrow"></span>
 								</a>
 								<ul style="display: none;">
-								    <li><a  href="{{ route('employees.index') }}">All Employees</a></li>
-									<li><a href="{{ route('employees.show',[auth()->user()->id]) }}">Profile</a></li>
+									<li><a  href="{{ route('employees.index') }}">All Employees</a></li>
+									<li><a href="{{ route('hq-employees.index') }}">HQ Employees</a></li>
+									<li><a href="{{ route('field-employees.index') }}">Field Employees</a></li>
+									{{-- <li><a href="{{ route('employees.show',[auth()->user()->id]) }}">Profile</a></li> --}}
 								</ul>
 							</li>
 							<li class="submenu">
 								<a href="#">
-								<i class="la la-dashboard"></i>
-									 <span> Salaries</span> <span class="menu-arrow"></span>
+								<i class="fa fa-money"></i>
+									 <span> Payroll</span> <span class="menu-arrow"></span>
 								</a>
 								<ul style="display: none;">
-                                    <li><a href="{{ route('salaries.index') }}">Salaries</a></li>
-									<li><a href="{{ route('salary-settings.index') }}">Salary Settings</a></li>
-									<li><a href="{{ route('payroll.index') }}">Payroll</a></li>
+									<li><a href="{{ route('salaries.index') }}">All payroll</a></li>
+									<li><a href="{{ route('hq-salaries.index') }}">HQ Payroll</a></li>
+									<li><a href="{{ route('field-salaries.index') }}">Field Payroll</a></li>
+									<li><a href="{{ route('salary-settings.index') }}">Payroll Settings</a></li>
 								</ul>
 							</li>
 							<li class="submenu">
 								<a href="#">
-								<i class="la la-dashboard"></i>
+								<i class="fa fa-toggle-off"></i>
 									 <span> Leave Management </span> <span class="menu-arrow"></span>
 								</a>
 								<ul style="display: none;">
@@ -43,7 +46,7 @@
                             </li>
                             
 							<li class="submenu">
-								<a href="#"><i class="la la-dashboard"></i> <span> Settings</span> <span class="menu-arrow"></span></a>
+								<a href="#"><i class="fa fa-cog"></i> <span> Settings</span> <span class="menu-arrow"></span></a>
 								<ul style="display: none;">
                                     <li><a href="{{ url('/admin') }}">Admins</a></li>
 									<li><a href="{{ route('roles.index') }}">Roles</a></li>
