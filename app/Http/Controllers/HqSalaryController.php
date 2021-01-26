@@ -18,7 +18,9 @@ class HqSalaryController extends Controller
     public function index()
     {
         $employees = User::all();
-        $payroll = Payroll::where('status','processed')->with('salary','user')->get();
+        $payroll = Payroll::where('status','processed')->with(["salary","user" => function($q){
+            $q->where('employee_type', "HQ");
+        }])->get();
         $jobgroup  = Jobgroup::all();
         $salaries  = Salary::with('users')->get();
         $totalBasicSalary  = Salary::sum('basic_salary');

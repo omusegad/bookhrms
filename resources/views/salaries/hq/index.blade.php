@@ -12,12 +12,12 @@
             <div class="page-header">
                 <div class="row align-items-center">
                     <div class="col">
-                        <h3 class="page-title">Employee Salaries & Payroll</h3>
+                        <h3 class="page-title">Employee HQ Payroll</h3>
                         <ul class="breadcrumb">
                             <li class="breadcrumb-item">
                                 <a href="{{ route('dashboard') }}">Dashboard</a>
                             </li>
-                            <li class="breadcrumb-item active">Payroll : (Ksh)</li>
+                            <li class="breadcrumb-item active">HQ Payroll : (Ksh)</li>
                         </ul>
                     </div>
                 </div>

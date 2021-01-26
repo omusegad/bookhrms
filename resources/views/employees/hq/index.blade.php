@@ -13,10 +13,10 @@
                 <div class="page-header">
                     <div class="row align-items-center">
                         <div class="col">
-                            <h3 class="page-title">Employee</h3>
+                            <h3 class="page-title">HQ Employee</h3>
                             <ul class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
-                                <li class="breadcrumb-item active">Employee</li>
+                                <li class="breadcrumb-item active">HQ Employee</li>
                             </ul>
                         </div>
                     <div class="col-auto float-right ml-auto">
@@ -40,7 +40,6 @@
                             <table class="table table-striped custom-table table-condensed table-bordered" id="employeesTable">
                                 <thead>
                                     <tr>
-                                        <th>ID</th>
                                         <th>Employee ID</th>
                                         <th>Name</th>
                                         <th>Email</th>
@@ -52,11 +51,10 @@
                              @php ($count = 1)
                               @foreach($users as $user)
                                 <tr>
-                                    <td>{{$count++ }}</td>
                                     <td>{{$user->employeeID }}</td>
                                     <td>
                                         <h2 class="table-avatar">
-                                            <a href="{{ route('employees.edit',$user->id)}}">{{$user->fName }} {{$user->lName }}<span>Dep: </span></a>
+                                            <a href="{{ route('employees.edit',$user->id)}}">{{$user->fName }} {{$user->lName }}</a>
                                         </h2>
                                     </td>
                                     <td>{{$user->email }}</td>

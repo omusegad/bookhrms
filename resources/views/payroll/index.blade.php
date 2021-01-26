@@ -60,7 +60,8 @@
                                                                 <th>Reference</th>
                                                             </tr>
                                                         </thead>
-                                                        <tbody>@php($count =1)
+                                                        <tbody>
+                                                            @php($count =1)
                                                             @foreach ($payroll as $item)
                                                             <tr> 
                                                                 @foreach ($item->user as $user)

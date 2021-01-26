@@ -15,7 +15,7 @@ class HqEmployeeController extends Controller
     public function index()
     {
         $users = User::where('employee_type','HQ')->with('region','dcc','lcc','jobgroup')->get();
-        return view('employees.field.index', compact('users'));
+        return view('employees.hq.index', compact('users'));
     }
 
     /**
