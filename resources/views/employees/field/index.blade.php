@@ -13,25 +13,23 @@
                 <div class="page-header">
                     <div class="row align-items-center">
                         <div class="col">
-                            <h3 class="page-title">Employee</h3>
+                            <h3 class="page-title">Field Employees</h3>
                             <ul class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
-                                <li class="breadcrumb-item active">Employee</li>
+                                <li class="breadcrumb-item">
+                                    <a href="{{ route('dashboard') }}">Dashboard</a>
+                                </li>
+                                <li class="breadcrumb-item active">Field Employee</li>
                             </ul>
                         </div>
                     <div class="col-auto float-right ml-auto">
                         <a href="{{ route('employees.create') }}" class="btn add-btn"><i class="fa fa-plus"></i> Add Employee</a>
-                            <div class="view-icons">
-                                <a href="employees.html" class="grid-view btn btn-link"><i class="fa fa-th"></i></a>
-                                <a href="employees-list.html" class="list-view btn btn-link active"><i class="fa fa-bars"></i></a>
-                            </div>
                         </div>
                     </div>
                 </div>
                 <!-- /Page Header -->
 
                 <!-- Search Filter -->
-                
+
                 <!-- /Search Filter -->
 
                 <div class="row">
@@ -43,7 +41,8 @@
                                         <th>Employee ID</th>
                                         <th>Name</th>
                                         <th>Email</th>
-                                        <th></th>
+                                        <th>Employee Type</th>
+                                        <th>Status</th>
                                         <th class="text-right no-sort">Action</th>
                                     </tr>
                                 </thead>
@@ -53,12 +52,13 @@
                                 <tr>
                                     <td>{{$user->employeeID }}</td>
                                     <td>
-                                        <h2 class="table-avatar">
-                                            <a href="{{ route('employees.edit',$user->id)}}">{{$user->fName }} {{$user->lName }}</a>
-                                        </h2>
+                                            <a href="{{ route('employees.edit',$user->id)}}">
+                                                {{$user->fname }} {{$user->lName }}
+                                            </a>
                                     </td>
                                     <td>{{$user->email }}</td>
-                                    <td>{{$user->fName }}</td>
+                                    <td>{{$user->employee_type }}</td>
+                                    <td>{{$user->employee_status }}</td>
                                     <td class="text-right">
                                       <a class="" href="{{ route('employees.edit',$user->id)}}"><i class="fa fa-pencil m-r-5"></i></a>
                                     </td>

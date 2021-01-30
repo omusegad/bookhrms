@@ -12,16 +12,12 @@
             <div class="col">
                 <h3 class="page-title">LCC</h3>
                 <ul class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="{{url('/')}}">Dashboard</a></li>
+                    <li class="breadcrumb-item"><a href="{{route('dashboard')}}">Dashboard</a></li>
                     <li class="breadcrumb-item active">Edit LCC</li>
                 </ul>
             </div>
             <div class="col-auto float-right ml-auto">
                 <a href="{{ url('/lccs-regions') }}" class="btn add-btn"><i class="fa fa-eye"></i> View LCC</a>
-                <div class="view-icons">
-                     <a href="#" class="grid-view btn btn-link"><i class="fa fa-th"></i></a>
-                     <a href="#" class="list-view btn btn-link active"><i class="fa fa-bars"></i></a>
-                </div>
            </div>
         </div>
     </div>
@@ -51,9 +47,9 @@
                                  <strong>{{ $message }}</strong>
                             </span>
                       @enderror
-                       <div class="from-group"> 
-                             <button type="submit" class="btn btn-primary">{{__('Update')}}</button>
+                       <div class="from-group text-right">
                              <a href="{{ url('/lccs-regions') }}" class="btn btn-warning">Back</a>
+                             <button type="submit" class="btn btn-primary">{{__('Update')}}</button>
                        </div>
                     </form>
                 </div>

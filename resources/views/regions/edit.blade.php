@@ -12,16 +12,12 @@
             <div class="col">
                 <h3 class="page-title">Region</h3>
                 <ul class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="{{url('/')}}">Dashboard</a></li>
+                    <li class="breadcrumb-item"><a href="{{route('dashboard')}}">Dashboard</a></li>
                     <li class="breadcrumb-item active">Edit Region</li>
                 </ul>
             </div>
             <div class="col-auto float-right ml-auto">
                 <a href="{{ url('/regions') }}" class="btn add-btn"><i class="fa fa-eye"></i> View Regions</a>
-                <div class="view-icons">
-                     <a href="#" class="grid-view btn btn-link"><i class="fa fa-th"></i></a>
-                     <a href="#" class="list-view btn btn-link active"><i class="fa fa-bars"></i></a>
-                </div>
            </div>
         </div>
     </div>
@@ -51,9 +47,9 @@
                                  <strong>{{ $message }}</strong>
                             </span>
                       @enderror
-                       <div class="from-group"> 
+                       <div class="from-group text-right">
+                        <a href="{{ url('/regions') }}" class="btn btn-warning">Back</a>
                              <button type="submit" class="btn btn-primary">{{__('Update')}}</button>
-                             <a href="{{ url('/regions') }}" class="btn btn-warning">Back</a>
                        </div>
                     </form>
                 </div>

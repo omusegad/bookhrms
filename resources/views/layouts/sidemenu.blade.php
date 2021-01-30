@@ -13,8 +13,8 @@
 								</a>
 								<ul style="display: none;">
 									<li><a  href="{{ route('employees.index') }}">All Employees</a></li>
-									<li><a href="{{ route('hq-employees.index') }}">HQ Employees</a></li>
-									<li><a href="{{ route('field-employees.index') }}">Field Employees</a></li>
+									<li><a href="{{ url('/hq-employees') }}">HQ Employees</a></li>
+									<li><a href="{{ url('/field-employees') }}">Field Employees</a></li>
 									{{-- <li><a href="{{ route('employees.show',[auth()->user()->id]) }}">Profile</a></li> --}}
 								</ul>
 							</li>

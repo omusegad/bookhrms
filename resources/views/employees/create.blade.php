@@ -57,7 +57,7 @@
                             </div>
 
                             <div class="col-md-6">
-                              <input id="email" type="email" placeholder="Email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
+                              <input id="email" type="email" placeholder="Email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}"  autocomplete="email">
                                 @error('email')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -151,6 +151,22 @@
                                     </span>
                                 @enderror
                             </div>
+
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label for="employee_type">Employee Type </label>
+                                  <select name="employee_type" id="" class="form-control">
+                                      <option value="" disabled selected></option>
+                                      <option value="HQ">HQ</option>
+                                      <option value="FIELD">Field</option>
+                                  </select>
+                                  @error('employee_type')
+                                      <span class="invalid-feedback" role="alert">
+                                          <strong>{{ $message }}</strong>
+                                      </span>
+                                  @enderror
+                                </div>
+                              </div>
 
 
                         </div>

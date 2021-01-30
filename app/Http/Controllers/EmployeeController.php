@@ -8,6 +8,7 @@ use App\Models\Region;
 use App\Models\Jobgroup;
 use App\Models\Dccregions;
 use App\Models\Lccregions;
+use App\Models\Salary;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -23,8 +24,20 @@ class EmployeeController extends Controller
     {
 
         $users = User::with('region','dcc','lcc','jobgroup')->get();
+       // dd( $users);
+        $jobgroup  = Jobgroup::all();
+        $salaries  = Salary::with('users')->get();
+        $totalBasicSalary  = Salary::sum('basic_salary');
+        $totalHseAllowance  = Salary::sum('hse_allowance');
+        $totalTransportAllowance  = Salary::sum('transport_allowance');
+        $totalAirtimeAllowance  = Salary::sum('airtime_allowance');
+        $totalNhifAllowance  = Salary::sum('nhif');
+        $totalIncomeTax  = Salary::sum('incomeTax');
+        $totalPayee  = Salary::sum('payee');
+        $totalNetPay  = Salary::sum('net_pay');
        // dd($users);
-        return view('employees.index', compact('users'));
+        return view('employees.index', compact('users','jobgroup','salaries','totalBasicSalary','totalHseAllowance','totalTransportAllowance',
+        'totalAirtimeAllowance','totalNhifAllowance','totalIncomeTax','totalPayee','totalNetPay'));
     }
 
     /**
@@ -48,17 +61,23 @@ class EmployeeController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request){
-        // $data = $this->validate([
-        //     "fname" =>  ['required', 'string', 'max:255'],
-        //     "lName" =>  ['required', 'string', 'max:255'],
-        //     'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-        //     "employeeID" =>  ['required', 'numeric'],
-        //     "joining_position" =>  ['required', 'string', 'max:255'],
-        //     "jobgroupid" => ['required'],
-        //     "gender" =>  ['required'],
-        //     "joining_date" =>["date"],
-        //     'password' => ['required', 'string', 'min:6', 'confirmed'],
-        // ]);
+        $data = $this->validate($request,[
+            "fname" =>  ['required', 'string', 'max:255'],
+            "lName" =>  ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            "employeeID" =>  ['required', 'numeric'],
+            "joining_position" =>  ['required', 'string', 'max:255'],
+            "aic_jobgroups_id" => ['required'],
+            "gender" =>  ['required'],
+            "joining_date" =>["date"],
+            'department' => ['required'],
+            'designation' => ['required'],
+            "aic_regions_id" => ['required'],
+            "aic_dccs_id" => ['required'],
+            "aic_lccs_id" => ['required'],
+            'employee_type' => ['required'],
+            'password' => ['required', 'string', 'min:6', 'confirmed'],
+        ]);
 
 
       //  bulk uploads codes
@@ -84,7 +103,7 @@ class EmployeeController extends Controller
         //        ]);
         // }
 
-       $data = $request->all();
+    //    $data = $request->all();
 
         User::create([
             "fname" =>  $data['fname'],
@@ -98,6 +117,8 @@ class EmployeeController extends Controller
             "aic_lccs_id" => $data['aic_lccs_id'],
             "gender" =>  $data['gender'],
             "joining_date" => $data['joining_date'],
+            "employee_type" => $data['employee_type'],
+            'department' => $data['designation'],
             'password' => Hash::make(strtolower("password"."123")),
         ]);
         return back()->with('message','Employee Added successfully!');
