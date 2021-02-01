@@ -6,6 +6,7 @@ use App\Models\User;
 use App\Models\Roles;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 
 class RolesController extends Controller
@@ -42,18 +43,11 @@ class RolesController extends Controller
     public function store(Request $request){
         $data = $request->all();
         //dd($data);
-        DB::table('model_has_roles')->insert([
-            'role_id'    => $data['roleID'],
-            'model_type' => 'App\User',
-            'model_id'   => $data['employeeID']
-        ]);
 
-            // DB::table('permissions')->insert([
-            //     'readID'    => $data['roleID'],
-            //     'editID' => 'App\User',
-            //     'model_id'   => $data['employeeID']
-            // ]);
+        $user = User::find($data['employee_id']);
+        $role = Role::find($data['role_id']);
 
+        $user->assignRole($role->name);
         return back();
     }
 
