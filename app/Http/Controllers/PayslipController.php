@@ -6,7 +6,7 @@ use App\Models\Salary;
 use App\Models\Payroll;
 use APP\Models\User;
 use Illuminate\Http\Request;
-use \PDF;
+use PDF;
 
 class PayslipController extends Controller
 {
@@ -50,7 +50,7 @@ class PayslipController extends Controller
     public function show($id)
     {
         $payslip = Payroll::where('status','processed')->where('user_id',$id)->with('salary','user')->first();
-        $pdf = PDF::loadView('payroll.payslip', ['payslip' => $payslip]);
+        $pdf = PDF::loadView('payslip.index', ['payslip' => $payslip]);
         return $pdf->download('payslip.pdf');
     }
 
