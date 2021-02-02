@@ -132,8 +132,7 @@ class SalaryController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit($id){
-        $salary   = Salary::findOrFail($id)->with('users')->first();
-
+        $salary   = Salary::where('id',$id)->with('users')->first();
         $jobgroup = Jobgroup::all();
         return view('salaries.edit', compact('salary', 'jobgroup'));
     }

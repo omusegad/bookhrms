@@ -116,7 +116,7 @@
                         </div>
                     </div>
 
-                   
+
                 </div>
 
             <div class="row">
@@ -128,7 +128,7 @@
                     </div>
                 @endif
 
-              
+
                 </div>
             </div>
 
@@ -173,7 +173,7 @@
                                     </td>
                                     <td>{{$item->users['employeeID'] }}</td>
                                     <td>
-                                      <a href="#">{{$item->users['fname'] }} {{$item->users['lName'] }}</a>
+                                      <a href="{{route('salaries.edit',$item->id  )}}">{{$item->users['fname'] }} {{$item->users['lName'] }}</a>
                                     </td>
                                     <td> {{$item->bankName }}</td>
                                     <td> {{$item->bankBranch }}</td>
@@ -198,8 +198,8 @@
                                         <a class="" href="{{route('salaries.edit', $item->id )}}"><i class="fa fa-pencil m-r-5"></i> </a>
                                     </td>
                                 </tr>
-                               
-                                
+
+
                               @endforeach
                               <div class="submit-section text-right">
                                 <button type="submit" class="btn btn-primary">Generate Payroll</button>
@@ -238,7 +238,7 @@
                                         </select>
                                     </div>
                                 </div>
-                        
+
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <label>Job Group</label>
@@ -285,7 +285,7 @@
                                         <input name="payee" Placeholder="P.A.Y.E" class="form-control" type="text">
                                     </div>
                                 </div>
-                              
+
                                 <div class="col-sm-4">
                                     <div class="form-group">
                                         <input name="personalRelief" Placeholder="Personal Relief" class="form-control" type="text">
@@ -311,7 +311,7 @@
                                         <input name="beneficiaryAccountNumber" Placeholder="Beneficiary Account Number" class="form-control" type="text">
                                     </div>
                                 </div>
-                            
+
                                  <div class="col-sm-4">
                                     <div class="form-group">
                                         <input name="bankName" value="KCB KAPSABET"  class="form-control" type="text" readonly>
@@ -327,7 +327,7 @@
                                         <input name="bankCode" value="01166" class="form-control" type="text" readonly>
                                     </div>
                                 </div>
-                               
+
                                 <div class="col-sm-4">
                                     <div class="form-group">
                                         <input name="reference" Placeholder="" value="Salary" class="form-control" type="text" readonly>

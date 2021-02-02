@@ -49,7 +49,7 @@ class EmployeeController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request){
-        // $data = $this->validate([
+        // $request = $this->validate([
         //     "fname" =>  ['required', 'string', 'max:255'],
         //     "lName" =>  ['required', 'string', 'max:255'],
         //     'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
@@ -63,8 +63,8 @@ class EmployeeController extends Controller
 
 
       //  bulk uploads codes
-        // $data = request('employeeUpload');
-        // $employees = (new FastExcel)->import($data);
+        // $request = request('employeeUpload');
+        // $employees = (new FastExcel)->import($request);
 
         // foreach($employees as $alphabet => $collection) {
         //   //  dd($collection);
@@ -85,20 +85,20 @@ class EmployeeController extends Controller
         //        ]);
         // }
 
-       $data = $request->all();
+       $request = $request->all();
 
         User::create([
-            "fname" =>  $data['fname'],
-            "lName" =>  $data['lName'],
-            'email' =>  $data['email'],
+            "fname" =>  $request['fname'],
+            "lName" =>  $request['lName'],
+            'email' =>  $request['email'],
             "created_by" => Auth::user()->id,
-            "employeeID" =>  $data['employeeID'],
-            "aic_jobgroups_id" => $data['aic_jobgroups_id'],
-            "aic_regions_id" => $data['aic_regions_id'],
-            "aic_dccs_id" => $data['aic_dccs_id'],
-            "aic_lccs_id" => $data['aic_lccs_id'],
-            "gender" =>  $data['gender'],
-            "joining_date" => $data['joining_date'],
+            "employeeID" =>  $request['employeeID'],
+            "aic_jobgroups_id" => $request['aic_jobgroups_id'],
+            "aic_regions_id" => $request['aic_regions_id'],
+            "aic_dccs_id" => $request['aic_dccs_id'],
+            "aic_lccs_id" => $request['aic_lccs_id'],
+            "gender" =>  $request['gender'],
+            "joining_date" => $request['joining_date'],
             'password' => Hash::make(strtolower("password"."123")),
         ]);
         return back()->with('message','Employee Added successfully!');
@@ -123,7 +123,7 @@ class EmployeeController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit($id){
-        $employee = User::findOrFail($id)->first();
+        $employee = User::where('id',$id)->first();
         $jgroup = Jobgroup::all();
         return view('employees.edit', compact('employee', 'jgroup'));
     }
@@ -136,7 +136,6 @@ class EmployeeController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id){
-
         User::where('id',$id)->update([
             "employeeID" =>  $request['employeeID'],
             "fname" =>  $request['fname'],
