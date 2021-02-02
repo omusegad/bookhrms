@@ -136,69 +136,51 @@ class EmployeeController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id){
-       $user = User::findOrFail($id)->first();
-        dd($user);
 
-        User::update([
-            'education'           => $data['education'],
-            'grade'               => $data['grade'],
-            'job_group'           => $data['job_group'],
-            'basic_salary'        => $data['basic_salary'],
-            'hse_allowance'       => $data['hse_allowance'],
-            'transport_allowance' => $data['transport_allowance'],
-            'airtime_allowance'   => $data['airtime_allowance'],
-            'net_salary'          => $salary_data['netPay'],
-            'payee'               => $salary_data['payee'],
-            'incomeTax'           => $salary_data['incomeTax'],
-            'personalRelief'      => $salary_data['personalRelief'],
-            'payAfterTax'         => $salary_data['payAfterTax'],
-            'nhif'                => $salary_data['nhif']
-        ]);
-
-
-
-        User::update([
-            "fname" =>  $data['fname'],
-            "lName" =>  $data['lName'],
-            "otherNames" =>  $data['otherNames'],
-            'email' => $data['email'],
-            "phoneNumber" => $data['phoneNumber'],
-            "altPhoneNumber" => $data['altPhoneNumber'],
-            "emergencyPhoneNumber" => $data['emergencyPhoneNumber'],
-            "nhifNo" =>  $data['nhifNo'],
-            "nssfNo" => $data['nssfNo'],
+        User::where('id',$id)->update([
+            "employeeID" =>  $request['employeeID'],
+            "fname" =>  $request['fname'],
+            "lName" =>  $request['lName'],
+            "otherNames" =>  $request['otherNames'],
+            "education" =>  $request['education'],
+            'email' => $request['email'],
             "created_by" => Auth::user()->id,
-            "nationalID" => $data['nationalID'],
-            "current_address" => $data['present_residence'],
-            "permanent_residence" => $data['permanent_residence'],
-            "home_county" => $data['home_county'],
-            "employeeID" =>  $data['employeeID'],
-            "joining_position" => $data['joining_position'],
-            "date_of_birth" =>$data['date_of_birth'],
-            "aic_jobgroups_id" => $data['jobgroupid'],
-            "gender" =>  $data['gender'],
-            "marital_status" =>  $data['marital_status'],
-            "employee_status" => $data['employee_status'],
-            "joining_date" => $data['joining_date'],
-            "spouse_fname" => $data['spouse_fname'],
-            "spouse_lname" => $data['spouse_lname'],
-            "spouse_otherNames" => $data['spouse_otherNames'],
-            "spouse_phoneNumber" => $data['spouse_phoneNumber'],
-            "spouse_altphoneNumber" => $data['spouse_altphoneNumber'],
-            "spouse_nationalId" => $data['spouse_nationalId'],
-            "next_of_kin_fname" =>  $data['next_of_kin_fname'],
-            "next_of_kin_lname" => $data['next_of_kin_lname'],
-            "next_of_kin_otherNames"  =>  $data['next_of_kin_otherNames'],
-            "next_of_kin_phoneNumber" => $data['next_of_kin_phoneNumber'],
-            "next_of_kin_altPhoneNumber" => $data['next_of_kin_altPhoneNumber'],
-            "next_of_kin_nationId" => $data['next_of_kin_nationId'],
-            'password' => Hash::make($data['password']),
-             'bankName' => $data['bankName'],
-             'bankBranch' => $data['bankBranch'],
-             'accountNumber' => $data['accountNumber'],
+            "nationalID" => $request['nationalID'],
+            "father_name" => $request['father_name'],
+            "mother_name" => $request['mother_name'],
+            "date_of_birth" =>$request['date_of_birth'],
+            "probation_period" =>$request['probation_period'],
+            "phoneNumber" => $request['phoneNumber'],
+            "altPhoneNumber" => $request['altPhoneNumber'],
+            "emergencyPhoneNumber" => $request['emergencyPhoneNumber'],
+            "experience" =>  $request['experience'],
+            "nhifNo" =>  $request['nhifNo'],
+            "nssfNo" => $request['nssfNo'],
+            "gender" =>  $request['gender'],
+            "marital_status" =>  $request['marital_status'],
+            "joining_date" => $request['joining_date'],
+            "confirmation_date" => $request['confirmation_date'],
+            "department" => $request['department'],
+            "current_address" => $request['present_residence'],
+            "permanent_address" => $request['permanent_address'],
+            "home_county" => $request['home_county'],
+            "joining_position" => $request['joining_position'],
+            "spouse_fname" => $request['spouse_fname'],
+            "spouse_lname" => $request['spouse_lname'],
+            "spouse_otherNames" => $request['spouse_otherNames'],
+            "spouse_phoneNumber" => $request['spouse_phoneNumber'],
+            "spouse_altphoneNumber" => $request['spouse_altphoneNumber'],
+            "spouse_nationalId" => $request['spouse_nationalId'],
+            "next_of_kin_fname" =>  $request['next_of_kin_fname'],
+            "next_of_kin_lname" => $request['next_of_kin_lname'],
+            "next_of_kin_otherNames"  =>  $request['next_of_kin_otherNames'],
+            "next_of_kin_phoneNumber" => $request['next_of_kin_phoneNumber'],
+            "next_of_kin_altPhoneNumber" => $request['next_of_kin_altPhoneNumber'],
+            "next_of_kin_nationId" => $request['next_of_kin_nationId'],
+            "employee_type" => $request['employee_type'],
+            "employee_status" => $request['employee_status']
         ]);
-
-       //return back();
+        return back()->with('message','Salary updated successfully!');
 
     }
 

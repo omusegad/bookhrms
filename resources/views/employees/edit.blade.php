@@ -12,12 +12,12 @@
             <div class="col">
                 <h3 class="page-title">Employee</h3>
                 <ul class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
+                    <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Dashboard</a></li>
                     <li class="breadcrumb-item active">Edit Employee</li>
                 </ul>
             </div>
             <div class="col-auto float-right ml-auto">
-                <a href="{{ url('/employees') }}" class="btn add-btn"><i class="fa fa-eye"></i> View Employees</a>
+                <a href="{{ url('/employees') }}" class="btn add-btn"><i class="fa fa-eye"></i> All Employees</a>
            </div>
         </div>
     </div>
@@ -36,9 +36,17 @@
                     @endif
                     <!-- Only fields withe errors are to be validated -->
                     <form method="POST" action="{{ route('employees.update', $employee->id) }}">
-                      
+                        {{ method_field('PUT') }}
                         @csrf
                         <div class="row">
+                            <div class="col-md-4">
+                                <input id="employeeID" placeholder="Employee ID" type="text" class="form-group form-control @error('employeeID') is-invalid @enderror" name="employeeID" value="{{ $employee->employeeID ?  $employee->employeeID : old('employeeID') }}"  autocomplete="employeeID">
+                                @error('employeeID')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
                             <div class="col-md-4">
                                 <input id="fname" placeholder="First Name" type="text" class="form-group form-control @error('fname') is-invalid @enderror" name="fname"  value="{{ $employee->fname ? $employee->fname :  old('fname') }}"  autocomplete="fname" autofocus>
                                 @error('fname')
@@ -58,6 +66,50 @@
                             <div class="col-md-4">
                                 <input id="name" placeholder="Other Names" type="text" class="form-control @error('otherNames') is-invalid @enderror" name="otherNames"  value="{{ $employee->otherNames ? $employee->otherNames : old('otherNames')  }}"  autocomplete="otherNames" autofocus>
                                 @error('otherNames')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                            <div class="col-md-4">
+                                <input id="education" placeholder="Education" type="text" class="form-control @error('education') is-invalid @enderror" name="education"  value="{{ $employee->education ? $employee->education : old('education')  }}"  autocomplete="education" autofocus>
+                                @error('education')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+
+                            <div class="col-md-4">
+                                <input id="experience" placeholder="Experience" type="text" class="form-control @error('experience') is-invalid @enderror" name="experience"  value="{{ $employee->experience ? $employee->experience : old('experience')  }}"  autocomplete="experience" autofocus>
+                                @error('experience')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+
+                            <div class="col-md-4">
+                                <input id="nationalID" placeholder="National ID" type="text" class="form-group form-control @error('nationalID') is-invalid @enderror" name="nationalID"  value="{{ $employee->nationalID ? $employee->nationalID : old('nationalID')   }}"   autocomplete="nationalID">
+                                @error('nationalID')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+
+                            <div class="col-md-4">
+                                <input id="father_name" placeholder="Fathers Full Name" type="text" class="form-group form-control @error('father_name') is-invalid @enderror" name="father_name"  value="{{ $employee->father_name ? $employee->father_name : old('father_name')   }}"   autocomplete="father_name">
+                                @error('father_name')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+
+                            <div class="col-md-4">
+                                <input id="mother_name" placeholder="Mother Full Name" type="text" class="form-group form-control @error('mother_name') is-invalid @enderror" name="mother_name"  value="{{ $employee->mother_name ? $employee->mother_name : old('mother_name')   }}"   autocomplete="mother_name">
+                                @error('mother_name')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -118,14 +170,6 @@
                                 @enderror
                             </div>
 
-                            <div class="col-md-4">
-                                <input id="nationalID" placeholder="National ID" type="text" class="form-group form-control @error('nationalID') is-invalid @enderror" name="nationalID"  value="{{ $employee->nationalID ? $employee->nationalID : old('nationalID')   }}"   autocomplete="nationalID">
-                                @error('nationalID')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
 
                             <div class="col-md-4">
                                 <input id="present_residence" placeholder="Current Residence" type="text" class="form-group form-control @error('present_residence') is-invalid @enderror" name="present_residence" value="{{ $employee->present_residence ?  $employee->present_residence : old('present_residence')  }}"   autocomplete="present_residence">
@@ -136,8 +180,8 @@
                                 @enderror
                             </div>
                             <div class="col-md-4">
-                                <input id="permanent_residence" placeholder="Permanent Residence" type="text" class="form-group form-control @error('permanent_residence') is-invalid @enderror" name="permanent_residence" value="{{ $employee->permanent_residence ? $employee->permanent_residence :  old('permanent_residence')}}"   autocomplete="permanent_residence">
-                                @error('permanent_residence')
+                                <input id="permanent_address" placeholder="Permanent Residence" type="text" class="form-group form-control @error('permanent_address') is-invalid @enderror" name="permanent_address" value="{{ $employee->permanent_address ? $employee->permanent_residence :  old('permanent_address')}}"   autocomplete="permanent_address">
+                                @error('permanent_address')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -152,9 +196,11 @@
                                 @enderror
                             </div>
 
+
+
                             <div class="col-md-4">
-                                <input id="employeeID" placeholder="Employee ID" type="text" class="form-group form-control @error('employeeID') is-invalid @enderror" name="employeeID" value="{{ $employee->employeeID ?  $employee->employeeID : old('employeeID') }}"  autocomplete="employeeID">
-                                @error('employeeID')
+                                <input id="joining_position" placeholder="Joining Position" type="text" class="form-group form-control @error('joining_position') is-invalid @enderror" name="joining_position" value="{{ $employee->joining_position ? $employee->joining_position : old('joining_position') }}"  autocomplete="joining_position">
+                                @error('joining_position')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -162,8 +208,17 @@
                             </div>
 
                             <div class="col-md-4">
-                                <input id="joining_position" placeholder="Joining Position" type="text" class="form-group form-control @error('joining_position') is-invalid @enderror" name="joining_position" value="{{ $employee->joining_position ? $employee->joining_position : old('joining_position') }}"  autocomplete="joining_position">
-                                @error('joining_position')
+                                <input id="probation_period" placeholder="Probation Position" type="text" class="form-group form-control @error('probation_period') is-invalid @enderror" name="probation_period" value="{{ $employee->probation_period ? $employee->probation_period : old('probation_period') }}"  autocomplete="probation_period">
+                                @error('probation_period')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+
+                            <div class="col-md-4">
+                                <input id="current_address" placeholder="Current Address" type="text" class="form-group form-control @error('current_address') is-invalid @enderror" name="current_address" value="{{ $employee->current_address ? $employee->current_address : old('current_address') }}"  autocomplete="current_address">
+                                @error('current_address')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -207,6 +262,15 @@
                                     <option value="widowed">Widowed</option>
                                 </select>
                             </div>
+
+
+                            <div class="col-md-4">
+                                <label for="employee_type">Employee Type</label>
+                                  <select class="browser-default custom-select" name="employee_type">
+                                        <option value="FIELD">HQ</option>
+                                        <option value="HQ">FIELD</option>
+                                  </select>
+                              </div>
                             <div class="col-md-4">
                               <label for="marital_status">Employee Status</label>
                                 <select class="browser-default custom-select" name="employee_status">
@@ -226,6 +290,25 @@
                                     </span>
                                 @enderror
                             </div>
+                            <div class="col-md-4">
+                                <label for="confirmation_date">Comfirmation Date </label>
+                                  <input id="confirmation_date" type="date" class="form-group form-control @error('confirmation_date') is-invalid @enderror" name="confirmation_date" value="{{ $employee->confirmation_date ? $employee->confirmation_date : old('confirmation_date')  }}"  autocomplete="confirmation_date">
+                                  @error('confirmation_date')
+                                      <span class="invalid-feedback" role="alert">
+                                          <strong>{{ $message }}</strong>
+                                      </span>
+                                  @enderror
+                              </div>
+
+                              <div class="col-md-4">
+                                <label for="d">Department  </label>
+                                  <input id="department" type="text" class="form-group form-control @error('department') is-invalid @enderror" name="department" value="{{ $employee->department ? $employee->department : old('department')  }}"  autocomplete="department">
+                                  @error('department')
+                                      <span class="invalid-feedback" role="alert">
+                                          <strong>{{ $message }}</strong>
+                                      </span>
+                                  @enderror
+                              </div>
 
                         </div>
 
@@ -266,6 +349,7 @@
                                     </span>
                                 @enderror
                             </div>
+
                             <div class="col-md-4">
                                 <input id="spouse_altphoneNumber" placeholder="Spouse alt Phone Number" type="text" class="form-group form-control @error('spouse_altphoneNumber') is-invalid @enderror" name="spouse_altphoneNumber"  value="{{ $employee->spouse_altphoneNumber ? $employee->spouse_altphoneNumber : old('spouse_altphoneNumber') }}"  autocomplete="spouse_altphoneNumber">
                                 @error('spouse_altphoneNumber')
