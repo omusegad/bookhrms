@@ -5,18 +5,18 @@
 						<ul>
 							<li><a href="{{ route('dashboard') }}">
 							<i class="la la-dashboard"></i> <span> Dashboard </span></a></li>
-							
+
 							<li class="submenu">
 								<a href="#">
 								<i class="fa fa-users"></i>
 									 <span> Employees</span> <span class="menu-arrow"></span>
 								</a>
 								<ul style="display: none;">
-									<li><a  href="{{ route('employees.index') }}">All Employees</a></li>
-									<li><a href="{{ route('hq-employees.index') }}">HQ Employees</a></li>
-									<li><a href="{{ route('field-employees.index') }}">Field Employees</a></li>
-									{{-- <li><a href="{{ route('employees.show',[auth()->user()->id]) }}">Profile</a></li> --}}
-								</ul>
+									<li><a href="{{ url('/hq-employees') }}">HQ Employees</a></li>
+									<li><a href="{{ url('/field-employees') }}">Field Employees</a></li>
+                                    <li><a  href="{{ route('employees.index') }}">All Employees</a></li>
+
+                                </ul>
 							</li>
 							<li class="submenu">
 								<a href="#">
@@ -44,7 +44,7 @@
 
 								</ul>
                             </li>
-                            
+
 							<li class="submenu">
 								<a href="#"><i class="fa fa-cog"></i> <span> Settings</span> <span class="menu-arrow"></span></a>
 								<ul style="display: none;">

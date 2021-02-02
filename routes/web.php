@@ -49,8 +49,10 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/organogram', [OrganogramController::class, 'index']);
     Route::resource('roles', RolesController::class);
     Route::resource('/employees',EmployeeController::class);
-    Route::resource('/field-employees',FieldEmployeeController::class);
-    Route::resource('/hq-employees',HqEmployeeController::class);
+    Route::get('/field-employees',[FieldEmployeeController::class, 'index']);
+    Route::get('/hq-employees',[HqEmployeeController::class, 'index']);
+    Route::get('/field-employees',[FieldEmployeeController::class, 'index']);
+    Route::get('/hq-employees',[HqEmployeeController::class, 'index']);
     Route::resource('/employees-profile',ProfileController::class);
     Route::resource('/leaves', LeaveController::class);
     Route::resource('/leave-types', LeaveTypesController::class);
