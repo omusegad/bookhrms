@@ -56,13 +56,16 @@
                                                             <tr>
                                                                 <th>Serial No</th>
                                                                 <th>Beneficiary Name</th>
-                                                                <th>Bank & Branch</th>
+                                                                <th>Bank Name & Branch</th>
+                                                                <th>Bank Code</th>
                                                                 <th>Beneficiary Acount Number</th>
                                                                 <th>Net Pay</th>                                                      
                                                                 <th>Reference</th>
+                                                                
                                                             </tr>
                                                         </thead>
-                                                        <tbody>@php($count =1)
+                                                        <tbody>
+                                                            @php($count =1)
                                                             @foreach ($payroll as $item)
                                                             <tr> 
                                                                 @foreach ($item->user as $user)
@@ -70,14 +73,14 @@
                                                                   <td>{{$user['fname'] }} {{$user['lName'] }}</td>
                                                                 @endforeach
                                                                 @foreach ($item->salary as $salo)
+                                                                
                                                                 <td>{{$salo['bankName'] }} {{$salo['bankBranch'] }}</td>
                                                                 <td>{{$salo['bankCode'] }}</td>
+                                                                <td>{{ $salo['beneficiaryAccountNumber'] }}</td>
                                                                 <td>{{$salo['net_pay'] }} </td>
                                                                 <td>{{$salo['reference'] }} </td>
                                                                 @endforeach
-                                                                <td> {{ date("F",strtotime($item->month)) }}</td>
-                                                                <td> {{$item->year }}</td>
-                                                               
+                                                                
                                                             </tr>
                                                           @endforeach
                                                         </tbody>
@@ -122,9 +125,9 @@
                                                                 <td> {{ date("F",strtotime($item->month)) }}</td>
                                                                 <td> {{$item->year }}</td>
                                                                 <td> 
-                                                                    <a class="pr-3" href="#"><i class="fa 2x fa-eye"></i></a>
-                                                                    <a class="pr-3" href="#"><i class="fa 2x fa-print"></i></a> 
-                                                                    <a href="#"><i class="fa 2x fa-download"></i></a>
+                                                                    {{-- <a class="pr-3" href="#"><i class="fa 2x fa-eye"></i></a>
+                                                                    <a class="pr-3" href="#"><i class="fa 2x fa-print"></i></a>  --}}
+                                                                    <a href="{{ route('payslip.show',$item->user_id) }}"><i class="fa 2x fa-download"></i></a>
                                                                 </td>
                                                             </tr>
                                                           @endforeach

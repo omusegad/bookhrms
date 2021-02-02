@@ -12,7 +12,7 @@
             <div class="page-header">
                 <div class="row align-items-center">
                     <div class="col">
-                        <h3 class="page-title">Employee Salaries & Payroll</h3>
+                        <h3 class="page-title">Employee Filed Payroll</h3>
                         <ul class="breadcrumb">
                             <li class="breadcrumb-item">
                                 <a href="{{ route('dashboard') }}">Dashboard</a>
@@ -46,9 +46,9 @@
                                             <li class="nav-item"><a class="nav-link" href="#top-tab2" data-toggle="tab">Payroll</a></li>
                                             <li class="nav-item"><a class="nav-link" href="#top-tab3" data-toggle="tab">Payslips</a></li>
                                         </ul>
-                                        
+
 										<div class="tab-content">
-                                           
+
 											<div class="tab-pane show active" id="top-tab2">
                                                 <div class="table-responsive">
                                                     <table id="payroll" class="table table-striped custom-table table-bordered" id="salaries">
@@ -58,13 +58,13 @@
                                                                 <th>Beneficiary Name</th>
                                                                 <th>Bank & Branch</th>
                                                                 <th>Beneficiary Acount Number</th>
-                                                                <th>Net Pay</th>                                                      
+                                                                <th>Net Pay</th>
                                                                 <th>Reference</th>
                                                             </tr>
                                                         </thead>
                                                         <tbody>@php($count =1)
                                                             @foreach ($payroll as $item)
-                                                            <tr> 
+                                                            <tr>
                                                                 @foreach ($item->user as $user)
                                                                   <td>{{ $count++ }}</td>
                                                                   <td>{{$user['fname'] }} {{$user['lName'] }}</td>
@@ -75,9 +75,8 @@
                                                                 <td>{{$salo['net_pay'] }} </td>
                                                                 <td>{{$salo['reference'] }} </td>
                                                                 @endforeach
-                                                                <td> {{ date("F",strtotime($item->month)) }}</td>
-                                                                <td> {{$item->year }}</td>
-                                                               
+
+
                                                             </tr>
                                                           @endforeach
                                                         </tbody>
@@ -105,7 +104,7 @@
                                                         </thead>
                                                         <tbody>
                                                             @foreach ($payroll as $item)
-                                                            <tr> 
+                                                            <tr>
                                                                 @foreach ($item->user as $user)
                                                                   <td>{{$user['employeeID'] }}</td>
                                                                   <td>{{$user['fname'] }} {{$user['lName'] }}</td>
@@ -121,10 +120,10 @@
                                                                 @endforeach
                                                                 <td> {{ date("F",strtotime($item->month)) }}</td>
                                                                 <td> {{$item->year }}</td>
-                                                                <td> 
-                                                                    <a class="pr-3" href="#"><i class="fa 2x fa-eye"></i></a>
-                                                                    <a class="pr-3" href="#"><i class="fa 2x fa-print"></i></a> 
-                                                                    <a href="#"><i class="fa 2x fa-download"></i></a>
+                                                                <td>
+                                                                    {{-- <a class="pr-3" href="#"><i class="fa 2x fa-eye"></i></a>
+                                                                    <a class="pr-3" href="#"><i class="fa 2x fa-print"></i></a>  --}}
+                                                                    <a href="{{ route('payslip.show',$item->user_id) }}"><i class="fa 2x fa-download"></i></a>
                                                                 </td>
                                                             </tr>
                                                           @endforeach
@@ -132,21 +131,21 @@
                                                     </table>
                                                 </div>
                                             </div>
-                                           
+
 										</div>
 									</div>
 								</div>
 							</div>
 
-						
+
 						</div>
 					</section>
 					<!-- /Tabs -->
-                
-                    
+
+
                     </div>
 
-                  
+
                 </div>
             </div>
         </div>

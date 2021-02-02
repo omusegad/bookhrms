@@ -11,6 +11,7 @@ use App\Http\Controllers\RolesController;
 use App\Http\Controllers\RegionController;
 use App\Http\Controllers\SalaryController;
 use App\Http\Controllers\PayrollController;
+use App\Http\Controllers\PayslipController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\HolidaysController;
@@ -65,6 +66,9 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('/salary-settings', SalarySettingsController::class);
     Route::resource('/holidays', HolidaysController::class);
     Route::resource('/payroll', PayrollController::class);
+    Route::resource('/payslip', PayslipController::class);
+
+
 
 
 
