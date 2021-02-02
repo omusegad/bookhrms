@@ -22,6 +22,7 @@ class EmployeeController extends Controller
     public function index()
     {
 
+
         $users = User::with('region','dcc','lcc','jobgroup')->get();
        // dd($users);
         return view('employees.index', compact('users'));
@@ -122,8 +123,9 @@ class EmployeeController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit($id){
-        $employee = User::findOrFail($id);
-        return view('employees.edit', compact('employee'));
+        $employee = User::findOrFail($id)->first();
+        $jgroup = Jobgroup::all();
+        return view('employees.edit', compact('employee', 'jgroup'));
     }
 
     /**
@@ -134,47 +136,27 @@ class EmployeeController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id){
+       $user = User::findOrFail($id)->first();
+        dd($user);
 
-        User::findorFail($id);
-        $data = $this->validate($request, [
-            "fname" =>  ['required', 'string', 'max:255'],
-            "lName" =>  ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:6', 'confirmed'],
-            "otherNames" =>  [ 'string', 'max:255'],
-            "phoneNumber" => ['required', 'digits:10'],
-            "altPhoneNumber" => ['required', 'digits:10'],
-            "emergencyPhoneNumber" => ['required', 'digits:10'],
-            "nhifNo" => ['required', 'numeric'],
-            "nssfNo" => ['required', 'numeric'],
-            "nationalID" => ['required', 'numeric'],
-            "present_residence" =>  ['required', 'string', 'max:255'],
-            "permanent_residence" => ['required', 'string', 'max:255'],
-            "home_county" =>  ['required', 'string', 'max:255'],
-            "employeeID" =>  ['required', 'numeric'],
-            "joining_position" =>  ['required', 'string', 'max:255'],
-            "date_of_birth" => ["date"],
-            "jobgroupid" => ['required'],
-            "gender" =>  ['required'],
-            "marital_status" =>  ['required'],
-            "marital_status" =>  ['required', 'string', 'max:255'],
-            "joining_date" =>["date"],
-            "spouse_fname" =>  ['required', 'string', 'max:255'],
-            "spouse_lname" =>  ['required', 'string', 'max:255'],
-            "spouse_otherNames" => ['required', 'string', 'max:255'],
-            "spouse_phoneNumber" => ['required', 'digits:10'],
-            "spouse_altphoneNumber" => ['required', 'digits:10'],
-            "spouse_nationalId" => ['required','numeric'],
-            "next_of_kin_fname" =>  ['required', 'string', 'max:255'],
-            "next_of_kin_lname" =>  ['required', 'string', 'max:255'],
-            "next_of_kin_otherNames"  =>  ['required', 'string', 'max:255'],
-            "next_of_kin_phoneNumber" =>['required', 'digits:10'],
-            "next_of_kin_altPhoneNumber" => ['required', 'digits:10'],
-            "next_of_kin_nationId" => ['required', 'numeric'],
-            'bankName' => ['required'],
-            'bankBranch' => ['required'],
-            'accountNumber' => ['required']
+        User::update([
+            'education'           => $data['education'],
+            'grade'               => $data['grade'],
+            'job_group'           => $data['job_group'],
+            'basic_salary'        => $data['basic_salary'],
+            'hse_allowance'       => $data['hse_allowance'],
+            'transport_allowance' => $data['transport_allowance'],
+            'airtime_allowance'   => $data['airtime_allowance'],
+            'net_salary'          => $salary_data['netPay'],
+            'payee'               => $salary_data['payee'],
+            'incomeTax'           => $salary_data['incomeTax'],
+            'personalRelief'      => $salary_data['personalRelief'],
+            'payAfterTax'         => $salary_data['payAfterTax'],
+            'nhif'                => $salary_data['nhif']
         ]);
+
+
+
         User::update([
             "fname" =>  $data['fname'],
             "lName" =>  $data['lName'],
@@ -215,7 +197,8 @@ class EmployeeController extends Controller
              'bankBranch' => $data['bankBranch'],
              'accountNumber' => $data['accountNumber'],
         ]);
-        return back();
+
+       //return back();
 
     }
 

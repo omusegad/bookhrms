@@ -33,7 +33,7 @@ class SalaryController extends Controller
         $totalNetPay  = Salary::sum('net_pay');
 
         return view('salaries.index', compact('salaries','totalAirtimeAllowance','totalNetPay','totalPayee','totalIncomeTax','totalNhifAllowance','totalTransportAllowance','totalHseAllowance','totalBasicSalary','employees', 'jobgroup'));
-   
+
       }
 
     /**
@@ -57,7 +57,7 @@ class SalaryController extends Controller
         $data = $request->all();
        ///Get active nssf band
        $nssf  = Nssf::where('status', 'active')->pluck('amount')->first();
-      
+
         //Check if salary exists
         $existingSalary = Salary::where('user_id', $data['user_id'])->first();
         if($existingSalary){
@@ -132,7 +132,8 @@ class SalaryController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit($id){
-        $salary   = Salary::findOrFail($id)->first();
+        $salary   = Salary::findOrFail($id)->with('users')->first();
+
         $jobgroup = Jobgroup::all();
         return view('salaries.edit', compact('salary', 'jobgroup'));
     }
@@ -146,44 +147,25 @@ class SalaryController extends Controller
      */
     public function update(Request $request, $id){
 
-        $data = Salary::findOrFail($id)->first();
+     // dd($request->all());
+       Salary::where('id',$id)->update([
+            'basic_salary'                  => $request['basic_salary'],
+            'transport_allowance'           => $request['transport_allowance'],
+            'hse_allowance'                 => $request['hse_allowance'],
+            'airtime_allowance'             => $request['airtime_allowance'],
+            'hospitality_allowance'         => $request['hospitality_allowance'],
+            'gross_pay'                     => $request['gross_pay'],
+            'payee'                         => $request['payee'],
+            'personalRelief'                => $request['personalRelief'],
+            'incomeTax'                     => $request['incomeTax'],
+            'nssf'                          => $request['nssf'],
+            'nhif'                          => $request['nhif'],
+            'net_pay'                       => $request['net_pay'],
+            'bankName'                      => $request['bankName'],
+            'bankBranch'                    => $request['bankBranch'],
+            'bankCode'                      => $request['bankCode'],
+            'beneficiaryAccountNumber'      => $request['beneficiaryAccountNumber'],
 
-        ///Get active nssf band
-        $nssf  = Nssf::where('status', 'active')->pluck('amount')->first();
-
-        if($nssf == null){
-            return back()->with('message_nssf','Kindly activate NSSF Rate');
-        }
-
-        // get total gross salary
-        $grossSalary = $this->getGrossSalary($basicSalary,$hse_allowance,$transport_allowance,$airtime);
-
-        // calculate taxable pay 
-        $taxablePay = ($grossSalary - $nssf);
-
-        //Get NHIF band and charges
-        $nhif = Nhif::select('from_salary','to_salary','monthlyCharges')->get();
-
-        //calculate nhif charges based on salary 
-        $nhif_charges = $this->calculate_nhif_amount($taxablePay,$nhif);
-
-        //get salary details 
-        $salary_data = $this->calculateNetSalaryPay($taxablePay,$nhif_charges);
-
-        Salary::update([
-            'education'           => $data['education'],
-            'grade'               => $data['grade'],
-            'job_group'           => $data['job_group'],
-            'basic_salary'        => $data['basic_salary'],
-            'hse_allowance'       => $data['hse_allowance'],
-            'transport_allowance' => $data['transport_allowance'],
-            'airtime_allowance'   => $data['airtime_allowance'],
-            'net_salary'          => $salary_data['netPay'],
-            'payee'               => $salary_data['payee'],
-            'incomeTax'           => $salary_data['incomeTax'],
-            'personalRelief'      => $salary_data['personalRelief'],
-            'payAfterTax'         => $salary_data['payAfterTax'],
-            'nhif'                => $salary_data['nhif']
         ]);
         return back()->with('message','Salary updated successfully!');
     }
@@ -203,10 +185,10 @@ class SalaryController extends Controller
       return ($basicSalary + $hse_allowance + $transport_allowance + $airtime);
     }
 
-  
+
     ///24,000 or below ten percent taxable
     public function calculateNetSalaryPay($taxablePay,$nhif_charges){
-        //24,000 is taxable at 10%, no personal relief applied 
+        //24,000 is taxable at 10%, no personal relief applied
        $personalReliefAmount = 2400;
 
        //$payee = $incomeTax - $personalReliefAmount;
@@ -222,9 +204,9 @@ class SalaryController extends Controller
                $data['payAfterTax'] =  $payAfterTax;
                $data['nhif'] = $nhif_charges;
                $data['netPay'] = (  $payAfterTax - $nhif_charges );
-               return  $data; 
+               return  $data;
            }
-           
+
        }elseif($taxablePay > 24000 && $taxablePay <= 32333){
            $tenPercent = ( 24000 * 0.1);
            $twentyFivePercent = (8333 * 0.25);
@@ -238,7 +220,7 @@ class SalaryController extends Controller
            $data['payAfterTax'] =  $payAfterTax;
            $data['nhif'] = $nhif_charges;
            $data['netPay'] = (  $payAfterTax - $nhif_charges );
-           return  $data; 
+           return  $data;
 
        }else{
            if($taxablePay > 32333 ){
@@ -247,7 +229,7 @@ class SalaryController extends Controller
             $thirtyPercent = (($taxablePay - 32333) * 0.3);
 
             $totalIncomeTax = ( $tenPercent + $twentyFivePercent + $thirtyPercent);
- 
+
             $payee = ($totalIncomeTax - $personalReliefAmount);
             $payAfterTax = ($taxablePay - $payee);
             $data['payee'] =  $payee;
@@ -256,7 +238,7 @@ class SalaryController extends Controller
             $data['payAfterTax'] =  $payAfterTax;
             $data['nhif'] = $nhif_charges;
             $data['netPay'] = (  $payAfterTax - $nhif_charges);
-            return  $data; 
+            return  $data;
            }
        }
 
