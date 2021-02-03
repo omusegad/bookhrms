@@ -110,8 +110,7 @@ class EmployeeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
-    {
+    public function show($id){
         $employee = User::where('id',$id)->first();
         return view('employees.show', compact('employee'));
     }
@@ -125,7 +124,11 @@ class EmployeeController extends Controller
     public function edit($id){
         $employee = User::where('id',$id)->first();
         $jgroup = Jobgroup::all();
-        return view('employees.edit', compact('employee', 'jgroup'));
+        $regions  = Region::all();
+        $dcc      = Dccregions::all();
+        $lcc      = Lccregions::all();
+
+        return view('employees.edit', compact('lcc','dcc','regions','employee', 'jgroup'));
     }
 
     /**
@@ -136,7 +139,7 @@ class EmployeeController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id){
-        User::where('id',$id)->update([
+       $edited = User::where('id',$id)->update([
             "employeeID" =>  $request['employeeID'],
             "fname" =>  $request['fname'],
             "lName" =>  $request['lName'],
@@ -162,7 +165,10 @@ class EmployeeController extends Controller
             "department" => $request['department'],
             "current_address" => $request['present_residence'],
             "permanent_address" => $request['permanent_address'],
-            "home_county" => $request['home_county'],
+            "aic_regions_id" => $request['aic_regions_id'],
+            "aic_jobgroups_id" => $request['aic_jobgroups_id'],
+            "aic_lccs_id" => $request['aic_lccs_id'],
+            "aic_dccs_id" => $request['aic_dccs_id'],
             "joining_position" => $request['joining_position'],
             "spouse_fname" => $request['spouse_fname'],
             "spouse_lname" => $request['spouse_lname'],
@@ -179,6 +185,7 @@ class EmployeeController extends Controller
             "employee_type" => $request['employee_type'],
             "employee_status" => $request['employee_status']
         ]);
+
         return back()->with('message','Salary updated successfully!');
 
     }

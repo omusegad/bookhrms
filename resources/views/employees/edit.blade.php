@@ -81,7 +81,7 @@
                             </div>
 
                             <div class="col-md-4">
-                                <input id="experience" placeholder="Experience" type="text" class="form-control @error('experience') is-invalid @enderror" name="experience"  value="{{ $employee->experience ? $employee->experience : old('experience')  }}"  autocomplete="experience" autofocus>
+                                <input id="experience" placeholder="Experience" type="text" class="form-group  form-control @error('experience') is-invalid @enderror" name="experience"  value="{{ $employee->experience ? $employee->experience : old('experience')  }}"  autocomplete="experience" autofocus>
                                 @error('experience')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -236,8 +236,35 @@
                             </div>
 
                             <div class="col-md-4">
-                              <label for="jobgroupid">Job Group</label>
-                              <select class="browser-default custom-select" name="jobgroupid">
+                                <label for="aic_regions_id">Aic Region</label>
+                                <select class="browser-default custom-select" name="aic_regions_id">
+                                      @foreach ($regions as $item)
+                                       <option value="{{ $item->id }}">{{ $item->rName  }}</option>
+                                      @endforeach
+                                  </select>
+                            </div>
+
+                            <div class="col-md-4">
+                                <label for="aic_dccs_id">DCC</label>
+                                <select class="browser-default custom-select" name="aic_dccs_id">
+                                      @foreach ($dcc as $item)
+                                       <option value="{{ $item->id }}">{{ $item->dccName  }}</option>
+                                      @endforeach
+                                  </select>
+                            </div>
+
+                            <div class="col-md-4">
+                                <label for="aic_lccs_id">LCC</label>
+                                <select class="browser-default custom-select" name="aic_lccs_id">
+                                      @foreach ($lcc as $item)
+                                       <option value="{{ $item->id }}">{{ $item->lccName  }}</option>
+                                      @endforeach
+                                  </select>
+                            </div>
+
+                            <div class="col-md-4">
+                              <label for="aic_jobgroups_id">Job Group</label>
+                              <select class="browser-default custom-select" name="aic_jobgroups_id">
                                     @foreach ($jgroup as $item)
                                      <option value="{{ $item->id }}">{{ $item->jonGroupName  }}</option>
                                     @endforeach
@@ -302,7 +329,7 @@
 
                               <div class="col-md-4">
                                 <label for="d">Department  </label>
-                                  <input id="department" type="text" class="form-group form-control @error('department') is-invalid @enderror" name="department" value="{{ $employee->department ? $employee->department : old('department')  }}"  autocomplete="department">
+                                  <input id="department" placeholder="Department" type="text" class="form-group form-control @error('department') is-invalid @enderror" name="department" value="{{ $employee->department ? $employee->department : old('department')  }}"  autocomplete="department">
                                   @error('department')
                                       <span class="invalid-feedback" role="alert">
                                           <strong>{{ $message }}</strong>
@@ -396,7 +423,7 @@
                                 @enderror
                             </div>
                             <div class="col-md-4">
-                                <input id="next_of_kin_phoneNumber" placeholder="Next of Kin Phone Number" type="text" class="form-group form-control @error('next_of_kin_phoneNumber') is-invalid @enderror" name="next_of_kin_phoneNumber"  value="{{ $employee->next_of_kin_phoneNumber ? $employee->next_of_kin_phoneNumber : 'next_of_kin_phoneNumber'  }}"  autocomplete="next_of_kin_phoneNumber">
+                                <input id="next_of_kin_phoneNumber" placeholder="Next of Kin Phone Number" type="text" class="form-group form-control @error('next_of_kin_phoneNumber') is-invalid @enderror" name="next_of_kin_phoneNumber"  value="{{ $employee->next_of_kin_phoneNumber ? $employee->next_of_kin_phoneNumber : old('next_of_kin_phoneNumber')  }}"  autocomplete="next_of_kin_phoneNumber">
                                 @error('next_of_kin_phoneNumber')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>

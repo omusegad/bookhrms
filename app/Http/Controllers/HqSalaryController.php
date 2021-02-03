@@ -21,6 +21,9 @@ class HqSalaryController extends Controller
         $payroll = Payroll::where('status','processed')->with(["salary","user" => function($q){
             $q->where('employee_type', "HQ");
         }])->get();
+
+        // dd($payroll);
+
         $jobgroup  = Jobgroup::all();
         $salaries  = Salary::with('users')->get();
         $totalBasicSalary  = Salary::sum('basic_salary');
@@ -33,7 +36,7 @@ class HqSalaryController extends Controller
         $totalNetPay  = Salary::sum('net_pay');
 
         return view('salaries.hq.index', compact('payroll','salaries','totalAirtimeAllowance','totalNetPay','totalPayee','totalIncomeTax','totalNhifAllowance','totalTransportAllowance','totalHseAllowance','totalBasicSalary','employees', 'jobgroup'));
-   
+
     }
 
     /**

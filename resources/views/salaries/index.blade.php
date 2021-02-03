@@ -173,7 +173,9 @@
                                     </td>
                                     <td>{{$item->users['employeeID'] }}</td>
                                     <td>
-                                      <a href="{{route('salaries.edit',$item->id  )}}">{{$item->users['fname'] }} {{$item->users['lName'] }}</a>
+                                      <a href="{{route('salaries.edit',$item->id  )}}">
+                                        {{$item->users['fname'] }} {{$item->users['lName'] }}
+                                      </a>
                                     </td>
                                     <td> {{$item->bankName }}</td>
                                     <td> {{$item->bankBranch }}</td>

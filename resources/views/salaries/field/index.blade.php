@@ -12,7 +12,7 @@
             <div class="page-header">
                 <div class="row align-items-center">
                     <div class="col">
-                        <h3 class="page-title">Employee Filed Payroll</h3>
+                        <h3 class="page-title">Employee Salaries & Payroll</h3>
                         <ul class="breadcrumb">
                             <li class="breadcrumb-item">
                                 <a href="{{ route('dashboard') }}">Dashboard</a>
@@ -48,7 +48,6 @@
                                         </ul>
 
 										<div class="tab-content">
-
 											<div class="tab-pane show active" id="top-tab2">
                                                 <div class="table-responsive">
                                                     <table id="payroll" class="table table-striped custom-table table-bordered" id="salaries">
@@ -71,12 +70,10 @@
                                                                 @endforeach
                                                                 @foreach ($item->salary as $salo)
                                                                 <td>{{$salo['bankName'] }} {{$salo['bankBranch'] }}</td>
-                                                                <td>{{$salo['bankCode'] }}</td>
-                                                                <td>{{$salo['net_pay'] }} </td>
+                                                                <td>{{$salo['bankCode'] ? $salo['bankCode'] : 0 }}</td>
+                                                                <td>{{$salo['net_pay'] ? $salo['net_pay'] : 0 }} </td>
                                                                 <td>{{$salo['reference'] }} </td>
                                                                 @endforeach
-
-
                                                             </tr>
                                                           @endforeach
                                                         </tbody>
@@ -106,7 +103,7 @@
                                                             @foreach ($payroll as $item)
                                                             <tr>
                                                                 @foreach ($item->user as $user)
-                                                                  <td>{{$user['employeeID'] }}</td>
+                                                                  <td>{{$user['employeeID'] }} <span class="red"> {{$user['employee_type'] }}</span></td>
                                                                   <td>{{$user['fname'] }} {{$user['lName'] }}</td>
                                                                 @endforeach
                                                                 @foreach ($item->salary as $salo)

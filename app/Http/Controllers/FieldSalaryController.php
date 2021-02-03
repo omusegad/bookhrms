@@ -17,9 +17,12 @@ class FieldSalaryController extends Controller
      */
     public function index()
     {
-        
+
         $employees = User::all();
-        $payroll = Payroll::where('status','processed')->with('salary','user')->get();
+        $payroll = Payroll::where('status','processed')->with(["salary","user" => function($q){
+            $q->where('employee_type', "FIELD");
+        }])->get();
+
         $jobgroup  = Jobgroup::all();
         $salaries  = Salary::with('users')->get();
         $totalBasicSalary  = Salary::sum('basic_salary');
@@ -32,7 +35,7 @@ class FieldSalaryController extends Controller
         $totalNetPay  = Salary::sum('net_pay');
 
         return view('salaries.field.index', compact('payroll','salaries','totalAirtimeAllowance','totalNetPay','totalPayee','totalIncomeTax','totalNhifAllowance','totalTransportAllowance','totalHseAllowance','totalBasicSalary','employees', 'jobgroup'));
-   
+
     }
 
     /**
