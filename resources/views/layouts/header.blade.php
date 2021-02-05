@@ -17,12 +17,6 @@
                 </span>
             </a>
 
-            <!-- Header Title -->
-            <div class="page-title-box text-white">
-                <h6>By Peak and Dale </h6>
-            </div>
-            <!-- /Header Title -->
-
             <a id="mobile_btn" class="mobile_btn" href="#sidebar"><i class="fa fa-bars"></i></a>
 
             <!-- Header Menu -->

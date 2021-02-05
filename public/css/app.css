@@ -11367,7 +11367,7 @@ a.text-dark:focus {
 
 .tree ul {
 	padding-top: 20px; position: relative;
-	
+
 	transition: all 0.5s;
 	-webkit-transition: all 0.5s;
 	-moz-transition: all 0.5s;
@@ -11378,7 +11378,7 @@ a.text-dark:focus {
 	list-style-type: none;
 	position: relative;
 	padding: 20px 5px 0 5px;
-	
+
 	transition: all 0.5s;
 	-webkit-transition: all 0.5s;
 	-moz-transition: all 0.5s;
@@ -11397,7 +11397,7 @@ a.text-dark:focus {
 	border-left: 1px solid #8dc63f;
 }
 
-/*We need to remove left-right connectors from elements without 
+/*We need to remove left-right connectors from elements without
 any siblings*/
 .tree li:only-child::after, .tree li:only-child::before {
 	display: none;
@@ -11406,7 +11406,7 @@ any siblings*/
 /*Remove space from the top of single children*/
 .tree li:only-child{ padding-top: 0;}
 
-/*Remove left connector from first child and 
+/*Remove left connector from first child and
 right connector from last child*/
 .tree li:first-child::before, .tree li:last-child::after{
 	border: 0 none;
@@ -11441,13 +11441,13 @@ right connector from last child*/
 	font-family: arial, verdana, tahoma;
 	font-size: 0.85em;
 	display: inline-block;
-  
+
   /*
 	border-radius: 5px;
 	-webkit-border-radius: 5px;
 	-moz-border-radius: 5px;
   */
-	
+
 	transition: all 0.5s;
 	-webkit-transition: all 0.5s;
 	-moz-transition: all 0.5s;
@@ -11521,11 +11521,12 @@ div.tree > ul > li > a {
   /* border: 1px solid #aaa; */
 }
 /*Connector styles on hover*/
-.tree li a:hover+ul li::after, 
-.tree li a:hover+ul li::before, 
-.tree li a:hover+ul::before, 
+.tree li a:hover+ul li::after,
+.tree li a:hover+ul li::before,
+.tree li a:hover+ul::before,
 .tree li a:hover+ul ul::before{
 	border-color:  #aaa;
 }
 
 
+/*=====  Powered by peak and dale style  ======*/

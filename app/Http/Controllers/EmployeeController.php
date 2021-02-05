@@ -123,7 +123,7 @@ class EmployeeController extends Controller
      */
     public function edit($id){
         $employee = User::where('id',$id)->first();
-        $jgroup = Jobgroup::all();
+        $jgroup   = Jobgroup::all();
         $regions  = Region::all();
         $dcc      = Dccregions::all();
         $lcc      = Lccregions::all();

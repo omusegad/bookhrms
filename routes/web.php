@@ -64,10 +64,10 @@ Route::middleware(['auth'])->group(function () {
     //Route::resource('/salaries', EmployeeSalaryController::class);
     Route::resource('/salaries', SalaryController::class);
     Route::resource('/field-salaries',FieldSalaryController::class);
-    Route::resource('/hq-salaries',HqSalaryController::class);
+    Route::resource('/hq-salaries',HqSalaryController::class)->only(['index']);
     Route::resource('/salary-settings', SalarySettingsController::class);
     Route::resource('/holidays', HolidaysController::class);
-    Route::resource('/payroll', PayrollController::class);
+    Route::resource('/payroll', PayrollController::class)->only(['index','store']);
     Route::resource('/payslip', PayslipController::class);
 
 

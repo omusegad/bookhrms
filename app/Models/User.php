@@ -51,8 +51,13 @@ class User extends Authenticatable
     public function lcc(){
         return $this->belongsTo(Lccregions::class, 'aic_lccs_id', 'id');
     }
+
     public function jobgroup(){
         return $this->belongsTo(Jobgroup::class, 'aic_jobgroups_id', 'id');
+    }
+
+    public function salary(){
+        return $this->hasOne(User::class, 'id', 'user_id');
     }
 
 

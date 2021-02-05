@@ -15,9 +15,9 @@ class CreatePayrollTable extends Migration
     {
         Schema::create('payroll', function (Blueprint $table) {
             $table->id();
-            $table->unsignedInteger('user_id')->index();
-            $table->unsignedInteger('approvedBy')->index()->nullable();
-            $table->unsignedInteger('salary_id')->index();
+            $table->unsignedInteger('user_id');
+            $table->unsignedInteger('approvedBy');
+            $table->unsignedInteger('salary_id');
             $table->string('month');
             $table->string('year');
             $table->enum('status', array('rejected','processed'))->default('processed');

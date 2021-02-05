@@ -27,8 +27,8 @@
 									<li><a href="{{ route('hq-salaries.index') }}">HQ Payroll</a></li>
 									<li><a href="{{ route('field-salaries.index') }}">Field Payroll</a></li>
 									<li><a href="{{ route('salaries.index') }}">All payroll</a></li>
-					
-									
+
+
 									<li><a href="{{ route('salary-settings.index') }}">Payroll Settings</a></li>
 								</ul>
 							</li>
@@ -70,7 +70,8 @@
 									</li>
 								</ul>
 							</li>
-						</ul>
+                        </ul>
+
 					</div>
                 </div>
             </div>

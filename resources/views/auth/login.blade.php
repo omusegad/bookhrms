@@ -42,6 +42,18 @@
                             </button>
                         </div>
                     </form>
+                    <div class="poweredBy pt-3">
+                        <div class="row">
+                            <div class="col-4 text-left">
+                                &#169; <a  target="_blank" href="http://aicnandi.org/"> aicnandi.org </a> {{ date('Y') }}
+                            </div>
+                            <div class="col-8 text-right">
+                                <a   target="_blank" class="text-muted" href="https://www.peakanddale.com/">
+                                  Powered by : www.peakanddale.com
+                                </a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
