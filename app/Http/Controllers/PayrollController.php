@@ -17,7 +17,6 @@ class PayrollController extends Controller
     public function index(){
 
         $payroll = Payroll::where('status','processed')->with('salary','user')->get();
-       // dd( $payroll );
         return view('payroll.index', compact('payroll'));
     }
 
@@ -33,7 +32,6 @@ class PayrollController extends Controller
         $data = $request->all();
        // return  $data['userID'];
 
-        // return  $data;
         if(!$data){
             return back()->with('message','Please select what you would like proccessed!');
         }
@@ -41,8 +39,10 @@ class PayrollController extends Controller
        // return  $data;
         foreach($data['userID'] as $id ){
             $record     =  Salary::where('user_id', (int)$id)->first();
+
             $checkMonth =  Payroll::where('month', now()->month)
                            ->where('year', now()->year)->get(); //Check month
+            dd($checkMonth);
            // return $checkMonth;
            if($checkMonth->isEmpty()){
                 Payroll::Create([

@@ -46,9 +46,9 @@
                                             <li class="nav-item"><a class="nav-link" href="#top-tab2" data-toggle="tab">Payroll</a></li>
                                             <li class="nav-item"><a class="nav-link" href="#top-tab3" data-toggle="tab">Payslips</a></li>
                                         </ul>
-                                        
+
 										<div class="tab-content">
-                                           
+
 											<div class="tab-pane show active" id="top-tab2">
                                                 <div class="table-responsive">
                                                     <table id="payroll" class="table table-striped custom-table table-bordered" id="salaries">
@@ -59,28 +59,26 @@
                                                                 <th>Bank Name & Branch</th>
                                                                 <th>Bank Code</th>
                                                                 <th>Beneficiary Acount Number</th>
-                                                                <th>Net Pay</th>                                                      
+                                                                <th>Net Pay</th>
                                                                 <th>Reference</th>
-                                                                
+
                                                             </tr>
                                                         </thead>
                                                         <tbody>
                                                             @php($count =1)
-                                                            @foreach ($payroll as $item)
-                                                            <tr> 
-                                                                @foreach ($item->user as $user)
-                                                                  <td>{{ $count++ }}</td>
-                                                                  <td>{{$user['fname'] }} {{$user['lName'] }}</td>
-                                                                @endforeach
-                                                                @foreach ($item->salary as $salo)
-                                                                
-                                                                <td>{{$salo['bankName'] }} {{$salo['bankBranch'] }}</td>
-                                                                <td>{{$salo['bankCode'] }}</td>
-                                                                <td>{{ $salo['beneficiaryAccountNumber'] }}</td>
-                                                                <td>{{$salo['net_pay'] }} </td>
-                                                                <td>{{$salo['reference'] }} </td>
-                                                                @endforeach
-                                                                
+                                                            @foreach ($payroll as $key => $value)
+                                                            <tr>
+                                                                <td>{{ $count++ }}</td>
+                                                                <td>{{$value['fname'] }} {{$value['lName'] }}</td>
+                                                               @foreach ($value->salary as $key => $val)
+                                                                    dd($val)
+                                                               @endforeach
+                                                                <td>{{ $count++ }}</td>
+                                                                <td>{{ $count++ }}</td>
+                                                                <td>{{ $count++ }}</td>
+                                                                <td>{{ $count++ }}</td>
+
+
                                                             </tr>
                                                           @endforeach
                                                         </tbody>
@@ -94,6 +92,7 @@
                                                             <tr>
                                                                 <th>Staff No</th>
                                                                 <th>Employee Name</th>
+                                                                <th>Employee Type</th>
                                                                 <th>Basic Pay</th>
                                                                 <th>Gross Pay</th>
                                                                 <th>N.H.I.F</th>
@@ -108,48 +107,29 @@
                                                         </thead>
                                                         <tbody>
                                                             @foreach ($payroll as $item)
-                                                            <tr> 
-                                                                @foreach ($item->user as $user)
-                                                                  <td>{{$user['employeeID'] }}</td>
-                                                                  <td>{{$user['fname'] }} {{$user['lName'] }}</td>
-                                                                @endforeach
-                                                                @foreach ($item->salary as $salo)
-                                                                    <td>{{number_format($salo['basic_salary']) }} </td>
-                                                                    <td>{{number_format($salo['gross_pay']) }} </td>
-                                                                    <td>{{number_format($salo['nhif']) }} </td>
-                                                                    <td>{{number_format($salo['nssf']) }} </td>
-                                                                    <td>{{number_format($salo['payee']) }} </td>
-                                                                    <td>{{number_format($salo['nhif'] + $salo['nssf'] + $salo['payee']) }} </td>
-                                                                    <td>{{number_format($salo['net_pay']) }} </td>
-                                                                @endforeach
-                                                                <td> {{ date("F",strtotime($item->month)) }}</td>
-                                                                <td> {{$item->year }}</td>
-                                                                <td> 
-                                                                    {{-- <a class="pr-3" href="#"><i class="fa 2x fa-eye"></i></a>
-                                                                    <a class="pr-3" href="#"><i class="fa 2x fa-print"></i></a>  --}}
-                                                                    <a href="{{ route('payslip.show',$item->user_id) }}"><i class="fa 2x fa-download"></i></a>
-                                                                </td>
+                                                            <tr>
+
                                                             </tr>
                                                           @endforeach
                                                         </tbody>
                                                     </table>
                                                 </div>
                                             </div>
-                                           
+
 										</div>
 									</div>
 								</div>
 							</div>
 
-						
+
 						</div>
 					</section>
 					<!-- /Tabs -->
-                
-                    
+
+
                     </div>
 
-                  
+
                 </div>
             </div>
         </div>

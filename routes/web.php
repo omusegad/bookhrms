@@ -63,7 +63,7 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('/job-groups', JobgroupController::class);
     //Route::resource('/salaries', EmployeeSalaryController::class);
     Route::resource('/salaries', SalaryController::class);
-    Route::resource('/field-salaries',FieldSalaryController::class);
+    Route::resource('/field-salaries',FieldSalaryController::class)->only(['index']);
     Route::resource('/hq-salaries',HqSalaryController::class)->only(['index']);
     Route::resource('/salary-settings', SalarySettingsController::class);
     Route::resource('/holidays', HolidaysController::class);

@@ -40,17 +40,18 @@
             $(".alert").slideUp(1000);
         });
 
+       // select all checkbox
+       $("#selectAll").click(function(){
+          $("input[type=userID").prop('checked', $(this).prop('checked'));
+        });
+
+
+
         $("#employeesTable, #jobgroup, #leaves, #salaries, #regions, #lcc, #dcc").DataTable( {
         dom: 'Bfrtip',
         buttons: [
-           'csv', 'excel', 'pdf', 'print']
+           'excel', 'pdf']
          } );
-
-
-         $('#payroll').on('click', function(){
-            var colnum = $(this).attr('data-col');
-            $('input[data-col='+colnum+']').prop('checked', this.checked);
-        })
 
 
 
