@@ -66,19 +66,37 @@
                                                         </thead>
                                                         <tbody>
                                                             @php($count =1)
-                                                            @foreach ($payroll as $key => $value)
+                                                            @foreach ($userpayroll as $item)
                                                             <tr>
-                                                                <td>{{ $count++ }}</td>
-                                                                <td>{{$value['fname'] }} {{$value['lName'] }}</td>
-                                                               @foreach ($value->salary as $key => $val)
-                                                                    dd($val)
-                                                               @endforeach
-                                                                <td>{{ $count++ }}</td>
-                                                                <td>{{ $count++ }}</td>
-                                                                <td>{{ $count++ }}</td>
-                                                                <td>{{ $count++ }}</td>
+                                                                    @if (!empty($item->payroll))
+                                                                    <td>{{$count++ }}</td>
+                                                                    <td>
+                                                                        <a href="{{ route('employees.edit',$item->id)}}">
+                                                                            {{$item->fname }} {{$item->lName }}
+                                                                        </a>
+                                                                    </td>
 
 
+                                                                  <td>
+                                                                        {{ !empty($item->payroll) ? $item->payroll->bankName:'' }},
+                                                                        {{ !empty($item->payroll) ? $item->payroll->bankBranch:'' }}
+                                                                 </td>
+                                                                 <td>
+                                                                    {{ !empty($item->payroll) ? $item->payroll->bankCode:'' }}
+                                                                </td>
+
+
+                                                                <td>
+                                                                    {{ !empty($item->payroll) ? $item->payroll->beneficiaryAccountNumber:'' }}
+                                                             </td>
+                                                             <td>
+                                                                {{ !empty($item->payroll) ? number_format($item->payroll->net_pay):'' }}
+                                                            </td>
+                                                            <td>
+                                                                {{ !empty($item->payroll) ? $item->payroll->reference:'' }}
+                                                            </td>
+
+                                                          @endif
                                                             </tr>
                                                           @endforeach
                                                         </tbody>
@@ -92,7 +110,6 @@
                                                             <tr>
                                                                 <th>Staff No</th>
                                                                 <th>Employee Name</th>
-                                                                <th>Employee Type</th>
                                                                 <th>Basic Pay</th>
                                                                 <th>Gross Pay</th>
                                                                 <th>N.H.I.F</th>
@@ -106,11 +123,59 @@
                                                             </tr>
                                                         </thead>
                                                         <tbody>
-                                                            @foreach ($payroll as $item)
-                                                            <tr>
 
+                                                            @php($count =1)
+                                                            @foreach ($userpayroll as $item)
+                                                            <tr>
+                                                                    @if (!empty($item->payroll))
+                                                                    <td> {{$item->employeeID }}</td>
+                                                                    <td>
+                                                                        <a href="{{ route('employees.edit',$item->id)}}">
+                                                                            {{$item->fname }} {{$item->lName }}
+                                                                        </a>
+                                                                    </td>
+
+
+                                                                  <td>
+                                                                        {{ !empty($item->payroll) ? $item->payroll->basic_salary:'' }}
+                                                                 </td>
+                                                                 <td>
+                                                                    {{ !empty($item->payroll) ? $item->payroll->gross_pay:'' }}
+                                                                </td>
+                                                                    <td>
+                                                                        {{ !empty($item->payroll) ? $item->payroll->nhif:'' }}
+                                                                    </td>
+
+
+                                                                <td>
+                                                                    {{ !empty($item->payroll) ? $item->payroll->nssf:'' }}
+                                                             </td>
+                                                             <td>
+                                                                {{ !empty($item->payroll) ? number_format($item->payroll->payee):'' }}
+                                                            </td>
+
+                                                           <td> {{number_format($item->payroll->nhif + $item->payroll->nssf + $item->payroll->payee) }} </td>
+                                                            <td>
+                                                                {{ !empty($item->payroll) ? number_format($item->payroll->net_pay):'' }}
+                                                            </td>
+                                                            <td>
+                                                                {{ date("F",strtotime($item->month)) }}
+                                                            </td>
+                                                            <td>
+                                                                {{ $item->payroll->year}}
+                                                            </td>
+                                                            <td>
+
+                                                            <a href="{{ route('payslip.show',$item->payroll->user_id) }}">
+                                                                <i class="fa 2x fa-download"></i>
+                                                            </a>
+
+                                                            </td>
+
+                                                          @endif
                                                             </tr>
                                                           @endforeach
+
                                                         </tbody>
                                                     </table>
                                                 </div>

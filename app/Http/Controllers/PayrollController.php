@@ -42,13 +42,23 @@ class PayrollController extends Controller
 
             $checkMonth =  Payroll::where('month', now()->month)
                            ->where('year', now()->year)->get(); //Check month
-            dd($checkMonth);
+            // dd($checkMonth);
            // return $checkMonth;
            if($checkMonth->isEmpty()){
                 Payroll::Create([
                     'user_id'    => $id,
                     'approvedBy' =>  Auth::user()->id,
-                    'salary_id'  =>  $record['id'],
+                    'basic_salary'  =>  $record['basic_salary'],
+                    'gross_pay'  =>  $record['gross_pay'],
+                    'nssf'  =>  $record['nssf'],
+                    'nhif'  =>  $record['nhif'],
+                    'payee'  =>  $record['payee'],
+                    'net_pay'  =>  $record['net_pay'],
+                    'bankName'  =>  $record['bankName'],
+                    'bankBranch'  =>  $record['bankBranch'],
+                    'bankCode'  =>  $record['bankCode'],
+                    'beneficiaryAccountNumber'  =>  $record['beneficiaryAccountNumber'],
+                    'reference'  => "Salary",
                     'month'      => now()->month,
                     'year'       => now()->year,
                 ]);
@@ -56,7 +66,17 @@ class PayrollController extends Controller
                 Payroll::updateOrCreate([
                     'user_id'    => $id,
                     'approvedBy' =>  Auth::user()->id,
-                    'salary_id'  =>  $record['id'],
+                    'basic_salary'  =>  $record['basic_salary'],
+                    'gross_pay'  =>  $record['gross_pay'],
+                    'nssf'  =>  $record['nssf'],
+                    'nhif'  =>  $record['nhif'],
+                    'payee'  =>  $record['payee'],
+                    'net_pay'  =>  $record['net_pay'],
+                    'bankName'  =>  $record['bankName'],
+                    'bankBranch'  =>  $record['bankBranch'],
+                    'bankCode'  =>  $record['bankCode'],
+                    'beneficiaryAccountNumber'  =>  $record['beneficiaryAccountNumber'],
+                    'reference'  => "Salary",
                     'month'      => now()->month,
                     'year'       => now()->year,
                 ]);
@@ -64,7 +84,7 @@ class PayrollController extends Controller
 
         }
 
-       return redirect()->route('payroll.index');
+       return redirect()->route('hq-salaries.index');
 
     }
 
