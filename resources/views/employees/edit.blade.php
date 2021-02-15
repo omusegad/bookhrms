@@ -247,23 +247,17 @@
                             </div>
 
                             <div class="col-md-4">
-                                <input id="current_address" placeholder="Current Address" type="text" class="form-group form-control @error('current_address') is-invalid @enderror" name="current_address" value="{{ $employee->current_address ? $employee->current_address : old('current_address') }}"  autocomplete="current_address">
+                                <label for="">Physical Address</label>
+                                <input id="current_address" placeholder="Physical Address" type="text" class="form-group form-control @error('current_address') is-invalid @enderror" name="current_address" value="{{ $employee->current_address ? $employee->current_address : old('current_address') }}"  autocomplete="current_address">
                                 @error('current_address')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
                             </div>
-                        </div>
-
-
-                        <hr>
-                        <h4> Pastors Sections </h4>
-                        <span class="text-muted"> This Section is optional for non-pastors </span>
-                        <div class="row">
-
+                            @if($employee->gender == "Male")
                             <div class="col-lg-6">
-                                <label for="gender">Male Pastors Grade</label>
+                                <label for="gender">{{ $employee->fname }} 's Grade</label>
                                 <select class="browser-default custom-select" name="male_pastors_grade">
                                     @if($employee->male_pastors_grade)
                                         <option value="{{ $employee->male_pastors_grade }}">
@@ -279,8 +273,9 @@
                                 @endif
                                 </select>
                             </div>
+                        @else
                             <div class="col-lg-6">
-                                <label for="gender">Female Pastors Grade</label>
+                                <label for="gender"> {{ $employee->fname }}'s Grade</label>
                                 <select class="browser-default custom-select" name="female_pastors_grade">
                                    @if($employee->female_pastors_grade === "oneToFive")
                                     <option value="oneToFive">1 -5 years experience</option>
@@ -300,7 +295,9 @@
 
                                 </select>
                             </div>
+                        @endif
                         </div>
+
                         <br>
                         <h4> Regions Section</h4>
                         <hr>
