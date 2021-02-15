@@ -6,13 +6,10 @@
         <div class="col-md-6">
             <div class="card">
                 <div class="card-header">{{ __('Login') }}</div>
-
                 <div class="card-body">
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
-
                         <div class="form-group row">
-
                             <div class="col-md-12">
                                 <input id="email" placeholder="E-mail" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
 

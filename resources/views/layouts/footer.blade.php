@@ -40,18 +40,17 @@
             $(".alert").slideUp(1000);
         });
 
-       // select all checkbox
-       $("#selectAll").click(function(){
-          $("input[type=userID").prop('checked', $(this).prop('checked'));
-        });
-
-
-
         $("#employeesTable, #jobgroup, #leaves, #salaries, #regions, #lcc, #dcc").DataTable( {
         dom: 'Bfrtip',
         buttons: [
-           'excel', 'pdf']
+           'csv', 'excel', 'pdf', 'print']
          } );
+
+
+         $('#payroll').on('click', function(){
+            var colnum = $(this).attr('data-col');
+            $('input[data-col='+colnum+']').prop('checked', this.checked);
+        })
 
 
 
@@ -60,8 +59,7 @@
 
     </script>
 
-   @livewireScripts
+   {{-- @livewireScripts --}}
  </body>
 </html>
-
 

@@ -21,7 +21,6 @@ class FieldSalaryController extends Controller
         $employees = User::all();
         $userpayroll   = User::where('employee_type','FIELD')->with("payroll")->get();
 
-
         $jobgroup  = Jobgroup::all();
         $salaries  = Salary::with('users')->get();
         $totalBasicSalary  = Salary::sum('basic_salary');

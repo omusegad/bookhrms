@@ -33,45 +33,49 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="table-responsive">
-                            <table class="table table-striped custom-table table-condensed table-bordered" id="employeesTable">
-                                <thead>
+                            <div class="table-responsive">
+                                <table class="table table-striped custom-table table-condensed table-bordered" id="employeesTable">
+                                    <thead>
+                                        <tr>
+                                            <th>S/N</th>
+                                            <th>Name</th>
+                                            <th>Employee ID</th>
+                                            <th>Position</th>
+                                            <th>Job Group</th>
+                                            <th>Region</th>
+                                            <th>DCC</th>
+                                            <th>LCC</th>
+                                            <th>Status</th>
+                                            <th class="text-right no-sort">Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                 @php ($count = 1)
+                                  @foreach($users as $user)
                                     <tr>
-                                        <th>Employee ID</th>
-                                        <th>Name</th>
-                                        <th>Email</th>
-                                        <th>Region</th>
-                                        <th>DCC</th>
-                                        <th>LCC</th>
-                                        <th>Employee Type</th>
-                                        <th>Status</th>
-                                        <th class="text-right no-sort">Action</th>
+                                        <td>{{$count++ }}</td>
+                                        <td>
+                                          <a href="{{ route('employees.edit',$user->id)}}">
+                                            {{$user->fname }} {{$user->lName }}
+                                          </a>
+                                        </td>
+                                        <td>{{$user->employeeID }}</td>
+                                        <td>{{$user->joining_position }}</td>
+                                        <td>{{$user->jobgroup['jonGroupName'] }}</td>
+                                        <td>{{$user->region['rName'] }}</td>
+                                        <td>{{$user->dcc['dccName'] }}</td>
+                                        <td>{{$user->lcc['lccName'] }}</td>
+                                        <td>{{$user->employee_status }} </td>
+                                        <td class="text-right">
+                                            <a class="" href="{{ route('employees.edit',$user->id)}}">
+                                                <i class="fa fa-pencil m-r-5"></i> </a>
+
+                                        </td>
                                     </tr>
-                                </thead>
-                                <tbody>
-                             @php ($count = 1)
-                              @foreach($users as $user)
-                                <tr>
-                                    <td>{{$user->employeeID }}</td>
-                                    <td>
-                                      <a href="{{ route('employees.edit',$user->id)}}">{{$user->fname }} {{$user->lName }}</a>
-                                    </td>
-                                    <td>{{$user->email }}</td>
-                                    <td>{{$user->region['rName'] }}</td>
-                                    <td>{{$user->dcc['dccName'] }}</td>
-                                    <td>{{$user->lcc['lccName'] }}</td>
-                                    <td>{{$user->employee_type }} </td>
-                                    <td>{{$user->employee_status }} </td>
-                                    <td class="text-right">
-                                        <a class="" href="{{ route('employees.edit',$user->id)}}">
-                                            <i class="fa fa-pencil m-r-5"></i> </a>
-
-                                    </td>
-                                </tr>
-
-                                @endforeach
-
-                                </tbody>
-                            </table>
+                                    @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
                 </div>

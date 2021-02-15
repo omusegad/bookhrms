@@ -26,19 +26,17 @@
                 </div>
                 <!-- /Page Header -->
 
-                <!-- Search Filter -->
-
-                <!-- /Search Filter -->
-
                 <div class="row">
                     <div class="col-md-12">
                         <div class="table-responsive">
                             <table class="table table-striped custom-table table-condensed table-bordered" id="employeesTable">
                                 <thead>
                                     <tr>
-                                        <th>Employee ID</th>
+                                        <th>S/N</th>
                                         <th>Name</th>
-                                        <th>Email</th>
+                                        <th>Employee ID</th>
+                                        <th>Position</th>
+                                        <th>Job Group</th>
                                         <th>Region</th>
                                         <th>DCC</th>
                                         <th>LCC</th>
@@ -50,11 +48,15 @@
                              @php ($count = 1)
                               @foreach($users as $user)
                                 <tr>
-                                    <td>{{$user->employeeID }}</td>
+                                    <td>{{$count++ }}</td>
                                     <td>
-                                      <a href="{{ route('employees.edit',$user->id)}}">{{$user->fname }} {{$user->lName }}</a>
+                                      <a href="{{ route('employees.edit',$user->id)}}">
+                                        {{$user->fname }} {{$user->lName }}
+                                      </a>
                                     </td>
-                                    <td>{{$user->email }}</td>
+                                    <td>{{$user->employeeID }}</td>
+                                    <td>{{$user->joining_position }}</td>
+                                    <td>{{$user->jobgroup['jonGroupName'] }}</td>
                                     <td>{{$user->region['rName'] }}</td>
                                     <td>{{$user->dcc['dccName'] }}</td>
                                     <td>{{$user->lcc['lccName'] }}</td>
@@ -65,14 +67,14 @@
 
                                     </td>
                                 </tr>
-
                                 @endforeach
-
                                 </tbody>
                             </table>
                         </div>
                     </div>
                 </div>
+
+
             </div>
             <!-- /Page Content -->
 

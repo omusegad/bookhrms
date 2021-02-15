@@ -38,7 +38,6 @@ class CreateUsersTable extends Migration
             $table->string('phoneNumber')->nullable();
             $table->string('emergencyPhoneNumber')->nullable();
             $table->string('altPhoneNumber')->nullable();
-            $table->text('experience')->nullable();
             $table->text('avatar')->nullable();
             $table->text('nhifNo')->nullable();
             $table->text('nssfNo')->nullable();
@@ -76,5 +75,7 @@ class CreateUsersTable extends Migration
     public function down()
     {
         Schema::dropIfExists('users');
+        $table->text('experience')->nullable();
+
     }
 }

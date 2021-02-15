@@ -9,7 +9,7 @@
 							<li class="submenu">
 								<a href="#">
 								<i class="fa fa-users"></i>
-									 <span> Employees</span> <span class="menu-arrow"></span>
+									 <span> Employees Profiles</span> <span class="menu-arrow"></span>
 								</a>
 								<ul style="display: none;">
 									<li><a href="{{ url('/hq-employees') }}">HQ Employees</a></li>

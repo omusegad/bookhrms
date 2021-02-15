@@ -2,28 +2,26 @@
 
 namespace App\Http\Controllers;
 
-use Rap2hpoutre\FastExcel\FastExcel;
 use App\Models\User;
 use App\Models\Region;
 use App\Models\Jobgroup;
 use App\Models\Dccregions;
 use App\Models\Lccregions;
+use App\Traits\UploadTrait;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Rap2hpoutre\FastExcel\FastExcel;
 
 class EmployeeController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
+    use UploadTrait;
 
+    public function index(){
 
         $users = User::with('region','dcc','lcc','jobgroup')->get();
+
        // dd($users);
         return view('employees.index', compact('users'));
     }
@@ -139,6 +137,20 @@ class EmployeeController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id){
+        //   dd($request->all());
+        //   $request->validate([
+        //     'profile_image'     =>  'image|mimes:jpeg,png,jpg,gif|max:2048'
+        //   ]);
+
+        // get and save image
+        if ($request->has('profile_image')) {
+            $image = $request->file('profile_image');
+            $name = Str::slug($request->input('fname')).'_'.time();
+            $folder = '/uploads/images/';
+            $filePath = $folder . $name. '.' . $image->getClientOriginalExtension();
+            $this->uploadOne($image, $folder, 'public', $name);
+        }
+
        $edited = User::where('id',$id)->update([
             "employeeID" =>  $request['employeeID'],
             "fname" =>  $request['fname'],
@@ -183,8 +195,15 @@ class EmployeeController extends Controller
             "next_of_kin_altPhoneNumber" => $request['next_of_kin_altPhoneNumber'],
             "next_of_kin_nationId" => $request['next_of_kin_nationId'],
             "employee_type" => $request['employee_type'],
-            "employee_status" => $request['employee_status']
-        ]);
+            "employee_status" => $request['employee_status'],
+            "pinNo" => $request['pinNo'],
+            "postalAddress" => $request['postalAddress'],
+            "otherEmailAddress" => $request['otherEmailAddress'],
+            "next_of_kin_relationship" => $request['next_of_kin_relationship'],
+            "exit_date" => $request['exit_date'],
+            "male_pastors_grade" => $request['male_pastors_grade'],
+            "female_pastors_grade" => $request['female_pastors_grade']
+         ]);
 
         return back()->with('message','Salary updated successfully!');
 

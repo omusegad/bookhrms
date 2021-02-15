@@ -4,7 +4,7 @@
             <!-- Logo -->
             <div class="header-left">
                 <a href="{{ route('dashboard') }}" class="logo">
-                    <img src="{{ asset('public/img/nandi-logo.jpg') }}">
+                    <img src="{{ asset('img/nandi-logo.jpg') }}">
                 </a>
             </div>
             <!-- /Logo -->
