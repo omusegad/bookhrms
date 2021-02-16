@@ -25,9 +25,7 @@
 <body>
     <div class="container" style="margin-top: 60px">
         <div class="title text-center">
-              <div class="payslilogo">
-                         <img class="preview-img rounded-circle" src="{{ asset('storage/uploads/img/aic_logo.png') }}" />
-                </div>
+               <h2>AIC NANDI AREA</h2>
                <div class="border-line"></div>
                <h5>Payslip for month of January, 2021</h5>
         </div>
@@ -36,10 +34,7 @@
                 <tbody>
                     <tr>
                         <th>Name</th>
-                        <td style="text-align: right">
-                            {{ $payslip->fname ? $payslip->fname : 'John' }}
-                            {{ $payslip->lName ? $payslip->lName : 'Doe' }}
-                        </td>
+                        <td style="text-align: right">{{ $payslip->fname ? $payslip->fname : 'John' }} {{ $payslip->lName ? $payslip->lName : 'Doe' }}</td>
                     </tr>
                     <tr>
                         <th>Department</th>
@@ -120,7 +115,7 @@
                     </tr>
                 </tfoot>
             </table>
-
+            
         </div>
     </div>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

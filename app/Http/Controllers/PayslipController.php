@@ -30,6 +30,8 @@ class PayslipController extends Controller
     public function show($id)
     {
         $payslip = Payroll::where('status','processed')->where('user_id',$id)->with('salary','user')->first();
+        dd( $payslip);
+
         $pdf = PDF::loadView('payslip.index', ['payslip' => $payslip]);
         return $pdf->download('payslip.pdf');
     }

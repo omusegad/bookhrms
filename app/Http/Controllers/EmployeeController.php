@@ -137,10 +137,6 @@ class EmployeeController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id){
-        //   dd($request->all());
-        //   $request->validate([
-        //     'profile_image'     =>  'image|mimes:jpeg,png,jpg,gif|max:2048'
-        //   ]);
 
         // get and save image
         if ($request->has('profile_image')) {

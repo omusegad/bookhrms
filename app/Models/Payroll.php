@@ -18,4 +18,9 @@ class Payroll extends Model
         return $this->belongsTo(User::class, 'id', 'user_id');
     }
 
+
+    public function jobgroup(){
+        return $this->belongsTo(Jobgroup::class, 'id', 'aic_jobgroups_id');
+    }
+
 }

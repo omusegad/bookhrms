@@ -16,7 +16,7 @@
 								<h3 class="page-title">Profile</h3>
 								<ul class="breadcrumb">
 									<li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
-									<li class="breadcrumb-item active">Profile</li>
+									<li class="breadcrumb-item active">{{ $employee->fname }} {{ $employee->lName }}</li>
 								</ul>
 							</div>
 						</div>
@@ -30,7 +30,11 @@
 									<div class="profile-view">
 										<div class="profile-img-wrap">
 											<div class="profile-img">
-												<a href="#"><img alt="" src="assets/img/profiles/avatar-02.jpg"></a>
+                                                @if($employee->avatar)
+                                                <img  src="{{ asset('storage'.$employee->avatar) }}"  />
+                                               @else
+                                                <img  src="{{ asset('storage/uploads/images/account.png') }}"/>
+                                               @endif
 											</div>
 										</div>
 										<div class="profile-basic">
@@ -38,7 +42,6 @@
 												<div class="col-md-5">
 													<div class="profile-info-left">
 														<h3 class="user-name m-t-0 mb-0">{{$employee->fname}} {{$employee->lName}}</h3>
-														<h6 class="text-muted">Department : {{$employee->department}}</h6>
 														<small class="text-muted">{{$employee->joining_position}}</small>
 														<div class="staff-id">Employee ID : {{$employee->employeeID}}</div>
 														<div class="small doj text-muted">Join Date: {{$employee->joining_date}}</div>
@@ -67,28 +70,10 @@
 															<div class="title">Gender:</div>
 															<div class="text">{{$employee->gender}}</div>
 														</li>
-														{{-- <li>
-															<div class="title">Reports to:</div>
-															<div class="text">
-															   <div class="avatar-box">
-																  <div class="avatar avatar-xs">
-																	 <img src="assets/img/profiles/avatar-16.jpg" alt="">
-																  </div>
-															   </div>
-															   <a href="profile.html">
-																	Jeffery Lalor
-																</a>
-															</div>
-														</li> --}}
 													</ul>
 												</div>
 											</div>
 										</div>
-										<div class="pro-edit">
-                                            <a href="{{ route('employees.show',$employee->id)}}" class="edit-icon">
-                                                <i class="fa fa-pencil"></i></a>
-                                            </div>
-									</div>
 								</div>
 							</div>
 						</div>
@@ -99,7 +84,6 @@
 							<div class="col-lg-12 col-md-12 col-sm-12 line-tabs">
 								<ul class="nav nav-tabs nav-tabs-bottom">
 									<li class="nav-item"><a href="#emp_profile" data-toggle="tab" class="nav-link active">Profile</a></li>
-									<!-- <li class="nav-item"><a href="#emp_projects" data-toggle="tab" class="nav-link">Projects</a></li> -->
 									<li class="nav-item"><a href="#bank_statutory" data-toggle="tab" class="nav-link">Edit Profile <small class="text-danger"></small></a></li>
 								</ul>
 							</div>
@@ -115,7 +99,6 @@
 									<div class="card profile-box flex-fill">
 										<div class="card-body">
 											<h3 class="card-title">Personal Informations
-                                                <a href="{{ route('employees.edit',$employee->id)}}" class="edit-icon"><i class="fa fa-pencil"></i></a>
                                             </h3>
 											<ul class="personal-info">
 												<li>
@@ -159,7 +142,6 @@
 									<div class="card profile-box flex-fill">
 										<div class="card-body">
 											<h3 class="card-title">Other Details
-                                                <a href="{{ route('employees.edit',$employee->id)}}" class="edit-icon"><i class="fa fa-pencil"></i></a>
                                             </h3>
 											<ul class="personal-info">
 												<li>
@@ -255,7 +237,8 @@
 							<div class="col-md-6 d-flex">
 									<div class="card profile-box flex-fill">
 										<div class="card-body">
-											<h3 class="card-title">Bank Details <a href="#" class="edit-icon" data-toggle="modal" data-target="#experience_info"><i class="fa fa-pencil"></i></a></h3>
+											<h3 class="card-title">Bank Details
+                                                </h3>
 											<div class="experience-box">
 												<ul class="experience-list">
 													<li>
@@ -299,7 +282,8 @@
 								<div class="col-md-6 d-flex">
 									<div class="card profile-box flex-fill">
 										<div class="card-body">
-											<h3 class="card-title">Department <a href="#" class="edit-icon" data-toggle="modal" data-target="#experience_info"><i class="fa fa-pencil"></i></a></h3>
+											<h3 class="card-title">Department
+                                            </h3>
 											<div class="experience-box">
 												<ul class="experience-list">
 													<li>
@@ -358,7 +342,7 @@
                     </div>
                     @endif
                     <!-- Only fields withe errors are to be validated -->
-                    <form method="POST" action="{{ route('employees.edit', $employee->id) }}">
+                    <form method="POST" action="{{ route('employees.update',  Auth::user()->id) }}">
                         @csrf
                         <div class="row">
                             <div class="col-md-4">

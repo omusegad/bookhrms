@@ -29,7 +29,7 @@
                         <span>  {{ Auth::user()->fname}}  </span>
                     </a>
                     <div class="dropdown-menu">
-                        <a class="dropdown-item" href="{{ route('employees-profile.index') }}">My Profile</a>
+                        <a class="dropdown-item" href="{{ route('employees.show',  Auth::user()->id) }}">My Profile</a>
                         <a class="dropdown-item" href="{{ route('logout') }}"
                         onclick="event.preventDefault();
                                         document.getElementById('logout-form').submit();">

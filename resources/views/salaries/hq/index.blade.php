@@ -110,12 +110,16 @@
                                                             <tr>
                                                                 <th>Staff No</th>
                                                                 <th>Employee Name</th>
+                                                                <th>Position</th>
+                                                                <th>Job Group</th>
                                                                 <th>Basic Pay</th>
                                                                 <th>Gross Pay</th>
                                                                 <th>N.H.I.F</th>
                                                                 <th>N.S.S.F</th>
-                                                                <th>Payee(Tax)</th>
-                                                                <th>Total Statutory</th>
+                                                                <th>Taxable Income</th>
+                                                                <th>Payee</th>
+                                                                <th>Monthly Relief</th>
+                                                                <th>Other Deductions</th>
                                                                 <th>Net Pay</th>
                                                                 <th>Month</th>
                                                                 <th>Year</th>
@@ -134,29 +138,34 @@
                                                                             {{$item->fname }} {{$item->lName }}
                                                                         </a>
                                                                     </td>
-
-
+                                                                    <td> {{$item->joining_position }}</td>
+                                                                    <td>
+                                                                        {{  $item->jobgroup->jonGroupName}}
+                                                                 </td>
                                                                   <td>
-                                                                        {{ !empty($item->payroll) ? $item->payroll->basic_salary:'' }}
+                                                                        {{ !empty($item->payroll) ? $item->payroll->basic_salary: "" }}
                                                                  </td>
                                                                  <td>
-                                                                    {{ !empty($item->payroll) ? $item->payroll->gross_pay:'' }}
+                                                                    {{ !empty($item->payroll) ? $item->payroll->gross_pay: ""}}
                                                                 </td>
                                                                     <td>
-                                                                        {{ !empty($item->payroll) ? $item->payroll->nhif:'' }}
+                                                                        {{ !empty($item->payroll) ? $item->payroll->nhif :""}}
                                                                     </td>
 
-
                                                                 <td>
-                                                                    {{ !empty($item->payroll) ? $item->payroll->nssf:'' }}
+                                                                    {{ !empty($item->payroll) ? $item->payroll->nssf: ""}}
                                                              </td>
                                                              <td>
-                                                                {{ !empty($item->payroll) ? number_format($item->payroll->payee):'' }}
+                                                                {{ !empty($item->payroll) ? number_format($item->payroll->incomeTax): ""}}
+                                                            </td>
+                                                            <td>
+                                                                {{ !empty($item->payroll) ? number_format($item->payroll->payee): ""}}
                                                             </td>
 
-                                                           <td> {{number_format($item->payroll->nhif + $item->payroll->nssf + $item->payroll->payee) }} </td>
+                                                           <td>   {{ !empty($item->payroll) ? number_format($item->payroll->personalRelief): ""}} </td>
+                                                           <td>   {{ !empty($item->payroll) ? number_format($item->payroll->otherDeductions): ""}} </td>
                                                             <td>
-                                                                {{ !empty($item->payroll) ? number_format($item->payroll->net_pay):'' }}
+                                                                {{ !empty($item->payroll) ? number_format($item->payroll->net_pay): ""}}
                                                             </td>
                                                             <td>
                                                                 {{ date("F",strtotime($item->month)) }}
