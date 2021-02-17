@@ -38,12 +38,20 @@
 									 <span> Leave Management </span> <span class="menu-arrow"></span>
 								</a>
 								<ul style="display: none;">
+                                    <li><a href="{{ route('hq-leaves.index') }}">HQ Staff Leaves</a></li>
+                                    <li><a href="{{ route('field-leaves.index') }}">Field Staff Leaves</a></li>
 								    <li><a  href="{{ route('leaves.index') }}">All Leaves</a></li>
-									<li><a href="{{ route('leave-types.index') }}">Leave Types</a></li>
-									<li><a href="{{ route('leave-settings.index') }}">Leave Setting</a></li>
+                                    <li class="submenu">
+                                        <a href="#">
+                                             <span> Leave Setting</span> <span class="menu-arrow"></span>
+                                        </a>
+                                        <ul style="display: none;">
+                                            <li><a href="{{ route('leave-types.index') }}">Leave Types</a></li>
+                                            <li><a href="{{ route('holidays.index') }}">Holidays</a></li>
+                                            <li><a href="{{ route('salaries.index') }}">All payroll</a></li>
+                                        </ul>
+                                    </li>
                                     <li><a href="{{ route('leaves.create') }}">Leave Application</a></li>
-                                    <li><a href="{{ route('holidays.index') }}">Holidays</a></li>
-
 								</ul>
                             </li>
 

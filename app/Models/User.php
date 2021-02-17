@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Models\Salary;
+use App\Models\LeaveApplication;
 use Spatie\Permission\Traits\HasRoles;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
@@ -63,6 +64,10 @@ class User extends Authenticatable
 
     public function payroll(){
         return $this->belongsTo(Payroll::class, 'id', 'user_id');
+    }
+
+    public function leaves(){
+        return $this->belongsTo(LeaveApplication::class, 'id', 'user_id');
     }
 
 

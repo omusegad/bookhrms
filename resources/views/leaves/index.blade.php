@@ -60,16 +60,18 @@
                             <table id="leaves" class="table table-bordered table-striped custom-table mb-0">
                                 <thead>
                                     <tr>
-                                        <th>ID</th>
-                                        <th>Employee</th>
+                                        <th>S/N</th>
+                                        <th>Name</th>
+                                        <th>Position</th>
+                                        <th>Employee No</th>
                                         <th>Leave Type</th>
                                         <th>From</th>
                                         <th>To</th>
-                                        <th>Applied Days</th>
-                                        <th>Remaning Days</th>
-                                        <th>Reason</th>
-                                        <th class="text-center">Status</th>
-                                        <th class="text-right">Actions</th>
+                                        <th>Reason </th>
+                                        <th>Total Days </th>
+                                        <th>Applied Days </th>
+                                        <th>Remaining Days </th>
+                                        <th>Approval Status </th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -78,27 +80,18 @@
                                     <tr>
                                         <td>{{$count++}}</td>
                                         <td>
-                                            <h2 class="table-avatar">
-                                                <a href="#">{{$data->users['fname']}}{{$data->users['lname']}}</a>
-                                            </h2>
+                                                <a href="{{ route('employees.edit',$data->users['fname'])}}">{{$data->users['fname']}}{{$data->users['lName']}}</a>
                                         </td>
+                                        <td>{{$data->users['joining_position']}}</td>
+                                        <td>{{$data->users['employeeID']}}</td>
                                         <td>{{$data->leavetype['leaveType']}}</td>
                                         <td>{{$data->start_date}}</td>
                                         <td>{{$data->end_date}}</td>
+                                        <td>{{$data->reason}}</td>
+                                        <td>{{ $data->leavetype['leave_days'] }}</td>
                                         <td>{{$data->appliedDays}} </td>
                                         <td>{{$data->remainingDays}} </td>
-                                        <td>{{$data->reason}} </td>
-                                        <td class="text-center">
-                                        {{$data->leave_status}}
-                                        </td>
-                                        <td class="text-right">
-                                            <div class="dropdown dropdown-action">
-                                                <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="material-icons">more_vert</i></a>
-                                                <div class="dropdown-menu dropdown-menu-right">
-                                                    <a class="dropdown-item" href="#" data-toggle="modal" data-target="#edit_leave"><i class="fa fa-pencil m-r-5"></i> Approve</a>
-                                                </div>
-                                            </div>
-                                        </td>
+                                        <td >{{$data->leave_status}}</td>
                                     </tr>
                                   @endforeach
                                 </tbody>

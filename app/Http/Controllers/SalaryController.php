@@ -11,8 +11,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\MonthlyTaxableIncome;
 
-class SalaryController extends Controller
-{
+class SalaryController extends Controller{
     /**
      * Display a listing of the resource.
      *
@@ -36,15 +35,6 @@ class SalaryController extends Controller
 
       }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
 
     /**
      * Store a newly created resource in storage.
@@ -80,6 +70,7 @@ class SalaryController extends Controller
                 'bankName'            => $data['bankName'],
                 'bankBranch'          => $data['bankBranch'],
                 'bankCode'            => $data['bankCode'],
+                'otherDeductions'      => $data['otherDeductions'] ?  $data['otherDeductions'] : 0,
                 'beneficiaryAccountNumber' => $data['beneficiaryAccountNumber'],
                 'reference'  => $data['reference']
 
@@ -106,6 +97,7 @@ class SalaryController extends Controller
                 'bankBranch'          => $data['bankBranch'],
                 'bankName'            => $data['bankName'],
                 'bankCode'            => $data['bankCode'],
+                'otherDeductions'      => $data['otherDeductions'] ?  $data['otherDeductions'] : 0,
                 'beneficiaryAccountNumber' => $data['beneficiaryAccountNumber'],
                 'reference'  => $data['reference']
             ]);
@@ -114,16 +106,6 @@ class SalaryController extends Controller
 
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
 
     /**
      * Show the form for editing the specified resource.
@@ -163,6 +145,7 @@ class SalaryController extends Controller
             'bankName'                      => $request['bankName'],
             'bankBranch'                    => $request['bankBranch'],
             'bankCode'                      => $request['bankCode'],
+            'otherDeductions'      => $request['otherDeductions'],
             'beneficiaryAccountNumber'      => $request['beneficiaryAccountNumber'],
 
         ]);

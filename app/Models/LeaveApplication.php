@@ -24,4 +24,6 @@ class LeaveApplication extends Model
        return $this->belongsTo(LeaveType::class, 'aic_leave_type_id', 'id');
    }
 
+
+
 }

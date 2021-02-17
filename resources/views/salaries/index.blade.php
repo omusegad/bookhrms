@@ -313,28 +313,39 @@
                                         <input name="beneficiaryAccountNumber" Placeholder="Beneficiary Account Number" class="form-control" type="text">
                                     </div>
                                 </div>
+                                <div class="col-sm-4">
+                                    <div class="form-group">
+                                        <label for="">Other Deductions</label>
+                                        <input name="otherDeductions" Placeholder="Other Deductions" class="form-control" type="text">
+                                    </div>
+                                </div>
 
                                  <div class="col-sm-4">
                                     <div class="form-group">
+                                        <label for="">Bank Name</label>
                                         <input name="bankName" value="KCB KAPSABET"  class="form-control" type="text" readonly>
                                     </div>
                                 </div>
                                 <div class="col-sm-4">
                                     <div class="form-group">
+                                        <label for="">Bank Branch</label>
                                         <input name="bankBranch" value="KCB KAPSABET"  class="form-control" type="text" readonly>
                                     </div>
                                 </div>
                                 <div class="col-sm-4">
                                     <div class="form-group">
+                                        <label for="">Bank Code</label>
                                         <input name="bankCode" value="01166" class="form-control" type="text" readonly>
                                     </div>
                                 </div>
 
                                 <div class="col-sm-4">
                                     <div class="form-group">
+                                        <label for=""> Reference</label>
                                         <input name="reference" Placeholder="" value="Salary" class="form-control" type="text" readonly>
                                     </div>
                                 </div>
+
                             </div>
 
                             <div class="submit-section">
