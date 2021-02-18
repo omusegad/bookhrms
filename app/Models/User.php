@@ -62,12 +62,12 @@ class User extends Authenticatable
         return $this->belongsTo(Salary::class, 'id', 'user_id');
     }
 
-    public function payroll(){
-        return $this->belongsTo(Payroll::class, 'id', 'user_id');
-    }
-
     public function leaves(){
         return $this->belongsTo(LeaveApplication::class, 'id', 'user_id');
+    }
+
+    public function payroll(){
+        return $this->belongsTo(Payroll::class, 'id', 'user_id');
     }
 
 

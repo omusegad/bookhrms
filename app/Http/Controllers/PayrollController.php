@@ -30,7 +30,6 @@ class PayrollController extends Controller
     public function store(Request $request){
        // $data = $request->input('userID');
         $data = $request->all();
-       // return  $data['userID'];
 
         if(!$data){
             return back()->with('message','Please select what you would like proccessed!');

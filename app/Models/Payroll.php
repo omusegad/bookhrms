@@ -15,12 +15,11 @@ class Payroll extends Model
     ];
 
     public function user(){
-        return $this->belongsTo(User::class, 'id', 'user_id');
+        return $this->belongsTo(User::class, 'user_id', 'id' );
     }
 
-
     public function jobgroup(){
-        return $this->belongsTo(Jobgroup::class, 'id', 'aic_jobgroups_id');
+        return $this->belongsTo(Jobgroup::class, 'aic_jobgroups_id', 'id');
     }
 
 }

@@ -14,52 +14,15 @@
                         <div class="col">
                             <h3 class="page-title">Admin</h3>
                             <ul class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
+                                <li class="breadcrumb-item">
+                                    <a href="{{ route('dashboard') }}">Dashboard</a>
+                                </li>
                                 <li class="breadcrumb-item active">Admin</li>
                             </ul>
-                        </div>
-                        <div class="col-auto float-right ml-auto">
-                        <a href="#" class="btn add-btn"><i class="fa fa-plus"></i> Add Admin</a>
-                            <div class="view-icons">
-                                <a href="employees.html" class="grid-view btn btn-link"><i class="fa fa-th"></i></a>
-                                <a href="employees-list.html" class="list-view btn btn-link active"><i class="fa fa-bars"></i></a>
-                            </div>
                         </div>
                     </div>
                 </div>
                 <!-- /Page Header -->
-
-                <!-- Search Filter -->
-                <div class="row filter-row">
-                    <div class="col-sm-6 col-md-3">
-                        <div class="form-group form-focus">
-                            <input type="text" class="form-control floating">
-                            <label class="focus-label">Employee ID</label>
-                        </div>
-                    </div>
-                    <div class="col-sm-6 col-md-3">
-                        <div class="form-group form-focus">
-                            <input type="text" class="form-control floating">
-                            <label class="focus-label">Employee Name</label>
-                        </div>
-                    </div>
-                    <div class="col-sm-6 col-md-3">
-                        <div class="form-group form-focus select-focus">
-                            <select class="select floating">
-                                <option>Select Designation</option>
-                                <option>Web Developer</option>
-                                <option>Web Designer</option>
-                                <option>Android Developer</option>
-                                <option>Ios Developer</option>
-                            </select>
-                            <label class="focus-label">Designation</label>
-                        </div>
-                    </div>
-                    <div class="col-sm-6 col-md-3">
-                        <a href="#" class="btn btn-success btn-block"> Search </a>
-                    </div>
-                </div>
-                <!-- /Search Filter -->
 
                 <div class="row">
                     <div class="col-md-12">

@@ -27,28 +27,22 @@
 
                 <!-- Leave Statistics -->
                 <div class="row">
-                    <div class="col-md-3">
+                    <div class="col-lg-4">
                         <div class="stats-info">
-                            <h6>Today Presents</h6>
-                            <h4>12 / 60</h4>
+                            <h6>Pending Approval</h6>
+                            <h4>{{ $pendingLeaves ?   $pendingLeaves : "0" }}</h4>
                         </div>
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-lg-4">
                         <div class="stats-info">
-                            <h6>Planned Leaves</h6>
-                            <h4>8 <span>Today</span></h4>
+                            <h6>Approved Leaves</h6>
+                            <h4> {{ $approvedLeaves ?   $approvedLeaves : "0" }}</h4>
                         </div>
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-lg-4">
                         <div class="stats-info">
-                            <h6>Unplanned Leaves</h6>
-                            <h4>0 <span>Today</span></h4>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="stats-info">
-                            <h6>Pending Requests</h6>
-                            <h4>12</h4>
+                            <h6>Declined Leaves</h6>
+                            <h4> {{ $declinedLeaves ?   $declinedLeaves : "0" }}</h4>
                         </div>
                     </div>
                 </div>

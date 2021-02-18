@@ -23,75 +23,57 @@
     }
 </style>
 <body>
-    <div class="container" style="margin-top: 60px">
+    <div class="container" style="margin-top: 30px">
         <div class="title text-center">
-              <div class="payslilogo">
-                         <img class="preview-img rounded-circle" src="{{ asset('storage/uploads/img/aic_logo.png') }}" />
+            <div class="payslilogo">
+                    <img  src="{{ asset('storage/uploads/images/aic_logo.png') }}"  width="600" height="160"/>
                 </div>
-               <div class="border-line"></div>
-               <h5>Payslip for month of January, 2021</h5>
+                <hr>
+               <h5>Payslip for month of   {{ date("F",strtotime($payslip->year)) }} , {{ now()->year }}</h5>
         </div>
         <div>
-            <table class="table table-condensed table-striped">
+            <table class="table table-bordered">
                 <tbody>
                     <tr>
                         <th>Name</th>
                         <td style="text-align: right">
-                            {{ $payslip->fname ? $payslip->fname : 'John' }}
-                            {{ $payslip->lName ? $payslip->lName : 'Doe' }}
+                            {{ $payslip->user['fname']  ? $payslip->user['fname']  : " "}}
+                            {{ $payslip->user['lName']  ? $payslip->user['lName']  :" " }}
                         </td>
                     </tr>
                     <tr>
-                        <th>Department</th>
-                        <td style="text-align: right">{{ $payslip->department ? $payslip->department : 'Religion' }}</td>
-                    </tr>
-                    <tr>
                         <th>Position</th>
-                        <td style="text-align: right">{{ $payslip->department ? $payslip->department : 'Pastor' }}</td>
+                        <td style="text-align: right">{{ $payslip->user['joining_position'] ? $payslip->user['joining_position']  : " " }}</td>
                     </tr>
+
                     <tr>
-                        <th>Region</th>
-                        <td style="text-align: right">{{ $payslip->rName ? $payslip->rName : 'Nandi North' }}</td>
+                        <th>Job Group</th>
+                        <td style="text-align: right">{{ $payslip->jobgroup['jonGroupName'] ? $payslip->jobgroup['jonGroupName'] : " "}}</td>
                     </tr>
-                    <tr>
-                        <th>DCC</th>
-                        <td style="text-align: right">{{ $payslip->dccName ? $payslip->dccName : 'Cheptuiyet' }}</td>
-                    </tr>
-                    <tr>
-                        <th>LCC</th>
-                        <td style="text-align: right">{{ $payslip->lccName ? $payslip->lccName : 'Cheptuiyet/Pri & Sec' }}</td>
-                    </tr>
-                    <tr>
-                        <th></th>
-                        <td style="text-align: right">KES</td>
-                    </tr>
+
                     <tr>
                         <th>Basic Pay</th>
-                        <td style="text-align: right">{{ $payslip->basic_salary ? $payslip->basic_salary : '0' }}</td>
+                        <td style="text-align: right">KES {{ $payslip->basic_salary ? number_format($payslip->basic_salary) : '0' }}</td>
                     </tr>
                     <tr>
                         <th>Gross Pay</th>
-                        <td style="text-align: right">{{ $payslip->gross_pay  ? $payslip->gross_pay : '0'}}</td>
-                    </tr>
-                    <tr>
-                        <th>Deductions Before Tax</th>
-                        <td style="text-align: right"></td>
+                        <td style="text-align: right">KES {{ $payslip->gross_pay  ? number_format($payslip->gross_pay) : '0'}}</td>
                     </tr>
                     <tr>
                         <th>NSSF</th>
-                        <td style="text-align: right">{{ $payslip->nssf  ? $payslip->nssf : '0'}}</td>
+                        <td style="text-align: right">KES {{ $payslip->nssf  ? number_format($payslip->nssf) : '0'}}</td>
                     </tr>
                     <tr>
-                        <th>Total Deductions Before Tax</th>
-                        <td style="text-align: right">{{ $payslip->nssf  ? $payslip->nssf : '0'}}</td>
+                        <th>Income Tax</th>
+                        <td style="text-align: right">KES {{ $payslip->incomeTax  ? number_format($payslip->incomeTax) : '0'}}</td>
                     </tr>
                     <tr>
                         <th>Personal Relief</th>
-                        <td style="text-align: right">{{ $payslip->personalRelief  ? $payslip->personalRelief : '0'}}</td>
+                        <td style="text-align: right">KES {{ $payslip->personalRelief  ? number_format($payslip->personalRelief ): '0'}}</td>
                     </tr>
                     <tr>
                         <th>Taxabale Salary</th>
-                        <td style="text-align: right">{{ $payslip->gross_pay - ($payslip->nssf - $payslip->personalRelief) }}</td>
+                        <td style="text-align: right">KES {{ number_format($payslip->gross_pay - ($payslip->nssf - $payslip->personalRelief)) }}</td>
                     </tr>
                     <tr>
                         <th>Deductions</th>
@@ -99,25 +81,40 @@
                     </tr>
                     <tr>
                         <th>PAYE</th>
-                        <td style="text-align: right">{{ $payslip->payee  ? $payslip->payee : '0'}}</td>
+                        <td style="text-align: right">KES {{ $payslip->payee  ? number_format($payslip->payee) : '0'}}</td>
                     </tr>
                     <tr>
                         <th>NHIF</th>
-                        <td style="text-align: right">{{ $payslip->nhif  ? $payslip->nhif : '0'}}</td>
+                        <td style="text-align: right">KES {{ $payslip->nhif  ? number_format($payslip->nhif ): '0'}}</td>
                     </tr>
                     <tr>
-                        <th>Others (e.g Loans)</th>
-                        <td style="text-align: right">{{ $payslip->others  ? $payslip->others : '0'}}</td>
+                        <th>Others Deductions</th>
+                        <td style="text-align: right">KES {{ $payslip->otherDeductions  ? number_format($payslip->otherDeductions ): '0'}}</td>
                     </tr>
                     <tr>
                         <th>Net Salary</th>
-                        <td style="text-align: right">{{ $payslip->net_pay  ? $payslip->net_pay : '0'}}</td>
+                        <td style="text-align: right">KES {{ $payslip->net_pay  ? number_format($payslip->net_pay) : '0'}}</td>
                     </tr>
                 </tbody>
                 <tfoot>
                     <tr>
-                        <td colspan="2"><p><i>Payment Mode:  Bank: {{ $payslip->bankName ? $payslip->bankName : 'Kapsabet'  }}  Branch: {{ $payslip->bankBranch ?$payslip->bankBranch : 'Kapsabet' }}   Acc No. {{ $payslip->beneficiaryAccountNumber ? $payslip->beneficiaryAccountNumber : '0'  }}</i></p></td>
-                    </tr>
+                        <th>Payment Mode:  Bank: </th>
+                        <td style="text-align: right">
+                            {{ $payslip->bankName ? $payslip->bankName : ''  }}
+                          </td>
+                         </tr>
+                         <tr>
+                            <th> Bank Branch: </th>
+                            <td style="text-align: right">
+                                 {{ $payslip->bankBranch ?$payslip->bankBranch : ' ' }}
+                            </td>
+                        </tr>
+                             <tr>
+                                <th>Beneficiary Account: </th>
+                                <td style="text-align: right">
+                                    {{ $payslip->beneficiaryAccountNumber ? $payslip->beneficiaryAccountNumber : ' '  }}
+                                </td>
+                                 </tr>
                 </tfoot>
             </table>
 
