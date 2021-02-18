@@ -2,10 +2,11 @@
     <div class="sidebar" id="sidebar">
                 <div class="sidebar-inner slimscroll">
 					<div id="sidebar-menu" class="sidebar-menu">
+                        @role('Super Admin')
+
 						<ul>
 							<li><a href="{{ route('dashboard') }}">
 							<i class="la la-dashboard"></i> <span> Dashboard </span></a></li>
-
 							<li class="submenu">
 								<a href="#">
 								<i class="fa fa-users"></i>
@@ -27,9 +28,6 @@
 									<li><a href="{{ route('hq-salaries.index') }}">HQ Payroll</a></li>
 									<li><a href="{{ route('field-salaries.index') }}">Field Payroll</a></li>
 									<li><a href="{{ route('salaries.index') }}">All payroll</a></li>
-
-
-									{{-- <li><a href="{{ route('salary-settings.index') }}">Payroll Settings</a></li> --}}
 								</ul>
 							</li>
 							<li class="submenu">
@@ -53,7 +51,6 @@
                                     </li>
 								</ul>
                             </li>
-
 							<li class="submenu">
 								<a href="#"><i class="fa fa-cog"></i> <span> Settings</span> <span class="menu-arrow"></span></a>
 								<ul style="display: none;">
@@ -78,6 +75,18 @@
 								</ul>
 							</li>
                         </ul>
+                        @endrole
+                        @role('Employees')
+
+                           <ul>
+							<li>
+                                <a href="{{ route('employees.show',  Auth::user()->id) }}">My Profile</a>
+                                <li><a  href="{{ route('leaves.index') }}">All Leaves</a></li>
+                                <li><a href="{{ route('leaves.create') }}">Leave Application</a></li>
+                                <li><a href="{{ route('holidays.index') }}">Holidays</a></li>
+                            </li>
+                            </ul>
+                        @endrole
 
 					</div>
                 </div>

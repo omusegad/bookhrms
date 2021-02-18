@@ -28,6 +28,16 @@
                 <!-- /Page Header -->
 
                 <div class="row">
+                    <div class="col-md-12">
+                            @if ($message = Session::get('message'))
+                                <div class="alert alert-danger alert-block">
+                                    <strong>{{ $message }}</strong>
+                                </div>
+                            @endif
+                      </div>
+                  </div>
+
+                <div class="row">
                     <div class="col-md-9">
                         <div class="table-responsive">
                             <table class="table table-striped custom-table mb-0">
@@ -83,7 +93,7 @@
                                 <div class="form-group">
                                     <div class="col-md-12">
                                         <label for="jobgroupid">Employee</label>
-                                          <select class="browser-default custom-select" name="employee_id">
+                                          <select class="browser-default custom-select" name="user_id">
                                               <option value="" disabled selected>Choose Employee</option>
                                               @foreach($users as $item)
                                                 <option value="{{$item->id}}">{{$item->fname}} {{$item->lName}}</option>

@@ -49,7 +49,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
     Route::get('/admin', [AdminController::class, 'index']);
     Route::get('/organogram', [OrganogramController::class, 'index']);
-    Route::resource('roles', RolesController::class);
+    Route::resource('roles', RolesController::class)->only(['index','store']);
     Route::resource('/employees',EmployeeController::class);
     Route::get('/field-employees',[FieldEmployeeController::class, 'index']);
     Route::get('/hq-employees',[HqEmployeeController::class, 'index']);
