@@ -51,7 +51,7 @@
 
 											<div class="tab-pane show active" id="top-tab2">
                                                 <div class="table-responsive">
-                                                    <table id="payroll" class="table table-striped custom-table table-bordered" id="salaries">
+                                                    <table id="payroll" class="table table-striped custom-table table-bordered" id="payrollA">
                                                         <thead>
                                                             <tr>
                                                                 <th>Serial No</th>
@@ -105,7 +105,7 @@
 											</div>
 											<div class="tab-pane" id="top-tab3">
                                                 <div class="table-responsive">
-                                                    <table id="payslips" class="table table-striped custom-table table-bordered" id="salaries">
+                                                    <table id="payslips" class="table table-striped custom-table table-bordered" id="payrollB">
                                                         <thead>
                                                             <tr>
                                                                 <th>Staff No</th>
@@ -168,7 +168,7 @@
                                                                 {{ !empty($item->payroll) ? number_format($item->payroll->net_pay):""}}
                                                             </td>
                                                             <td>
-                                                                {{ date("F",strtotime($item->month)) }}
+                                                                {{ \Carbon\Carbon::parse($item->month)->format('F') }}
                                                             </td>
                                                             <td>
                                                                 {{ $item->payroll->year}}
