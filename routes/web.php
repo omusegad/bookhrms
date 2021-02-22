@@ -18,7 +18,9 @@ use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\HolidaysController;
 use App\Http\Controllers\HqSalaryController;
 use App\Http\Controllers\JobgroupController;
+use App\Http\Controllers\MyLeavesController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\MyPayrollController;
 use App\Http\Controllers\FieldLeaveController;
 use App\Http\Controllers\HqEmployeeController;
 use App\Http\Controllers\LeaveTypesController;
@@ -46,34 +48,40 @@ use App\Http\Controllers\EmployeeProfileController;
 
 Auth::routes();
 Route::middleware(['auth'])->group(function () {
-    Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
-    Route::get('/admin', [AdminController::class, 'index']);
-    Route::get('/organogram', [OrganogramController::class, 'index']);
-    Route::resource('roles', RolesController::class)->only(['index','store']);
-    Route::resource('/employees',EmployeeController::class);
-    Route::get('/field-employees',[FieldEmployeeController::class, 'index']);
-    Route::get('/hq-employees',[HqEmployeeController::class, 'index']);
-    Route::get('/field-employees',[FieldEmployeeController::class, 'index']);
-    Route::get('/hq-employees',[HqEmployeeController::class, 'index']);
-    Route::resource('/employees-profile',ProfileController::class);
-    Route::resource('/leaves', LeaveController::class);
-    Route::resource('/leave-types', LeaveTypesController::class);
-    Route::resource('/leave-settings', LeaveSettingsController::class);
-    Route::resource('/regions', RegionController::class);
-    Route::resource('/dccs-regions', DccController::class);
-    Route::resource('/lccs-regions', LccController::class);
-    Route::resource('/job-groups', JobgroupController::class);
-    //Route::resource('/salaries', EmployeeSalaryController::class);
-    Route::resource('/salaries', SalaryController::class);
-    Route::resource('/field-salaries',FieldSalaryController::class)->only(['index']);
-    Route::resource('/hq-salaries',HqSalaryController::class)->only(['index']);
-    Route::resource('/salary-settings', SalarySettingsController::class);
-    Route::resource('/holidays', HolidaysController::class);
-    Route::resource('/payroll', PayrollController::class)->only(['index','store']);
-    Route::resource('/payslip', PayslipController::class);
+        Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
+        Route::get('/admin', [AdminController::class, 'index']);
+        Route::get('/organogram', [OrganogramController::class, 'index']);
+        Route::resource('roles', RolesController::class)->only(['index','store']);
+        Route::resource('/employees',EmployeeController::class);
+        Route::get('/field-employees',[FieldEmployeeController::class, 'index']);
+        Route::get('/hq-employees',[HqEmployeeController::class, 'index']);
+        Route::get('/field-employees',[FieldEmployeeController::class, 'index']);
+        Route::get('/hq-employees',[HqEmployeeController::class, 'index']);
+        Route::resource('/employees-profile',ProfileController::class);
+        Route::resource('/leaves', LeaveController::class);
+        Route::resource('/leave-types', LeaveTypesController::class);
+        Route::resource('/leave-settings', LeaveSettingsController::class);
+        Route::resource('/regions', RegionController::class);
+        Route::resource('/dccs-regions', DccController::class);
+        Route::resource('/lccs-regions', LccController::class);
+        Route::resource('/job-groups', JobgroupController::class);
+        Route::resource('/salaries', SalaryController::class);
+        Route::resource('/field-salaries',FieldSalaryController::class)->only(['index']);
+        Route::resource('/hq-salaries',HqSalaryController::class)->only(['index']);
+        Route::resource('/salary-settings', SalarySettingsController::class);
+        Route::resource('/holidays', HolidaysController::class);
+        Route::resource('/payroll', PayrollController::class)->only(['index','store']);
+        Route::resource('/payslip', PayslipController::class);
+        Route::resource('/hq-leaves',HqLeaveController::class)->only(['index']);
+        Route::resource('/field-leaves',FieldLeaveController::class)->only(['index']);
 
-    Route::resource('/hq-leaves',HqLeaveController::class)->only(['index']);
-    Route::resource('/field-leaves',FieldLeaveController::class)->only(['index']);
+
+        Route::resource('/my-payroll',MyPayrollController::class)->only(['index']);
+        Route::resource('/my-leaves',MyLeavesController::class)->only(['index']);
+    // Employee Dashbaord Routes
+
+
+
 
 
 

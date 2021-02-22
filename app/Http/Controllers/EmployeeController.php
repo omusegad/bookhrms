@@ -14,8 +14,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Rap2hpoutre\FastExcel\FastExcel;
 
-class EmployeeController extends Controller
-{
+class EmployeeController extends Controller{
     use UploadTrait;
 
     public function index(){
@@ -198,7 +197,8 @@ class EmployeeController extends Controller
             "next_of_kin_relationship" => $request['next_of_kin_relationship'],
             "exit_date" => $request['exit_date'],
             "male_pastors_grade" => $request['male_pastors_grade'],
-            "female_pastors_grade" => $request['female_pastors_grade']
+            "female_pastors_grade" => $request['female_pastors_grade'],
+            'password' => Hash::make($request['password']),
          ]);
 
         return back()->with('message','Salary updated successfully!');

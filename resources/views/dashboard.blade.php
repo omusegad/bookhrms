@@ -7,7 +7,6 @@
 
             <!-- Page Content -->
             <div class="content container-fluid">
-
                 <!-- Page Header -->
                 <div class="page-header">
                     <div class="row">
@@ -20,50 +19,35 @@
                     </div>
                 </div>
                 <!-- /Page Header -->
-
                 <div class="row">
-                    <div class="col-md-6 col-sm-6 col-lg-6 col-xl-3">
-                        <div class="card dash-widget">
-                            <div class="card-body">
-                                <span class="dash-widget-icon"><i class="fa fa-group"></i></span>
-                                <div class="dash-widget-info">
-                                    <h3>{{$employees ? $employees: "0" }}</h3>
-                                    <span><a href="{{ route('employees.index') }}">Employees</a></span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-sm-6 col-lg-6 col-xl-3">
+                    <div class="col-lg-4">
                         <div class="card dash-widget">
                             <div class="card-body">
                                 <span class="dash-widget-icon"><i class="fa fa-map-marker"></i></span>
                                 <div class="dash-widget-info">
                                      <h3>{{$totalRegions ? $totalRegions: "0" }}</h3>
-                                    {{-- <!--<h3>6</h3>--> --}}
                                     <span><a href="{{ url('/regions') }}">Regions</a></span>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-6 col-sm-6 col-lg-6 col-xl-3">
+                    <div class="col-lg-4">
                         <div class="card dash-widget">
                             <div class="card-body">
                                 <span class="dash-widget-icon"><i class="fa fa-map-pin"></i></span>
                                 <div class="dash-widget-info">
                                     <h3>{{$totalDcc ? $totalDcc: "0" }}</h3>
-                                    {{-- <h3>56</h3> --}}
                                     <span><a href="{{ url('/dccs-regions') }}">DCCs</a></span>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-6 col-sm-6 col-lg-6 col-xl-3">
+                    <div class="col-lg-4">
                         <div class="card dash-widget">
                             <div class="card-body">
                                 <span class="dash-widget-icon"><i class="fa fa-home"></i></span>
                                 <div class="dash-widget-info">
                                     <h3>{{$totaLcc ? $totaLcc: "0" }}</h3>
-                                    {{-- <h3>371</h3> --}}
                                     <span><a href="{{ url('/lccs-regions') }}">LCCs</a></span>
                                 </div>
                             </div>

@@ -8,6 +8,7 @@
             <!-- Page Content -->
             <div class="content container-fluid">
 
+
                 <!-- Page Header -->
                 <div class="page-header">
                     <div class="row align-items-center">
@@ -20,13 +21,17 @@
                                 <li class="breadcrumb-item active"> Apply Leaves</li>
                             </ul>
                         </div>
+                        @role('SuperAdmin|HrManager')
                         <div class="col-auto float-right ml-auto">
                             <a href="{{route('leaves.index')}}" class="btn add-btn"> All Leave</a>
                         </div>
+                        @endrole
+
                     </div>
                 </div>
                 <!-- /Page Header -->
 
+                @role('SuperAdmin|HrManager')
 
                 <!-- Leave Statistics -->
                 <div class="row">
@@ -50,6 +55,7 @@
                     </div>
                 </div>
                 <!-- /Leave Statistics -->
+@endrole
 
                 <div class="row">
                     <div class="col-lg-12">
@@ -62,7 +68,6 @@
                 </div>
 
                 <div>
-
                         <form method="POST" action="{{route('leaves.store')}}">
                             @csrf
                             <div class="row ">

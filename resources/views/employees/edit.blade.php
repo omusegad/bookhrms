@@ -537,7 +537,6 @@
 
                         <div class="row">
                             <hr>
-                            <div class="col-lg-12">
                                 <div class="col-md-4">
                                     <label for="">Exit Date</label>
                                     <input id="exit_date" placeholder="Exit Date" type="date" class="form-group form-control @error('exit_date') is-invalid @enderror" name="exit_date" value="{{ $employee->exit_date ? $employee->exit_date :  old('exit_date')}}"   autocomplete="exit_date">
@@ -548,7 +547,24 @@
                                     @enderror
                                 </div>
 
-                            </div>
+                                <div class="col-md-4">
+                                    <label for="password">Password</label>
+                                    <input id="password" placeholder="Password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" value="{{ $employee->password }}" autocomplete="password">
+                                       @error('password')
+                                           <span class="invalid-feedback" role="alert">
+                                               <strong>{{ $message }}</strong>
+                                           </span>
+                                       @enderror
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="password_confirmation">Confirm Password</label>
+                                    <input id="password_confirmation" placeholder="Confirm Password" type="password" class="form-control @error('password_confirmation') is-invalid @enderror" name="password_confirmation" value="{{ $employee->password_confirmation }}" autocomplete="password_confirmation">
+                                       @error('password_confirmation')
+                                           <span class="invalid-feedback" role="alert">
+                                               <strong>{{ $message }}</strong>
+                                           </span>
+                                       @enderror
+                                </div>
                         </div>
 
                         <div class="form-group row mb-0">

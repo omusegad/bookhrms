@@ -33,8 +33,7 @@ class LeaveController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
+    public function create(){
         $leaveTpes = LeaveType::all();
         $pendingLeaves     = LeaveApplication::where('leave_status','pending')->count();
         $approvedLeaves    = LeaveApplication::where('leave_status','approved')->count();

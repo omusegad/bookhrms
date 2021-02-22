@@ -48,6 +48,8 @@
                 </div>
                 <!-- /Leave Statistics -->
 
+
+
                 <div class="row">
                     <div class="col-md-12">
                         <div class="table-responsive">
@@ -71,22 +73,25 @@
                                 <tbody>
                                  @php ($count = 1)
                                  @foreach($leaves as $data)
-                                    <tr>
-                                        <td>{{$count++}}</td>
-                                        <td>
-                                                <a href="{{ route('employees.edit',$data->users['fname'])}}">{{$data->users['fname']}}{{$data->users['lName']}}</a>
-                                        </td>
-                                        <td>{{$data->users['joining_position']}}</td>
-                                        <td>{{$data->users['employeeID']}}</td>
-                                        <td>{{$data->leavetype['leaveType']}}</td>
-                                        <td>{{$data->start_date}}</td>
-                                        <td>{{$data->end_date}}</td>
-                                        <td>{{$data->reason}}</td>
-                                        <td>{{ $data->leavetype['leave_days'] }}</td>
-                                        <td>{{$data->appliedDays}} </td>
-                                        <td>{{$data->remainingDays}} </td>
-                                        <td >{{$data->leave_status}}</td>
-                                    </tr>
+
+                                    @if($data->id ==  Auth::user()->id)
+                                            <tr>
+                                                <td>{{$count++}}</td>
+                                                <td>
+                                                        <a href="{{ route('employees.edit',$data->users['fname'])}}">{{$data->users['fname']}} {{$data->users['lName']}}</a>
+                                                </td>
+                                                <td>{{$data->users['joining_position']}}</td>
+                                                <td>{{$data->users['employeeID']}}</td>
+                                                <td>{{$data->leavetype['leaveType']}}</td>
+                                                <td>{{$data->start_date}}</td>
+                                                <td>{{$data->end_date}}</td>
+                                                <td>{{$data->reason}}</td>
+                                                <td>{{ $data->leavetype['leave_days'] }}</td>
+                                                <td>{{$data->appliedDays}} </td>
+                                                <td>{{$data->remainingDays}} </td>
+                                                <td >{{$data->leave_status}}</td>
+                                            </tr>
+                                        @endif
                                   @endforeach
                                 </tbody>
                             </table>
