@@ -78,7 +78,9 @@
                                             <tr>
                                                 <td>{{$count++}}</td>
                                                 <td>
-                                                        <a href="{{ route('employees.edit',$data->users['fname'])}}">{{$data->users['fname']}} {{$data->users['lName']}}</a>
+                                                        <a href="{{ route('employees.edit',$data->users['fname'])}}">
+                                                            {{$data->users['fname']}} {{$data->users['lName']}} <i class="fa fa-pencil m-r-5"></i>
+                                                         </a>
                                                 </td>
                                                 <td>{{$data->users['joining_position']}}</td>
                                                 <td>{{$data->users['employeeID']}}</td>

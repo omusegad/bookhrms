@@ -13,11 +13,7 @@
                 <div class="page-header">
                     <div class="row align-items-center">
                         <div class="col">
-                            <h3 class="page-title">HQ Employee</h3>
-                            <ul class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Dashboard</a></li>
-                                <li class="breadcrumb-item active">HQ Employee</li>
-                            </ul>
+                            <h4 class="page-title">HQ Employee</h4>
                         </div>
                     <div class="col-auto float-right ml-auto">
                         <a href="{{ route('employees.create') }}" class="btn add-btn"><i class="fa fa-plus"></i> Add Employee</a>

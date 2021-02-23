@@ -61,7 +61,6 @@
                                                                 <th>Beneficiary Acount Number</th>
                                                                 <th>Net Pay</th>
                                                                 <th>Reference</th>
-
                                                             </tr>
                                                         </thead>
                                                         <tbody>
@@ -72,28 +71,26 @@
                                                                     <td>{{$count++ }}</td>
                                                                     <td>
                                                                         <a href="{{ route('employees.edit',$item->id)}}">
-                                                                            {{$item->fname }} {{$item->lName }}
+                                                                            {{$item->fname }} {{$item->lName }} <i class="fa fa-pencil m-r-5"></i>
                                                                         </a>
                                                                     </td>
-
-
                                                                   <td>
-                                                                        {{ !empty($item->payroll) ? $item->payroll->bankName:'' }},
-                                                                        {{ !empty($item->payroll) ? $item->payroll->bankBranch:'' }}
+                                                                        {{ !empty($item->payroll) ? $item->payroll->bankName:' ' }},
+                                                                        {{ !empty($item->payroll) ? $item->payroll->bankBranch:' ' }}
                                                                  </td>
                                                                  <td>
-                                                                    {{ !empty($item->payroll) ? $item->payroll->bankCode:'' }}
+                                                                    {{ !empty($item->payroll) ? $item->payroll->bankCode:' ' }}
                                                                 </td>
 
 
                                                                 <td>
-                                                                    {{ !empty($item->payroll) ? $item->payroll->beneficiaryAccountNumber:'' }}
+                                                                    {{ !empty($item->payroll) ? $item->payroll->beneficiaryAccountNumber:' ' }}
                                                              </td>
                                                              <td>
-                                                                {{ !empty($item->payroll) ? number_format($item->payroll->net_pay):'' }}
+                                                                {{ !empty($item->payroll) ? number_format($item->payroll->net_pay):' ' }}
                                                             </td>
                                                             <td>
-                                                                {{ !empty($item->payroll) ? $item->payroll->reference:'' }}
+                                                                {{ !empty($item->payroll) ? $item->payroll->reference:' ' }}
                                                             </td>
 
                                                           @endif
@@ -135,7 +132,7 @@
                                                                     <td> {{$item->employeeID }}</td>
                                                                     <td>
                                                                         <a href="{{ route('employees.edit',$item->id)}}">
-                                                                            {{$item->fname }} {{$item->lName }}
+                                                                            {{$item->fname }} {{$item->lName }} <i class="fa fa-pencil m-r-5"></i>
                                                                         </a>
                                                                     </td>
                                                                     <td> {{$item->joining_position }}</td>

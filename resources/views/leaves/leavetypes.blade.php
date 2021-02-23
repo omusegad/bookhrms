@@ -13,13 +13,10 @@
                     <div class="row align-items-center">
                         <div class="col">
                             <h3 class="page-title">Leave Type</h3>
-                            <ul class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
-                                <li class="breadcrumb-item active">Leave Type</li>
-                            </ul>
                         </div>
                         <div class="col-auto float-right ml-auto">
-                            <a href="#" class="btn add-btn" data-toggle="modal" data-target="#add_leavetype"><i class="fa fa-plus"></i> Add Leave Type</a>
+                            <a href="#" class="btn add-btn" data-toggle="modal" data-target="#add_leavetype">
+                                <i class="fa fa-plus"></i> Add Leave Type</a>
                         </div>
                     </div>
                 </div>
@@ -51,13 +48,8 @@
                                            {{$data->status}}
                                         </td>
                                         <td class="text-right">
-                                            <div class="dropdown dropdown-action">
-                                                <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="material-icons">more_vert</i></a>
-                                                <div class="dropdown-menu dropdown-menu-right">
-                                                    <a class="dropdown-item" href="#" data-toggle="modal" data-target="#edit_leavetype"><i class="fa fa-pencil m-r-5"></i> Edit</a>
-                                                    <a class="dropdown-item" href="#" data-toggle="modal" data-target="#delete_leavetype"><i class="fa fa-trash-o m-r-5"></i> Delete</a>
-                                                </div>
-                                            </div>
+                                            <a class="dropdown-item" href="#" data-toggle="modal" data-target="#edit_leavetype">
+                                                <i class="fa fa-pencil m-r-5"></i> </a>
                                         </td>
                                     </tr>
                                 @endforeach
@@ -130,31 +122,6 @@
                 </div>
             </div>
             <!-- /Edit Leavetype Modal -->
-
-            <!-- Delete Leavetype Modal -->
-            <div class="modal custom-modal fade" id="delete_leavetype" role="dialog">
-                <div class="modal-dialog modal-dialog-centered">
-                    <div class="modal-content">
-                        <div class="modal-body">
-                            <div class="form-header">
-                                <h3>Delete Leave Type</h3>
-                                <p>Are you sure want to delete?</p>
-                            </div>
-                            <div class="modal-btn delete-action">
-                                <div class="row">
-                                    <div class="col-6">
-                                        <a href="javascript:void(0);" class="btn btn-primary continue-btn">Delete</a>
-                                    </div>
-                                    <div class="col-6">
-                                        <a href="javascript:void(0);" data-dismiss="modal" class="btn btn-primary cancel-btn">Cancel</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- /Delete Leavetype Modal -->
 
         </div>
         <!-- /Page Wrapper -->

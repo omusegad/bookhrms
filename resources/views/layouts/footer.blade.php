@@ -10,6 +10,12 @@
     <script src="{{ asset('js/dataTables.buttons.min.js') }}"></script>
     <script src="{{ asset('js/buttons.print.min.js') }}"></script>
 
+    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.4.1/css/buttons.dataTables.min.css">
+<script type="text/javascript" language="javascript" src="https://cdn.datatables.net/buttons/1.4.1/js/dataTables.buttons.min.js"></script>
+<script type="text/javascript" language="javascript" src="https://cdn.datatables.net/buttons/1.4.1/js/buttons.flash.min.js"></script>
+<script type="text/javascript" language="javascript" src="https://cdn.datatables.net/buttons/1.4.1/js/buttons.html5.min.js"></script>
+<script type="text/javascript" language="javascript" src="https://cdn.datatables.net/buttons/1.4.1/js/buttons.print.min.js"></script>
+
     <script type="text/javascript">
         $(document).ready(function(){
 
@@ -27,16 +33,27 @@
             });
 
 
+            $(".alert").fadeTo(3000, 1000).slideUp(1000, function(){
+                $(".alert").slideUp(1000);
 
-        $(".alert").fadeTo(3000, 1000).slideUp(1000, function(){
-
-            $(".alert").slideUp(1000);
-
-        });
+            });
 
        // select all checkbox
-          $("#selectAll").click(function(){
-             $("input[type=userID").prop('checked', $(this).prop('checked'));
+
+        // add multiple select / deselect functionality
+        $("#selectall").click(function () {
+            $('.name').attr('checked', this.checked);
+        });
+
+        // if all checkbox are selected, then check the select all checkbox
+        $(".name").click(function () {
+
+            if ($(".name").length == $(".name:checked").length) {
+                $("#selectall").attr("checked", "checked");
+            } else {
+                $("#selectall").removeAttr("checked");
+            }
+
         });
 
 
@@ -45,11 +62,7 @@
                 buttons: [
                 'excel', 'pdf', 'print']
          } );
-
-
     });
-
-
 
     </script>
 

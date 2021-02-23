@@ -72,7 +72,7 @@
                                                                     <td>{{$count++ }}</td>
                                                                     <td>
                                                                         <a href="{{ route('employees.edit',$item->id)}}">
-                                                                            {{$item->fname }} {{$item->lName }}
+                                                                            {{$item->fname }} {{$item->lName }} <i class="fa fa-pencil m-r-5"></i>
                                                                         </a>
                                                                     </td>
 
@@ -135,7 +135,7 @@
                                                                     <td> {{$item->employeeID }}</td>
                                                                     <td>
                                                                         <a href="{{ route('employees.edit',$item->id)}}">
-                                                                            {{$item->fname }} {{$item->lName }}
+                                                                            {{$item->fname }} {{$item->lName }} <i class="fa fa-pencil m-r-5"></i>
                                                                         </a>
                                                                     </td>
                                                                     <td> {{$item->joining_position }}</td>

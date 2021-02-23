@@ -201,7 +201,7 @@ class EmployeeController extends Controller{
             'password' => Hash::make($request['password']),
          ]);
 
-        return back()->with('message','Salary updated successfully!');
+        return back()->with('message','Employee updated successfully!');
 
     }
 

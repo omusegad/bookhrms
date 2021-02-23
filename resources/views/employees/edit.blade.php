@@ -10,11 +10,7 @@
     <div class="page-header">
         <div class="row align-items-center">
             <div class="col">
-                <h3 class="page-title">Employee</h3>
-                <ul class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Dashboard</a></li>
-                    <li class="breadcrumb-item active">Edit Employee</li>
-                </ul>
+                <h3 class="page-title">Edit Profile</h3>
             </div>
             <div class="col-auto float-right ml-auto">
                 <a href="{{ url('/employees') }}" class="btn add-btn"><i class="fa fa-eye"></i> All Employees</a>
@@ -42,7 +38,8 @@
                             <div class="col-lg-8">
                                 <div class="row">
                                 <div class="col-md-6">
-                                    <input id="employeeID" placeholder="Employee ID" type="text" class="form-group form-control @error('employeeID') is-invalid @enderror" name="employeeID" value="{{ $employee->employeeID }}"  autocomplete="employeeID">
+                                    <label for="">Employee ID</label>
+                                    <input id="employeeID" type="text" class="form-group form-control @error('employeeID') is-invalid @enderror" name="employeeID" value="{{ $employee->employeeID }}"  autocomplete="employeeID">
                                     @error('employeeID')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -50,7 +47,8 @@
                                     @enderror
                                 </div>
                                 <div class="col-md-6">
-                                    <input id="fname" placeholder="First Name" type="text" class="form-group form-control @error('fname') is-invalid @enderror" name="fname"  value="{{ $employee->fname ? $employee->fname :  old('fname') }}"  autocomplete="fname" autofocus>
+                                    <label for="">First Name</label>
+                                    <input id="fname"  type="text" class="form-group form-control @error('fname') is-invalid @enderror" name="fname"  value="{{ $employee->fname ? $employee->fname :  old('fname') }}"  autocomplete="fname" autofocus>
                                     @error('fname')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -58,7 +56,8 @@
                                     @enderror
                                 </div>
                                 <div class="col-md-6">
-                                    <input id="lName" placeholder="Last Name" type="text" class="form-group  form-control @error('lName') is-invalid @enderror" name="lName" value="{{ $employee->lName ?  $employee->lName  :  old('lName')}}"  autocomplete="lName" autofocus>
+                                    <label for="">Last Name</label>
+                                    <input id="lName" type="text" class="form-group  form-control @error('lName') is-invalid @enderror" name="lName" value="{{ $employee->lName ?  $employee->lName  :  old('lName')}}"  autocomplete="lName" autofocus>
                                     @error('lName')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -66,7 +65,8 @@
                                     @enderror
                                 </div>
                                 <div class="col-md-6">
-                                    <input id="name" placeholder="Other Names" type="text" class="form-group  form-control @error('otherNames') is-invalid @enderror" name="otherNames"  value="{{ $employee->otherNames ? $employee->otherNames : old('otherNames')  }}"  autocomplete="otherNames" autofocus>
+                                    <label for="">Other Names</label>
+                                    <input id="name"  type="text" class="form-group  form-control @error('otherNames') is-invalid @enderror" name="otherNames"  value="{{ $employee->otherNames ? $employee->otherNames : old('otherNames')  }}"  autocomplete="otherNames" autofocus>
                                     @error('otherNames')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -74,7 +74,8 @@
                                     @enderror
                                 </div>
                                 <div class="col-md-6">
-                                    <input id="education" placeholder="Education" type="text" class="form-group  form-control @error('education') is-invalid @enderror" name="education"  value="{{ $employee->education ? $employee->education : old('education')  }}"  autocomplete="education" autofocus>
+                                    <label for="">Education</label>
+                                    <input id="education"  type="text" class="form-group  form-control @error('education') is-invalid @enderror" name="education"  value="{{ $employee->education ? $employee->education : old('education')  }}"  autocomplete="education" autofocus>
                                     @error('education')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -82,7 +83,8 @@
                                     @enderror
                                 </div>
                                 <div class="col-md-6">
-                                    <input id="nationalID" placeholder="National ID" type="text" class="form-group form-control @error('nationalID') is-invalid @enderror" name="nationalID"  value="{{ $employee->nationalID ? $employee->nationalID : old('nationalID')   }}"   autocomplete="nationalID">
+                                    <label for="">National ID</label>
+                                    <input id="nationalID"  type="text" class="form-group form-control @error('nationalID') is-invalid @enderror" name="nationalID"  value="{{ $employee->nationalID ? $employee->nationalID : old('nationalID')   }}"   autocomplete="nationalID">
                                     @error('nationalID')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -112,7 +114,8 @@
                         </div>
                         <div class="row">
                             <div class="col-md-4">
-                                <input id="father_name" placeholder="Fathers Full Name" type="text" class="form-group form-control @error('father_name') is-invalid @enderror" name="father_name"  value="{{ $employee->father_name ? $employee->father_name : old('father_name')   }}"   autocomplete="father_name">
+                                <label for="">Father's Name</label>
+                                <input id="father_name"  type="text" class="form-group form-control @error('father_name') is-invalid @enderror" name="father_name"  value="{{ $employee->father_name ? $employee->father_name : old('father_name')   }}"   autocomplete="father_name">
                                 @error('father_name')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -121,7 +124,8 @@
                             </div>
 
                             <div class="col-md-4">
-                                <input id="mother_name" placeholder="Mother Full Name" type="text" class="form-group form-control @error('mother_name') is-invalid @enderror" name="mother_name"  value="{{ $employee->mother_name ? $employee->mother_name : old('mother_name')   }}"   autocomplete="mother_name">
+                                <label for="">Monther's Name</label>
+                                <input id="mother_name" type="text" class="form-group form-control @error('mother_name') is-invalid @enderror" name="mother_name"  value="{{ $employee->mother_name ? $employee->mother_name : old('mother_name')   }}"   autocomplete="mother_name">
                                 @error('mother_name')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -130,7 +134,8 @@
                             </div>
 
                             <div class="col-md-4">
-                                <input id="email" placeholder="Email" type="email" class="form-group form-control @error('email') is-invalid @enderror" name="email" value="{{ $employee->email ?  $employee->email : old('email') }}"  autocomplete="email">
+                                <label for="">Email</label>
+                                <input id="email" type="email" class="form-group form-control @error('email') is-invalid @enderror" name="email" value="{{ $employee->email ?  $employee->email : old('email') }}"  autocomplete="email">
                                 @error('email')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -139,7 +144,8 @@
                             </div>
 
                             <div class="col-md-4">
-                                <input id="otherEmailAddress" placeholder="Other Email Address" type="text" class="form-group form-control @error('otherEmailAddress') is-invalid @enderror" name="otherEmailAddress" value="{{ $employee->otherEmailAddress ? $employee->otherEmailAddress :  old('otherEmailAddress')}}"   autocomplete="otherEmailAddress">
+                                <label for="">Other Email Addreess </label>
+                                <input id="otherEmailAddress"  type="text" class="form-group form-control @error('otherEmailAddress') is-invalid @enderror" name="otherEmailAddress" value="{{ $employee->otherEmailAddress ? $employee->otherEmailAddress :  old('otherEmailAddress')}}"   autocomplete="otherEmailAddress">
                                 @error('otherEmailAddress')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -148,7 +154,8 @@
                             </div>
 
                             <div class="col-md-4">
-                                <input id="phonenumber" placeholder="Phone Number" type="text" class="form-group form-control @error('phoneNumber') is-invalid @enderror" name="phoneNumber" value="{{ $employee->phoneNumber ? $employee->phoneNumber : old('phoneNumber')   }}"    autocomplete="phoneNumber">
+                                <label for="">Phone Number</label>
+                                <input id="phonenumber"  type="text" class="form-group form-control @error('phoneNumber') is-invalid @enderror" name="phoneNumber" value="{{ $employee->phoneNumber ? $employee->phoneNumber : old('phoneNumber')   }}"    autocomplete="phoneNumber">
                                 @error('phoneNumber')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -157,7 +164,8 @@
                             </div>
 
                             <div class="col-md-4">
-                                <input id="altPhoneNumber" placeholder="Alt Phone Number" type="text" class="form-group form-control @error('altPhoneNumber') is-invalid @enderror" name="altPhoneNumber"  value="{{ $employee->altPhoneNumber ?  $employee->altPhoneNumber : old('altPhoneNumber') }}" autocomplete="altPhoneNumber">
+                                <label for="">Altanative Phone Number</label>
+                                <input id="altPhoneNumber"  type="text" class="form-group form-control @error('altPhoneNumber') is-invalid @enderror" name="altPhoneNumber"  value="{{ $employee->altPhoneNumber ?  $employee->altPhoneNumber : old('altPhoneNumber') }}" autocomplete="altPhoneNumber">
                                 @error('altPhoneNumber')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -166,7 +174,8 @@
                             </div>
 
                             <div class="col-md-4">
-                                <input id="emergencyPhoneNumber" placeholder="Emergency Phone No" type="text" class="form-group form-control @error('emergency_contact') is-invalid @enderror" name="emergency_contact"  value="{{ $employee->emergency_contact ? $employee->emergency_contact : old('emergency_contact')  }}"  autocomplete="emergencyPhoneNumber">
+                                <label for="">Emergency Phone Number</label>
+                                <input id="emergencyPhoneNumber" type="text" class="form-group form-control @error('emergency_contact') is-invalid @enderror" name="emergency_contact"  value="{{ $employee->emergency_contact ? $employee->emergency_contact : old('emergency_contact')  }}"  autocomplete="emergencyPhoneNumber">
                                 @error('emergency_contact')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -175,7 +184,8 @@
                             </div>
 
                             <div class="col-md-4">
-                                <input id="nhifNo" placeholder="NHIF" type="text" class="form-group form-control @error('nhifNo') is-invalid @enderror" name="nhifNo"  value="{{ $employee->nhifNo ?  $employee->nhifNo :  old('emergency_contact') }}"   autocomplete="nhifNo">
+                                <label for="">NHIF</label>
+                                <input id="nhifNo"  type="text" class="form-group form-control @error('nhifNo') is-invalid @enderror" name="nhifNo"  value="{{ $employee->nhifNo ?  $employee->nhifNo :  old('emergency_contact') }}"   autocomplete="nhifNo">
                                 @error('nhifNo')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -184,7 +194,8 @@
                             </div>
 
                             <div class="col-md-4">
-                                <input id="nssfNo" placeholder="NSSF" type="text" class="form-group form-control @error('nssfNo') is-invalid @enderror" name="nssfNo" value="{{ $employee->nssfNo ?  $employee->nssfNo : old('nssfNo')  }}"   autocomplete="nssfNo">
+                                <label for="">NSSF</label>
+                                <input id="nssfNo"  type="text" class="form-group form-control @error('nssfNo') is-invalid @enderror" name="nssfNo" value="{{ $employee->nssfNo ?  $employee->nssfNo : old('nssfNo')  }}"   autocomplete="nssfNo">
                                 @error('nssfNo')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -193,7 +204,8 @@
                             </div>
 
                             <div class="col-md-4">
-                                <input id="present_residence" placeholder="Physical Address" type="text" class="form-group form-control @error('present_residence') is-invalid @enderror" name="present_residence" value="{{ $employee->present_residence ?  $employee->present_residence : old('present_residence')  }}"   autocomplete="present_residence">
+                             <label for="">   Physical Addreess</label>
+                                <input id="present_residence"  type="text" class="form-group form-control @error('present_residence') is-invalid @enderror" name="present_residence" value="{{ $employee->present_residence ?  $employee->present_residence : old('present_residence')  }}"   autocomplete="present_residence">
                                 @error('present_residence')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -202,7 +214,8 @@
                             </div>
 
                             <div class="col-md-4">
-                                <input  placeholder="Pin Number" type="text" class="form-group form-control @error('pinNo') is-invalid @enderror" name="pinNo" value="{{ $employee->pinNo ?  $employee->pinNo : old('pinNo')  }}"   autocomplete="pinNo">
+                                <label for="">KRA Pin</label>
+                                <input   type="text" class="form-group form-control @error('pinNo') is-invalid @enderror" name="pinNo" value="{{ $employee->pinNo ?  $employee->pinNo : old('pinNo')  }}"   autocomplete="pinNo">
                                 @error('pinNo')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -211,7 +224,8 @@
                             </div>
 
                             <div class="col-md-4">
-                                <input  placeholder="Postal Address" type="text" class="form-group form-control @error('postalAddress') is-invalid @enderror" name="postalAddress" value="{{ $employee->postalAddress ?  $employee->postalAddress : old('postalAddress')  }}"   autocomplete="postalAddress">
+                                <label for="">Postal Address</label>
+                                <input   type="text" class="form-group form-control @error('postalAddress') is-invalid @enderror" name="postalAddress" value="{{ $employee->postalAddress ?  $employee->postalAddress : old('postalAddress')  }}"   autocomplete="postalAddress">
                                 @error('postalAddress')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -220,7 +234,8 @@
                             </div>
 
                             <div class="col-md-4">
-                                <input id="home_county" placeholder="Home County" type="text" class="form-group form-control @error('home_county') is-invalid @enderror" name="home_county" value="{{ $employee->home_county ?  $employee->home_county : old('home_county')  }}"   autocomplete="home_county">
+                                <label for="">Home County</label>
+                                <input id="home_county"  type="text" class="form-group form-control @error('home_county') is-invalid @enderror" name="home_county" value="{{ $employee->home_county ?  $employee->home_county : old('home_county')  }}"   autocomplete="home_county">
                                 @error('home_county')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -229,7 +244,8 @@
                             </div>
 
                             <div class="col-md-4">
-                                <input id="joining_position" placeholder="Joining Position" type="text" class="form-group form-control @error('joining_position') is-invalid @enderror" name="joining_position" value="{{ $employee->joining_position ? $employee->joining_position : old('joining_position') }}"  autocomplete="joining_position">
+                                <label for="">Joining Position</label>
+                                <input id="joining_position"  type="text" class="form-group form-control @error('joining_position') is-invalid @enderror" name="joining_position" value="{{ $employee->joining_position ? $employee->joining_position : old('joining_position') }}"  autocomplete="joining_position">
                                 @error('joining_position')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -238,7 +254,8 @@
                             </div>
 
                             <div class="col-md-4">
-                                <input id="probation_period" placeholder="Probation Position" type="text" class="form-group form-control @error('probation_period') is-invalid @enderror" name="probation_period" value="{{ $employee->probation_period ? $employee->probation_period : old('probation_period') }}"  autocomplete="probation_period">
+                                <label for="">Probation Period</label>
+                                <input id="probation_period"  type="text" class="form-group form-control @error('probation_period') is-invalid @enderror" name="probation_period" value="{{ $employee->probation_period ? $employee->probation_period : old('probation_period') }}"  autocomplete="probation_period">
                                 @error('probation_period')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -248,7 +265,7 @@
 
                             <div class="col-md-4">
                                 <label for="">Physical Address</label>
-                                <input id="current_address" placeholder="Physical Address" type="text" class="form-group form-control @error('current_address') is-invalid @enderror" name="current_address" value="{{ $employee->current_address ? $employee->current_address : old('current_address') }}"  autocomplete="current_address">
+                                <input id="current_address"  type="text" class="form-group form-control @error('current_address') is-invalid @enderror" name="current_address" value="{{ $employee->current_address ? $employee->current_address : old('current_address') }}"  autocomplete="current_address">
                                 @error('current_address')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -408,7 +425,7 @@
 
                               <div class="col-md-4">
                                 <label for="d">Department  </label>
-                                  <input id="department" placeholder="Department" type="text" class="form-group form-control @error('department') is-invalid @enderror" name="department" value="{{ $employee->department ? $employee->department : old('department')  }}"  autocomplete="department">
+                                  <input id="department" type="text" class="form-group form-control @error('department') is-invalid @enderror" name="department" value="{{ $employee->department ? $employee->department : old('department')  }}"  autocomplete="department">
                                   @error('department')
                                       <span class="invalid-feedback" role="alert">
                                           <strong>{{ $message }}</strong>
@@ -422,7 +439,8 @@
                          <h4>Spouce Details Section</h4>
                         <div class="row">
                             <div class="col-md-4">
-                                <input id="spouse_fname" placeholder="Spouse First Name" type="text" class="form-group form-control @error('spouse_fname') is-invalid @enderror" name="spouse_fname"  value="{{ $employee->spouse_fname ? $employee->spouse_fname : old('spouse_fname')}}"   autocomplete="spouse_fname">
+                                <label for="">Spouse First Name</label>
+                                <input id="spouse_fname"type="text" class="form-group form-control @error('spouse_fname') is-invalid @enderror" name="spouse_fname"  value="{{ $employee->spouse_fname ? $employee->spouse_fname : old('spouse_fname')}}"   autocomplete="spouse_fname">
                                 @error('spouse_fname')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -430,7 +448,8 @@
                                 @enderror
                             </div>
                             <div class="col-md-4">
-                                <input id="spouse_lname" placeholder="Spouse Last Name" type="text" class="form-group form-control @error('spouse_lname') is-invalid @enderror" name="spouse_lname"  value="{{ $employee->spouse_lname ? $employee->spouse_lname  : old('spouse_lname') }}"  autocomplete="spouse_lname">
+                                <label for="">Spouse Last Name</label>
+                                <input id="spouse_lname" type="text" class="form-group form-control @error('spouse_lname') is-invalid @enderror" name="spouse_lname"  value="{{ $employee->spouse_lname ? $employee->spouse_lname  : old('spouse_lname') }}"  autocomplete="spouse_lname">
                                 @error('spouse_lname')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -439,7 +458,8 @@
                             </div>
 
                             <div class="col-md-4">
-                                <input id="spouse_otherNames" placeholder="Spouse Other Names" type="text" class="form-group form-control @error('spouse_otherNames') is-invalid @enderror" name="spouse_otherNames"  value="{{ $employee->spouse_otherNames ? $employee->spouse_otherNames : old('spouse_otherNames') }}"    autocomplete="spouse_otherNames">
+                                <label for="">Spouce Other Name</label>
+                                <input id="spouse_otherNames"  type="text" class="form-group form-control @error('spouse_otherNames') is-invalid @enderror" name="spouse_otherNames"  value="{{ $employee->spouse_otherNames ? $employee->spouse_otherNames : old('spouse_otherNames') }}"    autocomplete="spouse_otherNames">
                                 @error('spouse_otherNames')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -448,7 +468,8 @@
                             </div>
 
                             <div class="col-md-4">
-                                <input id="spouse_phoneNumber" placeholder="Spouse Phone Number" type="text" class="form-group form-control @error('spouse_phoneNumber') is-invalid @enderror" name="spouse_phoneNumber"  value="{{ $employee->spouse_phoneNumber ? $employee->spouse_phoneNumber  : old('spouse_phoneNumber') }}"   autocomplete="spouse_phoneNumber">
+                                <label for="">Spouse Phone Number</label>
+                                <input id="spouse_phoneNumber"  type="text" class="form-group form-control @error('spouse_phoneNumber') is-invalid @enderror" name="spouse_phoneNumber"  value="{{ $employee->spouse_phoneNumber ? $employee->spouse_phoneNumber  : old('spouse_phoneNumber') }}"   autocomplete="spouse_phoneNumber">
                                 @error('spouse_phoneNumber')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -457,7 +478,8 @@
                             </div>
 
                             <div class="col-md-4">
-                                <input id="spouse_altphoneNumber" placeholder="Spouse alt Phone Number" type="text" class="form-group form-control @error('spouse_altphoneNumber') is-invalid @enderror" name="spouse_altphoneNumber"  value="{{ $employee->spouse_altphoneNumber ? $employee->spouse_altphoneNumber : old('spouse_altphoneNumber') }}"  autocomplete="spouse_altphoneNumber">
+                                <label for="">Spouse Alternative Phone Number </label>
+                                <input id="spouse_altphoneNumber"  type="text" class="form-group form-control @error('spouse_altphoneNumber') is-invalid @enderror" name="spouse_altphoneNumber"  value="{{ $employee->spouse_altphoneNumber ? $employee->spouse_altphoneNumber : old('spouse_altphoneNumber') }}"  autocomplete="spouse_altphoneNumber">
                                 @error('spouse_altphoneNumber')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -465,7 +487,8 @@
                                 @enderror
                             </div>
                             <div class="col-md-4">
-                                <input id="spouse_nationalId" placeholder="Spouse National ID" type="text" class="form-group form-control @error('spouse_nationalId') is-invalid @enderror" name="spouse_nationalId" value="{{ $employee->spouse_nationalId ?  $employee->spouse_nationalId : old('spouse_nationalId') }}" autocomplete="spouse_nationalId">
+                                <label for="">Spouse National  ID</label>
+                                <input id="spouse_nationalId" type="text" class="form-group form-control @error('spouse_nationalId') is-invalid @enderror" name="spouse_nationalId" value="{{ $employee->spouse_nationalId ?  $employee->spouse_nationalId : old('spouse_nationalId') }}" autocomplete="spouse_nationalId">
                                 @error('spouse_nationalId')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -478,7 +501,8 @@
                         <h4>Next of Kin Details Section</h4>
                         <div class="row">
                             <div class="col-md-4">
-                                <input id="next_of_kin_fname" placeholder="Next of Kin First Name" type="text" class="form-group form-control @error('next_of_kin_fname') is-invalid @enderror" name="next_of_kin_fname"  value="{{ $employee->next_of_kin_fname ? $employee->next_of_kin_fname  : old('next_of_kin_fname')}}"  autocomplete="next_of_kin_fname">
+                                <label for="">Next of kin First Name </label>
+                                <input id="next_of_kin_fname"  type="text" class="form-group form-control @error('next_of_kin_fname') is-invalid @enderror" name="next_of_kin_fname"  value="{{ $employee->next_of_kin_fname ? $employee->next_of_kin_fname  : old('next_of_kin_fname')}}"  autocomplete="next_of_kin_fname">
                                 @error('next_of_kin_fname')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -486,7 +510,8 @@
                                 @enderror
                             </div>
                             <div class="col-md-4">
-                                <input id="next_of_kin_lname" placeholder="Next of Kin Last Name" type="text" class="form-group form-control @error('next_of_kin_lname') is-invalid @enderror" name="next_of_kin_lname"  value="{{ $employee->next_of_kin_lname ?  $employee->next_of_kin_lname : old('next_of_kin_lname')  }}" autocomplete="next_of_kin_lname">
+                                <label for="">Next of kin Last Name  </label>
+                                <input id="next_of_kin_lname"  type="text" class="form-group form-control @error('next_of_kin_lname') is-invalid @enderror" name="next_of_kin_lname"  value="{{ $employee->next_of_kin_lname ?  $employee->next_of_kin_lname : old('next_of_kin_lname')  }}" autocomplete="next_of_kin_lname">
                                 @error('next_of_kin_lname')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -494,7 +519,8 @@
                                 @enderror
                             </div>
                             <div class="col-md-4">
-                                <input id="next_of_kin_otherNames" placeholder="Next of Kin Other Names" type="text" class="form-group form-control @error('next_of_kin_otherNames') is-invalid @enderror" name="next_of_kin_otherNames"  value="{{ $employee->next_of_kin_otherNames ?  $employee->next_of_kin_otherNames : old('next_of_kin_otherNames')  }}"   autocomplete="next_of_kin_otherNames">
+                                <label for="">Next of kin Other Names</label>
+                                <input id="next_of_kin_otherNames" type="text" class="form-group form-control @error('next_of_kin_otherNames') is-invalid @enderror" name="next_of_kin_otherNames"  value="{{ $employee->next_of_kin_otherNames ?  $employee->next_of_kin_otherNames : old('next_of_kin_otherNames')  }}"   autocomplete="next_of_kin_otherNames">
                                 @error('next_of_kin_otherNames')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -502,7 +528,8 @@
                                 @enderror
                             </div>
                             <div class="col-md-4">
-                                <input id="next_of_kin_phoneNumber" placeholder="Next of Kin Phone Number" type="text" class="form-group form-control @error('next_of_kin_phoneNumber') is-invalid @enderror" name="next_of_kin_phoneNumber"  value="{{ $employee->next_of_kin_phoneNumber ? $employee->next_of_kin_phoneNumber : old('next_of_kin_phoneNumber')  }}"  autocomplete="next_of_kin_phoneNumber">
+                                <label for="">Next of kin Phone Number</label>
+                                <input id="next_of_kin_phoneNumber"  type="text" class="form-group form-control @error('next_of_kin_phoneNumber') is-invalid @enderror" name="next_of_kin_phoneNumber"  value="{{ $employee->next_of_kin_phoneNumber ? $employee->next_of_kin_phoneNumber : old('next_of_kin_phoneNumber')  }}"  autocomplete="next_of_kin_phoneNumber">
                                 @error('next_of_kin_phoneNumber')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -510,7 +537,8 @@
                                 @enderror
                             </div>
                             <div class="col-md-4">
-                                <input id="next_of_kin_altPhoneNumber" placeholder="Next of Kin alt Phone Number" type="text" class="form-group form-control @error('next_of_kin_altPhoneNumber') is-invalid @enderror" name="next_of_kin_altPhoneNumber" value="{{ $employee->next_of_kin_altPhoneNumber ? $employee->next_of_kin_altPhoneNumber : old('next_of_kin_altPhoneNumber') }}"   autocomplete="next_of_kin_altPhoneNumber">
+                                <label for=""> Next of kin Alternative Phone Number </label>
+                                <input id="next_of_kin_altPhoneNumber"  type="text" class="form-group form-control @error('next_of_kin_altPhoneNumber') is-invalid @enderror" name="next_of_kin_altPhoneNumber" value="{{ $employee->next_of_kin_altPhoneNumber ? $employee->next_of_kin_altPhoneNumber : old('next_of_kin_altPhoneNumber') }}"   autocomplete="next_of_kin_altPhoneNumber">
                                 @error('next_of_kin_altPhoneNumber')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -518,7 +546,8 @@
                                 @enderror
                             </div>
                             <div class="col-md-4">
-                                <input id="next_of_kin_nationId" placeholder="Next of Kin National ID" type="text" class="form-group form-control @error('next_of_kin_nationId') is-invalid @enderror" name="next_of_kin_nationId" value="{{ $employee->next_of_kin_nationId ? $employee->next_of_kin_nationId : old('next_of_kin_nationId')  }}"   autocomplete="next_of_kin_nationId">
+                                <label for="">Next of kin National ID</label>
+                                <input id="next_of_kin_nationId"  type="text" class="form-group form-control @error('next_of_kin_nationId') is-invalid @enderror" name="next_of_kin_nationId" value="{{ $employee->next_of_kin_nationId ? $employee->next_of_kin_nationId : old('next_of_kin_nationId')  }}"   autocomplete="next_of_kin_nationId">
                                 @error('next_of_kin_nationId')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -526,7 +555,8 @@
                                 @enderror
                             </div>
                             <div class="col-md-4">
-                                <input id="next_of_kin_relationship" placeholder="Next of kin Relationship" type="text" class="form-group form-control @error('next_of_kin_relationship') is-invalid @enderror" name="next_of_kin_relationship" value="{{ $employee->next_of_kin_relationship ? $employee->next_of_kin_relationship :  old('next_of_kin_relationship')}}"   autocomplete="next_of_kin_relationship">
+                                <label for=""> next of kin Relationship </label>
+                                <input id="next_of_kin_relationship"  type="text" class="form-group form-control @error('next_of_kin_relationship') is-invalid @enderror" name="next_of_kin_relationship" value="{{ $employee->next_of_kin_relationship ? $employee->next_of_kin_relationship :  old('next_of_kin_relationship')}}"   autocomplete="next_of_kin_relationship">
                                 @error('next_of_kin_relationship')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -539,7 +569,7 @@
                             <hr>
                                 <div class="col-md-4">
                                     <label for="">Exit Date</label>
-                                    <input id="exit_date" placeholder="Exit Date" type="date" class="form-group form-control @error('exit_date') is-invalid @enderror" name="exit_date" value="{{ $employee->exit_date ? $employee->exit_date :  old('exit_date')}}"   autocomplete="exit_date">
+                                    <input id="exit_date"  type="date" class="form-group form-control @error('exit_date') is-invalid @enderror" name="exit_date" value="{{ $employee->exit_date ? $employee->exit_date :  old('exit_date')}}"   autocomplete="exit_date">
                                     @error('exit_date')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -549,7 +579,7 @@
 
                                 <div class="col-md-4">
                                     <label for="password">Password</label>
-                                    <input id="password" placeholder="Password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" value="{{ $employee->password }}" autocomplete="password">
+                                    <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" value="{{ $employee->password }}" autocomplete="password">
                                        @error('password')
                                            <span class="invalid-feedback" role="alert">
                                                <strong>{{ $message }}</strong>
@@ -558,7 +588,7 @@
                                 </div>
                                 <div class="col-md-4">
                                     <label for="password_confirmation">Confirm Password</label>
-                                    <input id="password_confirmation" placeholder="Confirm Password" type="password" class="form-control @error('password_confirmation') is-invalid @enderror" name="password_confirmation" value="{{ $employee->password_confirmation }}" autocomplete="password_confirmation">
+                                    <input id="password_confirmation"  type="password" class="form-control @error('password_confirmation') is-invalid @enderror" name="password_confirmation" value="{{ $employee->password_confirmation }}" autocomplete="password_confirmation">
                                        @error('password_confirmation')
                                            <span class="invalid-feedback" role="alert">
                                                <strong>{{ $message }}</strong>

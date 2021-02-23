@@ -14,12 +14,6 @@
                     <div class="row align-items-center">
                         <div class="col">
                             <h3 class="page-title">Hq Employee Leaves</h3>
-                            <ul class="breadcrumb">
-                                <li class="breadcrumb-item">
-                                    <a href="{{ route("dashboard") }}">Dashboard</a>
-                                </li>
-                                <li class="breadcrumb-item active">HQ Employee Leaves</li>
-                            </ul>
                         </div>
                 </div>
 
@@ -50,7 +44,11 @@
                               @if($item->users)
                                 <tr>
                                     <td>{{$count++}}</td>
-                                    <td><a href="{{ route('employees.edit',$item->users['id'] )}}"> {{$item->users['fname'] }} {{$item->users['lName'] }} </a></td>
+                                    <td>
+                                        <a href="{{ route('employees.edit',$item->users['id'] )}}">
+                                        {{$item->users['fname'] }} {{$item->users['lName'] }}
+                                    </a>
+                                    </td>
                                     <td>{{$item->users['joining_position'] }}</td>
                                     <td>{{$item->users['employeeID'] }}</td>
                                     <td>{{ $item->leavetype['leaveType'] }}</td>

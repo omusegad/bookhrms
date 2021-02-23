@@ -127,18 +127,18 @@
                         <strong>{{ $message }}</strong>
                     </div>
                 @endif
-
-
                 </div>
             </div>
 
             <div class="row">
                 <div class="col-md-12">
                     <div class="table-responsive">
-                        <table class="table table-striped custom-table table-bordered" id="salaries">
+                        <table class="table table-striped  table-bordered" id="salaries">
                             <thead>
                                 <tr>
-                                    <th id="check_all">All</th>
+                                    <th>
+                                        <input type="checkbox" id="selectall" class="regular-checkbox" /><label for="selectall">
+                                        </th>
                                     <th>Employee ID</th>
                                     <th>Staff Name</th>
                                     <th>Bank Name</th>
@@ -169,12 +169,14 @@
                                 @foreach ($salaries as $item)
                                 <tr>
                                     <td>
-                                        <input type="checkbox"  name="userID[]" value="{{$item->users['id'] }}" class="checkbox">
+                                        {{-- <input type="checkbox"  name="userID[]" value="{{$item->users['id'] }}" class="checkbox"> --}}
+                                        <input type="checkbox" name="userID[]" class="regular-checkbox name" value="{{$item->users['id'] }}"  />
                                     </td>
                                     <td>{{$item->users['employeeID'] }}</td>
                                     <td>
                                       <a href="{{route('salaries.edit',$item->id  )}}">
                                         {{$item->users['fname'] }} {{$item->users['lName'] }}
+                                        <i class="fa fa-pencil m-r-5"></i>
                                       </a>
                                     </td>
                                     <td> {{$item->bankName }}</td>
@@ -200,12 +202,10 @@
                                         <a class="" href="{{route('salaries.edit', $item->id )}}"><i class="fa fa-pencil m-r-5"></i> </a>
                                     </td>
                                 </tr>
-
-
                               @endforeach
-                              <div class="submit-section text-right">
+                              <div class="submit-section text-right pb-3">
                                 <button type="submit" class="btn btn-primary">Generate Payroll</button>
-                            </div>
+                              </div>
                         </form>
                             </tbody>
                         </table>

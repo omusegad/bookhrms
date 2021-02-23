@@ -18,8 +18,6 @@ class HqLeaveController extends Controller
             $q->where('employee_type', 'HQ');
         }])->get();
 
-        //dd( $leaves );
-
         return view('leaves.hq.index',compact('leaves'));
 
     }
