@@ -10,6 +10,8 @@ use App\Models\Jobgroup;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\MonthlyTaxableIncome;
+use App\Exports\SalaryExport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class SalaryController extends Controller{
     /**
@@ -119,6 +121,15 @@ class SalaryController extends Controller{
         return view('salaries.edit', compact('salary', 'jobgroup'));
     }
 
+// Download excel
+    public function exportexcel(){
+        return Excel::download(new SalaryExport, 'all-employees-salary.xlsx');
+    }
+
+    public function exportpdf(){
+        return Excel::download(new SalaryExport, 'all-employees-salary.pdf');
+    }
+
     /**
      * Update the specified resource in storage.
      *
@@ -152,16 +163,7 @@ class SalaryController extends Controller{
         return back()->with('message','Salary updated successfully!');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
+
 
     private function getGrossSalary($basicSalary,$hse_allowance,$transport_allowance,$airtime){
       return ($basicSalary + $hse_allowance + $transport_allowance + $airtime);

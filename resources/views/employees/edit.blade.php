@@ -175,8 +175,8 @@
 
                             <div class="col-md-4">
                                 <label for="">Emergency Phone Number</label>
-                                <input id="emergencyPhoneNumber" type="text" class="form-group form-control @error('emergency_contact') is-invalid @enderror" name="emergency_contact"  value="{{ $employee->emergency_contact ? $employee->emergency_contact : old('emergency_contact')  }}"  autocomplete="emergencyPhoneNumber">
-                                @error('emergency_contact')
+                                <input id="emergencyPhoneNumber" type="text" class="form-group form-control @error('emergency_contact') is-invalid @enderror" name="emergencyPhoneNumber"  value="{{ $employee->emergencyPhoneNumber ? $employee->emergencyPhoneNumber : old('emergencyPhoneNumber')  }}"  autocomplete="emergencyPhoneNumber">
+                                @error('emergencyPhoneNumber')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -197,16 +197,6 @@
                                 <label for="">NSSF</label>
                                 <input id="nssfNo"  type="text" class="form-group form-control @error('nssfNo') is-invalid @enderror" name="nssfNo" value="{{ $employee->nssfNo ?  $employee->nssfNo : old('nssfNo')  }}"   autocomplete="nssfNo">
                                 @error('nssfNo')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-
-                            <div class="col-md-4">
-                             <label for="">   Physical Addreess</label>
-                                <input id="present_residence"  type="text" class="form-group form-control @error('present_residence') is-invalid @enderror" name="present_residence" value="{{ $employee->present_residence ?  $employee->present_residence : old('present_residence')  }}"   autocomplete="present_residence">
-                                @error('present_residence')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -323,7 +313,7 @@
                                 <label for="aic_regions_id">Aic Region</label>
                                 <select class="browser-default custom-select" name="aic_regions_id">
                                       @foreach ($regions as $item)
-                                       <option value="{{ $item->id }}">{{ $item->rName  }}</option>
+                                       <option value="{{ $item->id }}">{{ $item->rName ? $item->rName  : old("aic_regions_id") }}</option>
                                       @endforeach
                                   </select>
                             </div>
@@ -563,38 +553,25 @@
                                     </span>
                                 @enderror
                             </div>
-                        </div>
+                            <div class="col-md-4">
+                                <label for="">Exit Date</label>
+                                <input id="exit_date"  type="date" class="form-group form-control @error('exit_date') is-invalid @enderror" name="exit_date" value="{{ $employee->exit_date ? $employee->exit_date :  old('exit_date')}}"   autocomplete="exit_date">
+                                @error('exit_date')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
 
-                        <div class="row">
-                            <hr>
-                                <div class="col-md-4">
-                                    <label for="">Exit Date</label>
-                                    <input id="exit_date"  type="date" class="form-group form-control @error('exit_date') is-invalid @enderror" name="exit_date" value="{{ $employee->exit_date ? $employee->exit_date :  old('exit_date')}}"   autocomplete="exit_date">
-                                    @error('exit_date')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
-                                </div>
-
-                                <div class="col-md-4">
-                                    <label for="password">Password</label>
-                                    <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" value="{{ $employee->password }}" autocomplete="password">
-                                       @error('password')
-                                           <span class="invalid-feedback" role="alert">
-                                               <strong>{{ $message }}</strong>
-                                           </span>
-                                       @enderror
-                                </div>
-                                <div class="col-md-4">
-                                    <label for="password_confirmation">Confirm Password</label>
-                                    <input id="password_confirmation"  type="password" class="form-control @error('password_confirmation') is-invalid @enderror" name="password_confirmation" value="{{ $employee->password_confirmation }}" autocomplete="password_confirmation">
-                                       @error('password_confirmation')
-                                           <span class="invalid-feedback" role="alert">
-                                               <strong>{{ $message }}</strong>
-                                           </span>
-                                       @enderror
-                                </div>
+                            <div class="col-md-4">
+                                <label for="password">Password</label>
+                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" value="{{ $employee->password }}" autocomplete="password">
+                                   @error('password')
+                                       <span class="invalid-feedback" role="alert">
+                                           <strong>{{ $message }}</strong>
+                                       </span>
+                                   @enderror
+                            </div>
                         </div>
 
                         <div class="form-group row mb-0">

@@ -15,24 +15,28 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-		
+
 		<!-- Bootstrap CSS -->
-		
+
 		<!-- Fontawesome CSS -->
         <link rel="stylesheet" href="{{ asset('css/font-awesome.min.css') }}">
-		
+
 		<!-- Lineawesome CSS -->
         <link rel="stylesheet" href="{{ asset('css/line-awesome.min.css') }}">
-		
+
 		<!-- Datatable CSS -->
-		<link rel="stylesheet" href="{{ asset('css/dataTables.bootstrap4.min.css') }}">
-		
+		{{-- <link rel="stylesheet" href="{{ asset('css/dataTables.bootstrap4.min.css') }}"> --}}
+
 		<!-- Select2 CSS -->
 		<link rel="stylesheet" href="{{ asset('css/select2.min.css') }}">
-		
+
+        <link rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.18.2/dist/bootstrap-table.min.css">
+
 		<!-- Datetimepicker CSS -->
 		<link rel="stylesheet" href="{{ asset('css/bootstrap-datetimepicker.min.css') }}">
-		
+
+
+
 		<!-- Main CSS -->
         <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 </head>

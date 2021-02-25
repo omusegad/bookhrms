@@ -13,10 +13,6 @@
                 <div class="row align-items-center">
                     <div class="col">
                         <h3 class="page-title">Employee Salary</h3>
-                        <ul class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
-                            <li class="breadcrumb-item active">Salary</li>
-                        </ul>
                     </div>
                     <div class="col-auto float-right ml-auto">
                         <a href="#" class="btn add-btn" data-toggle="modal" data-target="#add_salary">
@@ -115,8 +111,6 @@
                             </div>
                         </div>
                     </div>
-
-
                 </div>
 
             <div class="row">
@@ -131,13 +125,31 @@
             </div>
 
             <div class="row">
+                <div class="col-12 mb-3">
+                    <form method="POST" action="{{route('payroll.store')}}">
+                        @csrf
+                    <div class="row ">
+                        <div class="col-lg-4 pt-2">
+                            <input type="checkbox" id="selectall" class="regular-checkbox" />  <label for="">Select All</label>
+                        </div>
+                        <div class="col-lg-4">
+                                <button type="submit" class="btn btn-outline-primary">Generate All Payroll</button>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class=" text-right ">
+                                <a class="btn btn-outline-primary" href="{{ url('/salaries-export-excel') }}">Excel</a>
+                                <a class="btn btn-outline-primary" href="{{ url('/salaries-export-pdf') }}">PDF</a>
+                               </div>
+                         </div>
+                    </div>
+                </div>
                 <div class="col-md-12">
                     <div class="table-responsive">
                         <table class="table table-striped  table-bordered" id="salaries">
                             <thead>
                                 <tr>
                                     <th>
-                                        <input type="checkbox" id="selectall" class="regular-checkbox" /><label for="selectall">
+                                        {{-- <input type="checkbox" id="selectall" class="regular-checkbox" /><label for="selectall"> --}}
                                         </th>
                                     <th>Employee ID</th>
                                     <th>Staff Name</th>
@@ -164,8 +176,8 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <form method="POST" action="{{route('payroll.store')}}">
-                                  @csrf
+                                {{-- <form method="POST" action="{{route('payroll.store')}}">
+                                  @csrf --}}
                                 @foreach ($salaries as $item)
                                 <tr>
                                     <td>
@@ -176,7 +188,6 @@
                                     <td>
                                       <a href="{{route('salaries.edit',$item->id  )}}">
                                         {{$item->users['fname'] }} {{$item->users['lName'] }}
-                                        <i class="fa fa-pencil m-r-5"></i>
                                       </a>
                                     </td>
                                     <td> {{$item->bankName }}</td>
@@ -203,12 +214,13 @@
                                     </td>
                                 </tr>
                               @endforeach
-                              <div class="submit-section text-right pb-3">
+                              {{-- <div class="submit-section text-right pb-3">
                                 <button type="submit" class="btn btn-primary">Generate Payroll</button>
-                              </div>
-                        </form>
+                              </div> --}}
+
                             </tbody>
                         </table>
+                    </form>
                     </div>
                 </div>
             </div>

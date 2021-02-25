@@ -12,18 +12,11 @@
         <div class="row align-items-center">
             <div class="col">
                 <h3 class="page-title">Employee</h3>
-                <ul class="breadcrumb">
-                    <li class="breadcrumb-item">
-                        <a href="{{ route('dashboard')}}">Dashboard</a>
-                    </li>
-                    <li class="breadcrumb-item active">Employee</li>
-                </ul>
             </div>
             <div class="col-auto float-right ml-auto">
-                <a class="btn add-btn" href="#" data-toggle="modal" data-target="#edit_leave">
-                    Import Employees
-                </a>
-                {{-- <a class="btn add-btn" href="{{ route('employees.index')}}">All Employee</a> --}}
+                <a  class="btn add-btn"  href="{{ route('employees.index') }}" >
+                    All employees
+                 </a>
             </div>
 
         </div>
@@ -40,6 +33,7 @@
                         @csrf
                         <div class="row">
                             <div class="col-md-6">
+                                <label for="">First Name</label>
                                 <input id="fname" placeholder="First Name" type="text" class="form-group form-control @error('fname') is-invalid @enderror" name="fname" value="{{ old('fname') }}"  autocomplete="fname" autofocus>
                                 @error('fname')
                                     <span class="invalid-feedback" role="alert">
@@ -48,6 +42,7 @@
                                 @enderror
                             </div>
                             <div class="col-md-6">
+                                <label for="">Last Name</label>
                                 <input id="lName" placeholder="Last Name" type="text" class="form-control @error('lName') is-invalid @enderror" name="lName" value="{{ old('lName') }}"  autocomplete="lName" autofocus>
                                 @error('lName')
                                     <span class="invalid-feedback" role="alert">
@@ -57,6 +52,7 @@
                             </div>
 
                             <div class="col-md-6">
+                                <label for="">Email</label>
                               <input id="email" type="email" placeholder="Email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
                                 @error('email')
                                     <span class="invalid-feedback" role="alert">
@@ -66,6 +62,7 @@
                             </div>
 
                             <div class="col-md-6">
+                                <label for="">Employee ID</label>
                                 <input id="employeeID" placeholder="Employee ID" type="text" class="form-group form-control @error('employeeID') is-invalid @enderror" name="employeeID" value="{{ old('employeeID') }}"  autocomplete="employeeID">
                                 @error('employeeID')
                                     <span class="invalid-feedback" role="alert">
@@ -75,6 +72,7 @@
                             </div>
 
                             <div class="col-md-6">
+                                <label for="">Department</label>
                                 <input id="department" placeholder="Department" type="text" class="form-control @error('department') is-invalid @enderror" name="department" value="{{ old('department') }}"  autocomplete="department">
                                 @error('department')
                                     <span class="invalid-feedback" role="alert">
@@ -84,6 +82,7 @@
                             </div>
 
                             <div class="col-md-6">
+                                <label for="">Designation</label>
                                 <input id="designation" placeholder="Designation" type="text" class="form-control @error('designation') is-invalid @enderror" name="designation" value="{{ old('designation') }}"  autocomplete="designation">
                                 @error('designation')
                                     <span class="invalid-feedback" role="alert">

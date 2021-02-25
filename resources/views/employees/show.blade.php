@@ -345,6 +345,7 @@
                     @endif
                     <!-- Only fields withe errors are to be validated -->
                     <form method="POST" action="{{ route('employees.update',  Auth::user()->id) }}">
+                        {{ method_field('PUT') }}
                         @csrf
                         <div class="row">
                             <div class="col-md-4">

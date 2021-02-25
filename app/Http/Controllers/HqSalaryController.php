@@ -7,6 +7,8 @@ use App\Models\Salary;
 use App\Models\Payroll;
 use App\Models\Jobgroup;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\HqPayrollExport;
 
 class HqSalaryController extends Controller
 {
@@ -15,7 +17,7 @@ class HqSalaryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(){
+    public function index(){  
 
         $employees = User::all();
         $userpayroll   = User::where('employee_type','HQ')->with("payroll")->get();
@@ -34,6 +36,15 @@ class HqSalaryController extends Controller
 
         return view('salaries.hq.index', compact('userpayroll','salaries','totalAirtimeAllowance','totalNetPay','totalPayee','totalIncomeTax','totalNhifAllowance','totalTransportAllowance','totalHseAllowance','totalBasicSalary','employees', 'jobgroup'));
 
+    }
+
+    // Download excel
+    public function exportexcel(){
+        return Excel::download(new HqPayrollExport, 'hq-employees-salary.xlsx');
+    }
+
+    public function exportpdf(){
+        return Excel::download(new HqPayrollExport, 'hq-employees-salary.pdf');
     }
 
 

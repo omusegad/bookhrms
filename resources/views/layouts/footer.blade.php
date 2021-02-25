@@ -1,26 +1,20 @@
-    <script src="{{ asset('js/jquery-3.5.1.js') }}"></script>
+ <script src="{{ asset('js/jquery-3.5.1.js') }}"></script>
     <script src="{{ asset('js/app.js') }}"></script>
-     <script src="{{ asset('js/jquery.slimscroll.min.js') }}"></script>
     <script src="{{ asset('js/popper.min.js') }}"></script>
     <script src="{{ asset('js/bootstrap.min.js') }}"></script>
-    <script src="{{ asset('js/select2.min.js') }}"></script>
+    <script src="{{ asset('js/jquery.slimscroll.min.js') }}"></script>
     <script src="{{ asset('js/moment.min.js') }}"></script>
-    <script src="{{ asset('js/bootstrap-datetimepicker.min.js') }}"></script>
-    <script src="{{ asset('js/jquery.dataTables.min.js') }}"></script>
-    <script src="{{ asset('js/dataTables.buttons.min.js') }}"></script>
-    <script src="{{ asset('js/buttons.print.min.js') }}"></script>
 
-    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.4.1/css/buttons.dataTables.min.css">
-<script type="text/javascript" language="javascript" src="https://cdn.datatables.net/buttons/1.4.1/js/dataTables.buttons.min.js"></script>
-<script type="text/javascript" language="javascript" src="https://cdn.datatables.net/buttons/1.4.1/js/buttons.flash.min.js"></script>
-<script type="text/javascript" language="javascript" src="https://cdn.datatables.net/buttons/1.4.1/js/buttons.html5.min.js"></script>
-<script type="text/javascript" language="javascript" src="https://cdn.datatables.net/buttons/1.4.1/js/buttons.print.min.js"></script>
+    <script src="{{ asset('js/tableExport.min.min.js') }}"></script> --}}
 
-    <script type="text/javascript">
+<script src="https://unpkg.com/tableexport.jquery.plugin/tableExport.min.js"></script>
+<script src="https://unpkg.com/bootstrap-table@1.18.2/dist/bootstrap-table.min.js"></script>
+<script src="https://unpkg.com/bootstrap-table@1.18.2/dist/extensions/export/bootstrap-table-export.min.js"></script>
+<script src="https://unpkg.com/jspdf@latest/dist/jspdf.umd.min.js"></script>
+
+<script type="text/javascript">
         $(document).ready(function(){
-
             $('#start_date, #end_date').change(function(){
-
                 var start_date = new Date($("#start_date").val());
                 var end_date = new Date($("#end_date").val());
                 console.log(start_date,end_date);
@@ -46,32 +40,32 @@
         });
 
         // if all checkbox are selected, then check the select all checkbox
+        // and viceversa
         $(".name").click(function () {
-
             if ($(".name").length == $(".name:checked").length) {
                 $("#selectall").attr("checked", "checked");
             } else {
                 $("#selectall").removeAttr("checked");
             }
-
         });
 
 
-        $("#payrollA, #payrollB, #payrollC, #payrollD").DataTable( {
-                dom: 'Bfrtip',
-                buttons: [
-                'excel', 'pdf', 'print']
-         } );
+           $(function() {
+                $table = $('#hqpayroll').bootstrapTable({
+                    search: true,
+                    showColumns: true,
+            });
+        });
+
+
+
+
+
+
     });
 
     </script>
-
-
-
-   @livewireScripts
-
  </body>
-
 </html>
 
 

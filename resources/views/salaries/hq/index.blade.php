@@ -13,12 +13,6 @@
                 <div class="row align-items-center">
                     <div class="col">
                         <h3 class="page-title">Employee HQ Payroll</h3>
-                        <ul class="breadcrumb">
-                            <li class="breadcrumb-item">
-                                <a href="{{ route('dashboard') }}">Dashboard</a>
-                            </li>
-                            <li class="breadcrumb-item active">HQ Payroll : (Ksh)</li>
-                        </ul>
                     </div>
                 </div>
             </div>
@@ -40,25 +34,32 @@
 					<section class="comp-section" id="comp_tabs">
 						<div class="row">
 							<div class="col-lg-12">
-								<div class="card">
-									<div class="card-body">
 										<ul class="nav nav-tabs nav-tabs-top">
                                             <li class="nav-item"><a class="nav-link" href="#top-tab2" data-toggle="tab">Payroll</a></li>
                                             <li class="nav-item"><a class="nav-link" href="#top-tab3" data-toggle="tab">Payslips</a></li>
                                         </ul>
 
 										<div class="tab-content">
-
 											<div class="tab-pane show active" id="top-tab2">
                                                 <div class="table-responsive">
-                                                    <table id="payroll" class="table table-striped custom-table table-bordered" id="payrollC">
+                                                    <table
+                                                   id="hqpayroll"
+                                                    data-search="true"
+                                                    data-show-fullscreen="true"
+                                                    data-show-columns="true"
+                                                    data-show-export="true"
+                                                    data-export-data-type="pdf"
+                                                    data-click-to-select="true"
+                                                    data-pagination="true"
+                                                    data-response-handler="responseHandler">
                                                         <thead>
                                                             <tr>
                                                                 <th>Serial No</th>
                                                                 <th>Beneficiary Name</th>
-                                                                <th>Bank Name & Branch</th>
+                                                                <th>Bank Name </th>
+                                                                <th>Branch</th>
                                                                 <th>Bank Code</th>
-                                                                <th>Beneficiary Acount Number</th>
+                                                                <th>Beneficiary Account Number</th>
                                                                 <th>Net Pay</th>
                                                                 <th>Reference</th>
                                                             </tr>
@@ -71,17 +72,18 @@
                                                                     <td>{{$count++ }}</td>
                                                                     <td>
                                                                         <a href="{{ route('employees.edit',$item->id)}}">
-                                                                            {{$item->fname }} {{$item->lName }} <i class="fa fa-pencil m-r-5"></i>
+                                                                            {{$item->fname }} {{$item->lName }}
                                                                         </a>
                                                                     </td>
                                                                   <td>
-                                                                        {{ !empty($item->payroll) ? $item->payroll->bankName:' ' }},
-                                                                        {{ !empty($item->payroll) ? $item->payroll->bankBranch:' ' }}
+                                                                        {{ !empty($item->payroll) ? $item->payroll->bankName:' ' }}
                                                                  </td>
+                                                                 <td>
+                                                                    {{ !empty($item->payroll) ? $item->payroll->bankBranch:' ' }}
+                                                             </td>
                                                                  <td>
                                                                     {{ !empty($item->payroll) ? $item->payroll->bankCode:' ' }}
                                                                 </td>
-
 
                                                                 <td>
                                                                     {{ !empty($item->payroll) ? $item->payroll->beneficiaryAccountNumber:' ' }}
@@ -92,20 +94,21 @@
                                                             <td>
                                                                 {{ !empty($item->payroll) ? $item->payroll->reference:' ' }}
                                                             </td>
-
-                                                          @endif
                                                             </tr>
+                                                            @endif
                                                           @endforeach
                                                         </tbody>
                                                     </table>
                                                 </div>
 											</div>
+
 											<div class="tab-pane" id="top-tab3">
                                                 <div class="table-responsive">
-                                                    <table id="payslips" class="table table-striped custom-table table-bordered" id="payrollD">
+                                                    <table  class="table custom-table table-bordered" id="hqpayslip">
                                                         <thead>
                                                             <tr>
-                                                                <th>Staff No</th>
+                                                                <th>S/N</th>
+                                                                <th>Employee No</th>
                                                                 <th>Employee Name</th>
                                                                 <th>Position</th>
                                                                 <th>Job Group</th>
@@ -129,10 +132,11 @@
                                                             @foreach ($userpayroll as $item)
                                                             <tr>
                                                                     @if (!empty($item->payroll))
+                                                                    <td>{{ $count++ }}</td>
                                                                     <td> {{$item->employeeID }}</td>
                                                                     <td>
                                                                         <a href="{{ route('employees.edit',$item->id)}}">
-                                                                            {{$item->fname }} {{$item->lName }} <i class="fa fa-pencil m-r-5"></i>
+                                                                            {{$item->fname }} {{$item->lName }}
                                                                         </a>
                                                                     </td>
                                                                     <td> {{$item->joining_position }}</td>
@@ -177,9 +181,9 @@
                                                             </a>
 
                                                             </td>
-
+                                                        </tr>
                                                           @endif
-                                                            </tr>
+
                                                           @endforeach
 
                                                         </tbody>
@@ -188,8 +192,7 @@
                                             </div>
 
 										</div>
-									</div>
-								</div>
+
 							</div>
 
 
