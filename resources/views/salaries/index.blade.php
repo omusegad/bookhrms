@@ -138,7 +138,6 @@
                         <div class="col-lg-4">
                             <div class=" text-right ">
                                 <a class="btn btn-outline-primary" href="{{ url('/salaries-export-excel') }}">Excel</a>
-                                <a class="btn btn-outline-primary" href="{{ url('/salaries-export-pdf') }}">PDF</a>
                                </div>
                          </div>
                     </div>

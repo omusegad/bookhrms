@@ -26,7 +26,7 @@
 								<ul style="display: none;">
 									<li><a href="{{ route('hq-salaries.index') }}">HQ Payroll</a></li>
 									<li><a href="{{ route('field-salaries.index') }}">Field Payroll</a></li>
-									<li><a href="{{ route('salaries.index') }}">All payroll</a></li>
+									<li><a href="{{ route('salaries.index') }}">All Salary</a></li>
 								</ul>
 							</li>
 							<li class="submenu">

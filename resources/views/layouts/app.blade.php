@@ -9,19 +9,12 @@
     <title>{{ config('app.name', 'AIC NANDI AREA') }}</title>
 
     <!-- Scripts -->
-
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
-
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-
-		<!-- Bootstrap CSS -->
-
 		<!-- Fontawesome CSS -->
         <link rel="stylesheet" href="{{ asset('css/font-awesome.min.css') }}">
-
-		<!-- Lineawesome CSS -->
         <link rel="stylesheet" href="{{ asset('css/line-awesome.min.css') }}">
 
 		<!-- Datatable CSS -->
@@ -34,11 +27,10 @@
 
 		<!-- Datetimepicker CSS -->
 		<link rel="stylesheet" href="{{ asset('css/bootstrap-datetimepicker.min.css') }}">
-
-
-
 		<!-- Main CSS -->
         <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+
+        @livewireStyles
 </head>
 <body>
     <div class="main-wrapper">

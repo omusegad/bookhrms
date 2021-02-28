@@ -67,15 +67,14 @@ Route::middleware(['auth'])->group(function () {
         Route::resource('/job-groups', JobgroupController::class);
         Route::resource('/salaries', SalaryController::class);
 
-        Route::get('/salaries-export-excel', [SalaryController::class, 'exportexcel']);
-        Route::get('/salaries-export-pdf', [SalaryController::class, 'exportpdf']);
 
         Route::resource('/field-salaries',FieldSalaryController::class)->only(['index','store']);
         Route::resource('/hq-salaries',HqSalaryController::class)->only(['index','store']);
 
+        Route::get('/salaries-export-excel', [SalaryController::class, 'exportexcel']);
         Route::get('/hq-salaries-export-excel', [HqSalaryController::class, 'exportexcel']);
-        Route::get('/hq-salaries-export-pdf', [HqSalaryController::class, 'exportpdf']);
-        
+        Route::get('/field-salaries-export-excel', [FieldSalaryController::class, 'exportexcel']);
+
         Route::resource('/salary-settings', SalarySettingsController::class);
         Route::resource('/holidays', HolidaysController::class);
         Route::resource('/payroll', PayrollController::class)->only(['index','store']);

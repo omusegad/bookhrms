@@ -5,8 +5,9 @@
     <script src="{{ asset('js/jquery.slimscroll.min.js') }}"></script>
     <script src="{{ asset('js/moment.min.js') }}"></script>
 
-    <script src="{{ asset('js/tableExport.min.min.js') }}"></script> --}}
+    {{-- <script src="{{ asset('js/tableExport.min.min.js') }}"></script> --}} --}}
 
+{{-- <script src="https://unpkg.com/tableexport.jquery.plugin/tableExport.min.js"></script> --}}
 <script src="https://unpkg.com/tableexport.jquery.plugin/tableExport.min.js"></script>
 <script src="https://unpkg.com/bootstrap-table@1.18.2/dist/bootstrap-table.min.js"></script>
 <script src="https://unpkg.com/bootstrap-table@1.18.2/dist/extensions/export/bootstrap-table-export.min.js"></script>
@@ -35,7 +36,7 @@
        // select all checkbox
 
         // add multiple select / deselect functionality
-        $("#selectall").click(function () {
+        $("#selectall,#selecthq").click(function () {
             $('.name').attr('checked', this.checked);
         });
 
@@ -50,21 +51,21 @@
         });
 
 
-           $(function() {
-                $table = $('#hqpayroll').bootstrapTable({
+        $(function() {
+                $table = $('#hqpayroll,#hqsalary,#hqpayslips').bootstrapTable({
                     search: true,
                     showColumns: true,
+                    fileext: ".xls",
             });
         });
 
-
-
+        
 
 
 
     });
-
     </script>
+     @livewireScripts
  </body>
 </html>
 
