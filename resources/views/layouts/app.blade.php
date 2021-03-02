@@ -17,8 +17,6 @@
         <link rel="stylesheet" href="{{ asset('css/font-awesome.min.css') }}">
         <link rel="stylesheet" href="{{ asset('css/line-awesome.min.css') }}">
 
-		<!-- Datatable CSS -->
-		{{-- <link rel="stylesheet" href="{{ asset('css/dataTables.bootstrap4.min.css') }}"> --}}
 
 		<!-- Select2 CSS -->
 		<link rel="stylesheet" href="{{ asset('css/select2.min.css') }}">
@@ -30,7 +28,6 @@
 		<!-- Main CSS -->
         <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 
-        @livewireStyles
 </head>
 <body>
     <div class="main-wrapper">

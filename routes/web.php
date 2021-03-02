@@ -57,7 +57,7 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/hq-employees',[HqEmployeeController::class, 'index']);
         Route::get('/field-employees',[FieldEmployeeController::class, 'index']);
         Route::get('/hq-employees',[HqEmployeeController::class, 'index']);
-        Route::resource('/employees-profile',ProfileController::class);
+        Route::resource('/employees-profile',ProfileController::class)->only('update');
         Route::resource('/leaves', LeaveController::class);
         Route::resource('/leave-types', LeaveTypesController::class);
         Route::resource('/leave-settings', LeaveSettingsController::class);

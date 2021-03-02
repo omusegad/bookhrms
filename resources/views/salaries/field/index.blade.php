@@ -133,7 +133,7 @@
                                 </div>
                             </div>
 
-											<div class="tab-pane show active" id="top-tab2">
+											<div class="tab-pane " id="top-tab2">
                                                 <div class="table-responsive">
                                                     <table id="payroll" class="table  table-bordered" id="payrollA">
                                                         <thead>

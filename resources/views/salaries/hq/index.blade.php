@@ -96,9 +96,6 @@
                                                                             <td>
                                                                                 {{$item->fname}} {{$item->lName }}
                                                                             </td>
-
-
-
                                                                             <td> {{$item->salary['bankName']}}</td>
                                                                             <td> {{$item->salary['bankBranch'] }}</td>
                                                                             <td> {{$item->salary['bankCode'] }}</td>
@@ -124,17 +121,13 @@
                                                                         </tr>
                                                                 @endif
                                                             @endforeach
-                                                            {{-- <div class="submit-section text-right pb-3">
-                                                                <button type="submit" class="btn btn-primary">Generate Payroll</button>
-                                                            </div> --}}
-
                                                             </tbody>
                                                         </table>
                                                 </div>
 											</div>
 
 											<div class="tab-pane show" id="top-tab2">
-                                                <div class="table-responsive">
+                                                <div class="table-responsive ">
                                                     <table
                                                    id="hqpayroll"
                                                     data-search="true"
@@ -195,7 +188,7 @@
 											</div>
 
 											<div class="tab-pane" id="top-tab3">
-                                                <div class="table-responsive">
+                                                <div class="table-responsive scrollme">
                                                     <table
                                                     id="hqpayslips"
                                                     data-search="true"

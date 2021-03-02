@@ -10,7 +10,7 @@
     <div class="page-header">
         <div class="row align-items-center">
             <div class="col">
-                <h3 class="page-title">Edit Profile</h3>
+                <h3 class="page-title">Edit  '{{  $employee->fname }}' Profile</h3>
             </div>
             <div class="col-auto float-right ml-auto">
                 <a href="{{ url('/employees') }}" class="btn add-btn"><i class="fa fa-eye"></i> All Employees</a>
@@ -39,7 +39,7 @@
                                 <div class="row">
                                 <div class="col-md-6">
                                     <label for="">Employee ID</label>
-                                    <input id="employeeID" type="text" class="form-group form-control @error('employeeID') is-invalid @enderror" name="employeeID" value="{{ $employee->employeeID }}"  autocomplete="employeeID">
+                                    <input id="employeeID" type="text" class="form-group form-control @error('employeeID') is-invalid @enderror" name="employeeID" value="{{ $employee->employeeID }}"  autocomplete="employeeID" required>
                                     @error('employeeID')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -155,7 +155,7 @@
 
                             <div class="col-md-4">
                                 <label for="">Phone Number</label>
-                                <input id="phonenumber"  type="text" class="form-group form-control @error('phoneNumber') is-invalid @enderror" name="phoneNumber" value="{{ $employee->phoneNumber ? $employee->phoneNumber : old('phoneNumber')   }}"    autocomplete="phoneNumber">
+                                <input id="phonenumber"  type="text" class="form-group form-control @error('phoneNumber') is-invalid @enderror" name="phoneNumber" value="{{ $employee->phoneNumber ? $employee->phoneNumber : old('phoneNumber')   }}"    autocomplete="phoneNumber" >
                                 @error('phoneNumber')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -185,7 +185,7 @@
 
                             <div class="col-md-4">
                                 <label for="">NHIF</label>
-                                <input id="nhifNo"  type="text" class="form-group form-control @error('nhifNo') is-invalid @enderror" name="nhifNo"  value="{{ $employee->nhifNo ?  $employee->nhifNo :  old('emergency_contact') }}"   autocomplete="nhifNo">
+                                <input id="nhifNo"  type="text" class="form-group form-control @error('nhifNo') is-invalid @enderror" name="nhifNo"  value="{{ $employee->nhifNo ?  $employee->nhifNo :  old('emergency_contact') }}"   autocomplete="nhifNo" >
                                 @error('nhifNo')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -312,8 +312,13 @@
                             <div class="col-md-4">
                                 <label for="aic_regions_id">Aic Region</label>
                                 <select class="browser-default custom-select" name="aic_regions_id">
+                                    <option  value="{{ $employee->region['id'] }}" > {{ $employee->region['rName'] }} </option>
                                       @foreach ($regions as $item)
-                                       <option value="{{ $item->id }}">{{ $item->rName ? $item->rName  : old("aic_regions_id") }}</option>
+                                        @if( $item->rName ==  $employee->region['rName'] )
+                                           <option  class="d-none" disabled="disabled"  value="{{ $item->id }}">{{   $employee->region['rName']  }}</option>
+                                        @else
+                                             <option value="{{ $item->id }}">{{  $item->rName }}</option>
+                                        @endif
                                       @endforeach
                                   </select>
                             </div>
@@ -322,8 +327,13 @@
                             <div class="col-md-4">
                                 <label for="aic_dccs_id">DCC</label>
                                 <select class="browser-default custom-select" name="aic_dccs_id">
+                                    <option  value="{{ $employee->dcc['id'] }}" >{{ $employee->dcc['dccName'] }}</option>
                                       @foreach ($dcc as $item)
-                                       <option value="{{ $item->id }}">{{ $item->dccName  }}</option>
+                                        @if( $item->dccName ==  $employee->dcc['dccName'] )
+                                        <option  class="d-none" disabled="disabled"  value="{{ $item->id }}">{{   $employee->dcc['dccName']  }}</option>
+                                        @else
+                                            <option value="{{ $item->id }}">{{  $item->dccName  }}</option>
+                                        @endif
                                       @endforeach
                                   </select>
                             </div>
@@ -331,8 +341,13 @@
                             <div class="col-md-4">
                                 <label for="aic_lccs_id">LCC</label>
                                 <select class="browser-default custom-select" name="aic_lccs_id">
+                                    <option  value="{{ $employee->lcc['id'] }}" >{{ $employee->lcc['lccName'] }}</option>
                                       @foreach ($lcc as $item)
-                                       <option value="{{ $item->id }}">{{ $item->lccName  }}</option>
+                                            @if( $item->lccName ==  $employee->lcc['lccName'] )
+                                            <option  class="d-none" disabled="disabled"  value="{{ $item->id }}">{{   $employee->lcc['lccName']  }}</option>
+                                            @else
+                                                <option value="{{ $item->id }}">{{  $item->lccName  }}</option>
+                                            @endif
                                       @endforeach
                                   </select>
                             </div>
@@ -340,8 +355,13 @@
                             <div class="col-md-4">
                               <label for="aic_jobgroups_id">Job Group</label>
                               <select class="browser-default custom-select" name="aic_jobgroups_id">
+                                <option  value="{{ $employee->jobgroup['id'] }}" >{{ $employee->jobgroup['jonGroupName'] }}</option>
                                     @foreach ($jgroup as $item)
-                                     <option value="{{ $item->id }}">{{ $item->jonGroupName  }}</option>
+                                        @if( $item->jonGroupName == $employee->jobgroup['jonGroupName'] )
+                                        <option  class="d-none" disabled="disabled"  value="{{ $item->id }}">{{  $item->jonGroupName  }}</option>
+                                        @else
+                                            <option value="{{ $item->id }}">{{ $item->jonGroupName  }}</option>
+                                        @endif
                                     @endforeach
                                 </select>
                             </div>
@@ -349,19 +369,59 @@
                             <div class="col-md-4">
                               <label for="gender">Gender</label>
                                 <select class="browser-default custom-select" name="gender">
-                                    <option value="male">Male</option>
-                                    <option value="Female">Female</option>
+                                    @if($employee->gender === "male")
+                                    <option value="{{ $employee->gender  }}">{{ $employee->gender  }}</option>
+                                    <option value="female">Female</option>
+                                        @elseif($employee->gender === "female")
+                                            <option value="{{ $employee->gender  }}">{{ $employee->gender  }}</option>
+                                            <option value="male">Male</option>
+                                        @else
+                                            <option value="female">Female</option>
+                                            <option value="male">Male</option>
+                                        @endif
                                 </select>
                             </div>
 
                             <div class="col-md-4">
                               <label for="gender">Marital Status</label>
                                 <select class="browser-default custom-select" name="marital_status">
-                                    <option value="married">Married</option>
-                                    <option value="single">Single</option>
-                                    <option value="divorced">Divorced</option>
-                                    <option value="separated">Separated</option>
-                                    <option value="widowed">Widowed</option>
+                                         @if($employee->marital_status === "married")
+                                             <option value="single">{{ $employee->marital_status  }}</option>
+                                            <option value="single">Single</option>
+                                            <option value="divorced">Divorced</option>
+                                            <option value="separated">Separated</option>
+                                            <option value="widowed">Widowed</option>
+                                         @elseif($employee->marital_status === "single")
+                                              <option value="single">{{ $employee->marital_status  }}</option>
+                                               <option value="married">Married</option>
+                                               <option value="divorced">Divorced</option>
+                                               <option value="separated">Separated</option>
+                                              <option value="widowed">Widowed</option>
+                                         @elseif($employee->marital_status === "divorced")
+                                             <option value="single">{{ $employee->marital_status  }}</option>
+                                            <option value="single">Single</option>
+                                            <option value="divorced">Divorced</option>
+                                            <option value="separated">Separated</option>
+                                            <option value="widowed">Widowed</option>
+                                         @elseif($employee->marital_status === "seperated")
+                                         <option value="single">{{ $employee->marital_status  }}</option>
+                                            <option value="single">Single</option>
+                                            <option value="divorced">Divorced</option>
+                                            <option value="separated">Separated</option>
+                                            <option value="widowed">Widowed</option>
+                                         @elseif($employee->marital_status === "widowed")
+                                         <option value="single">{{ $employee->marital_status  }}</option>
+                                            <option value="married">Married</option>
+                                            <option value="single">Single</option>
+                                            <option value="divorced">Divorced</option>
+                                            <option value="separated">Separated</option>
+                                        @else
+                                        <option value="married">Married</option>
+                                        <option value="single">Single</option>
+                                        <option value="divorced">Divorced</option>
+                                        <option value="separated">Separated</option>
+                                        <option value="widowed">Widowed</option>
+                                         @endif
                                 </select>
                             </div>
 
@@ -369,16 +429,34 @@
                             <div class="col-md-4">
                                 <label for="employee_type">Employee Type</label>
                                   <select class="browser-default custom-select" name="employee_type">
-                                        <option value="FIELD">HQ</option>
-                                        <option value="HQ">FIELD</option>
+
+                                        @if($employee->employee_type === "HQ")
+                                           <option value="{{ $employee->employee_type  }}">{{ $employee->employee_type  }}</option>
+                                           <option value="FIELD">FIELD</option>
+
+                                        @elseif($employee->employee_type === "FIELD")
+                                        <option value="{{ $employee->employee_type  }}">{{ $employee->employee_type  }}</option>
+                                           <option value="HQ">HQ</option>
+                                        @endif
+
                                   </select>
                               </div>
                             <div class="col-md-4">
                               <label for="marital_status">Employee Status</label>
                                 <select class="browser-default custom-select" name="employee_status">
-                                    <option value="active">Active</option>
-                                    <option value="suspended">Suspended</option>
-                                    <option value="fired">Fired</option>
+                                     @if($employee->employee_status === "active")
+                                            <option value="active">{{ $employee->employee_status  }}</option>
+                                            <option value="suspended">Suspended</option>
+                                            <option value="fired">Fired</option>
+                                        @elseif($employee->employee_status === "suspended")
+                                            <option value="suspended">{{ $employee->employee_status  }}</option>
+                                            <option value="active">Active</option>
+                                            <option value="fired">Fired</option>
+                                        @elseif($employee->employee_status === "fired")
+                                            <option value="fired">{{ $employee->employee_status  }}</option>
+                                            <option value="suspended">Suspended</option>
+                                            <option value="active">Active</option>
+                                        @endif
                                 </select>
                             </div>
 
@@ -563,14 +641,15 @@
                                 @enderror
                             </div>
 
-                            <div class="col-md-4">
-                                <label for="password">Password</label>
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" value="{{ $employee->password }}" autocomplete="password">
-                                   @error('password')
-                                       <span class="invalid-feedback" role="alert">
-                                           <strong>{{ $message }}</strong>
-                                       </span>
-                                   @enderror
+
+                            <div class="col-md-6">
+                                <label for="password">Change your password</label>
+                                <input id="password" placeholder="Password" type="password" class="form-control @error('password') is-invalid @enderror" name="newpassword" autocomplete="password">
+                                    @error('newPassword')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
                             </div>
                         </div>
 

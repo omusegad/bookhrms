@@ -59,13 +59,10 @@
             });
         });
 
-        
-
 
 
     });
     </script>
-     @livewireScripts
  </body>
 </html>
 

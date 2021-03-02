@@ -18,9 +18,7 @@ class EmployeeController extends Controller{
     use UploadTrait;
 
     public function index(){
-
         $users = User::with('region','dcc','lcc','jobgroup')->get();
-
        // dd($users);
         return view('employees.index', compact('users'));
     }
@@ -72,7 +70,7 @@ class EmployeeController extends Controller{
      * @return \Illuminate\Http\Response
      */
     public function show($id){
-        $employee = User::where('id',$id)->first();
+        $employee = User::where('id',$id)->with('region','dcc','lcc','jobgroup')->first();
         return view('employees.show', compact('employee'));
     }
 
@@ -83,7 +81,8 @@ class EmployeeController extends Controller{
      * @return \Illuminate\Http\Response
      */
     public function edit($id){
-        $employee = User::where('id',$id)->first();
+        $employee = User::where('id',$id)->with('region','dcc','lcc','jobgroup')->first();
+        //dd(  $employee);
         $jgroup   = Jobgroup::all();
         $regions  = Region::all();
         $dcc      = Dccregions::all();
@@ -100,19 +99,20 @@ class EmployeeController extends Controller{
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id){
-        // dd($request->all());
         // get and save image
-        $filePath = "";
         if ($request->has('profile_image')) {
             $image = $request->file('profile_image');
             $name = Str::slug($request->input('fname')).'_'.time();
             $folder = '/uploads/images/';
             $filePath = $folder . $name. '.' . $image->getClientOriginalExtension() ;
-            $this->uploadOne($image, $folder, 'public', $name);
+          $this->uploadOne($image, $folder, 'public', $name);
         }
 
-        // $image = User::where('id', $id)->pluck('avatar');
-                User::where('id',$id)->update([
+        $password =  User::where('id',$id)->pluck('password'); // get current password
+        $avatar      =  User::where('id',$id)->pluck('avatar'); //  get current avatar
+    //   dd( $avatar );
+
+        User::where('id',$id)->update([
                         "employeeID" =>  $request['employeeID'],
                         "fname" =>  $request['fname'],
                         "lName" =>  $request['lName'],
@@ -158,7 +158,7 @@ class EmployeeController extends Controller{
                         "employee_type" => $request['employee_type'],
                         "employee_status" => $request['employee_status'],
                         "pinNo" => $request['pinNo'],
-                        "avatar" =>  $filePath ?   $filePath  : NULL,
+                        "avatar" => $request['profile_image'] ?  $filePath  :   $avatar [0],
                         "home_county" => $request['home_county'],
                         "postalAddress" => $request['postalAddress'],
                         "otherEmailAddress" => $request['otherEmailAddress'],
@@ -166,7 +166,7 @@ class EmployeeController extends Controller{
                         "exit_date" => $request['exit_date'],
                         "male_pastors_grade" => $request['male_pastors_grade'],
                         "female_pastors_grade" => $request['female_pastors_grade'],
-                        'password' => Hash::make($request['password']),
+                        'password' => $request['newPassword'] ? Hash::make($request['newPassword']) :    $password[0],
                     ]);
 
         //  dd( $edited);
