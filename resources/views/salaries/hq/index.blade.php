@@ -8,28 +8,29 @@
         <!-- Page Content -->
         <div class="content container-fluid">
 
-            <!-- Page Header -->
-            <div class="page-header">
-                <div class="row align-items-center">
-                    <div class="col">
-                        <h3 class="page-title">Employee HQ Payroll</h3>
-                    </div>
-                </div>
-            </div>
-            <!-- /Page Header -->
+                        <!-- Page Header -->
+                        <div class="page-header">
+                            <div class="row align-items-center">
+                                <div class="col">
+                                    <h3 class="page-title">Employee HQ Payroll</h3>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /Page Header -->
 
-            <div class="row">
-              <div class="col-md-12">
-                @if ($message = Session::get('message'))
-                    <div class="alert alert-danger alert-block">
-                        <button type="button" class="close" data-dismiss="alert">×</button>
-                        <strong>{{ $message }}</strong>
-                    </div>
-                @endif
-            </div>
+                        <div class="row">
+                                    <div class="col-md-12">
+                                        @if ($message = Session::get('message'))
+                                            <div class="alert alert-danger alert-block">
+                                                <button type="button" class="close" data-dismiss="alert">×</button>
+                                                <strong>{{ $message }}</strong>
+                                            </div>
+                                        @endif
+                                    </div>
+                        </div>
 
                     	<!-- Tabs -->
-						<div class="row">
+						<div class="row pb-4">
 							<div class="col-lg-12">
 										<ul class="nav nav-tabs nav-tabs-top">
                                             <li class="nav-item"><a class="nav-link" href="#top-tab1" data-toggle="tab">Hq Salary</a></li>
@@ -40,16 +41,24 @@
 										<div class="tab-content">
                                                 <div class="tab-pane show active" id="top-tab1">
                                                                 <div class="row">
-                                                                    <div class="col-12 mb-4">
+                                                                    <div class="col-12">
                                                                         <form method="POST" action="{{route('hq-salaries.store')}}">
                                                                             @csrf
                                                                         <div class="row ">
-                                                                            <div class="col-lg-4 mt-3">
-                                                                                <input type="checkbox" id="selecthq" class="regular-checkbox" />
-                                                                                <label for="">Select All</label>
-                                                                                <button type="submit" class="ml-2 btn btn-outline-primary">Generate Hq Payroll</button>
-                                                                                <a class="ml-2 btn btn-outline-primary" href="{{ url('/hq-salaries-export-excel') }}">Excel</a>
-                                                                                </div>
+                                                                            <div class="col-lg-2 pl-4 mt-4">
+                                                                                <input type="checkbox" id="selecthq" class="regular-checkbox text-muted" />
+                                                                                <label for="" class="text-muted">Select All</label>
+                                                                            </div>
+                                                                            <div class="col-lg-10 gen-box">
+                                                                                   <ul>
+                                                                                    <li>
+                                                                                        <button type="submit" class="ml-2 btn btn-outline-primary">Refresh Hq Payroll</button>
+                                                                                    </li>
+                                                                                       <li>
+                                                                                             <a class="ml-2 btn btn-outline-primary" href="{{ url('/hq-salaries-export-excel') }}">Export Excel</a>
+                                                                                       </li>
+                                                                                   </ul>
+                                                                            </div>
 
                                                                         </div>
                                                                     </div>
@@ -59,8 +68,8 @@
                                                             <thead>
                                                                 <tr>
                                                                     <th>
-                                                                        {{-- <input type="checkbox" id="selectall" class="regular-checkbox" /><label for="selectall"> --}}
-                                                                        </th>
+                                                                       #
+                                                                    </th>
                                                                     <th>Employee ID</th>
                                                                     <th>Staff Name</th>
                                                                     <th>Bank Name</th>
@@ -85,7 +94,7 @@
                                                                     <th class="text-right">Action</th>
                                                                 </tr>
                                                             </thead>
-                                                            <tbody>
+                                                            <tbody mb-5>
                                                                 @foreach ($hqsalary as $item)
                                                                 @if(!empty($item->salary))
                                                                         <tr>
@@ -94,7 +103,7 @@
                                                                             </td>
                                                                             <td>{{$item->employeeID }}</td>
                                                                             <td>
-                                                                                {{$item->fname}} {{$item->lName }}
+                                                                                <a class="" href="{{route('salaries.edit', $item->salary['id'] )}}">    {{$item->fname}} {{$item->lName }} </a>
                                                                             </td>
                                                                             <td> {{$item->salary['bankName']}}</td>
                                                                             <td> {{$item->salary['bankBranch'] }}</td>
@@ -133,7 +142,6 @@
                                                     data-search="true"
                                                     data-show-columns="true"
                                                     data-show-export="true"
-                                                    data-export-data-type="pdf"
                                                     data-click-to-select="true"
                                                     data-pagination="true"
                                                     data-response-handler="responseHandler">
@@ -156,9 +164,7 @@
                                                                     @if (!empty($item->payroll))
                                                                     <td>{{$count++ }}</td>
                                                                     <td>
-                                                                        <a href="{{ route('employees.edit',$item->id)}}">
-                                                                            {{$item->fname }} {{$item->lName }}
-                                                                        </a>
+                                                                         {{$item->fname}} {{$item->lName }}
                                                                     </td>
                                                                   <td>
                                                                         {{ !empty($item->payroll) ? $item->payroll->bankName:' ' }}
@@ -188,14 +194,12 @@
 											</div>
 
 											<div class="tab-pane" id="top-tab3">
-                                                <div class="table-responsive scrollme">
+                                                <div class="table-responsive ">
                                                     <table
                                                     id="hqpayslips"
                                                     data-search="true"
-                                                    data-show-fullscreen="true"
                                                     data-show-columns="true"
                                                     data-show-export="true"
-                                                    data-export-data-type="pdf"
                                                     data-click-to-select="true"
                                                     data-pagination="true"
                                                     data-response-handler="responseHandler">
@@ -229,9 +233,7 @@
                                                                     <td>{{ $count++ }}</td>
                                                                     <td> {{$item->employeeID }}</td>
                                                                     <td>
-                                                                        <a href="{{ route('employees.edit',$item->id)}}">
-                                                                            {{$item->fname }} {{$item->lName }}
-                                                                        </a>
+                                                                        {{$item->fname}} {{$item->lName }}
                                                                     </td>
                                                                     <td> {{$item->joining_position }}</td>
                                                                     <td>
@@ -286,17 +288,10 @@
                                             </div>
 
 										</div>
-
 							</div>
-
-
 						</div>
 					<!-- /Tabs -->
-            </div>
         </div>
-        <!-- /Page Content -->
-
-
     </div>
     <!-- /Page Wrapper -->
 @endsection

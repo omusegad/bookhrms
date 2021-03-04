@@ -45,9 +45,9 @@ class HqSalaryController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request){
-        // $data = $request->input('userID');
-         $data = $request->all();
-         if(!$data){
+          $data = $request->input('userID');
+
+         if(!$data['userID']){
              return back()->with('message','Please select what you would like proccessed!');
          }
 
@@ -57,8 +57,8 @@ class HqSalaryController extends Controller
 
              $checkMonth =  Payroll::where('month', now()->month)
                             ->where('year', now()->year)->get(); //Check month
-             // dd($checkMonth);
-            // return $checkMonth;
+
+                            // return $checkMonth;
             if($checkMonth->isEmpty()){
                  Payroll::Create([
                      'user_id'    => $id,

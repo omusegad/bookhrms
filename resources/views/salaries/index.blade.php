@@ -133,11 +133,11 @@
                             <input type="checkbox" id="selectall" class="regular-checkbox" />  <label for="">Select All</label>
                         </div>
                         <div class="col-lg-4">
-                                <button type="submit" class="btn btn-outline-primary">Generate All Payroll</button>
+                                <button type="submit" class="btn btn-outline-primary">Refresh All Payroll</button>
                         </div>
                         <div class="col-lg-4">
                             <div class=" text-right ">
-                                <a class="btn btn-outline-primary" href="{{ url('/salaries-export-excel') }}">Excel</a>
+                                <a class="btn btn-outline-primary" href="{{ url('/salaries-export-excel') }}">Export Excel</a>
                                </div>
                          </div>
                     </div>

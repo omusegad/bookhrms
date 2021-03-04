@@ -56,7 +56,7 @@
                                     @enderror
                                 </div>
                                 <div class="col-md-6">
-                                    <label for="">Last Name</label>
+                                    <label for="">Sir Name</label>
                                     <input id="lName" type="text" class="form-group  form-control @error('lName') is-invalid @enderror" name="lName" value="{{ $employee->lName ?  $employee->lName  :  old('lName')}}"  autocomplete="lName" autofocus>
                                     @error('lName')
                                         <span class="invalid-feedback" role="alert">
@@ -74,7 +74,7 @@
                                     @enderror
                                 </div>
                                 <div class="col-md-6">
-                                    <label for="">Education</label>
+                                    <label for="">Highest  Education</label>
                                     <input id="education"  type="text" class="form-group  form-control @error('education') is-invalid @enderror" name="education"  value="{{ $employee->education ? $employee->education : old('education')  }}"  autocomplete="education" autofocus>
                                     @error('education')
                                         <span class="invalid-feedback" role="alert">
@@ -98,7 +98,7 @@
                                 @if($employee->avatar)
                                 <img class="preview-img rounded-circle" src="{{ asset('storage'.$employee->avatar) }}"  width="150" height="150"/>
                                @else
-                                <img class="preview-img rounded-circle" src="{{ asset('storage/uploads/images/account.png') }}"  width="150" height="150"/>
+                                <img class="preview-img rounded-circle" src="{{ asset('storage/uploads/images/account.jpg') }}"  width="150" height="150"/>
                                @endif
                                 <div class="browse-button">
                                     <i class="fa fa-pencil m-r-5"></i>
@@ -113,26 +113,6 @@
                         </div>
                         </div>
                         <div class="row">
-                            <div class="col-md-4">
-                                <label for="">Father's Name</label>
-                                <input id="father_name"  type="text" class="form-group form-control @error('father_name') is-invalid @enderror" name="father_name"  value="{{ $employee->father_name ? $employee->father_name : old('father_name')   }}"   autocomplete="father_name">
-                                @error('father_name')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-
-                            <div class="col-md-4">
-                                <label for="">Monther's Name</label>
-                                <input id="mother_name" type="text" class="form-group form-control @error('mother_name') is-invalid @enderror" name="mother_name"  value="{{ $employee->mother_name ? $employee->mother_name : old('mother_name')   }}"   autocomplete="mother_name">
-                                @error('mother_name')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-
                             <div class="col-md-4">
                                 <label for="">Email</label>
                                 <input id="email" type="email" class="form-group form-control @error('email') is-invalid @enderror" name="email" value="{{ $employee->email ?  $employee->email : old('email') }}"  autocomplete="email">
@@ -167,16 +147,6 @@
                                 <label for="">Altanative Phone Number</label>
                                 <input id="altPhoneNumber"  type="text" class="form-group form-control @error('altPhoneNumber') is-invalid @enderror" name="altPhoneNumber"  value="{{ $employee->altPhoneNumber ?  $employee->altPhoneNumber : old('altPhoneNumber') }}" autocomplete="altPhoneNumber">
                                 @error('altPhoneNumber')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-
-                            <div class="col-md-4">
-                                <label for="">Emergency Phone Number</label>
-                                <input id="emergencyPhoneNumber" type="text" class="form-group form-control @error('emergency_contact') is-invalid @enderror" name="emergencyPhoneNumber"  value="{{ $employee->emergencyPhoneNumber ? $employee->emergencyPhoneNumber : old('emergencyPhoneNumber')  }}"  autocomplete="emergencyPhoneNumber">
-                                @error('emergencyPhoneNumber')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -224,7 +194,7 @@
                             </div>
 
                             <div class="col-md-4">
-                                <label for="">Home County</label>
+                                <label for="">Home Area</label>
                                 <input id="home_county"  type="text" class="form-group form-control @error('home_county') is-invalid @enderror" name="home_county" value="{{ $employee->home_county ?  $employee->home_county : old('home_county')  }}"   autocomplete="home_county">
                                 @error('home_county')
                                     <span class="invalid-feedback" role="alert">
@@ -234,7 +204,7 @@
                             </div>
 
                             <div class="col-md-4">
-                                <label for="">Joining Position</label>
+                                <label for="">Position</label>
                                 <input id="joining_position"  type="text" class="form-group form-control @error('joining_position') is-invalid @enderror" name="joining_position" value="{{ $employee->joining_position ? $employee->joining_position : old('joining_position') }}"  autocomplete="joining_position">
                                 @error('joining_position')
                                     <span class="invalid-feedback" role="alert">
@@ -253,62 +223,200 @@
                                 @enderror
                             </div>
 
-                            <div class="col-md-4">
-                                <label for="">Physical Address</label>
-                                <input id="current_address"  type="text" class="form-group form-control @error('current_address') is-invalid @enderror" name="current_address" value="{{ $employee->current_address ? $employee->current_address : old('current_address') }}"  autocomplete="current_address">
-                                @error('current_address')
+                            @if($employee->gender == "Male")
+                               <div class="col-lg-4">
+                                    <label for="gender">{{ $employee->fname }} 's Grade</label>
+                                    <select class="browser-default custom-select" name="male_pastors_grade">
+                                        @if($employee->male_pastors_grade)
+                                            <option value="{{ $employee->male_pastors_grade }}" disabled>{{ $employee->male_pastors_grade }} </option>
+                                            <option value="unlicensed">unlicensed</option>
+                                            <option value="ordained">ordained</option>
+                                        @endif
+                                        @if($employee->male_pastors_grade == null)
+                                        <option value="licensed">licensed</option>
+                                        <option value="unlicensed">unlicensed</option>
+                                        <option value="ordained">ordained</option>
+                                    @endif
+                                    </select>
+                            </div>
+                        @else
+                            <div class="col-lg-4">
+                                <label for="gender"> {{ $employee->fname }}'s Grade</label>
+                                <select class="browser-default custom-select" name="female_pastors_grade">
+                                    @if($employee->female_pastors_grade === "oneToFive")
+                                        <option value="oneToFive">1 -5 years experience</option>
+                                        <option value="sixToTen">6 - 10 Years Experience</option>
+                                        <option value="elevenAndAbove">11 and Above Years Experience</option>
+
+                                        @elseif($employee->female_pastors_grade === "sixToTen")
+                                        <option value="sixToTen">6 - 10 years experience </option>
+                                        <option value="oneToFive">1 - 5 Years Experience</option>
+                                        <option value="elevenAndAbove">11 and Above Years Experience</option>
+
+                                        @elseif($employee->female_pastors_grade === "elevenAndAbove")
+                                        <option value="elevenAndAbove"> 11 and above years experience</option>
+                                        <option value="oneToFive">1 - 5 Years Experience</option>
+                                        <option value="sixToTen"> 6 - 10 Years Experience</option>
+                                        @endif
+                                </select>
+                            </div>
+                        @endif
+
+                        <div class="col-md-4">
+                            <label for="aic_jobgroups_id">Job Group</label>
+                            <select class="browser-default custom-select" name="aic_jobgroups_id">
+                              <option  value="{{ $employee->jobgroup['id'] }}" >{{ $employee->jobgroup['jonGroupName'] }}</option>
+                                  @foreach ($jgroup as $item)
+                                      @if( $item->jonGroupName == $employee->jobgroup['jonGroupName'] )
+                                      <option  class="d-none" disabled="disabled"  value="{{ $item->id }}">{{  $item->jonGroupName  }}</option>
+                                      @else
+                                          <option value="{{ $item->id }}">{{ $item->jonGroupName  }}</option>
+                                      @endif
+                                  @endforeach
+                              </select>
+                          </div>
+
+                          <div class="col-md-4">
+                              <label for="gender">Gender</label>
+                              <select class="browser-default custom-select" name="gender">
+                                  @if($employee->gender === "male")
+                                  <option value="{{ $employee->gender  }}">{{ $employee->gender  }}</option>
+                                  <option value="female">Female</option>
+                                      @elseif($employee->gender === "female")
+                                          <option value="{{ $employee->gender  }}">{{ $employee->gender  }}</option>
+                                          <option value="male">Male</option>
+                                      @else
+                                          <option value="female">Female</option>
+                                          <option value="male">Male</option>
+                                      @endif
+                              </select>
+                          </div>
+
+                          <div class="col-md-4">
+                            <label for="gender">Marital Status</label>
+                              <select class="browser-default custom-select" name="marital_status">
+                                       @if($employee->marital_status === "married")
+                                           <option value="single">{{ $employee->marital_status  }}</option>
+                                          <option value="single">Single</option>
+                                          <option value="divorced">Divorced</option>
+                                          <option value="separated">Separated</option>
+                                          <option value="widowed">Widowed</option>
+                                       @elseif($employee->marital_status === "single")
+                                            <option value="single">{{ $employee->marital_status  }}</option>
+                                             <option value="married">Married</option>
+                                             <option value="divorced">Divorced</option>
+                                             <option value="separated">Separated</option>
+                                            <option value="widowed">Widowed</option>
+                                       @elseif($employee->marital_status === "divorced")
+                                           <option value="single">{{ $employee->marital_status  }}</option>
+                                          <option value="single">Single</option>
+                                          <option value="divorced">Divorced</option>
+                                          <option value="separated">Separated</option>
+                                          <option value="widowed">Widowed</option>
+                                       @elseif($employee->marital_status === "seperated")
+                                       <option value="single">{{ $employee->marital_status  }}</option>
+                                          <option value="single">Single</option>
+                                          <option value="divorced">Divorced</option>
+                                          <option value="separated">Separated</option>
+                                          <option value="widowed">Widowed</option>
+                                       @elseif($employee->marital_status === "widowed")
+                                       <option value="single">{{ $employee->marital_status  }}</option>
+                                          <option value="married">Married</option>
+                                          <option value="single">Single</option>
+                                          <option value="divorced">Divorced</option>
+                                          <option value="separated">Separated</option>
+                                      @else
+                                      <option value="married">Married</option>
+                                      <option value="single">Single</option>
+                                      <option value="divorced">Divorced</option>
+                                      <option value="separated">Separated</option>
+                                      <option value="widowed">Widowed</option>
+                                       @endif
+                              </select>
+                          </div>
+
+
+                          <div class="col-md-4">
+                              <label for="employee_type">Employee Type</label>
+                                <select class="browser-default custom-select" name="employee_type">
+
+                                      @if($employee->employee_type === "HQ")
+                                         <option value="{{ $employee->employee_type  }}">{{ $employee->employee_type  }}</option>
+                                         <option value="FIELD">FIELD</option>
+
+                                      @elseif($employee->employee_type === "FIELD")
+                                      <option value="{{ $employee->employee_type  }}">{{ $employee->employee_type  }}</option>
+                                         <option value="HQ">HQ</option>
+                                      @endif
+
+                                </select>
+                            </div>
+                          <div class="col-md-4">
+                            <label for="marital_status">Employee Status</label>
+                              <select class="browser-default custom-select" name="employee_status">
+                                   @if($employee->employee_status === "active")
+                                          <option value="active">{{ $employee->employee_status  }}</option>
+                                          <option value="suspended">Suspended</option>
+                                          <option value="fired">Fired</option>
+                                      @elseif($employee->employee_status === "suspended")
+                                          <option value="suspended">{{ $employee->employee_status  }}</option>
+                                          <option value="active">Active</option>
+                                          <option value="fired">Fired</option>
+                                      @elseif($employee->employee_status === "fired")
+                                          <option value="fired">{{ $employee->employee_status  }}</option>
+                                          <option value="suspended">Suspended</option>
+                                          <option value="active">Active</option>
+                                      @endif
+                              </select>
+                          </div>
+
+                          <div class="col-md-4">
+                            <label for="joining_date">Joining Date </label>
+                              <input id="joining_date" type="date" class="form-group form-control @error('joining_date') is-invalid @enderror" name="joining_date" value="{{ $employee->joining_date ? $employee->joining_date : old('joining_date')  }}"  autocomplete="joining_date">
+                              @error('joining_date')
+                                  <span class="invalid-feedback" role="alert">
+                                      <strong>{{ $message }}</strong>
+                                  </span>
+                              @enderror
+                          </div>
+
+                          <div class="col-md-4">
+                              <label for="confirmation_date">Confirmation Date </label>
+                                <input id="confirmation_date" type="date" class="form-group form-control @error('confirmation_date') is-invalid @enderror" name="confirmation_date" value="{{ $employee->confirmation_date ? $employee->confirmation_date : old('confirmation_date')  }}"  autocomplete="confirmation_date">
+                                @error('confirmation_date')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
                             </div>
-                            @if($employee->gender == "Male")
-                            <div class="col-lg-6">
-                                <label for="gender">{{ $employee->fname }} 's Grade</label>
-                                <select class="browser-default custom-select" name="male_pastors_grade">
-                                    @if($employee->male_pastors_grade)
-                                        <option value="{{ $employee->male_pastors_grade }}">
-                                            {{ $employee->male_pastors_grade }}
-                                        </option>
-                                        <option value="unlicensed">unlicensed</option>
-                                        <option value="ordained">ordained</option>
-                                    @endif
-                                    @if($employee->male_pastors_grade == null)
-                                    <option value="licensed">licensed</option>
-                                    <option value="unlicensed">unlicensed</option>
-                                    <option value="ordained">ordained</option>
-                                @endif
-                                </select>
-                            </div>
-                        @else
-                            <div class="col-lg-6">
-                                <label for="gender"> {{ $employee->fname }}'s Grade</label>
-                                <select class="browser-default custom-select" name="female_pastors_grade">
-                                   @if($employee->female_pastors_grade === "oneToFive")
-                                    <option value="oneToFive">1 -5 years experience</option>
-                                    <option value="sixToTen">6 - 10 Years Experience</option>
-                                    <option value="elevenAndAbove">11 and Above Years Experience</option>
 
-                                    @elseif($employee->female_pastors_grade === "sixToTen")
-                                    <option value="sixToTen">6 - 10 years experience </option>
-                                    <option value="oneToFive">1 - 5 Years Experience</option>
-                                    <option value="elevenAndAbove">11 and Above Years Experience</option>
 
-                                    @elseif($employee->female_pastors_grade === "elevenAndAbove")
-                                    <option value="elevenAndAbove"> 11 and above years experience</option>
-                                    <option value="oneToFive">1 - 5 Years Experience</option>
-                                    <option value="sixToTen"> 6 - 10 Years Experience</option>
-                                    @endif
+                            <div class="col-md-4">
+                                <label for="date_of_birth"> Date of birth </label>
+                                  <input id="dob" type="date" class="form-group form-control @error('date_of_birth') is-invalid @enderror" name="date_of_birth" value="{{ $employee->date_of_birth ?  $employee->date_of_birth : old('joining_position') }}"  autocomplete="date_of_birth">
+                                  @error('date_of_birth')
+                                      <span class="invalid-feedback" role="alert">
+                                          <strong>{{ $message }}</strong>
+                                      </span>
+                                  @enderror
+                              </div>
 
-                                </select>
-                            </div>
-                        @endif
+
+                              <div class="col-md-4">
+                                <label for="d">Department  </label>
+                                  <input id="department" type="text" class="form-group form-control @error('department') is-invalid @enderror" name="department" value="{{ $employee->department ? $employee->department : old('department')  }}"  autocomplete="department">
+                                  @error('department')
+                                      <span class="invalid-feedback" role="alert">
+                                          <strong>{{ $message }}</strong>
+                                      </span>
+                                  @enderror
+                              </div>
+
+
                         </div>
-
-                        <br>
-                        <h4> Regions Section</h4>
+                            <h4> Regions Section</h4>
                         <hr>
-                        <div class="row">
+                        <div class="row mb-3">
                             <div class="col-md-4">
                                 <label for="aic_regions_id">Aic Region</label>
                                 <select class="browser-default custom-select" name="aic_regions_id">
@@ -351,160 +459,11 @@
                                       @endforeach
                                   </select>
                             </div>
-
-                            <div class="col-md-4">
-                              <label for="aic_jobgroups_id">Job Group</label>
-                              <select class="browser-default custom-select" name="aic_jobgroups_id">
-                                <option  value="{{ $employee->jobgroup['id'] }}" >{{ $employee->jobgroup['jonGroupName'] }}</option>
-                                    @foreach ($jgroup as $item)
-                                        @if( $item->jonGroupName == $employee->jobgroup['jonGroupName'] )
-                                        <option  class="d-none" disabled="disabled"  value="{{ $item->id }}">{{  $item->jonGroupName  }}</option>
-                                        @else
-                                            <option value="{{ $item->id }}">{{ $item->jonGroupName  }}</option>
-                                        @endif
-                                    @endforeach
-                                </select>
-                            </div>
-
-                            <div class="col-md-4">
-                              <label for="gender">Gender</label>
-                                <select class="browser-default custom-select" name="gender">
-                                    @if($employee->gender === "male")
-                                    <option value="{{ $employee->gender  }}">{{ $employee->gender  }}</option>
-                                    <option value="female">Female</option>
-                                        @elseif($employee->gender === "female")
-                                            <option value="{{ $employee->gender  }}">{{ $employee->gender  }}</option>
-                                            <option value="male">Male</option>
-                                        @else
-                                            <option value="female">Female</option>
-                                            <option value="male">Male</option>
-                                        @endif
-                                </select>
-                            </div>
-
-                            <div class="col-md-4">
-                              <label for="gender">Marital Status</label>
-                                <select class="browser-default custom-select" name="marital_status">
-                                         @if($employee->marital_status === "married")
-                                             <option value="single">{{ $employee->marital_status  }}</option>
-                                            <option value="single">Single</option>
-                                            <option value="divorced">Divorced</option>
-                                            <option value="separated">Separated</option>
-                                            <option value="widowed">Widowed</option>
-                                         @elseif($employee->marital_status === "single")
-                                              <option value="single">{{ $employee->marital_status  }}</option>
-                                               <option value="married">Married</option>
-                                               <option value="divorced">Divorced</option>
-                                               <option value="separated">Separated</option>
-                                              <option value="widowed">Widowed</option>
-                                         @elseif($employee->marital_status === "divorced")
-                                             <option value="single">{{ $employee->marital_status  }}</option>
-                                            <option value="single">Single</option>
-                                            <option value="divorced">Divorced</option>
-                                            <option value="separated">Separated</option>
-                                            <option value="widowed">Widowed</option>
-                                         @elseif($employee->marital_status === "seperated")
-                                         <option value="single">{{ $employee->marital_status  }}</option>
-                                            <option value="single">Single</option>
-                                            <option value="divorced">Divorced</option>
-                                            <option value="separated">Separated</option>
-                                            <option value="widowed">Widowed</option>
-                                         @elseif($employee->marital_status === "widowed")
-                                         <option value="single">{{ $employee->marital_status  }}</option>
-                                            <option value="married">Married</option>
-                                            <option value="single">Single</option>
-                                            <option value="divorced">Divorced</option>
-                                            <option value="separated">Separated</option>
-                                        @else
-                                        <option value="married">Married</option>
-                                        <option value="single">Single</option>
-                                        <option value="divorced">Divorced</option>
-                                        <option value="separated">Separated</option>
-                                        <option value="widowed">Widowed</option>
-                                         @endif
-                                </select>
-                            </div>
-
-
-                            <div class="col-md-4">
-                                <label for="employee_type">Employee Type</label>
-                                  <select class="browser-default custom-select" name="employee_type">
-
-                                        @if($employee->employee_type === "HQ")
-                                           <option value="{{ $employee->employee_type  }}">{{ $employee->employee_type  }}</option>
-                                           <option value="FIELD">FIELD</option>
-
-                                        @elseif($employee->employee_type === "FIELD")
-                                        <option value="{{ $employee->employee_type  }}">{{ $employee->employee_type  }}</option>
-                                           <option value="HQ">HQ</option>
-                                        @endif
-
-                                  </select>
-                              </div>
-                            <div class="col-md-4">
-                              <label for="marital_status">Employee Status</label>
-                                <select class="browser-default custom-select" name="employee_status">
-                                     @if($employee->employee_status === "active")
-                                            <option value="active">{{ $employee->employee_status  }}</option>
-                                            <option value="suspended">Suspended</option>
-                                            <option value="fired">Fired</option>
-                                        @elseif($employee->employee_status === "suspended")
-                                            <option value="suspended">{{ $employee->employee_status  }}</option>
-                                            <option value="active">Active</option>
-                                            <option value="fired">Fired</option>
-                                        @elseif($employee->employee_status === "fired")
-                                            <option value="fired">{{ $employee->employee_status  }}</option>
-                                            <option value="suspended">Suspended</option>
-                                            <option value="active">Active</option>
-                                        @endif
-                                </select>
-                            </div>
-
-
-                            <div class="col-md-4">
-                              <label for="joining_date">Joining Date </label>
-                                <input id="joining_date" type="date" class="form-group form-control @error('joining_date') is-invalid @enderror" name="joining_date" value="{{ $employee->joining_date ? $employee->joining_date : old('joining_date')  }}"  autocomplete="joining_date">
-                                @error('joining_date')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                            <div class="col-md-4">
-                                <label for="confirmation_date">Comfirmation Date </label>
-                                  <input id="confirmation_date" type="date" class="form-group form-control @error('confirmation_date') is-invalid @enderror" name="confirmation_date" value="{{ $employee->confirmation_date ? $employee->confirmation_date : old('confirmation_date')  }}"  autocomplete="confirmation_date">
-                                  @error('confirmation_date')
-                                      <span class="invalid-feedback" role="alert">
-                                          <strong>{{ $message }}</strong>
-                                      </span>
-                                  @enderror
-                              </div>
-
-                              <div class="col-md-4">
-                                <label for="date_of_birth"> Date of birth </label>
-                                  <input id="dob" type="date" class="form-group form-control @error('date_of_birth') is-invalid @enderror" name="date_of_birth" value="{{ $employee->date_of_birth ?  $employee->date_of_birth : old('joining_position') }}"  autocomplete="date_of_birth">
-                                  @error('date_of_birth')
-                                      <span class="invalid-feedback" role="alert">
-                                          <strong>{{ $message }}</strong>
-                                      </span>
-                                  @enderror
-                              </div>
-
-
-                              <div class="col-md-4">
-                                <label for="d">Department  </label>
-                                  <input id="department" type="text" class="form-group form-control @error('department') is-invalid @enderror" name="department" value="{{ $employee->department ? $employee->department : old('department')  }}"  autocomplete="department">
-                                  @error('department')
-                                      <span class="invalid-feedback" role="alert">
-                                          <strong>{{ $message }}</strong>
-                                      </span>
-                                  @enderror
-                              </div>
-
                         </div>
 
-                        <hr>
-                         <h4>Spouce Details Section</h4>
+                        <br>
+                         <h4>Spouse Details Section</h4>
+                         <hr>
                         <div class="row">
                             <div class="col-md-4">
                                 <label for="">Spouse First Name</label>
@@ -526,7 +485,7 @@
                             </div>
 
                             <div class="col-md-4">
-                                <label for="">Spouce Other Name</label>
+                                <label for="">Spouse Other Name</label>
                                 <input id="spouse_otherNames"  type="text" class="form-group form-control @error('spouse_otherNames') is-invalid @enderror" name="spouse_otherNames"  value="{{ $employee->spouse_otherNames ? $employee->spouse_otherNames : old('spouse_otherNames') }}"    autocomplete="spouse_otherNames">
                                 @error('spouse_otherNames')
                                     <span class="invalid-feedback" role="alert">
@@ -565,101 +524,104 @@
                             </div>
                         </div>
 
-                        <hr>
+                        <br>
                         <h4>Next of Kin Details Section</h4>
+                        <hr>
                         <div class="row">
                             <div class="col-md-4">
-                                <label for="">Next of kin First Name </label>
-                                <input id="next_of_kin_fname"  type="text" class="form-group form-control @error('next_of_kin_fname') is-invalid @enderror" name="next_of_kin_fname"  value="{{ $employee->next_of_kin_fname ? $employee->next_of_kin_fname  : old('next_of_kin_fname')}}"  autocomplete="next_of_kin_fname">
-                                @error('next_of_kin_fname')
+                                <label for="">Next of Kin First Name </label>
+                                <input id="next_of_Kin_fname"  type="text" class="form-group form-control @error('next_of_Kin_fname') is-invalid @enderror" name="next_of_Kin_fname"  value="{{ $employee->next_of_Kin_fname ? $employee->next_of_Kin_fname  : old('next_of_Kin_fname')}}"  autocomplete="next_of_Kin_fname">
+                                @error('next_of_Kin_fname')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
                             </div>
                             <div class="col-md-4">
-                                <label for="">Next of kin Last Name  </label>
-                                <input id="next_of_kin_lname"  type="text" class="form-group form-control @error('next_of_kin_lname') is-invalid @enderror" name="next_of_kin_lname"  value="{{ $employee->next_of_kin_lname ?  $employee->next_of_kin_lname : old('next_of_kin_lname')  }}" autocomplete="next_of_kin_lname">
-                                @error('next_of_kin_lname')
+                                <label for="">Next of Kin Last Name  </label>
+                                <input id="next_of_Kin_lname"  type="text" class="form-group form-control @error('next_of_Kin_lname') is-invalid @enderror" name="next_of_Kin_lname"  value="{{ $employee->next_of_Kin_lname ?  $employee->next_of_Kin_lname : old('next_of_Kin_lname')  }}" autocomplete="next_of_Kin_lname">
+                                @error('next_of_Kin_lname')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
                             </div>
                             <div class="col-md-4">
-                                <label for="">Next of kin Other Names</label>
-                                <input id="next_of_kin_otherNames" type="text" class="form-group form-control @error('next_of_kin_otherNames') is-invalid @enderror" name="next_of_kin_otherNames"  value="{{ $employee->next_of_kin_otherNames ?  $employee->next_of_kin_otherNames : old('next_of_kin_otherNames')  }}"   autocomplete="next_of_kin_otherNames">
-                                @error('next_of_kin_otherNames')
+                                <label for="">Next of Kin Other Names</label>
+                                <input id="next_of_Kin_otherNames" type="text" class="form-group form-control @error('next_of_Kin_otherNames') is-invalid @enderror" name="next_of_Kin_otherNames"  value="{{ $employee->next_of_Kin_otherNames ?  $employee->next_of_Kin_otherNames : old('next_of_Kin_otherNames')  }}"   autocomplete="next_of_Kin_otherNames">
+                                @error('next_of_Kin_otherNames')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
                             </div>
                             <div class="col-md-4">
-                                <label for="">Next of kin Phone Number</label>
-                                <input id="next_of_kin_phoneNumber"  type="text" class="form-group form-control @error('next_of_kin_phoneNumber') is-invalid @enderror" name="next_of_kin_phoneNumber"  value="{{ $employee->next_of_kin_phoneNumber ? $employee->next_of_kin_phoneNumber : old('next_of_kin_phoneNumber')  }}"  autocomplete="next_of_kin_phoneNumber">
-                                @error('next_of_kin_phoneNumber')
+                                <label for="">Next of Kin Phone Number</label>
+                                <input id="next_of_Kin_phoneNumber"  type="text" class="form-group form-control @error('next_of_Kin_phoneNumber') is-invalid @enderror" name="next_of_Kin_phoneNumber"  value="{{ $employee->next_of_Kin_phoneNumber ? $employee->next_of_Kin_phoneNumber : old('next_of_Kin_phoneNumber')  }}"  autocomplete="next_of_Kin_phoneNumber">
+                                @error('next_of_Kin_phoneNumber')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
                             </div>
                             <div class="col-md-4">
-                                <label for=""> Next of kin Alternative Phone Number </label>
-                                <input id="next_of_kin_altPhoneNumber"  type="text" class="form-group form-control @error('next_of_kin_altPhoneNumber') is-invalid @enderror" name="next_of_kin_altPhoneNumber" value="{{ $employee->next_of_kin_altPhoneNumber ? $employee->next_of_kin_altPhoneNumber : old('next_of_kin_altPhoneNumber') }}"   autocomplete="next_of_kin_altPhoneNumber">
-                                @error('next_of_kin_altPhoneNumber')
+                                <label for=""> Next of Kin Alternative Phone Number </label>
+                                <input id="next_of_Kin_altPhoneNumber"  type="text" class="form-group form-control @error('next_of_Kin_altPhoneNumber') is-invalid @enderror" name="next_of_Kin_altPhoneNumber" value="{{ $employee->next_of_Kin_altPhoneNumber ? $employee->next_of_Kin_altPhoneNumber : old('next_of_Kin_altPhoneNumber') }}"   autocomplete="next_of_Kin_altPhoneNumber">
+                                @error('next_of_Kin_altPhoneNumber')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
                             </div>
                             <div class="col-md-4">
-                                <label for="">Next of kin National ID</label>
-                                <input id="next_of_kin_nationId"  type="text" class="form-group form-control @error('next_of_kin_nationId') is-invalid @enderror" name="next_of_kin_nationId" value="{{ $employee->next_of_kin_nationId ? $employee->next_of_kin_nationId : old('next_of_kin_nationId')  }}"   autocomplete="next_of_kin_nationId">
-                                @error('next_of_kin_nationId')
+                                <label for="">Next of Kin National ID</label>
+                                <input id="next_of_Kin_nationId"  type="text" class="form-group form-control @error('next_of_Kin_nationId') is-invalid @enderror" name="next_of_Kin_nationId" value="{{ $employee->next_of_Kin_nationId ? $employee->next_of_Kin_nationId : old('next_of_Kin_nationId')  }}"   autocomplete="next_of_Kin_nationId">
+                                @error('next_of_Kin_nationId')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
                             </div>
                             <div class="col-md-4">
-                                <label for=""> next of kin Relationship </label>
-                                <input id="next_of_kin_relationship"  type="text" class="form-group form-control @error('next_of_kin_relationship') is-invalid @enderror" name="next_of_kin_relationship" value="{{ $employee->next_of_kin_relationship ? $employee->next_of_kin_relationship :  old('next_of_kin_relationship')}}"   autocomplete="next_of_kin_relationship">
-                                @error('next_of_kin_relationship')
+                                <label for=""> Next of Kin Relationship </label>
+                                <input id="next_of_Kin_relationship"  type="text" class="form-group form-control @error('next_of_Kin_relationship') is-invalid @enderror" name="next_of_Kin_relationship" value="{{ $employee->next_of_Kin_relationship ? $employee->next_of_Kin_relationship :  old('next_of_Kin_relationship')}}"   autocomplete="next_of_Kin_relationship">
+                                @error('next_of_Kin_relationship')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
                             </div>
-                            <div class="col-md-4">
-                                <label for="">Exit Date</label>
-                                <input id="exit_date"  type="date" class="form-group form-control @error('exit_date') is-invalid @enderror" name="exit_date" value="{{ $employee->exit_date ? $employee->exit_date :  old('exit_date')}}"   autocomplete="exit_date">
-                                @error('exit_date')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-
-
-                            <div class="col-md-6">
-                                <label for="password">Change your password</label>
-                                <input id="password" placeholder="Password" type="password" class="form-control @error('password') is-invalid @enderror" name="newpassword" autocomplete="password">
-                                    @error('newPassword')
+                        </div>
+                    <div class="clearfix"></div>
+                    <hr>
+                    <div class="row">
+                                <div class="col-md-5">
+                                    <label for="">Exit Date</label>
+                                    <input id="exit_date"  type="date" class="form-group form-control @error('exit_date') is-invalid @enderror" name="exit_date" value="{{ $employee->exit_date ? $employee->exit_date :  old('exit_date')}}"   autocomplete="exit_date">
+                                    @error('exit_date')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>
                                     @enderror
-                            </div>
-                        </div>
+                                </div>
 
-                        <div class="form-group row mb-0">
-                            <div class="col-md-12 text-right">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Update') }}
-                                </button>
-                            </div>
-                        </div>
+                                <div class="col-md-5">
+                                    <label for="password">Change  password</label>
+                                    <input id="password" placeholder="Password" type="password" class="form-control @error('password') is-invalid @enderror" name="newpassword" autocomplete="password">
+                                        @error('newPassword')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                </div>
+                                <div class="col-md-2 text-center mt-4">
+                                    <button type="submit" class="btn btn-primary">
+                                        {{ __('Update') }}
+                                    </button>
+                                </div>
+                    </div>
+
+
                     </form>
                 </div>
             </div>

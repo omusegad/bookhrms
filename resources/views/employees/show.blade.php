@@ -38,68 +38,64 @@
 
 					<div class="card mb-0">
 						<div class="card-body">
-							<div class="row">
-								<div class="col-md-12">
-										<div class="profile-img-wrap">
-											<div class="profile-img">
-                                                @if($employee->avatar)
-                                                <img  src="{{ asset('storage'.$employee->avatar) }}"  />
-                                               @else
-                                                <img  src="{{ asset('storage/uploads/images/account.png') }}"/>
-                                               @endif
-											</div>
-										</div>
-										<div class="profile-basic">
-											<div class="row">
-												<div class="col-md-12">
-                                                        <h4>Basic Information</h4>
-                                                        <table class="table table-bordered">
-                                                            <thead>
-                                                            </thead>
-                                                            <tbody>
-                                                              <tr>
-                                                                <td>Name</td>
-                                                                <td>{{$employee->fname}} {{$employee->lName}}</td>
-                                                              </tr>
-                                                              <tr>
-                                                                <td>Position</td>
-                                                                <td> {{$employee->joining_position}}</td>
-                                                              </tr>
-                                                              <tr>
-                                                                <td>Employee ID</td>
-                                                                <td>{{$employee->employeeID}}</td>
-                                                              </tr>
-                                                              <tr>
-                                                                <td>Joined Date</td>
-                                                                <td>{{$employee->joining_date}}</td>
-                                                              </tr>
-                                                              <tr>
-                                                                <td>Gender</td>
-                                                                <td> {{$employee->gender}}</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>Phone</td>
-                                                                <td>{{$employee->phoneNumber}}</td>
-                                                              </tr>
-                                                              <tr>
-                                                                <td>Email</td>
-                                                                <td> <a href="mailto:{{$employee->email}}">{{$employee->email}}</a></td>
-                                                              </tr>
-                                                              <tr>
-                                                                <td>Birthday</td>
-                                                                <td>{{$employee->date_of_birth}}</td>
-                                                              </tr>
-                                                              <tr>
-                                                                <td>Address</td>
-                                                                <td>{{$employee->current_address}}</td>
-                                                              </tr>
-                                                            </tbody>
-                                                          </table>
-												</div>
-											</div>
-										</div>
-							</div>
-						</div>
+                            <div class="row">
+                                <div class="col-lg-3">
+                                    <div class="profile-img-wrap mt-3">
+                                        <div class="profile-img">
+                                            @if($employee->avatar)
+                                            <img  src="{{ asset('storage'.$employee->avatar) }}"  />
+                                            @else
+                                            <img  src="{{ asset('storage/uploads/images/account.jpg') }}"/>
+                                            @endif
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-9">
+                                        <h4>Basic Information</h4>
+                                        <table class="table table-bordered">
+                                            <thead>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                <td>Name</td>
+                                                <td>{{$employee->fname}} {{$employee->lName}}</td>
+                                                </tr>
+                                                <tr>
+                                                <td>Position</td>
+                                                <td> {{$employee->joining_position}}</td>
+                                                </tr>
+                                                <tr>
+                                                <td>Employee ID</td>
+                                                <td>{{$employee->employeeID}}</td>
+                                                </tr>
+                                                <tr>
+                                                <td>Joined Date</td>
+                                                <td>{{$employee->joining_date}}</td>
+                                                </tr>
+                                                <tr>
+                                                <td>Gender</td>
+                                                <td> {{$employee->gender}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Phone</td>
+                                                <td>{{$employee->phoneNumber}}</td>
+                                                </tr>
+                                                <tr>
+                                                <td>Email</td>
+                                                <td> <a href="mailto:{{$employee->email}}">{{$employee->email}}</a></td>
+                                                </tr>
+                                                <tr>
+                                                <td>Birthday</td>
+                                                <td>{{$employee->date_of_birth}}</td>
+                                                </tr>
+                                                <tr>
+                                                <td>Address</td>
+                                                <td>{{$employee->current_address}}</td>
+                                                </tr>
+                                            </tbody>
+                                            </table>
+                                </div>
+                            </div>
 					</div>
 
 					<div class="card tab-box">

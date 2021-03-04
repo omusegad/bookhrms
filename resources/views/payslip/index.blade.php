@@ -26,7 +26,7 @@
     <div class="container" style="margin-top: 30px">
         <div class="title text-center">
             <div class="payslilogo">
-                    <img  src="{{ asset('storage/uploads/images/aic_logo.png') }}"  width="600" height="160"/>
+                    <img  src="{{ asset('storage/uploads/images/nandi-logo.jpg') }}"  width="600" height="160"/>
                 </div>
                 <hr>
                <h5>Payslip for month of   {{ date("F",strtotime($payslip->year)) }}  , {{ now()->year }}</h5>
