@@ -17,8 +17,7 @@
                         </div>
                 </div>
 
-
-                <div class="row">
+            <div class="row">
                     <div class="col-md-12">
                         <div class="table-responsive">
                             <table class="table table-striped custom-table table-condensed table-bordered" id="employeesTable">
@@ -29,7 +28,7 @@
                                         <th>Position</th>
                                         <th>Employee No</th>
                                         <th>Leave Type</th>
-                                        <th>Fron</th>
+                                        <th>From</th>
                                         <th>To</th>
                                         <th>Reason </th>
                                         <th>Total Days </th>
@@ -45,9 +44,7 @@
                                 <tr>
                                     <td>{{$count++}}</td>
                                     <td>
-                                        <a href="{{ route('employees.edit',$item->users['id'] )}}">
                                         {{$item->users['fname'] }} {{$item->users['lName'] }}
-                                    </a>
                                     </td>
                                     <td>{{$item->users['joining_position'] }}</td>
                                     <td>{{$item->users['employeeID'] }}</td>

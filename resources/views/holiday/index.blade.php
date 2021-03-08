@@ -13,10 +13,6 @@
                     <div class="row align-items-center">
                         <div class="col">
                             <h3 class="page-title">Holidays</h3>
-                            <ul class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
-                                <li class="breadcrumb-item active">Holidays</li>
-                            </ul>
                         </div>
                         @can('create articles')
                             <div class="col-auto float-right ml-auto">
@@ -83,10 +79,10 @@
                             <form method="POST" action="{{route('holidays.store')}}">
                                 @csrf
                                 <div class="form-group">
-                                    <input class="form-control" placeholder="Holiday Name" type="text" required name="hName">
+                                    <input class="form-control" placeholder="Holiday Name" type="text"  name="hName" required>
                                 </div>
                                 <div class="form-group">
-                                    <input class="form-control" type="date" required name="holidayDate">
+                                    <input class="form-control" type="date"  name="holidayDate" required>
                                 </div>
 
                                 <div class="submit-section">
@@ -98,6 +94,43 @@
                 </div>
             </div>
             <!-- /Add Leave Modal -->
+
+
+
+            <!-- Edit Leave Modal -->
+            {{-- <div id="add_leave" class="modal custom-modal fade" role="dialog">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Edit Holiday</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            @if(session()->has('message'))
+                              <div class="alert alert-success">
+                                {{session('message')}}
+                              </div>
+                            @endif
+                            <form method="POST" action="{{route('holidays.update', )}}">
+                                @csrf
+                                <div class="form-group">
+                                    <input class="form-control" placeholder="Holiday Name" type="text"  name="hName" required>
+                                </div>
+                                <div class="form-group">
+                                    <input class="form-control" type="date"  name="holidayDate" required>
+                                </div>
+
+                                <div class="submit-section">
+                                    <button type="submit" class="btn btn-primary submit-btn">Submit</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div> --}}
+            <!-- /edit Leave Modal -->
 
         </div>
         <!-- /Page Wrapper -->

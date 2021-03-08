@@ -45,10 +45,8 @@
                                 <tr>
                                     <td>{{$count++}}</td>
                                     <td>
-                                        <a href="{{ route('employees.edit',$item->users['id'] )}}">
-                                         {{$item->users['fname'] }} {{$item->users['lName'] }} 
-                                         </a>
-                                        </td>
+                                            {{$item->users['fname'] }} {{$item->users['lName'] }}
+                                    </td>
                                     <td>{{$item->users['joining_position'] }}</td>
                                     <td>{{$item->users['employeeID'] }}</td>
                                     <td>{{ $item->leavetype['leaveType'] }}</td>

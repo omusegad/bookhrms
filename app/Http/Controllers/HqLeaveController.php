@@ -14,9 +14,9 @@ class HqLeaveController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index(){
-        $leaves =  LeaveApplication::with(['leavetype','users' => function ($q) {
+        $leaves = LeaveApplication::whereHas('users', function($q) {
             $q->where('employee_type', 'HQ');
-        }])->get();
+        })->get();
 
         return view('leaves.hq.index',compact('leaves'));
 

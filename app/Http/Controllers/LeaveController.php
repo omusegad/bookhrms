@@ -108,19 +108,13 @@ class LeaveController extends Controller
             }
         }
 
-        //$holidays   = Holiday::all();
-
-
     }
-
-
 
     private function getDays($startDate,$endDate){
         //Number of days
         $noDays = $startDate->diffInDays($endDate);
         return $noDays;
     }
-
 
     //check if leave type application exists
     private function getExistingLeaveApplication($leaveTypeId){
@@ -133,6 +127,10 @@ class LeaveController extends Controller
 
     private function getRemaningLeaveDays($leaveTypeId){
         return LeaveApplication::where("aic_leave_type_id", $leaveTypeId)->pluck("remainingDays")->first();
+    }
+
+    private function getCurrentHolidays(){
+
     }
 
 

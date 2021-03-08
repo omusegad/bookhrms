@@ -14,8 +14,7 @@ class LeaveApplication extends Model
         'id','created_at','updated_at'
     ];
 
-    public function users()
-    {
+    public function users(){
         return $this->belongsTo(User::class, 'user_id', 'id');
     }
 

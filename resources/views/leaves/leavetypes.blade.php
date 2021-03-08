@@ -23,9 +23,9 @@
                 <!-- /Page Header -->
 
                 <div class="row">
-                    <div class="col-md-12">
+                    <div class="col-lg-12">
                         <div class="table-responsive">
-                            <table class="table table-striped table-bordered custom-table datatable mb-0">
+                            <table class="table table-striped">
                                 <thead>
                                     <tr>
                                         <th>#</th>

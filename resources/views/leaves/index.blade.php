@@ -13,10 +13,6 @@
                     <div class="row align-items-center">
                         <div class="col">
                             <h3 class="page-title">Leaves</h3>
-                            <ul class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
-                                <li class="breadcrumb-item active">Leaves</li>
-                            </ul>
                         </div>
                         <div class="col-auto float-right ml-auto">
                             <a href="{{route('leaves.create')}}" class="btn add-btn"><i class="fa fa-plus"></i> Apply Leave</a>
@@ -73,14 +69,11 @@
                                 <tbody>
                                  @php ($count = 1)
                                  @foreach($leaves as $data)
-
-                                    @if($data->id ==  Auth::user()->id)
+                                 @if(!empty($data))
                                             <tr>
                                                 <td>{{$count++}}</td>
                                                 <td>
-                                                        <a href="{{ route('employees.edit',$data->users['fname'])}}">
-                                                            {{$data->users['fname']}} {{$data->users['lName']}} <i class="fa fa-pencil m-r-5"></i>
-                                                         </a>
+                                                            {{$data->users['fname']}} {{$data->users['lName']}}
                                                 </td>
                                                 <td>{{$data->users['joining_position']}}</td>
                                                 <td>{{$data->users['employeeID']}}</td>
@@ -93,7 +86,7 @@
                                                 <td>{{$data->remainingDays}} </td>
                                                 <td >{{$data->leave_status}}</td>
                                             </tr>
-                                        @endif
+                                            @endif
                                   @endforeach
                                 </tbody>
                             </table>

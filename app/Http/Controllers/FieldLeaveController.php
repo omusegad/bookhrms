@@ -13,9 +13,9 @@ class FieldLeaveController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index(){
-        $leaves =  LeaveApplication::with(['users' => function ($q) {
+        $leaves = LeaveApplication::whereHas('users', function($q) {
             $q->where('employee_type', 'FIELD');
-        }])->get();
+        })->get();
 
         return view('leaves.field.index', compact('leaves'));
     }
