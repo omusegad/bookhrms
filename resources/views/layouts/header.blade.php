@@ -19,6 +19,7 @@
 
             <a id="mobile_btn" class="mobile_btn" href="#sidebar"><i class="fa fa-bars"></i></a>
 
+<div class="text-white pt-3" >Human Resource Management System |  by peakanddale </div>
             <!-- Header Menu -->
             <ul class="nav user-menu">
                 <li class="nav-item dropdown has-arrow main-drop">

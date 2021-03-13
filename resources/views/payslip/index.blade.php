@@ -48,7 +48,15 @@
 
                     <tr>
                         <th>Job Group</th>
-                        <td style="text-align: right">{{ $payslip->jobgroup['jonGroupName'] ? $payslip->jobgroup['jonGroupName'] : " "}}</td>
+                        <td style="text-align: right">{{ $payslip->user['joining_position'] ? $payslip->user['joining_position']  : " " }}</td>
+                    </tr>
+                    <tr>
+                        <th>NHIF No</th>
+                        <td style="text-align: right">{{ $payslip->user['nhifNo'] ? $payslip->user['nhifNo']  : " " }}</td>
+                    </tr>
+                    <tr>
+                        <th>NSSF No</th>
+                        <td style="text-align: right">{{ $payslip->jobgroup['nssfNo'] ? $payslip->jobgroup['nssfNo'] : " "}}</td>
                     </tr>
 
                     <tr>

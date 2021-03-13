@@ -12,7 +12,7 @@
             <div class="page-header">
                 <div class="row align-items-center">
                     <div class="col">
-                        <h3 class="page-title">Employee Field Payroll</h3>
+                        <h3 class="page-title"> Field Salaries</h3>
                     </div>
                 </div>
             </div>
@@ -34,8 +34,8 @@
 						<div class="row">
 							<div class="col-lg-12">
 										<ul class="nav nav-tabs nav-tabs-top">
-                                            <li class="nav-item"><a class="nav-link" href="#top-tab1" data-toggle="tab">Field Salary</a></li>
-                                            <li class="nav-item"><a class="nav-link" href="#top-tab2" data-toggle="tab">Payroll</a></li>
+                                            <li class="nav-item"><a class="nav-link" href="#top-tab1" data-toggle="tab">Field Salaries</a></li>
+                                            <li class="nav-item"><a class="nav-link" href="#top-tab2" data-toggle="tab">Payroll To Bank</a></li>
                                             <li class="nav-item"><a class="nav-link" href="#top-tab3" data-toggle="tab">Payslips</a></li>
                                         </ul>
 
@@ -53,10 +53,10 @@
                                                                 <div class="col-lg-10 gen-box">
                                                                     <ul>
                                                                         <li>
-                                                                            <button type="submit" class="ml-2 btn btn-outline-primary">Refresh Field Payroll</button>
+                                                                            <button type="submit" class="ml-2 btn btn-outline-primary">Refresh Field Salaries</button>
                                                                         </li>
                                                                         <li>
-                                                                                <a class="ml-2 btn btn-outline-primary" href="{{ url('/field-salaries-export-excel') }}">Export Excel</a>
+                                                                                <a class="ml-2 btn btn-outline-primary" href="{{ url('/field-salaries-export-excel') }}">Export to excel</a>
                                                                         </li>
                                                                     </ul>
                                                                 </div>
@@ -70,28 +70,21 @@
                                                                     <tr>
                                                                         <th>
                                                                         </th>
-                                                                        <th>Employee ID</th>
+                                                                        <th>S/N</th>
                                                                         <th>Staff Name</th>
-                                                                        <th>Bank Name</th>
-                                                                        <th>Bank Branch</th>
-                                                                        <th>Bank Code</th>
-                                                                        <th>Account Number</th>
+                                                                        <th>Employee ID</th>
+                                                                        <th>Job Group</th>
+                                                                        <th>Region</th>
+                                                                        <th>DCC</th>
+                                                                        <th>LCC</th>
                                                                         <th>Basic Pay (Ksh)</th>
                                                                         <th>Transport Allowance (Ksh)</th>
                                                                         <th>House Allowance (Ksh)</th>
                                                                         <th>Airtime ( Ksh)</th>
                                                                         <th>Hospitality Allowance (Ksh)</th>
                                                                         <th>Gross Pay (Ksh)</th>
-                                                                        <th>P.A.Y.E (Ksh)</th>
-                                                                        <th>Personal Relief (Ksh)</th>
-                                                                        <th>Income Tax (Ksh)</th>
-                                                                        <th>NSSF (Ksh)</th>
-                                                                        <th>NHIF (Ksh)</th>
-                                                                        <th>Net Pay (Ksh)</th>
-                                                                        <th>Reference</th>
-                                                                        <th>Approval Status</th>
                                                                         <th>Status</th>
-                                                                        <th class="text-right">Action</th>
+                                                                        {{-- <th class="text-right">Action</th> --}}
                                                                     </tr>
                                                                 </thead>
                                                                 <tbody>
@@ -103,31 +96,24 @@
                                                                                 </td>
                                                                                 <td>{{$item->employeeID }}</td>
                                                                                 <td>
-                                                                                    {{$item->fname}} {{$item->lName }}
+                                                                                        {{$item->fname }} {{$item->lName }}
                                                                                 </td>
-                                                                                <td> {{$item->salary['bankName']}}</td>
-                                                                                <td> {{$item->salary['bankBranch'] }}</td>
-                                                                                <td> {{$item->salary['bankCode'] }}</td>
-                                                                                <td> {{$item->salary['beneficiaryAccountNumber'] }}</td>
-                                                                                <td> {{number_format($item->salary['basic_salary']) }}</td>
-                                                                                <td> {{number_format($item->salary['transport_allowance']) }}</td>
-                                                                                <td> {{number_format($item->salary['hse_allowance']) }}</td>
-                                                                                <td> {{number_format($item->salary['airtime_allowance']) }}</td>
-                                                                                <td> {{number_format($item->salary['hospitality_allowance']) }}</td>
-                                                                                <td> {{number_format($item->salary['gross_pay']) }}</td>
-                                                                                <td> {{number_format($item->salary['payee']) }}</td>
-                                                                                <td> {{number_format($item->salary['personalRelief']) }}</td>
-                                                                                <td> {{number_format($item->salary['incomeTax']) }}</td>
-                                                                                <td> {{number_format($item->salary['nssf']) }}</td>
-                                                                                <td> {{number_format($item->salary['nhif']) }}</td>
-                                                                                <td> {{number_format($item->salary['net_pay']) }}</td>
-                                                                                <td> {{$item->salary['reference'] }}</td>
-                                                                                <td> {{$item->salary['approval_status'] }}</td>
-                                                                                <td> {{$item->salary['status'] }}</td>
-                                                                                <td class="text-right">
+                                                                                <td>{{$item->employeeID }}</td>
+                                                                            <td>  {{  $item->jobgroup->jonGroupName}}</td>
+                                                                            <td>   {{  $item->region->rName}}</td>
+                                                                            <td>   {{  $item->dcc->dccName}}</td>
+                                                                            <td>   {{  $item->lcc->lccName}}</td>
+                                                                            <td> {{number_format($item->salary['basic_salary']) }}</td>
+                                                                            <td> {{number_format($item->salary['transport_allowance']) }}</td>
+                                                                            <td> {{number_format($item->salary['hse_allowance']) }}</td>
+                                                                            <td> {{number_format($item->salary['airtime_allowance']) }}</td>
+                                                                            <td> {{number_format($item->salary['hospitality_allowance']) }}</td>
+                                                                            <td> {{number_format($item->salary['gross_pay']) }}</td>
+                                                                            <td> {{$item->salary['status'] }}</td>
+                                                                                {{-- <td class="text-right">
                                                                                     <a class="" href="{{route('salaries.edit', $item->salary['id'] )}}">
                                                                                         <i class="fa fa-pencil m-r-5"></i> </a>
-                                                                                </td>
+                                                                                </td> --}}
                                                                             </tr>
                                                                     @endif
                                                                 @endforeach
@@ -165,9 +151,7 @@
                                                                 @if (!empty($item->payroll))
                                                                 <td>{{$count++ }}</td>
                                                                 <td>
-                                                                    <a href="{{ route('employees.edit',$item->id)}}">
                                                                         {{$item->fname }} {{$item->lName }}
-                                                                    </a>
                                                                 </td>
 
 
@@ -215,6 +199,9 @@
                                                                 <th>Employee Name</th>
                                                                 <th>Position</th>
                                                                 <th>Job Group</th>
+                                                                <th>Region</th>
+                                                                <th>DCC</th>
+                                                                <th>LCC</th>
                                                                 <th>Basic Pay</th>
                                                                 <th>Gross Pay</th>
                                                                 <th>N.H.I.F</th>
@@ -238,14 +225,15 @@
                                                                     <td>{{ $count++ }}</td>
                                                                     <td> {{$item->employeeID }}</td>
                                                                     <td>
-                                                                        <a href="{{ route('employees.edit',$item->id)}}">
                                                                             {{$item->fname }} {{$item->lName }}
-                                                                        </a>
                                                                     </td>
                                                                     <td> {{$item->joining_position }}</td>
                                                                     <td>
                                                                         {{  $item->jobgroup->jonGroupName }}
                                                                  </td>
+                                                                 <td>   {{  $item->region->rName}}</td>
+                                                                 <td>   {{  $item->dcc->dccName}}</td>
+                                                                 <td>   {{  $item->lcc->lccName}}</td>
                                                                   <td>
                                                                         {{ !empty($item->payroll) ? $item->payroll->basic_salary : ""}}
                                                                  </td>

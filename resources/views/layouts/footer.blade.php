@@ -5,9 +5,7 @@
     <script src="{{ asset('js/jquery.slimscroll.min.js') }}"></script>
     <script src="{{ asset('js/moment.min.js') }}"></script>
 
-    {{-- <script src="{{ asset('js/tableExport.min.min.js') }}"></script> --}} --}}
 
-{{-- <script src="https://unpkg.com/tableexport.jquery.plugin/tableExport.min.js"></script> --}}
 <script src="https://unpkg.com/tableexport.jquery.plugin/tableExport.min.js"></script>
 <script src="https://unpkg.com/bootstrap-table@1.18.2/dist/bootstrap-table.min.js"></script>
 <script src="https://unpkg.com/bootstrap-table@1.18.2/dist/extensions/export/bootstrap-table-export.min.js"></script>
@@ -51,16 +49,22 @@
 
 
         $(function() {
-                $table = $('#hqpayroll,#hqsalary,#hqpayslips').bootstrapTable({
+                $table = $('#hqpayroll,#hqsalary,#hqpayslips,#users,#hqusers,#fieldusers').bootstrapTable({
                     search: true,
                     showColumns: true,
                     exportTypes: ['csv', 'excel']
             });
+            function getIdSelections() {
+            return $.map($table.bootstrapTable('getSelections'), function (row) {
+            return row.id
+            })
+        }
         });
 
 
 
     });
+
     </script>
      @livewireScripts
  </body>

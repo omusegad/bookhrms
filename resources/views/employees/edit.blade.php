@@ -56,7 +56,7 @@
                                     @enderror
                                 </div>
                                 <div class="col-md-6">
-                                    <label for="">Sir Name</label>
+                                    <label for="">Surname</label>
                                     <input id="lName" type="text" class="form-group  form-control @error('lName') is-invalid @enderror" name="lName" value="{{ $employee->lName ?  $employee->lName  :  old('lName')}}"  autocomplete="lName" autofocus>
                                     @error('lName')
                                         <span class="invalid-feedback" role="alert">
@@ -105,10 +105,11 @@
                                     <input class="browse-input" type="file" name="profile_image" id="UploadedFile"/>
                                 </div>
                                 @error('profile_image')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
+                                    <span class="invalid-feedback" role="alert">
+                                         <strong>{{ $message }}</strong>
+                                    </span>
+                               @enderror
+                               <div class="mpt-3">Upload Photo </div>
                             </div>
                         </div>
                         </div>
@@ -144,7 +145,7 @@
                             </div>
 
                             <div class="col-md-4">
-                                <label for="">Altanative Phone Number</label>
+                                <label for="">Alternative Phone Number</label>
                                 <input id="altPhoneNumber"  type="text" class="form-group form-control @error('altPhoneNumber') is-invalid @enderror" name="altPhoneNumber"  value="{{ $employee->altPhoneNumber ?  $employee->altPhoneNumber : old('altPhoneNumber') }}" autocomplete="altPhoneNumber">
                                 @error('altPhoneNumber')
                                     <span class="invalid-feedback" role="alert">
@@ -174,7 +175,7 @@
                             </div>
 
                             <div class="col-md-4">
-                                <label for="">KRA Pin</label>
+                                <label for="">KRA PIN</label>
                                 <input   type="text" class="form-group form-control @error('pinNo') is-invalid @enderror" name="pinNo" value="{{ $employee->pinNo ?  $employee->pinNo : old('pinNo')  }}"   autocomplete="pinNo">
                                 @error('pinNo')
                                     <span class="invalid-feedback" role="alert">
@@ -203,27 +204,7 @@
                                 @enderror
                             </div>
 
-                            <div class="col-md-4">
-                                <label for="">Position</label>
-                                <input id="joining_position"  type="text" class="form-group form-control @error('joining_position') is-invalid @enderror" name="joining_position" value="{{ $employee->joining_position ? $employee->joining_position : old('joining_position') }}"  autocomplete="joining_position">
-                                @error('joining_position')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-
-                            <div class="col-md-4">
-                                <label for="">Probation Period</label>
-                                <input id="probation_period"  type="text" class="form-group form-control @error('probation_period') is-invalid @enderror" name="probation_period" value="{{ $employee->probation_period ? $employee->probation_period : old('probation_period') }}"  autocomplete="probation_period">
-                                @error('probation_period')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-
-                            @if($employee->gender == "Male")
+                            @if($employee->gender == "male")
                                <div class="col-lg-4">
                                     <label for="gender">{{ $employee->fname }} 's Grade</label>
                                     <select class="browser-default custom-select" name="male_pastors_grade">
@@ -233,13 +214,14 @@
                                             <option value="ordained">ordained</option>
                                         @endif
                                         @if($employee->male_pastors_grade == null)
+                                        <option value="">Choose Grade Option</option>
                                         <option value="licensed">licensed</option>
                                         <option value="unlicensed">unlicensed</option>
                                         <option value="ordained">ordained</option>
                                     @endif
                                     </select>
                             </div>
-                        @else
+                        @elseif($employee->gender == "female")
                             <div class="col-lg-4">
                                 <label for="gender"> {{ $employee->fname }}'s Grade</label>
                                 <select class="browser-default custom-select" name="female_pastors_grade">
@@ -257,6 +239,11 @@
                                         <option value="elevenAndAbove"> 11 and above years experience</option>
                                         <option value="oneToFive">1 - 5 Years Experience</option>
                                         <option value="sixToTen"> 6 - 10 Years Experience</option>
+                                        @elseif($employee->female_pastors_grade === null)
+                                        <option value="" > Choose Years Experience</option>
+                                        <option value="oneToFive">1 - 5 Years Experience</option>
+                                        <option value="sixToTen"> 6 - 10 Years Experience</option>
+                                        <option value="elevenAndAbove"> 11 and above years experience</option>
                                         @endif
                                 </select>
                             </div>
@@ -358,20 +345,38 @@
                                           <option value="active">{{ $employee->employee_status  }}</option>
                                           <option value="suspended">Suspended</option>
                                           <option value="fired">Fired</option>
+                                          <option value="OnIndescipline">Indescipline</option>
+                                          <option value="Onleave">On leave</option>
                                       @elseif($employee->employee_status === "suspended")
                                           <option value="suspended">{{ $employee->employee_status  }}</option>
                                           <option value="active">Active</option>
                                           <option value="fired">Fired</option>
+                                          <option value="OnIndescipline">Indescipline</option>
+                                          <option value="Onleave">On leave</option>
                                       @elseif($employee->employee_status === "fired")
                                           <option value="fired">{{ $employee->employee_status  }}</option>
                                           <option value="suspended">Suspended</option>
                                           <option value="active">Active</option>
+                                          <option value="OnIndescipline">Indescipline</option>
+                                          <option value="Onleave">On leave</option>
+                                    @elseif($employee->employee_status === "OnIndescipline")
+                                          <option value="fired">{{ $employee->employee_status  }}</option>
+                                          <option value="suspended">Suspended</option>
+                                          <option value="fired">Fired</option>
+                                          <option value="active">Active</option>
+                                          <option value="Onleave">On leave</option>
+                                          @elseif($employee->employee_status === "Onleave")
+                                          <option value="fired">{{ $employee->employee_status  }}</option>
+                                          <option value="suspended">Suspended</option>
+                                          <option value="fired">Fired</option>
+                                          <option value="active">Active</option>
+                                          <option value="OnIndescipline">Indescipline</option>
                                       @endif
                               </select>
                           </div>
 
                           <div class="col-md-4">
-                            <label for="joining_date">Joining Date </label>
+                            <label for="joining_date">commencement Date </label>
                               <input id="joining_date" type="date" class="form-group form-control @error('joining_date') is-invalid @enderror" name="joining_date" value="{{ $employee->joining_date ? $employee->joining_date : old('joining_date')  }}"  autocomplete="joining_date">
                               @error('joining_date')
                                   <span class="invalid-feedback" role="alert">
@@ -379,17 +384,6 @@
                                   </span>
                               @enderror
                           </div>
-
-                          <div class="col-md-4">
-                              <label for="confirmation_date">Confirmation Date </label>
-                                <input id="confirmation_date" type="date" class="form-group form-control @error('confirmation_date') is-invalid @enderror" name="confirmation_date" value="{{ $employee->confirmation_date ? $employee->confirmation_date : old('confirmation_date')  }}"  autocomplete="confirmation_date">
-                                @error('confirmation_date')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-
 
                             <div class="col-md-4">
                                 <label for="date_of_birth"> Date of birth </label>
@@ -400,6 +394,26 @@
                                       </span>
                                   @enderror
                               </div>
+
+                              <div class="col-md-4">
+                                  <label for="">Position</label>
+                                <input id="joining_position"  type="text" class="form-group form-control @error('joining_position') is-invalid @enderror" name="joining_position" value="{{ $employee->joining_position }}"  autocomplete="joining_position">
+                                @error('joining_position')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                            <div class="col-md-4">
+                                <label for="">Second Position</label>
+                              <input id="secondPosition" type="text" class="form-group form-control @error('secondPosition') is-invalid @enderror" name="secondPosition" value="{{ $employee->secondPosition }}"  autocomplete="secondPosition">
+                              @error('secondPosition')
+                                  <span class="invalid-feedback" role="alert">
+                                      <strong>{{ $message }}</strong>
+                                  </span>
+                              @enderror
+                          </div>
+
 
 
                               <div class="col-md-4">
@@ -418,7 +432,7 @@
                         <hr>
                         <div class="row mb-3">
                             <div class="col-md-4">
-                                <label for="aic_regions_id">Aic Region</label>
+                                <label for="aic_regions_id">AIC Region</label>
                                 <select class="browser-default custom-select" name="aic_regions_id">
                                     <option  value="{{ $employee->region['id'] }}" > {{ $employee->region['rName'] }} </option>
                                       @foreach ($regions as $item)

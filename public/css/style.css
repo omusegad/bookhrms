@@ -1220,6 +1220,7 @@ a.logo img {
     margin: 0;
     position: relative;
     z-index: 99;
+    margin-top: -39px;
 }
 .user-menu.nav > li > a {
 	color: #fff;
@@ -1228,10 +1229,7 @@ a.logo img {
 	padding: 0 15px;
 	height: 60px;
 }
-.user-menu.nav > li > a:hover,
-.user-menu.nav > li > a:focus {
-	background-color: rgba(0, 0, 0, 0.2);
-}
+
 .flag-nav img {
 	margin-right: 5px;
 }
@@ -8273,3 +8271,9 @@ Nandi Aic customization ==========
     height: auto;
 }
 
+
+.nav-tabs .nav-item {
+    background: #f2f2f2;
+    border-right: 1px solid;
+    border-top: 4px solid #CF0000;
+}

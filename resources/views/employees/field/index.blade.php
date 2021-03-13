@@ -13,7 +13,7 @@
                 <div class="page-header">
                     <div class="row align-items-center">
                         <div class="col">
-                            <h3 class="page-title">Field Employee</h3>
+                            <h3 class="page-title">Field Staff</h3>
                         </div>
                     <div class="col-auto float-right ml-auto">
                         <a href="{{ route('employees.create') }}" class="btn add-btn"><i class="fa fa-plus"></i> Add Employee</a>
@@ -30,7 +30,17 @@
                     <div class="col-md-12">
                         <div class="table-responsive">
                             <div class="table-responsive">
-                                <table class="table table-striped custom-table table-condensed table-bordered" id="employeesTable">
+                                <table
+                                id="fieldusers"
+                                data-search="true"
+                                data-show-columns="true"
+                                data-show-export="true"
+                                data-click-to-select="true"
+                                data-click-to-select="true"
+                                data-pagination="false"
+                                data-id-field="id"
+                                data-show-pagination-switch="false"
+                                data-response-handler="responseHandler">
                                     <thead>
                                         <tr>
                                             <th>S/N</th>
@@ -42,7 +52,7 @@
                                             <th>DCC</th>
                                             <th>LCC</th>
                                             <th>Status</th>
-                                            <th class="text-right no-sort">Action</th>
+                                            {{-- <th class="text-right no-sort">Action</th> --}}
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -62,11 +72,10 @@
                                         <td>{{$user->dcc['dccName'] }}</td>
                                         <td>{{$user->lcc['lccName'] }}</td>
                                         <td>{{$user->employee_status }} </td>
-                                        <td class="text-right">
+                                        {{-- <td class="text-right">
                                             <a class="" href="{{ route('employees.edit',$user->id)}}">
                                                 <i class="fa fa-pencil m-r-5"></i> </a>
-
-                                        </td>
+                                        </td> --}}
                                     </tr>
                                     @endforeach
                                     </tbody>

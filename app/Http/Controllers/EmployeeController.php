@@ -100,6 +100,7 @@ class EmployeeController extends Controller{
      */
     public function update(Request $request, $id){
         // get and save image
+       // dd($request->all());
         if ($request->has('profile_image')) {
             $image = $request->file('profile_image');
             $name = Str::slug($request->input('fname')).'_'.time();
@@ -122,7 +123,6 @@ class EmployeeController extends Controller{
                         "created_by" => Auth::user()->id,
                         "nationalID" => $request['nationalID'],
                         "date_of_birth" =>$request['date_of_birth'],
-                        "probation_period" =>$request['probation_period'],
                         "phoneNumber" => $request['phoneNumber'],
                         "altPhoneNumber" => $request['altPhoneNumber'],
                         "experience" =>  $request['experience'],
@@ -131,7 +131,8 @@ class EmployeeController extends Controller{
                         "gender" =>  $request['gender'],
                         "marital_status" =>  $request['marital_status'],
                         "joining_date" => $request['joining_date'],
-                        "confirmation_date" => $request['confirmation_date'],
+                        "joining_position" => $request['joining_position'],
+                        "secondPosition" => $request['secondPosition'],
                         "department" => $request['department'],
                         "permanent_address" => $request['permanent_address'],
                         "aic_regions_id" => $request['aic_regions_id'],
