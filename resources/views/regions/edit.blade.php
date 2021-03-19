@@ -41,6 +41,7 @@
                     @endif
                     <!-- Only fields withe errors are to be validated -->
                     <form method="POST" action="{{route('regions.update', $region->id)}}">
+                        {{ method_field('PUT') }}
                         @csrf
                        <div class="form-group">
                        <label for="">Region Name</label>
@@ -51,7 +52,7 @@
                                  <strong>{{ $message }}</strong>
                             </span>
                       @enderror
-                       <div class="from-group"> 
+                       <div class="from-group">
                              <button type="submit" class="btn btn-primary">{{__('Update')}}</button>
                              <a href="{{ url('/regions') }}" class="btn btn-warning">Back</a>
                        </div>

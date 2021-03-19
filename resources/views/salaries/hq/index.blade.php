@@ -45,11 +45,8 @@
                                                                         <form method="POST" action="{{route('hq-salaries.store')}}">
                                                                             @csrf
                                                                         <div class="row ">
-                                                                            <div class="col-lg-2 pl-4 mt-4">
-                                                                                <input type="checkbox" id="selecthq" class="regular-checkbox text-muted" />
-                                                                                <label for="" class="text-muted">Select All</label>
-                                                                            </div>
-                                                                            <div class="col-lg-10 gen-box">
+
+                                                                            <div class="col-lg-12 gen-box text-right">
                                                                                    <ul>
                                                                                     <li>
                                                                                         <button type="submit" class="ml-2 btn btn-outline-primary">Refresh HQ Salaries</button>
@@ -68,7 +65,7 @@
                                                             <thead>
                                                                 <tr>
                                                                     <th>
-                                                                       #
+                                                                        <input type="checkbox" id="selectall" />
                                                                     </th>
                                                                     <th>S/N</th>
                                                                     <th>Staff Name</th>
@@ -84,7 +81,6 @@
                                                                     <th>Hospitality Allowance (Ksh)</th>
                                                                     <th>Gross Pay (Ksh)</th>
                                                                     <th>Status</th>
-                                                                    {{-- <th class="text-right">Action</th> --}}
                                                                 </tr>
                                                             </thead>
                                                             <tbody mb-5>
@@ -93,7 +89,7 @@
                                                                 @if(!empty($item->salary))
                                                                         <tr>
                                                                             <td>
-                                                                                <input type="checkbox" name="userID[]" class="regular-checkbox name" value="{{$item->id }}"  />
+                                                                                <input type="checkbox" name="userID[]" class="allusers" value="{{$item->id }}"  />
                                                                             </td>
                                                                             <td>
                                                                                 {{$count++ }}
@@ -113,9 +109,6 @@
                                                                             <td> {{number_format($item->salary['hospitality_allowance']) }}</td>
                                                                             <td> {{number_format($item->salary['gross_pay']) }}</td>
                                                                             <td> {{$item->salary['status'] }}</td>
-                                                                            {{-- <td class="text-right">
-                                                                                <a class="" href="{{route('salaries.edit', $item->salary['id'] )}}"><i class="fa fa-pencil m-r-5"></i> </a>
-                                                                            </td> --}}
                                                                         </tr>
                                                                 @endif
                                                             @endforeach
@@ -195,8 +188,8 @@
                                                         <thead>
                                                             <tr>
                                                                 <th>S/N</th>
-                                                                <th>Employee Name</th>
                                                                 <th>Employee No</th>
+                                                                <th>Employee Name</th>
                                                                 <th>Position</th>
                                                                 <th>Job Group</th>
                                                                 <th>Region</th>

@@ -129,14 +129,9 @@
                     <form method="POST" action="{{route('payroll.store')}}">
                         @csrf
                     <div class="row ">
-                        <div class="col-lg-4 pt-2">
-                            <input type="checkbox" id="selectall" class="regular-checkbox" />  <label for="">Select All</label>
-                        </div>
-                        <div class="col-lg-4">
-                                <button type="submit" class="btn btn-outline-primary">Refresh All Payroll</button>
-                        </div>
-                        <div class="col-lg-4">
+                        <div class="col-lg-12">
                             <div class=" text-right ">
+                                <button type="submit" class="btn btn-outline-primary">Refresh All Payroll</button>
                                 <a class="btn btn-outline-primary" href="{{ url('/salaries-export-excel') }}">Export Excel</a>
                                </div>
                          </div>
@@ -148,8 +143,8 @@
                             <thead>
                                 <tr>
                                     <th>
-                                        {{-- <input type="checkbox" id="selectall" class="regular-checkbox" /><label for="selectall"> --}}
-                                        </th>
+                                       <input type="checkbox" id="selectall" class="regular-checkbox" />
+                                   </th>
                                     <th>Employee ID</th>
                                     <th>Staff Name</th>
                                     <th>Bank Name</th>
@@ -175,18 +170,15 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                {{-- <form method="POST" action="{{route('payroll.store')}}">
-                                  @csrf --}}
                                 @foreach ($salaries as $item)
                                 <tr>
                                     <td>
-                                        {{-- <input type="checkbox"  name="userID[]" value="{{$item->users['id'] }}" class="checkbox"> --}}
-                                        <input type="checkbox" name="userID[]" class="regular-checkbox name" value="{{$item->users['id'] }}"  />
+                                        <input type="checkbox"  name="userID[]" class="allusers" value="{{$item->users['id'] }}"  />
                                     </td>
                                     <td>{{$item->users['employeeID'] }}</td>
                                     <td>
                                       <a href="{{route('salaries.edit',$item->id  )}}">
-                                        {{$item->users['fname'] }} {{$item->users['lName'] }}
+                                             {{$item->users['fname'] }} {{$item->users['lName'] }}
                                       </a>
                                     </td>
                                     <td> {{$item->bankName }}</td>

@@ -544,8 +544,8 @@
                         <div class="row">
                             <div class="col-md-4">
                                 <label for="">Next of Kin First Name </label>
-                                <input id="next_of_Kin_fname"  type="text" class="form-group form-control @error('next_of_Kin_fname') is-invalid @enderror" name="next_of_Kin_fname"  value="{{ $employee->next_of_Kin_fname ? $employee->next_of_Kin_fname  : old('next_of_Kin_fname')}}"  autocomplete="next_of_Kin_fname">
-                                @error('next_of_Kin_fname')
+                                <input id="next_of_Kin_fname"  type="text" class="form-group form-control @error('next_of_kin_fname') is-invalid @enderror" name="next_of_kin_fname"  value="{{ $employee->next_of_kin_fname ? $employee->next_of_kin_fname  : old('next_of_kin_fname')}}"  autocomplete="next_of_kin_fname">
+                                @error('next_of_kin_fname')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -553,8 +553,8 @@
                             </div>
                             <div class="col-md-4">
                                 <label for="">Next of Kin Last Name  </label>
-                                <input id="next_of_Kin_lname"  type="text" class="form-group form-control @error('next_of_Kin_lname') is-invalid @enderror" name="next_of_Kin_lname"  value="{{ $employee->next_of_Kin_lname ?  $employee->next_of_Kin_lname : old('next_of_Kin_lname')  }}" autocomplete="next_of_Kin_lname">
-                                @error('next_of_Kin_lname')
+                                <input id="next_of_kin_lname"  type="text" class="form-group form-control @error('next_of_kin_lname') is-invalid @enderror" name="next_of_kin_lname"  value="{{ $employee->next_of_kin_lname ?  $employee->next_of_kin_lname : old('next_of_kin_lname')  }}" autocomplete="next_of_kin_lname">
+                                @error('next_of_kin_lname')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -562,8 +562,8 @@
                             </div>
                             <div class="col-md-4">
                                 <label for="">Next of Kin Other Names</label>
-                                <input id="next_of_Kin_otherNames" type="text" class="form-group form-control @error('next_of_Kin_otherNames') is-invalid @enderror" name="next_of_Kin_otherNames"  value="{{ $employee->next_of_Kin_otherNames ?  $employee->next_of_Kin_otherNames : old('next_of_Kin_otherNames')  }}"   autocomplete="next_of_Kin_otherNames">
-                                @error('next_of_Kin_otherNames')
+                                <input id="next_of_kin_otherNames" type="text" class="form-group form-control @error('next_of_kin_otherNames') is-invalid @enderror" name="next_of_kin_otherNames"  value="{{ $employee->next_of_kin_otherNames ?  $employee->next_of_kin_otherNames : old('next_of_kin_otherNames')  }}"   autocomplete="next_of_kin_otherNames">
+                                @error('next_of_kin_otherNames')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -571,8 +571,8 @@
                             </div>
                             <div class="col-md-4">
                                 <label for="">Next of Kin Phone Number</label>
-                                <input id="next_of_Kin_phoneNumber"  type="text" class="form-group form-control @error('next_of_Kin_phoneNumber') is-invalid @enderror" name="next_of_Kin_phoneNumber"  value="{{ $employee->next_of_Kin_phoneNumber ? $employee->next_of_Kin_phoneNumber : old('next_of_Kin_phoneNumber')  }}"  autocomplete="next_of_Kin_phoneNumber">
-                                @error('next_of_Kin_phoneNumber')
+                                <input id="next_of_kin_phoneNumber"  type="text" class="form-group form-control @error('next_of_kin_phoneNumber') is-invalid @enderror" name="next_of_kin_phoneNumber"  value="{{ $employee->next_of_kin_phoneNumber ? $employee->next_of_kin_phoneNumber : old('next_of_kin_phoneNumber')  }}"  autocomplete="next_of_kin_phoneNumber">
+                                @error('next_of_kin_phoneNumber')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -580,8 +580,8 @@
                             </div>
                             <div class="col-md-4">
                                 <label for=""> Next of Kin Alternative Phone Number </label>
-                                <input id="next_of_Kin_altPhoneNumber"  type="text" class="form-group form-control @error('next_of_Kin_altPhoneNumber') is-invalid @enderror" name="next_of_Kin_altPhoneNumber" value="{{ $employee->next_of_Kin_altPhoneNumber ? $employee->next_of_Kin_altPhoneNumber : old('next_of_Kin_altPhoneNumber') }}"   autocomplete="next_of_Kin_altPhoneNumber">
-                                @error('next_of_Kin_altPhoneNumber')
+                                <input id="next_of_kin_altPhoneNumber"  type="text" class="form-group form-control @error('next_of_kin_altPhoneNumber') is-invalid @enderror" name="next_of_kin_altPhoneNumber" value="{{ $employee->next_of_kin_altPhoneNumber ? $employee->next_of_kin_altPhoneNumber : old('next_of_kin_altPhoneNumber') }}"   autocomplete="next_of_kin_altPhoneNumber">
+                                @error('next_of_kin_altPhoneNumber')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -589,8 +589,8 @@
                             </div>
                             <div class="col-md-4">
                                 <label for="">Next of Kin National ID</label>
-                                <input id="next_of_Kin_nationId"  type="text" class="form-group form-control @error('next_of_Kin_nationId') is-invalid @enderror" name="next_of_Kin_nationId" value="{{ $employee->next_of_Kin_nationId ? $employee->next_of_Kin_nationId : old('next_of_Kin_nationId')  }}"   autocomplete="next_of_Kin_nationId">
-                                @error('next_of_Kin_nationId')
+                                <input id="next_of_kin_nationId"  type="text" class="form-group form-control @error('next_of_kin_nationId') is-invalid @enderror" name="next_of_kin_nationId" value="{{ $employee->next_of_kin_nationId ? $employee->next_of_kin_nationId : old('next_of_kin_nationId')  }}"   autocomplete="next_of_kin_nationId">
+                                @error('next_of_kin_nationId')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -598,8 +598,8 @@
                             </div>
                             <div class="col-md-4">
                                 <label for=""> Next of Kin Relationship </label>
-                                <input id="next_of_Kin_relationship"  type="text" class="form-group form-control @error('next_of_Kin_relationship') is-invalid @enderror" name="next_of_Kin_relationship" value="{{ $employee->next_of_Kin_relationship ? $employee->next_of_Kin_relationship :  old('next_of_Kin_relationship')}}"   autocomplete="next_of_Kin_relationship">
-                                @error('next_of_Kin_relationship')
+                                <input id="next_of_kin_relationship"  type="text" class="form-group form-control @error('next_of_kin_relationship') is-invalid @enderror" name="next_of_kin_relationship" value="{{ $employee->next_of_kin_relationship ? $employee->next_of_kin_relationship :  old('next_of_kin_relationship')}}"   autocomplete="next_of_kin_relationship">
+                                @error('next_of_kin_relationship')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>

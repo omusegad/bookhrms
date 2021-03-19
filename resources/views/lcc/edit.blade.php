@@ -10,18 +10,10 @@
     <div class="page-header">
         <div class="row align-items-center">
             <div class="col">
-                <h3 class="page-title">LCC</h3>
-                <ul class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="{{url('/')}}">Dashboard</a></li>
-                    <li class="breadcrumb-item active">Edit LCC</li>
-                </ul>
+                <h3 class="page-title">Edit LCC</h3>
             </div>
             <div class="col-auto float-right ml-auto">
                 <a href="{{ url('/lccs-regions') }}" class="btn add-btn"><i class="fa fa-eye"></i> View LCC</a>
-                <div class="view-icons">
-                     <a href="#" class="grid-view btn btn-link"><i class="fa fa-th"></i></a>
-                     <a href="#" class="list-view btn btn-link active"><i class="fa fa-bars"></i></a>
-                </div>
            </div>
         </div>
     </div>
@@ -33,14 +25,10 @@
             <div class="card">
                 <div class="card-header">{{ __('Edit LCC') }}</div>
                 <div class="card-body">
-                    @if(session()->has('message'))
-                    <div class="alert alert-danger">
-                        <a href="#" class="close" data-dismiss="alert">&times;</a>
-                      {{session('message')}}
-                    </div>
-                    @endif
+
                     <!-- Only fields withe errors are to be validated -->
-                    <form method="POST" action="">
+                    <form method="POST" action="{{route('lccs-regions.update', $lcc->id)}}">
+                        {{ method_field('PUT') }}
                         @csrf
                        <div class="form-group">
                        <label for="">Region Name</label>
@@ -51,7 +39,7 @@
                                  <strong>{{ $message }}</strong>
                             </span>
                       @enderror
-                       <div class="from-group"> 
+                       <div class="from-group">
                              <button type="submit" class="btn btn-primary">{{__('Update')}}</button>
                              <a href="{{ url('/lccs-regions') }}" class="btn btn-warning">Back</a>
                        </div>

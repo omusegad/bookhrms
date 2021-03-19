@@ -31,22 +31,14 @@ class RegionController extends Controller
      */
     public function store(Request $request)
     {
+
         Region::create([
             'rName' => $request->rName,
         ]);
         return back()->with('message','Region has been created successfully!');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
+
 
     /**
      * Show the form for editing the specified resource.
@@ -69,17 +61,10 @@ class RegionController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        Region::where('id',$id)->update([
+            'rName' => $request->input('rName'),
+        ]);
+        return redirect('/regions')->with('message','Region updated successfully!');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
 }

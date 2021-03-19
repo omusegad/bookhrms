@@ -45,10 +45,13 @@
                         <th>Position</th>
                         <td style="text-align: right">{{ $payslip->user['joining_position'] ? $payslip->user['joining_position']  : " " }}</td>
                     </tr>
-
                     <tr>
                         <th>Job Group</th>
                         <td style="text-align: right">{{ $payslip->user['joining_position'] ? $payslip->user['joining_position']  : " " }}</td>
+                    </tr>
+                    <tr>
+                        <th>KRA PIN</th>
+                        <td style="text-align: right">{{ $payslip->user['pinNo'] ? $payslip->user['pinNo']  : " " }}</td>
                     </tr>
                     <tr>
                         <th>NHIF No</th>
@@ -56,7 +59,7 @@
                     </tr>
                     <tr>
                         <th>NSSF No</th>
-                        <td style="text-align: right">{{ $payslip->jobgroup['nssfNo'] ? $payslip->jobgroup['nssfNo'] : " "}}</td>
+                        <td style="text-align: right">{{ $payslip->user['nssfNo'] ? $payslip->user['nssfNo'] : " "}}</td>
                     </tr>
 
                     <tr>

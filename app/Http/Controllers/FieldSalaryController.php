@@ -43,13 +43,14 @@ class FieldSalaryController extends Controller
      */
     public function store(Request $request){
         $data = $request->input('userID');
-        
-        if(!$data['userID']){
+        // dd( $data);
+
+        if($data == null){
             return back()->with('message','Please select what you would like proccessed!');
         }
 
         // return  $data;
-         foreach($data['userID'] as $id ){
+         foreach($data as $id ){
              $record     =  Salary::where('user_id', (int)$id)->first();
 
              $checkMonth =  Payroll::where('month', now()->month)
@@ -101,7 +102,8 @@ class FieldSalaryController extends Controller
      }
 
   // Download excel
-  public function exportexcel(){
+  public function exportexcel(Request $request){
+    dd($request);
     return Excel::download(new FieldSalaryExport, 'hq-employees-salary.xlsx');
 }
 

@@ -30,35 +30,26 @@
 
             });
 
-       // select all checkbox
+          //  check box on tables
+            var $tblChkBox = $(".allusers");
+                $("#selectall").on("click", function () {
+                $($tblChkBox).prop('checked', $(this).prop('checked'));
+            });
 
-        // add multiple select / deselect functionality
-        $("#selectall,#selecthq").click(function () {
-            $('.name').attr('checked', this.checked);
-        });
-
-        // if all checkbox are selected, then check the select all checkbox
-        // and viceversa
-        $(".name").click(function () {
-            if ($(".name").length == $(".name:checked").length) {
-                $("#selectall").attr("checked", "checked");
-            } else {
-                $("#selectall").removeAttr("checked");
-            }
-        });
+              // add multiple select / deselect functionality
+                // $("#selectall,#selecthq").click(function () {
+                //     $('.name').attr('checked', this.checked);
+                // });
 
 
-        $(function() {
-                $table = $('#hqpayroll,#hqsalary,#hqpayslips,#users,#hqusers,#fieldusers').bootstrapTable({
+            $(function() {
+                    $table = $('#hqpayroll,#hqsalary,#hqpayslips,#users,#hqusers,#fieldusers').bootstrapTable({
                     search: true,
                     showColumns: true,
-                    exportTypes: ['csv', 'excel']
+                    exportTypes: [' ','csv']
             });
-            function getIdSelections() {
-            return $.map($table.bootstrapTable('getSelections'), function (row) {
-            return row.id
-            })
-        }
+
+
         });
 
 

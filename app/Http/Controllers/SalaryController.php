@@ -123,6 +123,7 @@ class SalaryController extends Controller{
 
 // Download excel
     public function exportexcel(){
+        
         return Excel::download(new SalaryExport, 'all-employees-salary.xlsx');
     }
 

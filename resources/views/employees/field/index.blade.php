@@ -30,19 +30,10 @@
                     <div class="col-md-12">
                         <div class="table-responsive">
                             <div class="table-responsive">
-                                <table
-                                id="fieldusers"
-                                data-search="true"
-                                data-show-columns="true"
-                                data-show-export="true"
-                                data-click-to-select="true"
-                                data-click-to-select="true"
-                                data-pagination="false"
-                                data-id-field="id"
-                                data-show-pagination-switch="false"
-                                data-response-handler="responseHandler">
+                                <table class="table table-bordered">
                                     <thead>
                                         <tr>
+                                            <th><input type="checkbox" id="selectall" /> </th>
                                             <th>S/N</th>
                                             <th>Name</th>
                                             <th>Employee ID</th>
@@ -52,13 +43,15 @@
                                             <th>DCC</th>
                                             <th>LCC</th>
                                             <th>Status</th>
-                                            {{-- <th class="text-right no-sort">Action</th> --}}
                                         </tr>
                                     </thead>
                                     <tbody>
                                  @php ($count = 1)
                                   @foreach($users as $user)
                                     <tr>
+                                        <td>
+                                            <input type="checkbox" name="userID[]" class="allusers" value="{{$user->id  }}"  />
+                                        </td>
                                         <td>{{$count++ }}</td>
                                         <td>
                                           <a href="{{ route('employees.edit',$user->id)}}">
@@ -72,10 +65,6 @@
                                         <td>{{$user->dcc['dccName'] }}</td>
                                         <td>{{$user->lcc['lccName'] }}</td>
                                         <td>{{$user->employee_status }} </td>
-                                        {{-- <td class="text-right">
-                                            <a class="" href="{{ route('employees.edit',$user->id)}}">
-                                                <i class="fa fa-pencil m-r-5"></i> </a>
-                                        </td> --}}
                                     </tr>
                                     @endforeach
                                     </tbody>

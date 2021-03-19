@@ -43,17 +43,6 @@ class LccController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
@@ -64,6 +53,13 @@ class LccController extends Controller
         return view('lcc.edit', compact('lcc'));
     }
 
+    public function update(Request $request, $id)
+    {
+        Lccregions::where('id',$id)->update([
+            'lccName' => $request->input('lccName'),
+        ]);
+        return redirect('/lccs-regions')->with('message','Region updated successfully!');
+    }
 
 
 

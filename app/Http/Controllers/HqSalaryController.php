@@ -46,13 +46,13 @@ class HqSalaryController extends Controller
      */
     public function store(Request $request){
           $data = $request->input('userID');
-
-         if(!$data['userID']){
-             return back()->with('message','Please select what you would like proccessed!');
-         }
+          
+         if($data == null){
+            return back()->with('message','Please select what you would like proccessed!');
+        }
 
         // return  $data;
-         foreach($data['userID'] as $id ){
+         foreach($data as $id ){
              $record     =  Salary::where('user_id', (int)$id)->first();
 
              $checkMonth =  Payroll::where('month', now()->month)

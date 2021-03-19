@@ -24,15 +24,6 @@ class JobgroupController extends Controller
         return view('jobgroups.index', compact('jobGroups','totalRegions', 'totalDcc','totaLcc'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
 
     /**
      * Store a newly created resource in storage.
@@ -48,18 +39,8 @@ class JobgroupController extends Controller
         return back()->with('message','Job group created successfully!');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
 
-    /**
+   /**
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
@@ -67,29 +48,17 @@ class JobgroupController extends Controller
      */
     public function edit($id)
     {
-        //
+        $groups = Jobgroup::findorFail($id);
+        return view('jobgroups.edit', compact('groups'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
+    public function update(Request $request, $id){
+        Jobgroup::where('id',$id)->update([
+            'jonGroupName' => $request->input('jonGroupName'),
+        ]);
+        return redirect('/job-groups')->with('message','Job Group updated successfully!');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
+
+
 }
