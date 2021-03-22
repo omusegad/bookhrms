@@ -266,16 +266,16 @@
                           <div class="col-md-4">
                               <label for="gender">Gender</label>
                               <select class="browser-default custom-select" name="gender">
-                                  @if($employee->gender === "male")
-                                  <option value="{{ $employee->gender  }}">{{ $employee->gender  }}</option>
-                                  <option value="female">Female</option>
-                                      @elseif($employee->gender === "female")
+                                   @if($employee->gender === "male")
+                                        <option value="{{ $employee->gender  }}">{{ $employee->gender  }}</option>
+                                        <option value="female">Female</option>
+                                    @elseif($employee->gender === "female")
                                           <option value="{{ $employee->gender  }}">{{ $employee->gender  }}</option>
                                           <option value="male">Male</option>
-                                      @else
+                                    @else
                                           <option value="female">Female</option>
                                           <option value="male">Male</option>
-                                      @endif
+                                 @endif
                               </select>
                           </div>
 
@@ -283,41 +283,41 @@
                             <label for="gender">Marital Status</label>
                               <select class="browser-default custom-select" name="marital_status">
                                        @if($employee->marital_status === "married")
-                                           <option value="single">{{ $employee->marital_status  }}</option>
+                                           <option value="{{ $employee->marital_status  }}">{{ $employee->marital_status  }}</option>
                                           <option value="single">Single</option>
                                           <option value="divorced">Divorced</option>
                                           <option value="separated">Separated</option>
                                           <option value="widowed">Widowed</option>
                                        @elseif($employee->marital_status === "single")
-                                            <option value="single">{{ $employee->marital_status  }}</option>
+                                            <option value="{{ $employee->marital_status  }}">{{ $employee->marital_status  }}</option>
                                              <option value="married">Married</option>
                                              <option value="divorced">Divorced</option>
                                              <option value="separated">Separated</option>
                                             <option value="widowed">Widowed</option>
                                        @elseif($employee->marital_status === "divorced")
-                                           <option value="single">{{ $employee->marital_status  }}</option>
+                                           <option value="{{ $employee->marital_status  }}">{{ $employee->marital_status  }}</option>
+                                           <option value="married">Married</option>
                                           <option value="single">Single</option>
-                                          <option value="divorced">Divorced</option>
                                           <option value="separated">Separated</option>
                                           <option value="widowed">Widowed</option>
                                        @elseif($employee->marital_status === "seperated")
-                                       <option value="single">{{ $employee->marital_status  }}</option>
+                                       <option value="{{ $employee->marital_status  }}">{{ $employee->marital_status  }}</option>
+                                          <option value="married">Married</option>
                                           <option value="single">Single</option>
                                           <option value="divorced">Divorced</option>
-                                          <option value="separated">Separated</option>
                                           <option value="widowed">Widowed</option>
                                        @elseif($employee->marital_status === "widowed")
-                                       <option value="single">{{ $employee->marital_status  }}</option>
+                                          <option value="{{ $employee->marital_status  }}">{{ $employee->marital_status  }}</option>
                                           <option value="married">Married</option>
                                           <option value="single">Single</option>
                                           <option value="divorced">Divorced</option>
                                           <option value="separated">Separated</option>
                                       @else
-                                      <option value="married">Married</option>
-                                      <option value="single">Single</option>
-                                      <option value="divorced">Divorced</option>
-                                      <option value="separated">Separated</option>
-                                      <option value="widowed">Widowed</option>
+                                        <option value="married">Married</option>
+                                        <option value="single">Single</option>
+                                        <option value="divorced">Divorced</option>
+                                        <option value="separated">Separated</option>
+                                        <option value="widowed">Widowed</option>
                                        @endif
                               </select>
                           </div>

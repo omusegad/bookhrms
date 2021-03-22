@@ -95,7 +95,9 @@
                                                                                 {{$count++ }}
                                                                             </td>
                                                                             <td>
-                                                                                {{$item->fname }} {{$item->lName }}
+                                                                                <a href="{{route('salaries.edit',$item->salary['id'] )}}">
+                                                                                    {{$item->fname }} {{$item->lName }}
+                                                                             </a>
                                                                             </td>
                                                                             <td>{{$item->employeeID }}</td>
                                                                             <td>  {{  $item->jobgroup->jonGroupName}}</td>

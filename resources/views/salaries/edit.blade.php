@@ -11,11 +11,7 @@
             <div class="page-header">
                 <div class="row align-items-center">
                     <div class="col">
-                        <h3 class="page-title">Edit Employee Salary</h3>
-                        <ul class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Dashboard</a></li>
-                            <li class="breadcrumb-item active">Edit Employee Salary</li>
-                        </ul>
+                        <h3 class="page-title">Edit {{$salary->users->fname}}' s Salary</h3
                     </div>
                     <div class="col-auto float-right ml-auto">
                         <a href="{{route('salaries.index' )}}" class="btn add-btn"><i class="fa fa-plus"></i> All Salary</a>
@@ -25,22 +21,20 @@
             <!-- /Page Header -->
 
             <div class="row">
-                <div class="col-md-12">
-                  @if ($message = Session::get('message'))
-                      <div class="alert alert-danger alert-block">
-                          <strong>{{ $message }}</strong>
-                      </div>
-                  @endif
-              </div>
-
-            <div class="row">
-                <div class="col-md-12">
+                        <div class="col-md-12">
+                        @if ($message = Session::get('message'))
+                            <div class="alert alert-danger alert-block">
+                                <strong>{{ $message }}</strong>
+                            </div>
+                        @endif
+                    </div>
+            </div>
+                <div>
                         <form method="POST" action="{{route('salaries.update', $salary->id )}}">
                             {{ method_field('PUT') }}
                             @csrf
                             <div class="row">
-
-                                <div class="col-sm-6">
+                                <div class="col-lg-6">
                                     <div class="form-group">
                                         <label for="">First Name</label>
                                         <input name="fname" value="{{$salary->users->fname}}" class="form-control" type="text" readonly>
@@ -56,28 +50,28 @@
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <label>Basic Salary</label>
-                                        <input name="basic_salary" value="{{$salary->basic_salary ? $salary->basic_salary : old('basic_salary')}}" class="form-control" type="text">
+                                        <input name="basic_salary" value="{{$salary->basic_salary ? $salary->basic_salary : old('basic_salary')}}" class="form-control" type="text" required>
                                     </div>
                                 </div>
 
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <label>Transport Allowance</label>
-                                        <input name="transport_allowance" value="{{$salary->transport_allowance ? $salary->transport_allowance : old('transport_allowance') }}" class="form-control" type="text">
+                                        <input name="transport_allowance" value="{{$salary->transport_allowance ? $salary->transport_allowance : old('transport_allowance') }}" class="form-control" type="text" required>
                                     </div>
                                 </div>
 
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <label>House Allowance</label>
-                                        <input name="hse_allowance" value="{{$salary->hse_allowance ?  $salary->hse_allowance : old('hse_allowance')}}" class="form-control" type="text">
+                                        <input name="hse_allowance" value="{{$salary->hse_allowance ?  $salary->hse_allowance : old('hse_allowance')}}" class="form-control" type="text" >
                                     </div>
                                 </div>
 
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <label>Airtime Allowance</label>
-                                        <input name="airtime_allowance" value="{{$salary->air_allowance ?  $salary->air_allowance : old('airtime_allowance')}}" class="form-control" type="text">
+                                        <input name="airtime_allowance" value="{{$salary->airtime_allowance ?  $salary->airtime_allowance : old('airtime_allowance')}}" class="form-control" type="text">
                                     </div>
                                 </div>
 
@@ -132,6 +126,13 @@
 
                                 <div class="col-sm-6">
                                     <div class="form-group">
+                                        <label>Other Deductions</label>
+                                        <input name="otherDeductions" value="{{$salary->otherDeductions ? $salary->otherDeductions : old('otherDeductions')}}" class="form-control" type="text">
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-6">
+                                    <div class="form-group">
                                         <label>NHIF</label>
                                         <input name="nhif" value="{{$salary->nhif ? $salary->nhif : old('nhif') }}" class="form-control" type="text">
                                     </div>
@@ -175,20 +176,18 @@
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <label>Beneficiary Account Number</label>
-                                        <input name="beneficiaryAccountNumber" value="{{$salary->BeneficiaryAccountNumber ? $salary->BeneficiaryAccountNumber : old('beneficiaryAccountNumber') }}" class="form-control" type="text">
+                                        <input name="beneficiaryAccountNumber" value="{{$salary->beneficiaryAccountNumber ? $salary->beneficiaryAccountNumber : old('beneficiaryAccountNumber') }}" class="form-control" type="text">
                                     </div>
                                 </div>
-
+                            </div>
+                            <div class="submit-section text-right">
+                                <button class="btn btn-primary">Update</button>
                             </div>
 
-                            <div class="submit-section pull-right">
-                                <button class="btn btn-primary submit-btn">Submit</button>
-                            </div>
                         </form>
-                </div>
-            </div>
 
         </div>
+    </div>
 
     </div>
     <!-- /Page Wrapper -->

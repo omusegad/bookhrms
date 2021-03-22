@@ -123,7 +123,7 @@ class SalaryController extends Controller{
 
 // Download excel
     public function exportexcel(){
-        
+
         return Excel::download(new SalaryExport, 'all-employees-salary.xlsx');
     }
 
@@ -140,7 +140,6 @@ class SalaryController extends Controller{
      */
     public function update(Request $request, $id){
 
-     // dd($request->all());
        Salary::where('id',$id)->update([
             'basic_salary'                  => $request['basic_salary'],
             'transport_allowance'           => $request['transport_allowance'],
@@ -154,10 +153,10 @@ class SalaryController extends Controller{
             'nssf'                          => $request['nssf'],
             'nhif'                          => $request['nhif'],
             'net_pay'                       => $request['net_pay'],
-            'bankName'                      => $request['bankName'],
-            'bankBranch'                    => $request['bankBranch'],
-            'bankCode'                      => $request['bankCode'],
-            'otherDeductions'      => $request['otherDeductions'],
+            'bankName'                  => $request['bankName'],
+            'bankBranch'                => $request['bankBranch'],
+            'bankCode'                  => $request['bankCode'],
+            'otherDeductions'       => $request['otherDeductions'] ?  $request['otherDeductions'] : 0,
             'beneficiaryAccountNumber'      => $request['beneficiaryAccountNumber'],
 
         ]);

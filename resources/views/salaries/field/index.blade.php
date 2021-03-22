@@ -91,9 +91,13 @@
                                                                                 <td>
                                                                                     <input type="checkbox" name="userID[]" class="allusers" value="{{$item->id }}"  />
                                                                                 </td>
-                                                                                <td>{{$item->employeeID }}</td>
                                                                                 <td>
+                                                                                    {{$item->employeeID }}
+                                                                                </td>
+                                                                                <td>
+                                                                                    <a href="{{route('salaries.edit',$item->salary['id'] )}}">
                                                                                         {{$item->fname }} {{$item->lName }}
+                                                                                 </a>
                                                                                 </td>
                                                                                 <td>{{$item->employeeID }}</td>
                                                                             <td>  {{  $item->jobgroup->jonGroupName}}</td>
