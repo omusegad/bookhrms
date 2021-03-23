@@ -22,7 +22,7 @@ class FieldSalaryController extends Controller
     public function index()
     {
 
-        $userpayroll = User::where('employee_type','FIELD')->whereHas('payroll', function($q) {
+        $userpayroll = User::where('employee_type','FIELD')->orderBy('fname')->whereHas('payroll', function($q) {
             $q->where('month', '=',  Carbon::now()->month);
         })->get();
         $fieldsalary = User::where('employee_type','FIELD')->with('salary')->get();

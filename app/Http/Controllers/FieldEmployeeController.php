@@ -13,7 +13,7 @@ class FieldEmployeeController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index(){
-        $users = User::where('employee_type','FIELD')->with('region','dcc','lcc','jobgroup')->get();
+        $users = User::where('employee_type','FIELD')->orderBy('fname')->with('region','dcc','lcc','jobgroup')->get();
         return view('employees.field.index', compact('users'));
     }
 

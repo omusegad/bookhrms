@@ -125,7 +125,7 @@
                             </div>
 
                             <div class="col-md-4">
-                                <label for="">Other Email Addreess </label>
+                                <label for="">Other Email Address </label>
                                 <input id="otherEmailAddress"  type="text" class="form-group form-control @error('otherEmailAddress') is-invalid @enderror" name="otherEmailAddress" value="{{ $employee->otherEmailAddress ? $employee->otherEmailAddress :  old('otherEmailAddress')}}"   autocomplete="otherEmailAddress">
                                 @error('otherEmailAddress')
                                     <span class="invalid-feedback" role="alert">
@@ -208,17 +208,24 @@
                                <div class="col-lg-4">
                                     <label for="gender">{{ $employee->fname }} 's Grade</label>
                                     <select class="browser-default custom-select" name="male_pastors_grade">
-                                        @if($employee->male_pastors_grade)
-                                            <option value="{{ $employee->male_pastors_grade }}" disabled>{{ $employee->male_pastors_grade }} </option>
-                                            <option value="unlicensed">unlicensed</option>
-                                            <option value="ordained">ordained</option>
-                                        @endif
-                                        @if($employee->male_pastors_grade == null)
-                                        <option value="">Choose Grade Option</option>
-                                        <option value="licensed">licensed</option>
-                                        <option value="unlicensed">unlicensed</option>
-                                        <option value="ordained">ordained</option>
-                                    @endif
+                                        @if($employee->male_pastors_grade  === "licenced" )
+                                            <option value="licenced">Licenced</option>
+                                             <option value="unlicenced">Unlicenced</option>
+                                            <option value="ordained">Ordained</option>
+                                        @elseif ($employee->male_pastors_grade  === "unlicenced")
+                                            <option value="unlicenced">Unlicenced</option>
+                                            <option value="licenced">Licenced</option>
+                                            <option value="ordained">Ordained</option>
+                                        @elseif ($employee->male_pastors_grade  === "ordained")
+                                            <option value="ordained">Ordained</option>
+                                            <option value="licenced">Licenced</option>
+                                            <option value="unlicenced">Unlicenced</option>
+                                        @elseif($employee->male_pastors_grade === null)
+                                            <option value="">Choose Grade Option</option>
+                                            <option value="licenced">Licenced</option>
+                                            <option value="unlicenced">Unlicenced</option>
+                                            <option value="ordained">Ordained</option>
+                                         @endif
                                     </select>
                             </div>
                         @elseif($employee->gender == "female")

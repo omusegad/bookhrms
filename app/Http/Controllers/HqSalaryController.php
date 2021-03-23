@@ -21,7 +21,7 @@ class HqSalaryController extends Controller
      */
     public function index(){
 
-        $userpayroll = User::where('employee_type','HQ')->whereHas('payroll', function($q) {
+        $userpayroll = User::where('employee_type','HQ')->orderBy('fname')->whereHas('payroll', function($q) {
             $q->where('month', '=',  Carbon::now()->month);
         })->get();
 
@@ -46,7 +46,7 @@ class HqSalaryController extends Controller
      */
     public function store(Request $request){
           $data = $request->input('userID');
-          
+
          if($data == null){
             return back()->with('message','Please select what you would like proccessed!');
         }

@@ -3028,10 +3028,9 @@ a.logo img {
 }
 .profile-img {
 	cursor: pointer;
-	height: 80px;
+	height: auto;
 	margin: 0 auto;
 	position: relative;
-	width: 80px;
 }
 .profile-img .avatar {
 	font-size: 24px;

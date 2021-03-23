@@ -13,13 +13,7 @@
 					<div class="page-header">
 						<div class="row">
 							<div class="col-sm-12">
-								<h3 class="page-title">Profile</h3>
-								<ul class="breadcrumb">
-									<li class="breadcrumb-item">
-                                        <a href="{{ route('dashboard') }}">Dashboard</a>
-                                    </li>
-									<li class="breadcrumb-item active">{{ $employee->fname }} {{ $employee->lName }}</li>
-								</ul>
+								<h3 class="page-title">{{ $employee->fname }} Profile</h3>
 							</div>
 						</div>
 					</div>
@@ -40,7 +34,7 @@
 						<div class="card-body">
                             <div class="row">
                                 <div class="col-lg-3">
-                                    <div class="profile-img-wrap mt-3">
+                                    <div class="profile-img-wrap mt-3 mb-3">
                                         <div class="profile-img">
                                             @if($employee->avatar)
                                             <img  src="{{ asset('storage'.$employee->avatar) }}"  />
@@ -50,52 +44,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-9">
-                                        <h4>Basic Information</h4>
-                                        <table class="table table-bordered">
-                                            <thead>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                <td>Name</td>
-                                                <td>{{$employee->fname}} {{$employee->lName}}</td>
-                                                </tr>
-                                                <tr>
-                                                <td>Position</td>
-                                                <td> {{$employee->joining_position}}</td>
-                                                </tr>
-                                                <tr>
-                                                <td>Employee ID</td>
-                                                <td>{{$employee->employeeID}}</td>
-                                                </tr>
-                                                <tr>
-                                                <td>Joined Date</td>
-                                                <td>{{$employee->joining_date}}</td>
-                                                </tr>
-                                                <tr>
-                                                <td>Gender</td>
-                                                <td> {{$employee->gender}}</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Phone</td>
-                                                <td>{{$employee->phoneNumber}}</td>
-                                                </tr>
-                                                <tr>
-                                                <td>Email</td>
-                                                <td> <a href="mailto:{{$employee->email}}">{{$employee->email}}</a></td>
-                                                </tr>
-                                                <tr>
-                                                <td>Birthday</td>
-                                                <td>{{$employee->date_of_birth}}</td>
-                                                </tr>
-                                                <tr>
-                                                <td>Address</td>
-                                                <td>{{$employee->current_address}}</td>
-                                                </tr>
-                                            </tbody>
-                                            </table>
-                                </div>
-                            </div>
+
 					</div>
 
 					<div class="card tab-box">
@@ -117,33 +66,60 @@
 									<div class="card profile-box flex-fill">
 										<div class="card-body">
 											<h4 class="card-title">Personal Informations</h4>
-                                                <table class="table ">
-                                                    <thead>
-                                                    </thead>
-                                                    <tbody>
+                                            <table class="table ">
+                                                <thead>
+                                                </thead>
+                                                <tbody>
                                                     <tr>
-                                                        <td>Alternative Phone Number : </td>
-                                                        <td>{{$employee->altPhoneNumber}}</td>
+                                                        <td>Employee ID</td>
+                                                        <td>{{$employee->employeeID}}</td>
+                                                        </tr>
+                                                    <tr>
+                                                    <td>Name</td>
+                                                    <td>{{$employee->fname}} {{$employee->lName}} {{$employee->otherNames}} </td>
                                                     </tr>
                                                     <tr>
-                                                        <td>NHIF : </td>
-                                                        <td> {{$employee->nhifNo}}</td>
+                                                        <td>Gender</td>
+                                                        <td> {{$employee->gender}}</td>
                                                     </tr>
                                                     <tr>
-                                                        <td>NSSF : </td>
-                                                        <td>{{$employee->nssfNo}}</td>
+                                                    <td>Position</td>
+                                                    <td> {{$employee->joining_position}}</td>
                                                     </tr>
                                                     <tr>
-                                                        <td>National ID :</td>
+                                                        <td>Position 2</td>
+                                                        <td> {{$employee->secondPosition}}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Job Group</td>
+                                                        <td> {{$employee->jobgroup->jonGroupName}}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Highest Education</td>
+                                                        <td> {{$employee->education}}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Grade</td>
+                                                        <td> {{$employee->gender === 'male' ? $employee->male_pastors_grade : $employee->female_pastors_grade}}</td>
+                                                    </tr>
+
+                                                    <tr>
+                                                        <td>National ID</td>
                                                         <td>{{$employee->nationalID}}</td>
                                                     </tr>
-                                                    </tbody>
+
+                                                    <tr>
+                                                        <td>KRA PIN</td>
+                                                        <td>{{$employee->pinNo}}</td>
+                                                    </tr>
+                                                    <tr>
+
+                                                </tbody>
                                                 </table>
 										</div>
 									</div>
 								</div>
 								<div class="col-md-6 d-flex">
-
 									<div class="card profile-box flex-fill">
 										<div class="card-body">
 											<h4 class="card-title">Other Detail</h4>
@@ -151,20 +127,51 @@
                                                 <thead>
                                                 </thead>
                                                 <tbody>
-                                                <tr>
-                                                    <td>Permanent Residence : </td>
-                                                    <td>{{$employee->permanent_address}}</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Home County : </td>
-                                                    <td>{{$employee->home_county}}</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Marital Status : </td>
-                                                    <td>{{$employee->marital_status}}</td>
-                                                </tr>
+                                                    <h4></h4>
+                                                    <tr>
+                                                    <tr>
+                                                        <td>NHIF No</td>
+                                                        <td>{{$employee->nhifNo}}</td>
+                                                    </tr>
+                                                        <tr>
+                                                        <tr>
+                                                            <td>NSSF No</td>
+                                                            <td>{{$employee->nssfNo}}</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Postal Address</td>
+                                                            <td>{{$employee->postalAddress}}</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Phone</td>
+                                                            <td>{{$employee->phoneNumber}}</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Alternative Phone</td>
+                                                            <td>{{$employee->altPhoneNumber}}</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Email</td>
+                                                            <td> <a href="mailto:{{$employee->email}}">{{$employee->email}}</a></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Other Email</td>
+                                                            <td> <a href="mailto:{{$employee->otherEmailAddress}}">{{$employee->otherEmailAddress}}</a></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Marital Status</td>
+                                                            <td>{{  $employee->marital_status}}</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Date of Birth</td>
+                                                            <td>{{  $employee->date_of_birth}}</td>
+                                                        </tr>
+                                                        <tr>
+                                                        <td>Commencement Date</td>
+                                                        <td>{{$employee->joining_date}}</td>
+                                                    </tr>
                                                 </tbody>
-                                            </table>
+                                                </table>
 										</div>
 									</div>
 								</div>

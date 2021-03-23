@@ -13,7 +13,7 @@ class HqEmployeeController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index(){
-        $users = User::where('employee_type','HQ')->with('region','dcc','lcc','jobgroup')->get();
+        $users = User::where('employee_type','HQ')->orderBy('fname')->with('region','dcc','lcc','jobgroup')->get();
         return view('employees.hq.index', compact('users'));
     }
 
