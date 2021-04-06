@@ -129,7 +129,10 @@
                     <form method="POST" action="{{route('payroll.store')}}">
                         @csrf
                     <div class="row ">
-                        <div class="col-lg-12">
+                        <div class="col-lg-4">
+                            <input type="text" id="myInput" class="form-control"  placeholder="Search for names ......">
+                        </div>
+                        <div class="col-lg-8">
                             <div class=" text-right ">
                                 <button type="submit" class="btn btn-outline-primary">Refresh All Payroll</button>
                                 <a class="btn btn-outline-primary" href="{{ url('/salaries-export-excel') }}">Export Excel</a>
@@ -139,7 +142,7 @@
                 </div>
                 <div class="col-md-12">
                     <div class="table-responsive">
-                        <table class="table table-striped  table-bordered" id="salaries">
+                        <table class="table table-striped  table-bordered" id="allsalaries">
                             <thead>
                                 <tr>
                                     <th>
@@ -235,7 +238,7 @@
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <label>Employee</label>
-                                        <select name="user_id" class="select">
+                                        <select name="user_id" class="select form-control">
                                             <option value="" disabled selected>Select Employee</option>
                                             @foreach ($employees as $item)
                                               <option value="{{$item->id}}">{{$item->fname}} {{$item->lName}}</option>
@@ -247,7 +250,7 @@
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <label>Job Group</label>
-                                        <select name="job_group" class="select">
+                                        <select name="job_group" class="select form-control">
                                             <option value="" disabled selected>Select Job Group</option>
                                             @foreach ($jobgroup as $item)
                                             <option value="{{$item->jonGroupName}}" >{{$item->jonGroupName}}</option>

@@ -22,29 +22,20 @@
                 </div>
                 <!-- /Page Header -->
 
-                <div class="row">
-                        <div class="col-12">
-                            <form method="POST" action="{{route('hq-employees-export-excel.exportexcel')}}">
-                                @csrf
-                            <div class="row ">
+                <div class="row mb-3">
+                    <div class="col-lg-4">
+                        <input type="text" id="myInput" class="form-control"  placeholder="Search for names ......">
+                    </div>
+                    <div class="col-lg-8 text-right">
 
-                                <div class="col-lg-12 gen-box text-right">
-                                    <ul>
-                                        <li>
-                                                <a class="ml-2 btn btn-outline-primary" href="{{ url('/hq-employees-export-excel') }}">Export to  excel</a>
-                                        </li>
-                                    </ul>
-                                </div>
-
-                            </div>
-                        </div>
+                    </div>
                 </div>
 
                 <div class="row">
                     <div class="col-md-12">
                         <div class="table-responsive">
                             <div class="table-responsive">
-                                <table class="table table-bordered">
+                                <table class="table table-bordered"  id="hqstaff">
                                     <thead>
                                         <tr>
                                             <th><input type="checkbox" id="selectall" /> </th>
@@ -64,7 +55,7 @@
                                   @foreach($users as $user)
                                     <tr>
                                         <td>
-                                            <input type="checkbox"  class="allusers"  name="userID[]"  value="{{$user->id  }}" />
+                                            <input type="checkbox"  class="allusers"  />
                                         </td>
                                         <td>{{$count++ }}</td>
                                         <td>
@@ -87,7 +78,6 @@
                         </div>
                     </div>
                 </div>
-            </form>
             </div>
             <!-- /Page Content -->
 

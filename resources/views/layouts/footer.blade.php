@@ -37,20 +37,27 @@
             });
 
               // add multiple select / deselect functionality
-                // $("#selectall,#selecthq").click(function () {
-                //     $('.name').attr('checked', this.checked);
-                // });
+                $("#selectall,#selecthq").click(function () {
+                    $('.name').attr('checked', this.checked);
+                });
 
 
             $(function() {
                     $table = $('#hqpayroll,#hqsalary,#hqpayslips,#users,#hqusers,#fieldusers').bootstrapTable({
-                    search: true,
-                    showColumns: true,
-                    exportTypes: [' ','csv']
+                        search: true,
+                        showColumns: true,
+                        exportTypes: [' ','csv']
+                    });
+           });
+
+           // Table search
+           $("#myInput").on("keyup", function() {
+                var value = $(this).val().toLowerCase();
+                $(".table tr").filter(function() {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                });
             });
 
-
-        });
 
 
 

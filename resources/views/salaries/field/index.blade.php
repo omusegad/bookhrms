@@ -45,9 +45,11 @@
                                                     <div class="col-12">
                                                         <form method="POST" action="{{route('field-salaries.store')}}">
                                                             @csrf
-                                                            <div class="row ">
-
-                                                                <div class="col-lg-12 gen-box text-right">
+                                                            <div class="row mt-3 ">
+                                                                <div class="col-lg-4">
+                                                                    <input type="text" id="myInput" class="form-control"  placeholder="Search for names ......">
+                                                                </div>
+                                                                <div class="col-lg-8 gen-box text-right">
                                                                     <ul>
                                                                         <li>
                                                                             <button type="submit" class="ml-2 btn btn-outline-primary">Refresh Field Salaries</button>
@@ -62,7 +64,7 @@
                                                 </div>
 
                                     <div class="table-responsive ">
-                                               <table class="table table-bordered">
+                                               <table class="table table-bordered" id="fieldsalaries">
                                                                 <thead>
                                                                     <tr>
                                                                         <th>

@@ -50,14 +50,14 @@
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <label>Basic Salary</label>
-                                        <input name="basic_salary" value="{{$salary->basic_salary ? $salary->basic_salary : old('basic_salary')}}" class="form-control" type="text" required>
+                                        <input name="basic_salary" value="{{$salary->basic_salary ? $salary->basic_salary : old('basic_salary')}}" class="form-control" type="text" >
                                     </div>
                                 </div>
 
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <label>Transport Allowance</label>
-                                        <input name="transport_allowance" value="{{$salary->transport_allowance ? $salary->transport_allowance : old('transport_allowance') }}" class="form-control" type="text" required>
+                                        <input name="transport_allowance" value="{{$salary->transport_allowance ? $salary->transport_allowance : old('transport_allowance') }}" class="form-control" type="text" >
                                     </div>
                                 </div>
 
@@ -86,7 +86,7 @@
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <label>Hospitality Allowance</label>
-                                        <input name="hospitality_allowance" value="{{$salary->transport_allowance ? $salary->transport_allowance : old('hospitality_allowance')}}" class="form-control" type="text">
+                                        <input name="hospitality_allowance" value="{{$salary->hospitality_allowance ? $salary->hospitality_allowance : old('hospitality_allowance')}}" class="form-control" type="text">
                                     </div>
                                 </div>
 
@@ -155,21 +155,21 @@
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <label>Bank Name</label>
-                                        <input name="bankName" value="{{$salary->bankName ? $salary->bankName : old('branchName') }}" class="form-control" type="text">
+                                        <input name="bankName" value="KCB Kapsabet" class="form-control" type="text" readonly>
                                     </div>
                                 </div>
 
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <label>Branch Name</label>
-                                        <input name="bankBranch" value="{{$salary->bankBranch ? $salary->bankBranch : old('bankBranch') }}" class="form-control" type="text">
+                                        <input name="bankBranch" value="Kapsabet" class="form-control" type="text" readonly>
                                     </div>
                                 </div>
 
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <label>Bank Code</label>
-                                        <input name="bankCode" value="{{$salary->bankCode ? $salary->bankCode : old('bankCode') }}" class="form-control" type="text">
+                                        <input name="bankCode" value="01166" class="form-control" type="text" readonly>
                                     </div>
                                 </div>
 

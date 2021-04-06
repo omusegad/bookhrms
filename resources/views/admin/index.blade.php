@@ -18,6 +18,12 @@
                 </div>
                 <!-- /Page Header -->
 
+                <div class="row mb-3">
+                    <div class="col-lg-4">
+                        <input type="text" id="myInput" class="form-control"  placeholder="Search for names ......">
+                    </div>
+               </div>
+
                 <div class="row">
                     <div class="col-md-12">
                         <div class="table-responsive">
@@ -44,7 +50,7 @@
 
                                     <td>
                                        @foreach ($user->roles as $item)
-                                                {{  $item->name }}, 
+                                                {{  $item->name }},
                                        @endforeach
                                     </td>
                                     <td class="text-right">

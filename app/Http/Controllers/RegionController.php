@@ -15,7 +15,7 @@ class RegionController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index(){
-        $regions      = Region::All();
+        $regions      = Region::orderBy('rName')->get();
         $totalRegions = Region::All()->count(); // total regions
         $totalDcc     = Dccregions::All()->count(); //totall dccs
         $totaLcc      = Lccregions::All()->count(); //total Lcss

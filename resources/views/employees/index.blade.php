@@ -22,10 +22,19 @@
                 </div>
                 <!-- /Page Header -->
 
+                <div class="row mb-3">
+                    <div class="col-lg-4">
+                        <input type="text" id="myInput" class="form-control"  placeholder="Search for names ......">
+                    </div>
+                    <div class="col-lg-8 text-right">
+
+                    </div>
+                </div>
+
                 <div class="row">
                     <div class="col-md-12">
                         <div class="table-responsive">
-                            <table class="table table-bordered">
+                            <table class="table table-bordered" id="allstaff">
                                         <thead>
                                             <tr>
                                             <th><input type="checkbox" id="selectall" /> </th>

@@ -57,6 +57,12 @@
                     </div>
                  </div>
 
+                 <div class="row mb-3">
+                    <div class="col-lg-4">
+                        <input type="text" id="myInput" class="form-control"  placeholder="Search for names ......">
+                    </div>
+               </div>
+               
                 <div class="row">
                     <div class="col-md-9">
                         <div class="table-responsive">
