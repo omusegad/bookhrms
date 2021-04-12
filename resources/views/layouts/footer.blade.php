@@ -13,22 +13,51 @@
 <script type="text/javascript">
         $(document).ready(function(){
             $('#start_date, #end_date').change(function(){
-                var start_date = new Date($("#start_date").val());
-                var end_date = new Date($("#end_date").val());
-                console.log(start_date,end_date);
-                var days = 1000*60*60*24; //  days
-                var daysdifference = end_date - start_date;
-                var number_of_days = Math.floor(daysdifference/days);
-                document.getElementById('days').value = number_of_days;
-                console.log(number_of_days + ' days');
+                var startLeaveSDate =  new Date($("#start_date").val()) ;
+                var endLeaveSDate =  new Date($("#end_date").val()) ;
+                if(startLeaveSDate.getDay() == 6){
+                    var start_date = new Date(startLeaveSDate.setDate(startLeaveSDate.getDate()+2));
+                    document.getElementById('start_date').value = moment(start_date, 'DD-MM-YYYY').format('YYYY-MM-DD');
+                }else if(startLeaveSDate.getDay() == 0){
+                     start_date = new Date (startLeaveSDate.setDate(startLeaveSDate.getDate()+1));
+                     document.getElementById('start_date').value = moment(start_date, 'DD-MM-YYYY').format('YYYY-MM-DD');
+
+                }else{
+                     start_date =  new Date($("#start_date").val()) ;
+                     document.getElementById('start_date').value = moment(start_date, 'DD-MM-YYYY').format('YYYY-MM-DD');
+                }
+
+                if(endLeaveSDate.getDay() == 6){
+                    var end_date = new Date(endLeaveSDate.setDate(endLeaveSDate.getDate()+2));
+                    document.getElementById('end_date').value = moment(end_date, 'DD-MM-YYYY').format('YYYY-MM-DD');
+                    //console.log(end_date);
+                }else if(endLeaveSDate.getDay() == 0){
+                    end_date = new Date(endLeaveSDate.setDate(endLeaveSDate.getDate()+1));
+                    document.getElementById('end_date').value = moment(end_date, 'DD-MM-YYYY').format('YYYY-MM-DD');
+
+                    //console.log(end_date);
+                }else{
+                    end_date =  new Date($("#end_date").val()) ;
+                    document.getElementById('end_date').value = moment(end_date, 'DD-MM-YYYY').format('YYYY-MM-DD');
+
+                }
+
+                let get_days = 1000*60*60*24; //  days
+                let daysdifference = end_date - start_date;
+                if(daysdifference > 0){
+                    let number_of_days = Math.floor(daysdifference/get_days);
+                    document.getElementById('days').value = number_of_days;
+                   // console.log(moment(end_date).format('YYYY-MM-DD'));
+                    console.log(number_of_days + ' days');
+               }else{
+                document.getElementById('days').value = 0;
+               }
 
             });
 
-
-            $(".alert").fadeTo(3000, 1000).slideUp(1000, function(){
-                $(".alert").slideUp(1000);
-
-            });
+            // $(".alert").fadeTo(3000, 1000).slideUp(2000, function(){
+            //     $(".alert").slideUp(2000);
+            // });
 
           //  check box on tables
             var $tblChkBox = $(".allusers");
@@ -57,8 +86,6 @@
                     $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
                 });
             });
-
-
 
 
     });

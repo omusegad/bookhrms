@@ -57,6 +57,7 @@
                                 <thead>
                                     <tr>
                                         <th>S/N</th>
+                                        <th>Applied Date</th>
                                         <th>Name</th>
                                         <th>Position</th>
                                         <th>Employee No</th>
@@ -67,7 +68,8 @@
                                         <th>Total Days </th>
                                         <th>Applied Days </th>
                                         <th>Remaining Days </th>
-                                        <th>Approval Status </th>
+                                        <th>Status </th>
+                                        <th> Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -76,6 +78,7 @@
                                  @if(!empty($data))
                                             <tr>
                                                 <td>{{$count++}}</td>
+                                                <td>{{$data->created_at}}</td>
                                                 <td>
                                                             {{$data->users['fname']}} {{$data->users['lName']}}
                                                 </td>
@@ -87,8 +90,11 @@
                                                 <td>{{$data->reason}}</td>
                                                 <td>{{ $data->leavetype['leave_days'] }}</td>
                                                 <td>{{$data->appliedDays}} </td>
-                                                <td>{{$data->remainingDays}} </td>
+                                                <td>{{$data->remainingDays ?? "0"}} </td>
                                                 <td >{{$data->leave_status}}</td>
+                                                <td >
+                                                    <button class="btn btn-primary"  data-toggle="modal" data-target="#aprprove_leave"> <i class="fas fa-check-circle"></i> Approve </button>
+                                                </td>
                                             </tr>
                                             @endif
                                   @endforeach
@@ -102,5 +108,59 @@
 
         </div>
         <!-- /Page Wrapper -->
+
+
+         <!-- Edit Leave Modal -->
+         <div id="aprprove_leave" class="modal custom-modal fade" role="dialog">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Edit Leave</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <div class="form-group">
+                                <label>Leave Type <span class="text-danger">*</span></label>
+                                <select class="select">
+                                    <option>Select Leave Type</option>
+                                    <option>Casual Leave 12 Days</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>From <span class="text-danger">*</span></label>
+                                <div class="cal-icon">
+                                    <input class="form-control datetimepicker" value="01-01-2019" type="text">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>To <span class="text-danger">*</span></label>
+                                <div class="cal-icon">
+                                    <input class="form-control datetimepicker" value="01-01-2019" type="text">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>Number of days <span class="text-danger">*</span></label>
+                                <input class="form-control" readonly type="text" value="2">
+                            </div>
+                            <div class="form-group">
+                                <label>Remaining Leaves <span class="text-danger">*</span></label>
+                                <input class="form-control" readonly value="12" type="text">
+                            </div>
+                            <div class="form-group">
+                                <label>Leave Reason <span class="text-danger">*</span></label>
+                                <textarea rows="4" class="form-control">Going to hospital</textarea>
+                            </div>
+                            <div class="submit-section">
+                                <button class="btn btn-primary submit-btn">Save</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /Edit Leave Modal -->
 
 @endsection

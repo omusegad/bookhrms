@@ -19,7 +19,7 @@
                 <!-- /Page Header -->
 
                 <div class="row mb-3">
-                    <div class="col-lg-4">
+                    <div class="col-lg-6">
                         <input type="text" id="myInput" class="form-control"  placeholder="Search for names ......">
                     </div>
                </div>

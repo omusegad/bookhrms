@@ -55,15 +55,40 @@ class LeaveController extends Controller
         $end_date    = Carbon::parse(strtotime($data['end_date']));
         $reason      = $data['reason'];
 
+
+        $holidays = $this->getHolidaysWithinDateRange($start_date, $end_date);
+        if($holidays == []){
+            $end_date    = Carbon::parse(strtotime($data['end_date']));
+        }
+
+        if($holidays){
+            $end_datePlusholidays;
+            foreach($holidays as $holidays){
+                $end_datePlusholidays = $end_date->addDay();
+            }
+
+            //dd($end_datePlusholidays);
+        }
+
+     // dd($appliedDays == null);
+
+        if(empty($appliedDays)){
+            return back()->with('message','Applied number of days cannot be null, please choose start and end date again' );
+        }
+
+
         // check if leave record exists
         $existingLeaveApplication = $this->getExistingLeaveApplication($leaveTypeId);
         if($existingLeaveApplication){
             $remaingLeaveDays = $this->getRemaningLeaveDays($leaveTypeId);
+            $leaveType =  $this->getLeaveType($leaveTypeId);
+           // dd( $leaveType);
             //Calculate remianing Leave days
-            if($remaingLeaveDays === 0 && $remaingLeaveDays != null){
-                return back()->with('message','Leave application not successful, your remaining days : '.$remaingLeaveDays );
+            if($remaingLeaveDays === 0){
+                return back()->with('message','Leave application not successful you have exhausted all your ' .$leaveType.' leave days ' );
             }
-            if($remaingLeaveDays > 0 ){
+
+            if($remaingLeaveDays > 0  ){
                if($appliedDays > $remaingLeaveDays){
                   return back()->with('message','Days applied for is more than your remaining : '.$remaingLeaveDays . " days");
                }else{
@@ -72,7 +97,7 @@ class LeaveController extends Controller
                         'remainingDays' =>  $currentDays,
                         'appliedDays'   =>  $appliedDays,
                         'start_date'     =>  $start_date,
-                        'end_date'       =>  $end_date,
+                        'end_date'       =>  $end_date ? $end_date : $end_datePlusholidays,
                         'aic_leave_type_id' => $leaveTypeId,
                         'reason'            => $reason
                     ]);
@@ -88,7 +113,7 @@ class LeaveController extends Controller
                     'user_id'            => Auth::user()->id,
                     'aic_leave_type_id'  => $leaveTypeId,
                     'start_date'         => $start_date,
-                    'end_date'           => $end_date,
+                    'end_date'           => $end_date ? $end_date : $end_datePlusholidays,
                     'appliedDays'        => $appliedDays,
                     'reason'             => $reason,
                 ]);
@@ -99,7 +124,7 @@ class LeaveController extends Controller
                     'user_id'            => Auth::user()->id,
                     'aic_leave_type_id'  => $leaveTypeId,
                     'start_date'         => $start_date,
-                    'end_date'           => $end_date,
+                    'end_date'           =>  $end_date ? $end_date : $end_datePlusholidays,
                     'appliedDays'        => $appliedDays,
                     'remainingDays'      => $newRemainingDays,
                     'reason'             => $reason,
@@ -125,12 +150,21 @@ class LeaveController extends Controller
                 ->first();
     }
 
+    /// calculate remaining leave days
     private function getRemaningLeaveDays($leaveTypeId){
         return LeaveApplication::where("aic_leave_type_id", $leaveTypeId)->pluck("remainingDays")->first();
     }
 
-    private function getCurrentHolidays(){
+    //get leave types
+    private function getLeaveType($leaveTypeId){
+        return LeaveType::where("id", $leaveTypeId)->pluck("leaveType")->first();
+    }
 
+    // get all holidy with start date and end date range
+    private function getHolidaysWithinDateRange($start_date , $end_date){
+       return Holiday::where('holidayDate', '>=', $start_date)
+                           ->where('holidayDate', '<=', $end_date)
+                           ->get();
     }
 
 
