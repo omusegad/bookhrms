@@ -111,9 +111,10 @@ class EmployeeController extends Controller{
 
         $password =  User::where('id',$id)->pluck('password'); // get current password
         $avatar      =  User::where('id',$id)->pluck('avatar'); //  get current avatar
-    //   dd( $avatar );
 
-        User::where('id',$id)->update([
+       //  dd( $request['newpassword'] );
+
+        $update = User::where('id',$id)->update([
                         "employeeID" =>  $request['employeeID'],
                         "fname" =>  $request['fname'],
                         "lName" =>  $request['lName'],
@@ -163,10 +164,10 @@ class EmployeeController extends Controller{
                         "exit_date" => $request['exit_date'],
                         "male_pastors_grade" => $request['male_pastors_grade'],
                         "female_pastors_grade" => $request['female_pastors_grade'],
-                        'password' => $request['newPassword'] ? Hash::make($request['newPassword']) :    $password[0],
+                        'password' => $request['newpassword'] ? Hash::make($request['newpassword']) : $password[0],
                     ]);
 
-        //  dd( $edited);
+        //dd($update);
 
         return back()->with('message','Employee updated successfully!');
 

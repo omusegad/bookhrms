@@ -3032,6 +3032,19 @@ a.logo img {
 	margin: 0 auto;
 	position: relative;
 }
+
+.profileavator {
+    border-radius: 50%;
+    height: 80px;
+    width: 80px;
+    overflow: hidden;
+}
+
+.profileavator img {
+    width: 100%;
+    height: auto;
+}
+
 .profile-img .avatar {
 	font-size: 24px;
 	height: 80px;

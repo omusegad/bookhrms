@@ -13,16 +13,16 @@
                         <div class="col">
                             <h3 class="page-title">Apply Leaves</h3>
                         </div>
-                            {{-- @role('SuperAdmin|HrManager')
+                            @role('SuperAdmin|HrManager')
                             <div class="col-auto float-right ml-auto">
                                 <a href="{{route('leaves.index')}}" class="btn add-btn"> All Leave</a>
                             </div>
-                            @endrole --}}
-                              @can('edit articles')
+                            @endrole
+                            @role('Employees')
                                 <div class="col-auto float-right ml-auto">
-                                    <a href="{{route('leaves.index')}}" class="btn add-btn"> All Leave</a>
+                                    <a href="{{url('/my-leaves')}}" class="btn add-btn"> All Leave</a>
                                 </div>
-                            @endcan
+                             @endrole
                     </div>
                 </div>
                 <!-- /Page Header -->

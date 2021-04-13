@@ -16,7 +16,7 @@ class DashboardController extends Controller{
 
     public function index(){
 
-
+        //Artisan::call('cache:clear');
         $totalRegions = Region::All()->count(); // total regions
         $employees    = User::All()->count(); // total regions
         $totalDcc     = Dccregions::All()->count(); //totall dccs

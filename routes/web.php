@@ -79,7 +79,7 @@ Route::middleware(['auth'])->group(function () {
 
         Route::resource('/salary-settings', SalarySettingsController::class);
         Route::resource('/holidays', HolidaysController::class);
-        Route::resource('/payroll', PayrollController::class)->only(['index','store']);
+       // Route::resource('/payroll', PayrollController::class)->only(['index','store']);
         Route::resource('/payslip', PayslipController::class);
         Route::resource('/hq-leaves',HqLeaveController::class)->only(['index']);
         Route::resource('/field-leaves',FieldLeaveController::class)->only(['index']);

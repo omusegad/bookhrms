@@ -26,7 +26,11 @@
                                 <span class="dash-widget-icon"><i class="fa fa-map-marker"></i></span>
                                 <div class="dash-widget-info">
                                      <h3>{{$totalRegions ? $totalRegions: "0" }}</h3>
-                                    <span><a href="{{ url('/regions') }}">Regions</a></span>
+                                     @can('delete articles')
+                                        <span><a href="{{ url('/regions') }}">Regions</a></span>
+                                     @else
+                                       <span>Regions</span>
+                                    @endcan
                                 </div>
                             </div>
                         </div>
@@ -37,7 +41,11 @@
                                 <span class="dash-widget-icon"><i class="fa fa-map-pin"></i></span>
                                 <div class="dash-widget-info">
                                     <h3>{{$totalDcc ? $totalDcc: "0" }}</h3>
+                                    @can('delete articles')
                                     <span><a href="{{ url('/dccs-regions') }}">DCCs</a></span>
+                                    @else
+                                    <span>Regions</span>
+                                    @endcan
                                 </div>
                             </div>
                         </div>
@@ -48,7 +56,11 @@
                                 <span class="dash-widget-icon"><i class="fa fa-home"></i></span>
                                 <div class="dash-widget-info">
                                     <h3>{{$totaLcc ? $totaLcc: "0" }}</h3>
-                                    <span><a href="{{ url('/lccs-regions') }}">LCCs</a></span>
+                                    @can('delete articles')
+                                      <span><a href="{{ url('/lccs-regions') }}">LCCs</a></span>
+                                    @else
+                                      <span>Regions</span>
+                                    @endcan
                                 </div>
                             </div>
                         </div>
@@ -56,6 +68,7 @@
                 </div>
 
 
+            @can('publish articles')
 
                 <div class="row">
                     <div class="col-md-12">
@@ -214,7 +227,7 @@
                 </div>
                 <!-- /Statistics Widget -->
 
-
+            @endcan
 
 
             </div>

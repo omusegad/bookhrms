@@ -12,9 +12,18 @@
 					<!-- Page Header -->
 					<div class="page-header">
 						<div class="row">
-							<div class="col-sm-12">
-								<h3 class="page-title">{{ $employee->fname }} Profile</h3>
+							<div class="col-lg-6 pt-4">
+								<h3 class="page-title">{{ $employee->fname }}'s Profile</h3>
 							</div>
+                            <div class="col-lg-6">
+                                <div class="profileavator pull-right">
+                                        @if($employee->avatar)
+                                        <img  src="{{ asset('storage'.$employee->avatar) }}"  />
+                                        @else
+                                        <img  src="{{ asset('storage/uploads/images/account.jpg') }}"/>
+                                        @endif
+                                </div>
+                            </div>
 						</div>
 					</div>
 					<!-- /Page Header -->
@@ -29,23 +38,6 @@
                                     @endif
                         </div>
                     </div>
-
-					<div class="card mb-0">
-						<div class="card-body">
-                            <div class="row">
-                                <div class="col-lg-3">
-                                    <div class="profile-img-wrap mt-3 mb-3">
-                                        <div class="profile-img">
-                                            @if($employee->avatar)
-                                            <img  src="{{ asset('storage'.$employee->avatar) }}"  />
-                                            @else
-                                            <img  src="{{ asset('storage/uploads/images/account.jpg') }}"/>
-                                            @endif
-                                        </div>
-                                    </div>
-                                </div>
-
-					</div>
 
 					<div class="card tab-box">
 						<div class="row user-tabs">
