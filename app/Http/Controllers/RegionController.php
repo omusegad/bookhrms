@@ -67,4 +67,9 @@ class RegionController extends Controller
         return redirect('/regions')->with('message','Region updated successfully!');
     }
 
+    public function destroy($id){
+        Region::find($id)->delete();
+        return back()->with('message','Region deleted successfully!');
+    }
+
 }

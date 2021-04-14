@@ -22,6 +22,17 @@
                 </div>
                 <!-- /Page Header -->
 
+                <div class="row">
+                    <div class="col-lg-12">
+                        @if(session()->has('message'))
+                            <div class="alert alert-danger">
+                                <a href="#" class="close" data-dismiss="alert">&times;</a>
+                            {{session('message')}}
+                            </div>
+                        @endif
+                    </div>
+                 </div>
+
                 <div class="row mb-3">
                     <div class="col-lg-4">
                         <input type="text" id="myInput" class="form-control"  placeholder="Search for names ......">
@@ -48,6 +59,7 @@
                                             <th>DCC</th>
                                             <th>LCC</th>
                                             <th>Status</th>
+                                            <th>Action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -71,6 +83,19 @@
                                                     <td>{{$user->dcc['dccName'] }}</td>
                                                     <td>{{$user->lcc['lccName'] }}</td>
                                                     <td>{{$user->employee_status }} </td>
+                                                    <td>
+                                                        @can('delete articles')
+                                                           <div class="action-btn">
+                                                                <form action="{{ route('employees.destroy',$user->id)}}" method="POST">
+                                                                    @csrf
+                                                                    @method('DELETE')
+                                                                    <button type="submit">
+                                                                        <i class="fas fa-trash-alt"></i>
+                                                                    </button>
+                                                                </form>
+                                                           </div>
+                                                        @endcan
+                                                    </td>
                                                 </tr>
                                                 @endforeach
                                                 </tbody>

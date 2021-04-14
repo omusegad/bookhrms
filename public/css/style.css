@@ -3456,6 +3456,18 @@ a.logo img {
 	line-height: 1.35;
 	color: #bdbdbd;
 }
+
+.action-btn {
+    float: left;
+}
+
+.action-btn button {
+    border: none;
+    background: transparent;
+    color: red;
+}
+
+
 .notification-list {
 	list-style: none;
 	padding: 0;

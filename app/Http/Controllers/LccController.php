@@ -61,6 +61,11 @@ class LccController extends Controller
         return redirect('/lccs-regions')->with('message','Region updated successfully!');
     }
 
+    public function destroy($id){
+        Lccregions::find($id)->delete();
+        return back()->with('message','LCC deleted successfully!');
+    }
+
 
 
 }

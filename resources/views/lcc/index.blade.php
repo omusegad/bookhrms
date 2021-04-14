@@ -62,7 +62,7 @@
                         <input type="text" id="myInput" class="form-control"  placeholder="Search for names ......">
                     </div>
                </div>
-               
+
                 <div class="row">
                     <div class="col-md-9">
                         <div class="table-responsive">
@@ -85,8 +85,21 @@
                                         </td>
                                         <td>{{ $data->lccName }} </td>
                                         <td>{{ $data->status }}  </td>
-                                        <td class="text-right">
-                                            <a href="{{route('lccs-regions.edit', $data->id)}}"><i class="fa fa-pencil m-r-5"></i> </a>
+                                        <td class="text-centre">
+                                            @can('delete articles')
+                                            <div class="action-btn">
+                                              <a href="{{route('lccs-regions.edit', $data->id)}}"><i class="fa fa-pencil m-r-5"></i> </a>
+                                            </div>
+                                            <div class="action-btn">
+                                              <form action="{{ route('lccs-regions.destroy', $data->id)}}" method="POST">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        <button type="submit" class="">
+                                                            <i class="fa fa-trash-o m-r-5"></i>
+                                                        </button>
+                                                </form>
+                                            </div>
+                                             @endcan
                                         </td>
                                     </tr>
                                     @endforeach

@@ -79,7 +79,7 @@
                         @role("Employees")
                            <ul>
                                 <li>  <a href="{{ route('employees.show',  Auth::user()->id) }}">My Profile</a>  </li>
-                                <li><a href="{{ route('my-payroll.index') }}"> Payroll</a></li>
+                                <li><a href="{{ route('my-payroll.index') }}"> Payslip</a></li>
                                 <li><a  href="{{ route('my-leaves.index') }}"> Leaves</a></li>
 
                             </ul>

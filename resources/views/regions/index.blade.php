@@ -46,6 +46,16 @@
 
                 </div>
                 <!-- /Leave Statistics -->
+                <div class="row">
+                    <div class="col-lg-12">
+                        @if(session()->has('message'))
+                            <div class="alert alert-danger">
+                                <a href="#" class="close" data-dismiss="alert">&times;</a>
+                            {{session('message')}}
+                            </div>
+                        @endif
+                    </div>
+                 </div>
 
                 <div class="row mb-3">
                     <div class="col-lg-4">
@@ -72,8 +82,22 @@
                                            {{$count++}}
                                         </td>
                                         <td>{{ $data->rName }} </td>
-                                        <td class="text-right">
+                                        <td class="text-center">
+                                            @can('delete articles')
+                                               <div class="action-btn">
                                                 <a  href="{{route('regions.edit', $data->id)}}"><i class="fa fa-pencil m-r-5"></i></a>
+                                               </div>
+
+                                                <div class="action-btn">
+                                                  <form action="{{ route('regions.destroy', $data->id)}}" method="POST">
+                                                            @csrf
+                                                            @method('DELETE')
+                                                            <button type="submit" class="">
+                                                                <i class="fa fa-trash-o m-r-5"></i>
+                                                            </button>
+                                                    </form>
+                                                </div>
+                                                 @endcan
                                         </td>
                                     </tr>
                                     @endforeach

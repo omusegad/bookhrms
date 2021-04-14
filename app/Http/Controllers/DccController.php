@@ -60,6 +60,11 @@ class DccController extends Controller
         return redirect('/dccs-regions')->with('message','DCC updated successfully!');
     }
 
+    public function destroy($id){
+        DccRegions::find($id)->delete();
+        return back()->with('message','DCC deleted successfully!');
+    }
+
 
 
 }

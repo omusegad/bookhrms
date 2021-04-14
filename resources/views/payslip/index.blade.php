@@ -47,7 +47,7 @@
                     </tr>
                     <tr>
                         <th>Job Group</th>
-                        <td style="text-align: right">{{ $payslip->user['joining_position'] ? $payslip->user['joining_position']  : " " }}</td>
+                        <td style="text-align: right">{{ $payslip->user['jobgroup'] ? $payslip->user['jobgroup']  : " " }}</td>
                     </tr>
                     <tr>
                         <th>KRA PIN</th>
