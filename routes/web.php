@@ -88,15 +88,5 @@ Route::middleware(['auth'])->group(function () {
         Route::resource('/my-payroll',MyPayrollController::class)->only(['index']);
         Route::resource('/my-leaves',MyLeavesController::class)->only(['index']);
     // Employee Dashbaord Routes
-
-
-
-
-
-
-
-
-
-
 });
 

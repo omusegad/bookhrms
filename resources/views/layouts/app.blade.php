@@ -9,25 +9,34 @@
     <title>{{ config('app.name', 'AIC NANDI AREA') }}</title>
 
     <!-- Scripts -->
+
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/fontawesome.min.css">
+
+
+		<!-- Bootstrap CSS -->
+
 		<!-- Fontawesome CSS -->
         <link rel="stylesheet" href="{{ asset('css/font-awesome.min.css') }}">
-        <link rel="stylesheet" href="{{ asset('css/line-awesome.min.css') }}">
 
+
+		<!-- Datatable CSS -->
+		<link rel="stylesheet" href="{{ asset('css/dataTables.bootstrap4.min.css') }}">
 
 		<!-- Select2 CSS -->
 		<link rel="stylesheet" href="{{ asset('css/select2.min.css') }}">
 
-        <link rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.18.2/dist/bootstrap-table.min.css">
-
 		<!-- Datetimepicker CSS -->
 		<link rel="stylesheet" href="{{ asset('css/bootstrap-datetimepicker.min.css') }}">
+
+
+
 		<!-- Main CSS -->
         <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-
 </head>
 <body>
     <div class="main-wrapper">

@@ -10,17 +10,19 @@ use App\Models\Lccregions;
 use App\Traits\UploadTrait;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use App\Models\EmployeeStatus;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Rap2hpoutre\FastExcel\FastExcel;
+use Illuminate\Support\Facades\Storage;
 
 class EmployeeController extends Controller{
     use UploadTrait;
 
     public function index(){
-        $users = User::with('region','dcc','lcc','jobgroup')->orderBy('fname')->get();
-       // dd($users);
-        return view('employees.index', compact('users'));
+      $users = User::with('employeeStatus','region','dcc','lcc','jobgroup')->orderBy('fname')->get();
+    //  dd( $user);
+      return view('employees.index', compact('users'));
     }
 
     /**
@@ -46,7 +48,7 @@ class EmployeeController extends Controller{
     public function store(Request $request){
        $request = $request->all();
 
-        User::create([
+        $user = User::create([
             "fname" =>  $request['fname'],
             "lName" =>  $request['lName'],
             'email' =>  $request['email'],
@@ -60,6 +62,10 @@ class EmployeeController extends Controller{
             "joining_date" => $request['joining_date'],
             'password' => Hash::make(strtolower("password"."123")),
         ]);
+
+        EmployeeStatus::create(
+            ['user_id' => $user->id],
+        );
         return back()->with('message','Employee Added successfully!');
     }
 
@@ -177,6 +183,12 @@ class EmployeeController extends Controller{
         User::find($id)->delete();
         return back()->with('message','Employee deleted successfully!');
     }
+
+    public function removeImage($id){
+        Storage::disk('local')->delete('public/image/'.$filename);
+        return back()->with('message','Employee deleted successfully!');
+    }
+
 
 
 

@@ -135,6 +135,16 @@ class LeaveController extends Controller
 
     }
 
+    public function update(Request $request, $id){
+
+        LeaveApplication::where('id',$id)->update([
+            'leave_approval_id' => Auth::user()->id,
+            'leave_status'      => $request->input('leave_status'),
+        ]);
+        return back()->with('message','Leave approved successfully!');
+    }
+
+
     private function getDays($startDate,$endDate){
         //Number of days
         $noDays = $startDate->diffInDays($endDate);

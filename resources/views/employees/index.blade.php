@@ -82,15 +82,15 @@
                                                     <td>{{$user->region['rName'] }}</td>
                                                     <td>{{$user->dcc['dccName'] }}</td>
                                                     <td>{{$user->lcc['lccName'] }}</td>
-                                                    <td>{{$user->employee_status }} </td>
+                                                    <td>{{$user->employeeStatus['status'] }} </td>
                                                     <td>
                                                         @can('delete articles')
                                                            <div class="action-btn">
                                                                 <form action="{{ route('employees.destroy',$user->id)}}" method="POST">
                                                                     @csrf
                                                                     @method('DELETE')
-                                                                    <button type="submit">
-                                                                        <i class="fas fa-trash-alt"></i>
+                                                                    <button type="submit" class="">
+                                                                        <i class="fa fa-trash-o m-r-5"></i>
                                                                     </button>
                                                                 </form>
                                                            </div>

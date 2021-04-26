@@ -96,20 +96,26 @@
                            <div class="col-lg-4">
                             <div class="preview text-center">
                                 @if($employee->avatar)
-                                <img class="preview-img rounded-circle" src="{{ asset('storage'.$employee->avatar) }}"  width="150" height="150"/>
-                               @else
-                                <img class="preview-img rounded-circle" src="{{ asset('storage/uploads/images/account.jpg') }}"  width="150" height="150"/>
-                               @endif
                                 <div class="browse-button">
-                                    <i class="fa fa-pencil m-r-5"></i>
-                                    <input class="browse-input" type="file" name="profile_image" id="UploadedFile"/>
+                                    <i class="fa fa-times"></i>
+                                    <input type ="hidden" class="browse-input" value="" name="remove_image" id="removephone"/>
                                 </div>
-                                @error('profile_image')
-                                    <span class="invalid-feedback" role="alert">
-                                         <strong>{{ $message }}</strong>
-                                    </span>
-                               @enderror
-                               <div class="mpt-3">Upload Photo </div>
+                                <img id="imgPreview" class="preview-img rounded-circle" src="{{ asset('storage'.$employee->avatar) }}"  width="150" height="150"/>
+
+                                @else
+                                <img class="preview-img rounded-circle" src="{{ asset('storage/uploads/images/account.jpg') }}"  width="150" height="150"/>
+                                    <div class="browse-button">
+                                        <i class="fa fa-pencil m-r-5"></i>
+                                        <input class="browse-input" type="file" value="" name="profile_image" id="UploadedFile"/>
+                                    </div>
+                                    @error('profile_image')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                @enderror
+                                <div class="mpt-3">Upload Photo </div>
+                                @endif
+
                             </div>
                         </div>
                         </div>

@@ -55,9 +55,15 @@
 
             });
 
-            // $(".alert").fadeTo(3000, 1000).slideUp(2000, function(){
-            //     $(".alert").slideUp(2000);
-            // });
+            // alert box
+            $(".alert").fadeTo(3000, 1000).slideUp(2000, function(){
+                $(".alert").slideUp(5000);
+            });
+
+            $(".remove").click(function(){
+                $(this).parent(".pip").remove();
+                $('#files').val("");
+            });
 
           //  check box on tables
             var $tblChkBox = $(".allusers");
@@ -88,10 +94,23 @@
             });
 
 
+            /// upload previe file
+            $("#UploadedFile").change(function () {
+                const file = this.files[0];
+                if (file) {
+                    let reader = new FileReader();
+                    reader.onload = function (event) {
+                        $("#imgPreview")
+                            .attr("src", event.target.result);
+                    };
+                    reader.readAsDataURL(file);
+                }
+            });
+
+
     });
 
     </script>
-     @livewireScripts
  </body>
 </html>
 

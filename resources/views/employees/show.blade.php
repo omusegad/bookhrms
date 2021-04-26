@@ -17,11 +17,11 @@
 							</div>
                             <div class="col-lg-6">
                                 <div class="profileavator pull-right">
-                                        @if($employee->avatar)
-                                        <img  src="{{ asset('storage'.$employee->avatar) }}"  />
+                                    @if($employee->avatar)
+                                          <img  src="{{ asset('storage'.$employee->avatar) }}"  />
                                         @else
-                                        <img  src="{{ asset('storage/uploads/images/account.jpg') }}"/>
-                                        @endif
+                                           <img  src="{{ asset('storage/uploads/images/account.jpg') }}"/>
+                                     @endif
                                 </div>
                             </div>
 						</div>
