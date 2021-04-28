@@ -16,6 +16,11 @@ class DashboardController extends Controller{
 
     public function index(){
 
+        // Artisan::call('cache:clear');
+        // Artisan::call('view:clear');
+        // Artisan::call('config:cache');
+        // Artisan::call('route:cache');
+
         //Artisan::call('cache:clear');
         $totalRegions = Region::All()->count(); // total regions
         $employees    = User::All()->count(); // total regions

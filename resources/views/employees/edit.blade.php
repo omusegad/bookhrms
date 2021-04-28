@@ -353,38 +353,64 @@
                             </div>
                           <div class="col-md-4">
                             <label for="marital_status">Employee Status</label>
-                              <select class="browser-default custom-select" name="employee_status">
-                                   @if($employee->employee_status === "active")
-                                          <option value="active">{{ $employee->employee_status  }}</option>
-                                          <option value="suspended">Suspended</option>
-                                          <option value="fired">Fired</option>
-                                          <option value="OnIndescipline">Indescipline</option>
-                                          <option value="Onleave">On leave</option>
-                                      @elseif($employee->employee_status === "suspended")
-                                          <option value="suspended">{{ $employee->employee_status  }}</option>
-                                          <option value="active">Active</option>
-                                          <option value="fired">Fired</option>
-                                          <option value="OnIndescipline">Indescipline</option>
-                                          <option value="Onleave">On leave</option>
-                                      @elseif($employee->employee_status === "fired")
-                                          <option value="fired">{{ $employee->employee_status  }}</option>
-                                          <option value="suspended">Suspended</option>
-                                          <option value="active">Active</option>
-                                          <option value="OnIndescipline">Indescipline</option>
-                                          <option value="Onleave">On leave</option>
-                                    @elseif($employee->employee_status === "OnIndescipline")
-                                          <option value="fired">{{ $employee->employee_status  }}</option>
-                                          <option value="suspended">Suspended</option>
-                                          <option value="fired">Fired</option>
-                                          <option value="active">Active</option>
-                                          <option value="Onleave">On leave</option>
-                                          @elseif($employee->employee_status === "Onleave")
-                                          <option value="fired">{{ $employee->employee_status  }}</option>
-                                          <option value="suspended">Suspended</option>
-                                          <option value="fired">Fired</option>
-                                          <option value="active">Active</option>
-                                          <option value="OnIndescipline">Indescipline</option>
-                                      @endif
+                              <select class="browser-default custom-select" name="employeeStatus">
+                                   @if($employee->employeeStatus['status'] === "active")
+                                        <option value="active">{{ $employee->employeeStatus['status']  }}</option>
+                                        <option value="fired">Fired</option>
+                                        <option value="onindescipline">Indescipline</option>
+                                        <option value="onleave">On leave</option>
+                                        <option value="retired">Retired</option>
+                                        <option value="transferred">Transferred</option>
+                                        <option value="resigned">Resigned</option>
+                                    @elseif($employee->employeeStatus['status'] === "fired")
+                                        <option value="active">{{ $employee->employeeStatus['status']  }}</option>
+                                        <option value="active">Active</option>
+                                        <option value="onindescipline">Indescipline</option>
+                                        <option value="onleave">On Leave</option>
+                                        <option value="retired">Retired</option>
+                                        <option value="transferred">Transferred</option>
+                                        <option value="resigned">Resigned</option>
+                                    @elseif($employee->employeeStatus['status'] === "onindescipline")
+                                        <option value="active">{{ $employee->employeeStatus['status']  }}</option>
+                                        <option value="active">Active</option>
+                                        <option value="fired">Fired</option>
+                                        <option value="onleave">On Leave</option>
+                                        <option value="retired">Retired</option>
+                                        <option value="transferred">Transferred</option>
+                                        <option value="resigned">Resigned</option>
+                                    @elseif($employee->employeeStatus['status'] === "onleave")
+                                       <option value="active">{{ $employee->employeeStatus['status']  }}</option>
+                                        <option value="active">Active</option>
+                                        <option value="fired">Fired</option>
+                                        <option value="onindescipline">Indescipline</option>
+                                        <option value="retired">Retired</option>
+                                        <option value="transferred">Transferred</option>
+                                        <option value="resigned">Resigned</option>
+                                    @elseif($employee->employeeStatus['status'] === "retired")
+                                        <option value="active">{{ $employee->employeeStatus['status']  }}</option>
+                                        <option value="active">Active</option>
+                                        <option value="fired">Fired</option>
+                                        <option value="onindescipline">Indescipline</option>
+                                        <option value="retired">Retired</option>
+                                        <option value="transferred">Transferred</option>
+                                        <option value="resigned">Resigned</option>
+                                    @elseif($employee->employeeStatus['status'] === "transferred")
+                                        <option value="active">{{ $employee->employeeStatus['status']  }}</option>
+                                        <option value="active">Active</option>
+                                        <option value="fired">Fired</option>
+                                        <option value="onindescipline">Indescipline</option>
+                                        <option value="retired">Retired</option>
+                                        <option value="onleave">On Leave</option>
+                                        <option value="resigned">Resigned</option>
+                                    @elseif($employee->employeeStatus['status'] === "resigned")
+                                        <option value="active">{{ $employee->employeeStatus['status']  }}</option>
+                                        <option value="active">Active</option>
+                                        <option value="fired">Fired</option>
+                                        <option value="onindescipline">Indescipline</option>
+                                        <option value="retired">Retired</option>
+                                        <option value="onleave">On Leave</option>
+                                        <option value="transferred">Transferred</option>
+                                    @endif
                               </select>
                           </div>
 

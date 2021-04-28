@@ -76,7 +76,7 @@ class EmployeeController extends Controller{
      * @return \Illuminate\Http\Response
      */
     public function show($id){
-        $employee = User::where('id',$id)->with('region','dcc','lcc','jobgroup')->first();
+        $employee = User::where('id',$id)->with('employeeStatus','region','dcc','lcc','jobgroup')->first();
         return view('employees.show', compact('employee'));
     }
 
@@ -87,14 +87,14 @@ class EmployeeController extends Controller{
      * @return \Illuminate\Http\Response
      */
     public function edit($id){
-        $employee = User::where('id',$id)->with('region','dcc','lcc','jobgroup')->first();
-        //dd(  $employee);
+        $employee = User::where('id',$id)->with('employeeStatus','region','dcc','lcc','jobgroup')->first();
+        $employee_status = EmployeeStatus::all();
         $jgroup   = Jobgroup::all();
         $regions  = Region::all();
         $dcc      = Dccregions::all();
         $lcc      = Lccregions::all();
 
-        return view('employees.edit', compact('lcc','dcc','regions','employee', 'jgroup'));
+        return view('employees.edit', compact('employee_status','lcc','dcc','regions','employee', 'jgroup'));
     }
 
     /**
