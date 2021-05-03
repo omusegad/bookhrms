@@ -102,10 +102,10 @@
                                                                                  </a>
                                                                                 </td>
                                                                                 <td>{{$item->employeeID }}</td>
-                                                                            <td>  {{  $item->jobgroup->jonGroupName}}</td>
-                                                                            <td>   {{  $item->region->rName}}</td>
-                                                                            <td>   {{  $item->dcc->dccName}}</td>
-                                                                            <td>   {{  $item->lcc->lccName}}</td>
+                                                                            <td>  {{  $item->jobgroup['jonGroupName']}}</td>
+                                                                            <td>   {{  $item->region['rName']}}</td>
+                                                                            <td>   {{  $item->dcc['dccName']}}</td>
+                                                                            <td>   {{  $item->lcc['lccName']}}</td>
                                                                             <td> {{number_format($item->salary['basic_salary']) }}</td>
                                                                             <td> {{number_format($item->salary['transport_allowance']) }}</td>
                                                                             <td> {{number_format($item->salary['hse_allowance']) }}</td>

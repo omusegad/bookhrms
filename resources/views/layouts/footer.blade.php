@@ -56,9 +56,9 @@
             });
 
             // alert box
-            $(".alert").fadeTo(3000, 1000).slideUp(2000, function(){
-                $(".alert").slideUp(5000);
-            });
+            // $(".alert").fadeTo(3000, 1000).slideUp(2000, function(){
+            //     $(".alert").slideUp(5000);
+            // });
 
             $(".remove").click(function(){
                 $(this).parent(".pip").remove();

@@ -30,14 +30,14 @@
 
                 <div class="row">
                     <div class="col-lg-12">
-                                @if ($message = Session::get('message'))
-                                    <div class="alert alert-danger alert-dismissable">
-                                        <p>{{ Session::get('message') }}</p>
-                                        <button type = "button" class = "close" data-dismiss = "alert" aria-hidden = "true">
-                                            ×
-                                         </button>
-                                    </div>
-                                @endif
+                        @if ($message = Session::get('message'))
+                            <div class="alert alert-danger alert-dismissable">
+                                <p>{{ Session::get('message') }}</p>
+                                <button type = "button" class = "close" data-dismiss = "alert" aria-hidden = "true">
+                                    ×
+                                    </button>
+                            </div>
+                        @endif
                     </div>
                 </div>
 
@@ -46,7 +46,6 @@
                             <form method="POST" action="{{route('leaves.store')}}">
                                 @csrf
                                 <div class="row ">
-
                                 <div class="col-lg-4">
                                 <label>Leave Type </label>
                                 <select name="aic_leave_type_id" class="form-control" required>
@@ -55,6 +54,11 @@
                                     <option value="{{$types->id}}">{{$types->leaveType}}</option>
                                     @endforeach
                                 </select>
+                                @error('aic_leave_type_id')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
                             <div class="col-lg-4">
                                 <label>From </label>
@@ -67,7 +71,7 @@
                             </div>
                             <div class="col-lg-4">
                                 <label>To </label>
-                                    <input  id="end_date" name="end_date"  class="form-control" type="date">
+                                    <input  id="end_date" name="end_date"  class="form-control" type="date" required>
                                     @error('end_date')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>

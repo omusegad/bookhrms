@@ -14,19 +14,10 @@ class LeaveTypesController extends Controller
      */
     public function index() {
         $leave = LeaveType::all();
-        return view('leaves.leavetypes', compact('leave'));
+        return view('leaves.leavetypes.index', compact('leave'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
+   
     /**
      * Store a newly created resource in storage.
      *
@@ -46,16 +37,6 @@ class LeaveTypesController extends Controller
         return back()->with('message','Region has been created successfully!');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
 
     /**
      * Show the form for editing the specified resource.
@@ -63,9 +44,10 @@ class LeaveTypesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
-    {
-        //
+    public function edit($id){
+        $type = LeaveType::find($id);
+        return view('leaves.leavetypes.edit', compact('type'));
+
     }
 
     /**
@@ -75,9 +57,14 @@ class LeaveTypesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
-    {
-        //
+    public function update(Request $request, $id){
+        // dd($request->all());
+        LeaveType::where('id',$id)->update([
+            'leaveType' => $request->input('leaveType'),
+            'leaveDays' => $request->input('leaveDays'),
+
+        ]);
+        return redirect('/leave-types')->with('message','Leave Type updated successfully!');
     }
 
     /**

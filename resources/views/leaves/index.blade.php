@@ -26,19 +26,19 @@
             <div class="row">
                 <div class="col-lg-4">
                     <div class="stats-info">
-                        <h6>Pending Approval</h6>
+                        <h6 class="text-muted">Pending</h6>
                         <h4>{{ $pendingLeaves ?   $pendingLeaves : "0" }}</h4>
                     </div>
                 </div>
                 <div class="col-lg-4">
                     <div class="stats-info">
-                        <h6>Approved Leaves</h6>
+                        <h6 class="text-muted">Approved</h6>
                         <h4> {{ $approvedLeaves ?   $approvedLeaves : "0" }}</h4>
                     </div>
                 </div>
                 <div class="col-lg-4">
                     <div class="stats-info">
-                        <h6>Declined Leaves</h6>
+                        <h6 class="text-muted">Declined</h6>
                         <h4> {{ $declinedLeaves ?   $declinedLeaves : "0" }}</h4>
                     </div>
                 </div>
@@ -102,11 +102,11 @@
                                             <td>{{ $data->leavetype['leave_days'] }}</td>
                                             <td>{{$data->appliedDays}} </td>
                                             <td>{{$data->remainingDays ?? "0"}} </td>
-                                            <td >
+                                            <td class="text-capitalize">
                                                 @if($data->leave_status == "approved")
                                                   <i class="fa fa-check-circle text-success"></i> {{ $data->leave_status }}
                                                 @else
-                                                  {{$data->leave_status  }}</td>
+                                                <i class="fa fa-thumbs-down  text-danger" aria-hidden="true"></i> {{$data->leave_status  }}</td>
                                                 @endif
                                             <td >
                                                 @if($data->leave_status == "approved")

@@ -8,6 +8,7 @@ use App\Models\LeaveType;
 use Illuminate\Http\Request;
 use App\Models\LeaveApplication;
 use Illuminate\Support\Facades\DB;
+use App\Http\Requests\LeaveRequest;
 use Illuminate\Support\Facades\Auth;
 
 class LeaveController extends Controller
@@ -17,8 +18,7 @@ class LeaveController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
+    public function index(){
         $leaveTpes = LeaveType::all();
         $leaves    = LeaveApplication::with('users','leavetype')->get();
         $pendingLeaves     = LeaveApplication::where('leave_status','pending')->count();
@@ -47,35 +47,35 @@ class LeaveController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request){
-        $data = $request->all();
-        $leaveTypeId = $data['aic_leave_type_id'];
-        $appliedDays = $data['appliedDays'];
-        $start_date  = Carbon::parse(strtotime($data['start_date']));
-        $end_date    = Carbon::parse(strtotime($data['end_date']));
-        $reason      = $data['reason'];
+    public function store(LeaveRequest $request){
+        $validated = $request->validated();
+        dd($validated);
 
+        $leaveTypeId = $validated['aic_leave_type_id'];
+        $appliedDays = $validated['appliedDays'];
+        $start_date  = Carbon::parse(strtotime($validated['start_date']));
+        $end_date    = Carbon::parse(strtotime($validated['end_date']));
+        $reason      = $validated['reason'];
 
+        // if($leaveType == "Unpaid"){
+
+        // }else{
+
+        // }
+
+        // Get available holiday between two dates
         $holidays = $this->getHolidaysWithinDateRange($start_date, $end_date);
         if($holidays == []){
-            $end_date    = Carbon::parse(strtotime($data['end_date']));
+            $end_date    = Carbon::parse(strtotime($validated['end_date']));
         }
 
+        // add a day on all available holidays that fall withing leave days
         if($holidays){
             $end_datePlusholidays;
             foreach($holidays as $holidays){
                 $end_datePlusholidays = $end_date->addDay();
             }
-
-            //dd($end_datePlusholidays);
         }
-
-     // dd($appliedDays == null);
-
-        if(empty($appliedDays)){
-            return back()->with('message','Applied number of days cannot be null, please choose start and end date again' );
-        }
-
 
         // check if leave record exists
         $existingLeaveApplication = $this->getExistingLeaveApplication($leaveTypeId);
@@ -136,19 +136,22 @@ class LeaveController extends Controller
     }
 
     public function update(Request $request, $id){
+        $update = LeaveApplication::where('id',$id)
+            ->where('leave_status','pending')
+            ->update([
+                'leave_approval_id' => Auth::user()->id,
+                'leave_status'      => $request->input('leave_status'),
+            ]);
+        if($update){
+            return back()->with('message','Leave updated successfully!');
+        }
+        return back()->with('message','You are not allowed to approve declined leaves!');
 
-        LeaveApplication::where('id',$id)->update([
-            'leave_approval_id' => Auth::user()->id,
-            'leave_status'      => $request->input('leave_status'),
-        ]);
-        return back()->with('message','Leave approved successfully!');
     }
 
 
     private function getDays($startDate,$endDate){
-        //Number of days
-        $noDays = $startDate->diffInDays($endDate);
-        return $noDays;
+        return $startDate->diffInDays($endDate);
     }
 
     //check if leave type application exists
@@ -176,10 +179,6 @@ class LeaveController extends Controller
                            ->where('holidayDate', '<=', $end_date)
                            ->get();
     }
-
-
-
-
 
 
 
