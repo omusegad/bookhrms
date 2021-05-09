@@ -57,4 +57,6 @@ class DashboardController extends Controller{
         return view('dashboard', compact('ElevenAndAboveYearsFemalePastors','sixToTenYearsFemalePastors','oneToFiveYearsFemalePastors','employees','totalRegions','totalDcc','totaLcc','male','female','totalSalaries','licencedMalePastors','unlicencedMalePastors', 'ordainedMalePastors'));
     }
 
+    public function comp(){}
+
 }

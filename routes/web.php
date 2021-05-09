@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DccController;
 use App\Http\Controllers\LccController;
+use App\Http\Controllers\SmsController;
 use App\Http\Controllers\NhifController;
 use App\Http\Controllers\NssfController;
 use App\Http\Controllers\AdminController;
@@ -45,6 +46,11 @@ use App\Http\Controllers\EmployeeProfileController;
 */
 
 //Route::resource('/employees',EmployeeController::class);
+// Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
+Route::get('sms', [SmsController::class, 'index']);
+
+
+
 
 Auth::routes();
 Route::middleware(['auth'])->group(function () {
@@ -88,5 +94,8 @@ Route::middleware(['auth'])->group(function () {
         Route::resource('/my-payroll',MyPayrollController::class)->only(['index']);
         Route::resource('/my-leaves',MyLeavesController::class)->only(['index']);
     // Employee Dashbaord Routes
+
+    // Sms contorller
+
 });
 

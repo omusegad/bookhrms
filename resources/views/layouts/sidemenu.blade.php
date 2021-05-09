@@ -73,6 +73,7 @@
 									</li>
 								</ul>
 							</li>
+                            <li><a href="#"><i class="fas fa-sms"></i> <span> Sms </span></a></li>
                         </ul>
 
                         @endrole
