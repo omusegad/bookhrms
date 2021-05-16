@@ -13,6 +13,8 @@ class SmsController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index(){
+
+      
         return Inertia::render('Sms/Index', ['foo' => 'bar']);
 
     }
