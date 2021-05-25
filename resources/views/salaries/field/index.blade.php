@@ -105,7 +105,9 @@
                                                                             <td>  {{  $item->jobgroup['jonGroupName']}}</td>
                                                                             <td>   {{  $item->region['rName']}}</td>
                                                                             <td>   {{  $item->dcc['dccName']}}</td>
-                                                                            <td>   {{  $item->lcc['lccName']}}</td>
+                                                                            @if ( $item->lcc)
+                                                                             <td>   {{  $item->lcc->lccName}}</td>
+                                                                            @endif
                                                                             <td> {{number_format($item->salary['basic_salary']) }}</td>
                                                                             <td> {{number_format($item->salary['transport_allowance']) }}</td>
                                                                             <td> {{number_format($item->salary['hse_allowance']) }}</td>

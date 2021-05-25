@@ -230,7 +230,9 @@
                                                                  </td>
                                                                  <td>   {{  $item->region->rName}}</td>
                                                                  <td>   {{  $item->dcc->dccName}}</td>
-                                                                 <td>   {{  $item->lcc->lccName}}</td>
+                                                                 @if ( $item->lcc)
+                                                                    <td>   {{  $item->lcc->lccName}}</td>
+                                                                 @endif
                                                                   <td>
                                                                         {{ !empty($item->payroll) ? $item->payroll->basic_salary: "" }}
                                                                  </td>

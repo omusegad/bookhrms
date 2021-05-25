@@ -45,7 +45,7 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="table-responsive">
-                            <table class="table table-bordered" id="allstaff">
+                            <table class="table table-bordered" id="employees">
                                         <thead>
                                             <tr>
                                             <th><input type="checkbox" id="selectall" /> </th>
@@ -66,9 +66,9 @@
                                             @php ($count = 1)
                                                 @foreach($users as $user)
                                                 <tr>
-                                                <td>
-                                                    <input type="checkbox" name="userID[]" class="allusers" value="{{$user->id  }}"  />
-                                                </td>
+                                                    <td>
+                                                        <input type="checkbox" name="userID[]" class="allusers" value="{{$user->id  }}"  />
+                                                    </td>
                                                     <td>{{$count++ }}</td>
                                                     <td>
                                                         <a href="{{ route('employees.edit',$user->id)}}">
@@ -81,7 +81,9 @@
                                                     <td>{{$user->jobgroup['jonGroupName'] }}</td>
                                                     <td>{{$user->region['rName'] }}</td>
                                                     <td>{{$user->dcc['dccName'] }}</td>
-                                                    <td>{{$user->lcc['lccName'] }}</td>
+                                                    @if ($user->lcc)
+                                                     <td>{{ $user->lcc['lccName'] }}</td>
+                                                    @endif
                                                     <td>{{$user->employeeStatus['status'] }} </td>
                                                     <td>
                                                         @can('delete articles')
@@ -111,3 +113,23 @@
         </div>
         <!-- /Page Wrapper -->
  @endsection
+
+ @push('custom-javascripts')
+
+   <script>
+        $(function() {
+            alert('Greatness today!');
+            $('#employees').DataTable({
+            processing: true,
+            serverSide: true,
+            ajax: '{{ url('/employees') }}',
+            columns: [
+                    { data: 'id', name: 'id' },
+                    { data: 'name', name: 'name' },
+                    { data: 'email', name: 'email' }
+                    ]
+        });
+        });
+    </script>
+
+@endpush

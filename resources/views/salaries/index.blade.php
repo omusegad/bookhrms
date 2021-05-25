@@ -176,7 +176,7 @@
                                 @foreach ($salaries as $item)
                                 <tr>
                                     <td>
-                                        <input type="checkbox"  name="userID[]" class="allusers" value="{{$item->users['id'] }}"  />
+                                        <input type="checkbox"  name="userID[]" class="allusers" value="{{$item->users['id'] }}" />
                                     </td>
                                     <td>{{$item->users['employeeID'] }}</td>
                                     <td>

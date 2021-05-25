@@ -20,7 +20,7 @@
     <!-- /Page Header -->
 
 
-    <div class="row mt-5 justify-content-center">
+    <div class="row mt-2 justify-content-center">
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">{{ __('Edit Employee') }}</div>
@@ -97,7 +97,7 @@
                             <div class="preview text-center">
                                 @if($employee->avatar)
                                 <div class="browse-button">
-                                    <i class="fa fa-times"></i>
+                                    <i class="fa fa-trash-o m-r-5"></i>
                                     <input type ="hidden" class="browse-input" value="" name="remove_image" id="removephone"/>
                                 </div>
                                 <img id="imgPreview" class="preview-img rounded-circle" src="{{ asset('storage'.$employee->avatar) }}"  width="150" height="150"/>
@@ -472,7 +472,7 @@
                         <div class="row mb-3">
                             <div class="col-md-4">
                                 <label for="aic_regions_id">AIC Region</label>
-                                <select class="browser-default custom-select" name="aic_regions_id">
+                                <select class="browser-default custom-select" name="aic_regions_id" required>
                                     <option  value="{{ $employee->region['id'] }}" > {{ $employee->region['rName'] }} </option>
                                       @foreach ($regions as $item)
                                         @if( $item->rName ==  $employee->region['rName'] )
@@ -487,7 +487,7 @@
 
                             <div class="col-md-4">
                                 <label for="aic_dccs_id">DCC</label>
-                                <select class="browser-default custom-select" name="aic_dccs_id">
+                                <select class="browser-default custom-select" name="aic_dccs_id" required>
                                     <option  value="{{ $employee->dcc['id'] }}" >{{ $employee->dcc['dccName'] }}</option>
                                       @foreach ($dcc as $item)
                                         @if( $item->dccName ==  $employee->dcc['dccName'] )
@@ -501,7 +501,7 @@
 
                             <div class="col-md-4">
                                 <label for="aic_lccs_id">LCC</label>
-                                <select class="browser-default custom-select" name="aic_lccs_id">
+                                <select class="browser-default custom-select" name="aic_lccs_id" required>
                                     <option  value="{{ $employee->lcc['id'] }}" >{{ $employee->lcc['lccName'] }}</option>
                                       @foreach ($lcc as $item)
                                             @if( $item->lccName ==  $employee->lcc['lccName'] )
@@ -694,3 +694,5 @@
         </div>
         <!-- /Page Wrapper -->
  @endsection
+
+

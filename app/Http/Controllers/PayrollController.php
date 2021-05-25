@@ -16,7 +16,7 @@ class PayrollController extends Controller
      */
     public function index(){
 
-        $payroll = Payroll::where('status','processed')->with('salary','user')->get();
+        $payroll = Payroll::where('status','processed')->with('user')->get();
         return view('payroll.index', compact('payroll'));
     }
 

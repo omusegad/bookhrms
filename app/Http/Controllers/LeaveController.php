@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Carbon\Carbon;
+use App\Mail\LeaveMail;
 use App\Models\Holiday;
 use App\Models\LeaveType;
 use Illuminate\Http\Request;
@@ -10,6 +11,7 @@ use App\Models\LeaveApplication;
 use Illuminate\Support\Facades\DB;
 use App\Http\Requests\LeaveRequest;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 
 class LeaveController extends Controller
 {
@@ -19,6 +21,7 @@ class LeaveController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index(){
+
         $leaveTpes = LeaveType::all();
         $leaves    = LeaveApplication::with('users','leavetype')->get();
         $pendingLeaves     = LeaveApplication::where('leave_status','pending')->count();
@@ -49,19 +52,12 @@ class LeaveController extends Controller
      */
     public function store(LeaveRequest $request){
         $validated = $request->validated();
-        dd($validated);
 
         $leaveTypeId = $validated['aic_leave_type_id'];
         $appliedDays = $validated['appliedDays'];
         $start_date  = Carbon::parse(strtotime($validated['start_date']));
         $end_date    = Carbon::parse(strtotime($validated['end_date']));
         $reason      = $validated['reason'];
-
-        // if($leaveType == "Unpaid"){
-
-        // }else{
-
-        // }
 
         // Get available holiday between two dates
         $holidays = $this->getHolidaysWithinDateRange($start_date, $end_date);
@@ -93,14 +89,26 @@ class LeaveController extends Controller
                   return back()->with('message','Days applied for is more than your remaining : '.$remaingLeaveDays . " days");
                }else{
                     $currentDays =( $remaingLeaveDays - $appliedDays );
-                    DB::table('aic_leave_applications')->where("aic_leave_type_id", $leaveTypeId)->update([
-                        'remainingDays' =>  $currentDays,
-                        'appliedDays'   =>  $appliedDays,
+                    $applied = DB::table('aic_leave_applications')->where("aic_leave_type_id", $leaveTypeId)->update([
+                        'remainingDays'  =>  $currentDays,
+                        'appliedDays'    =>  $appliedDays,
                         'start_date'     =>  $start_date,
                         'end_date'       =>  $end_date ? $end_date : $end_datePlusholidays,
                         'aic_leave_type_id' => $leaveTypeId,
                         'reason'            => $reason
                     ]);
+                    if($applied){
+                        $leaveName = LeaveType::where('id',$leaveTypeId)->pluck('leaveType');
+                        $data = [
+                            'LeaveType'   => $leaveName,
+                            'appliedDays' => $appliedDays,
+                            'start_date'  => $start_date,
+                            'end_date'    => $end_date ? $end_date : $end_datePlusholidays,
+                            'reason'      => $reason
+                        ];
+                        Mail::to(['omusegad@gmail.com','gad@peakanddale.com'])->send(new LeaveMail($data));
+
+                    }
                     return back()->with('message','Leave application successfully!');
                  }
 
@@ -109,7 +117,7 @@ class LeaveController extends Controller
         }else{
             $getLeaveType = LeaveType::where('id',$leaveTypeId)->first();
             if($getLeaveType['leaveType'] === "Study"){
-                 LeaveApplication::create([
+                $done=  LeaveApplication::create([
                     'user_id'            => Auth::user()->id,
                     'aic_leave_type_id'  => $leaveTypeId,
                     'start_date'         => $start_date,
@@ -117,10 +125,21 @@ class LeaveController extends Controller
                     'appliedDays'        => $appliedDays,
                     'reason'             => $reason,
                 ]);
+                if($done){
+                    $leaveName = LeaveType::where('id',$leaveTypeId)->pluck('leaveType');
+                    $data = [
+                        'LeaveType'   => $leaveName,
+                        'appliedDays' => $appliedDays,
+                        'start_date'  => $start_date,
+                        'end_date'    => $end_date ? $end_date : $end_datePlusholidays,
+                        'reason'      => $reason
+                    ];
+                    Mail::to(['omusegad@gmail.com','gad@peakanddale.com'])->send(new LeaveMail($data));
+                }
                 return back()->with('message','Leave application successfully!');
             }else{
                 $newRemainingDays =( $getLeaveType['leaveDays'] - $appliedDays );
-                LeaveApplication::create([
+                $created = LeaveApplication::create([
                     'user_id'            => Auth::user()->id,
                     'aic_leave_type_id'  => $leaveTypeId,
                     'start_date'         => $start_date,
@@ -129,6 +148,17 @@ class LeaveController extends Controller
                     'remainingDays'      => $newRemainingDays,
                     'reason'             => $reason,
                 ]);
+                if($created){
+                    $leaveName = LeaveType::where('id',$leaveTypeId)->pluck('leaveType');
+                    $data = [
+                        'LeaveType'   => $leaveName,
+                        'appliedDays' => $appliedDays,
+                        'start_date'  => $start_date,
+                        'end_date'    => $end_date ? $end_date : $end_datePlusholidays,
+                        'reason'      => $reason
+                    ];
+                    Mail::to(['omusegad@gmail.com','gad@peakanddale.com'])->send(new LeaveMail($data));
+                }
                 return back()->with('message','Leave application successfully!');
             }
         }
@@ -136,16 +166,15 @@ class LeaveController extends Controller
     }
 
     public function update(Request $request, $id){
+       // dd($request);
         $update = LeaveApplication::where('id',$id)
-            ->where('leave_status','pending')
             ->update([
                 'leave_approval_id' => Auth::user()->id,
                 'leave_status'      => $request->input('leave_status'),
             ]);
         if($update){
-            return back()->with('message','Leave updated successfully!');
+            return back()->with('message','Leave Approved successfully!');
         }
-        return back()->with('message','You are not allowed to approve declined leaves!');
 
     }
 

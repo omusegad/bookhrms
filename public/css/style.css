@@ -74,66 +74,6 @@ Version      : 3.6
 
 ========================================*/
 
-@font-face {
-	font-family: 'Material Icons';
-	font-style: normal;
-	font-weight: 400;
-	src: url(../fonts/MaterialIcons-Regular.eot); /* For IE6-8 */
-	src: local('Material Icons'),
-	local('MaterialIcons-Regular'),
-	url(../fonts/MaterialIcons-Regular.woff2) format('woff2'),
-	url(../fonts/MaterialIcons-Regular.woff) format('woff'),
-	url(../fonts/MaterialIcons-Regular.ttf) format('truetype');
-}
-@font-face {
-	font-family: 'CircularStd';
-	font-style: normal;
-	font-weight: 400;
-	src: local('Circular Std Book'), url('../fonts/CircularStd-Book.woff') format('woff');
-}
-@font-face {
-	font-family: 'CircularStd';
-	font-style: italic;
-	font-weight: 400;
-	src: local('Circular Std Book Italic'), url('../fonts/CircularStd-BookItalic.woff') format('woff');
-}
-@font-face {
-	font-family: 'CircularStd';
-	font-style: normal;
-	font-weight: 500;
-	src: local('Circular Std Medium'), url('../fonts/CircularStd-Medium.woff') format('woff');
-}
-@font-face {
-	font-family: 'CircularStd';
-	font-style: italic;
-	font-weight: 500;
-	src: local('Circular Std Medium Italic'), url('../fonts/CircularStd-MediumItalic.woff') format('woff');
-}
-@font-face {
-	font-family: 'CircularStd';
-	font-style: normal;
-	font-weight: 600;
-	src: local('Circular Std Bold'), url('../fonts/CircularStd-Bold.woff') format('woff');
-}
-@font-face {
-	font-family: 'CircularStd';
-	font-style: italic;
-	font-weight: 600;
-	src: local('Circular Std Bold Italic'), url('../fonts/CircularStd-BoldItalic.woff') format('woff');
-}
-@font-face {
-	font-family: 'CircularStd';
-	font-style: normal;
-	font-weight: 800;
-	src: local('Circular Std Black'), url('../fonts/CircularStd-Black.woff') format('woff');
-}
-@font-face {
-	font-family: 'CircularStd';
-	font-style: italic;
-	font-weight: 800;
-	src: local('Circular Std Black Italic'), url('../fonts/CircularStd-BlackItalic.woff') format('woff');
-}
-
 /*-----------------
 	1. General
 -----------------------*/
@@ -142,8 +82,9 @@ html {
 	height: 100%;
 }
 body {
-	font-family: 'CircularStd', sans-serif;
-	font-size: .9375rem;
+	font-family: 'Roboto', sans-serif;
+	font-size: 13px;
+    font-weight: 500;
 	color: #1f1f1f;
 	background-color: #f7f7f7;
 	min-height: 100%;
@@ -157,8 +98,8 @@ h5,
 h6 {
 	font-family: CircularStd;
 	margin-top: 0;
-	font-weight: 500;
 }
+
 h1, .h1 {
 	font-size: 2.25rem;
 }
@@ -1415,9 +1356,10 @@ a.logo img {
 }
 .sidebar-menu ul ul a {
 	display: block;
-	font-size: 14px;
+	font-size: 12px;
 	padding: 9px 10px 9px 50px;
 	position: relative;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
 }
 .sidebar-menu ul ul {
 	display: none;
@@ -1513,10 +1455,12 @@ a.logo img {
 	justify-content: flex-start;
 	position: relative;
 	transition: all 0.2s ease-in-out 0s;
+    border-bottom: 1px solid rgba(255,255,255,0.2);
+    font-size: 12px;
 }
 .sidebar-menu ul li a i {
 	display: inline-block;
-	font-size: 24px;
+	font-size: 17px;
 	line-height: 24px;
 	text-align: left;
 	vertical-align: middle;
@@ -1547,9 +1491,7 @@ a.logo img {
 .page-wrapper > .content {
 	padding: 30px;
 }
-.page-header {
-	margin-bottom: 1.875rem;
-}
+
 .page-header .breadcrumb {
     background-color: transparent;
     color: #6c757d;
@@ -1580,7 +1522,6 @@ a.logo img {
 }
 .page-title {
     color: #1f1f1f;
-    font-size: 26px;
     font-weight: 500;
     margin-bottom: 5px;
 }

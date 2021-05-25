@@ -22,4 +22,6 @@ class Payroll extends Model
         return $this->belongsTo(Jobgroup::class, 'aic_jobgroups_id', 'id');
     }
 
+   
+
 }

@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DccController;
 use App\Http\Controllers\LccController;
+use App\Http\Controllers\SmsController;
 use App\Http\Controllers\NhifController;
 use App\Http\Controllers\NssfController;
 use App\Http\Controllers\AdminController;
@@ -57,8 +58,6 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/hq-employees',[HqEmployeeController::class, 'index']);
         Route::get('/field-employees',[FieldEmployeeController::class, 'index']);
         Route::get('/hq-employees',[HqEmployeeController::class, 'index']);
-        Route::get('/hq-employees-export-excel', [HqEmployeeController::class, 'exportexcel']);
-
         Route::resource('/employees-profile',ProfileController::class)->only('update');
         Route::resource('/leaves', LeaveController::class);
         Route::resource('/leave-types', LeaveTypesController::class);
@@ -79,14 +78,28 @@ Route::middleware(['auth'])->group(function () {
 
         Route::resource('/salary-settings', SalarySettingsController::class);
         Route::resource('/holidays', HolidaysController::class);
-       // Route::resource('/payroll', PayrollController::class)->only(['index','store']);
+        Route::resource('/payroll', PayrollController::class)->only(['index','store']);
         Route::resource('/payslip', PayslipController::class);
         Route::resource('/hq-leaves',HqLeaveController::class)->only(['index']);
         Route::resource('/field-leaves',FieldLeaveController::class)->only(['index']);
+
+        //sms
+        Route::resource('/sms', SmsController::class)->only(['index','create','store','upload']);
+
 
 
         Route::resource('/my-payroll',MyPayrollController::class)->only(['index']);
         Route::resource('/my-leaves',MyLeavesController::class)->only(['index']);
     // Employee Dashbaord Routes
+
+
+
+
+
+
+
+
+
+
 });
 

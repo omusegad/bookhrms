@@ -118,60 +118,59 @@ class EmployeeController extends Controller{
         $password =  User::where('id',$id)->pluck('password'); // get current password
         $avatar      =  User::where('id',$id)->pluck('avatar'); //  get current avatar
 
-       //  dd( $request['newpassword'] );
 
         $update = User::where('id',$id)->update([
-                        "employeeID" =>  $request['employeeID'],
-                        "fname" =>  $request['fname'],
-                        "lName" =>  $request['lName'],
-                        "otherNames" =>  $request['otherNames'],
-                        "education" =>  $request['education'],
-                        'email' => $request['email'],
-                        "created_by" => Auth::user()->id,
-                        "nationalID" => $request['nationalID'],
-                        "date_of_birth" =>$request['date_of_birth'],
-                        "phoneNumber" => $request['phoneNumber'],
-                        "altPhoneNumber" => $request['altPhoneNumber'],
-                        "experience" =>  $request['experience'],
-                        "nhifNo" =>  $request['nhifNo'],
-                        "nssfNo" => $request['nssfNo'],
-                        "gender" =>  $request['gender'],
-                        "marital_status" =>  $request['marital_status'],
-                        "joining_date" => $request['joining_date'],
-                        "joining_position" => $request['joining_position'],
-                        "secondPosition" => $request['secondPosition'],
-                        "department" => $request['department'],
-                        "permanent_address" => $request['permanent_address'],
-                        "aic_regions_id" => $request['aic_regions_id'],
-                        "aic_jobgroups_id" => $request['aic_jobgroups_id'],
-                        "aic_lccs_id" => $request['aic_lccs_id'],
-                        "aic_dccs_id" => $request['aic_dccs_id'],
-                        "joining_position" => $request['joining_position'],
-                        "spouse_fname" => $request['spouse_fname'],
-                        "spouse_lname" => $request['spouse_lname'],
-                        "spouse_otherNames" => $request['spouse_otherNames'],
-                        "spouse_phoneNumber" => $request['spouse_phoneNumber'],
-                        "spouse_altphoneNumber" => $request['spouse_altphoneNumber'],
-                        "spouse_nationalId" => $request['spouse_nationalId'],
-                        "next_of_kin_fname" =>  $request['next_of_kin_fname'],
-                        "next_of_kin_lname" => $request['next_of_kin_lname'],
-                        "next_of_kin_otherNames"  =>  $request['next_of_kin_otherNames'],
-                        "next_of_kin_phoneNumber" => $request['next_of_kin_phoneNumber'],
-                        "next_of_kin_altPhoneNumber" => $request['next_of_kin_altPhoneNumber'],
-                        "next_of_kin_nationId" => $request['next_of_kin_nationId'],
-                        "employee_type" => $request['employee_type'],
-                        "employee_status" => $request['employee_status'],
-                        "pinNo" => $request['pinNo'],
-                        "avatar" => $request['profile_image'] ?  $filePath  :   $avatar [0],
-                        "home_county" => $request['home_county'],
-                        "postalAddress" => $request['postalAddress'],
-                        "otherEmailAddress" => $request['otherEmailAddress'],
-                        "next_of_kin_relationship" => $request['next_of_kin_relationship'],
-                        "exit_date" => $request['exit_date'],
-                        "male_pastors_grade" => $request['male_pastors_grade'],
-                        "female_pastors_grade" => $request['female_pastors_grade'],
-                        'password' => $request['newpassword'] ? Hash::make($request['newpassword']) : $password[0],
-                    ]);
+                "employeeID" =>  $request['employeeID'],
+                "fname" =>  $request['fname'],
+                "lName" =>  $request['lName'],
+                "otherNames" =>  $request['otherNames'],
+                "education" =>  $request['education'],
+                'email' => $request['email'],
+                "created_by" => Auth::user()->id,
+                "nationalID" => $request['nationalID'],
+                "date_of_birth" =>$request['date_of_birth'],
+                "phoneNumber" => $request['phoneNumber'],
+                "altPhoneNumber" => $request['altPhoneNumber'],
+                "experience" =>  $request['experience'],
+                "nhifNo" =>  $request['nhifNo'],
+                "nssfNo" => $request['nssfNo'],
+                "gender" =>  $request['gender'],
+                "marital_status" =>  $request['marital_status'],
+                "joining_date" => $request['joining_date'],
+                "joining_position" => $request['joining_position'],
+                "secondPosition" => $request['secondPosition'],
+                "department" => $request['department'],
+                "permanent_address" => $request['permanent_address'],
+                "aic_regions_id" => $request['aic_regions_id'],
+                "aic_jobgroups_id" => $request['aic_jobgroups_id'],
+                "aic_lccs_id" => $request['aic_lccs_id'],
+                "aic_dccs_id" => $request['aic_dccs_id'],
+                "joining_position" => $request['joining_position'],
+                "spouse_fname" => $request['spouse_fname'],
+                "spouse_lname" => $request['spouse_lname'],
+                "spouse_otherNames" => $request['spouse_otherNames'],
+                "spouse_phoneNumber" => $request['spouse_phoneNumber'],
+                "spouse_altphoneNumber" => $request['spouse_altphoneNumber'],
+                "spouse_nationalId" => $request['spouse_nationalId'],
+                "next_of_kin_fname" =>  $request['next_of_kin_fname'],
+                "next_of_kin_lname" => $request['next_of_kin_lname'],
+                "next_of_kin_otherNames"  =>  $request['next_of_kin_otherNames'],
+                "next_of_kin_phoneNumber" => $request['next_of_kin_phoneNumber'],
+                "next_of_kin_altPhoneNumber" => $request['next_of_kin_altPhoneNumber'],
+                "next_of_kin_nationId" => $request['next_of_kin_nationId'],
+                "employee_type" => $request['employee_type'],
+                "employee_status" => $request['employeeStatus'],
+                "pinNo" => $request['pinNo'],
+                "avatar" => $request['profile_image'] ?  $filePath  :   $avatar [0],
+                "home_county" => $request['home_county'],
+                "postalAddress" => $request['postalAddress'],
+                "otherEmailAddress" => $request['otherEmailAddress'],
+                "next_of_kin_relationship" => $request['next_of_kin_relationship'],
+                "exit_date" => $request['exit_date'],
+                "male_pastors_grade" => $request['male_pastors_grade'],
+                "female_pastors_grade" => $request['female_pastors_grade'],
+                'password' => $request['newpassword'] ? Hash::make($request['newpassword']) : $password[0],
+            ]);
 
         //dd($update);
 
@@ -184,9 +183,11 @@ class EmployeeController extends Controller{
         return back()->with('message','Employee deleted successfully!');
     }
 
-    public function removeImage($id){
-        Storage::disk('local')->delete('public/image/'.$filename);
-        return back()->with('message','Employee deleted successfully!');
+    public function deleteimage($id){
+        $imagePath = User::where('id', $id)->pluck('avatar');
+        dd($imagePath);
+        Storage::disk('local')->delete('public/image/'.$imagePath);
+        return back()->with('message','profile image deleted successfully!');
     }
 
 

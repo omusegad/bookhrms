@@ -5,7 +5,7 @@
                         @role('SuperAdmin|HrManager')
 						<ul>
 							<li><a href="{{ route('dashboard') }}">
-							<i class="la la-dashboard"></i> <span> Dashboard </span></a></li>
+							<i class="fa fa-dashboard"></i> <span> Dashboard </span></a></li>
 							<li class="submenu">
 								<a href="#">
 								<i class="fa fa-users"></i>
@@ -73,6 +73,9 @@
 									</li>
 								</ul>
 							</li>
+                            <li><a href="{{ route('sms.index') }}">
+                                <i class="fa fa-dashboard"></i> <span> Send Sms </span></a>
+                            </li>
                         </ul>
 
                         @endrole
