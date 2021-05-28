@@ -21,16 +21,11 @@
                     </div>
                 </div>
                 <!-- /Page Header -->
-
-                <div class="row mb-3">
-                    <div class="col-lg-5">
-                        <input type="text" id="myInput" class="form-control"  placeholder="Search for names ......">
-                    </div>
-               </div>
+=
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="table-responsive">
-                            <table class="table table-striped">
+                            <table class="table table-striped" id="leaves">
                                 <thead>
                                     <tr>
                                         <th>#</th>

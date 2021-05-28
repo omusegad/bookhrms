@@ -21,11 +21,6 @@
                 </div>
                 <!-- /Page Header -->
 
-                <div class="row mb-3">
-                    <div class="col-lg-5">
-                        <input type="text" id="myInput" class="form-control"  placeholder="Search for names ......">
-                    </div>
-               </div>
                 <div class="row">
                     <div class="container">
                         <div class="col-lg-8">

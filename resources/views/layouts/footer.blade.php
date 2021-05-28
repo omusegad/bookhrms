@@ -1,9 +1,29 @@
- <script src="{{ asset('js/jquery-3.5.1.js') }}"></script>
-    <script src="{{ asset('js/app.js') }}"></script>
-    <script src="{{ asset('js/popper.min.js') }}"></script>
-    <script src="{{ asset('js/bootstrap.min.js') }}"></script>
-    <script src="{{ asset('js/jquery.slimscroll.min.js') }}"></script>
-    <script src="{{ asset('js/moment.min.js') }}"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
+
+{{-- <script src="{{ asset('js/jquery-3.5.1.js') }}"></script> --}}
+<script src="{{ asset('js/app.js') }}"></script>
+<script src="{{ asset('js/popper.min.js') }}"></script>
+<script src="{{ asset('js/bootstrap.min.js') }}"></script>
+<script src="{{ asset('js/jquery.slimscroll.min.js') }}"></script>
+<script src="{{ asset('js/moment.min.js') }}"></script>
+{{-- <script src="{{ asset('js/jquery.dataTables.min.js') }}"></script>
+<script src="{{ asset('js/dataTables.buttons.min.js') }}"></script>
+<script src="{{ asset('js/buttons.html5.min.js') }}"></script>
+<script src="{{ asset('js/dataTables.select.min.js') }}"></script> --}}
+
+<script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.24/js/dataTables.bootstrap4.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.7.0/js/dataTables.buttons.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.7.0/js/buttons.bootstrap4.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.7.0/js/buttons.html5.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.7.0/js/buttons.print.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.7.0/js/buttons.colVis.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.7.0/js/buttons.print.min.js"></script>
+<script src="https://cdn.datatables.net/select/1.3.3/js/dataTables.select.min.js"></script>
 
 
 <script src="https://unpkg.com/tableexport.jquery.plugin/tableExport.min.js"></script>
@@ -71,14 +91,14 @@
                 $($tblChkBox).prop('checked', $(this).prop('checked'));
             });
 
-              // add multiple select / deselect functionality
-                $("#selectall,#selecthq").click(function () {
-                    $('.name').attr('checked', this.checked);
-                });
+            // add multiple select / deselect functionality
+            $("#selectall,#selecthq").click(function () {
+                $('.name').attr('checked', this.checked);
+            });
 
 
             $(function() {
-                    $table = $('#hqpayroll,#hqsalary,#hqpayslips,#users,#hqusers,#fieldusers').bootstrapTable({
+                    $table = $('#hqsalary,#users,#hqusers,#fieldusers').bootstrapTable({
                         search: true,
                         showColumns: true,
                         exportTypes: [' ','csv']
@@ -106,6 +126,21 @@
                     reader.readAsDataURL(file);
                 }
             });
+
+            //===== BEGGINNING OF DATATABLES ====//
+            var table = $('#hqpayroll,#hqpayslips,#employees,#hqstaff,#fieldstaff,#leaves').DataTable( {
+                    dom: 'Bfrtip',
+                    lengthChange: false,
+                    buttons: ['excel','print'],
+                    select: {
+                                style : "multi"
+                            }
+
+                } );
+
+                table.buttons().container()
+                .appendTo( '#hqpayroll_wrapper .col-md-6:eq(0)' );
+           //===== END OF DATATABLES ====//
 
 
     });

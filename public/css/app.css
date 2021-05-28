@@ -10007,3 +10007,24 @@ h3 {
     border-color: #dee2e6;
   }
 }
+
+
+/*==
+PRINT, EXCEL BUTTONS
+*/
+.buttons-excel, .buttons-print {
+    background: #fff;
+    color: #000;
+    border: 2px solid red;
+    border-radius: 0;
+    margin-right: 9px;
+}
+
+table.dataTable tbody tr.selected {
+    color: #000;
+    background-color: #AADFFA;
+}
+
+.dt-buttons.btn-group.flex-wrap {
+    margin-bottom: -56px!important;
+}

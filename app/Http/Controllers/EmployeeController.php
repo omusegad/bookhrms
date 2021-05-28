@@ -190,6 +190,11 @@ class EmployeeController extends Controller{
         return back()->with('message','profile image deleted successfully!');
     }
 
+    // Download excel
+    // public function exportexcel(){
+    //     return Excel::download(new SalaryExport, 'all-employees-salary.xlsx');
+    // }
+
 
 
 

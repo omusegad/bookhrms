@@ -37,14 +37,19 @@ class HolidaysController extends Controller
         //
     }
 
+    public function edit(Request $request, $id){
+        $holiday = Holiday::findorFail($id);
+        return view('holiday.edit', compact('holiday'));
+    }
+
     public function update(Request $request, $id){
+       // dd($request->all());
         Holiday::where('id',$id)->update([
             "hName"            =>  $request['hName'],
-            "holidayDate"    =>  Carbon::parse(strtotime($request['holidayDate'])),
+            "holidayDate"    =>  Carbon::parse(strtotime($request['hdate'])),
         ]);
 
         return back()->with('message','Holiday updated successfully!');
-
     }
 
 }

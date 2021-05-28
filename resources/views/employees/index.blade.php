@@ -33,22 +33,12 @@
                     </div>
                  </div>
 
-                <div class="row mb-3">
-                    <div class="col-lg-4">
-                        <input type="text" id="myInput" class="form-control"  placeholder="Search for names ......">
-                    </div>
-                    <div class="col-lg-8 text-right">
-
-                    </div>
-                </div>
-
                 <div class="row">
                     <div class="col-md-12">
                         <div class="table-responsive">
                             <table class="table table-bordered" id="employees">
                                         <thead>
                                             <tr>
-                                            <th><input type="checkbox" id="selectall" /> </th>
                                             <th>S/N</th>
                                             <th>Name</th>
                                             <th>Employee ID</th>
@@ -66,9 +56,6 @@
                                             @php ($count = 1)
                                                 @foreach($users as $user)
                                                 <tr>
-                                                    <td>
-                                                        <input type="checkbox" name="userID[]" class="allusers" value="{{$user->id  }}"  />
-                                                    </td>
                                                     <td>{{$count++ }}</td>
                                                     <td>
                                                         <a href="{{ route('employees.edit',$user->id)}}">
@@ -116,20 +103,16 @@
 
  @push('custom-javascripts')
 
-   <script>
-        $(function() {
-            alert('Greatness today!');
-            $('#employees').DataTable({
-            processing: true,
-            serverSide: true,
-            ajax: '{{ url('/employees') }}',
-            columns: [
-                    { data: 'id', name: 'id' },
-                    { data: 'name', name: 'name' },
-                    { data: 'email', name: 'email' }
-                    ]
-        });
-        });
-    </script>
+<script>
+ jQuery(document).ready(function($){
+    // alert('Greatness today!');
+    // $('#employees').DataTable( {
+    //     dom: 'Bfrtip',
+
+    //     select: true
+    // } );
+
+  });
+</script>
 
 @endpush

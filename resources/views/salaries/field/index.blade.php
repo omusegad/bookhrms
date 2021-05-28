@@ -125,13 +125,7 @@
 
 						        	<div class="tab-pane " id="top-tab2">
                                             <div class="table-responsive">
-                                                <table  id="hqpayslips"
-                                                data-search="true"
-                                                data-show-columns="true"
-                                                data-show-export="true"
-                                                data-click-to-select="true"
-                                                data-pagination="true"
-                                                data-response-handler="responseHandler">
+                                                <table  id="hqpayslips" class="table table-bordered">
                                                     <thead>
                                                         <tr>
                                                             <th>Serial No</th>
@@ -186,13 +180,7 @@
 									</div>
 									<div class="tab-pane" id="top-tab3">
                                                 <div class="table-responsive">
-                                                    <table  id="hqpayslips"
-                                                    data-search="true"
-                                                    data-show-columns="true"
-                                                    data-show-export="true"
-                                                    data-click-to-select="true"
-                                                    data-pagination="true"
-                                                    data-response-handler="responseHandler">
+                                                    <table class="table table-bordered" id="hqpayslips">
                                                         <thead>
                                                             <tr>
                                                                 <th>S/N</th>

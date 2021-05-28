@@ -43,12 +43,6 @@
                     </div>
                 </div>
             </div>
-            <!-- /Leave Statistics -->
-            <div class="row mb-3">
-                <div class="col-lg-4">
-                    <input type="text" id="myInput" class="form-control"  placeholder="Search for names ......">
-                </div>
-           </div>
 
            <div class="row">
             <div class="col-lg-12">
@@ -64,7 +58,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="table-responsive">
-                        <table id="leaves" class="table table-bordered table-striped custom-table mb-0">
+                        <table id="leaves" class="table table-bordered">
                             <thead>
                                 <tr>
                                     <th>S/N</th>
@@ -142,6 +136,9 @@
                                                                                 <option value="approved">Approved</option>
                                                                                 <option value="declined">Declined</option>
                                                                             </select>
+                                                                        </div>
+                                                                        <div class="form-group">
+                                                                         <input type="text" name="daysApplied" value="{{ $data->appliedDays }}" hidden>
                                                                         </div>
 
                                                                         <div class="form-group">

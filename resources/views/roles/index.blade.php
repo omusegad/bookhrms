@@ -13,10 +13,6 @@
                     <div class="row align-items-center">
                         <div class="col">
                             <h3 class="page-title">Roles</h3>
-                            <ul class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
-                                <li class="breadcrumb-item active">Roles</li>
-                            </ul>
                         </div>
                         <div class="col-auto float-right ml-auto">
                             <a href="#" class="btn add-btn" data-toggle="modal" data-target="#add_leave">
@@ -37,16 +33,10 @@
                       </div>
                   </div>
 
-                  <div class="row mb-3">
-                    <div class="col-lg-4">
-                        <input type="text" id="myInput" class="form-control"  placeholder="Search for names ......">
-                    </div>
-               </div>
-
                 <div class="row">
-                    <div class="col-md-9">
+                    <div class="col-md-12">
                         <div class="table-responsive">
-                            <table class="table table-striped custom-table mb-0">
+                            <table class="table table-striped" id="leaves">
                                 <thead>
                                     <tr>
                                         <th>ID</th>

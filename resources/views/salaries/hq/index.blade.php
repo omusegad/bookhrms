@@ -122,15 +122,8 @@
 											</div>
 
 											<div class="tab-pane show" id="top-tab2">
-                                                <div class="table-responsive ">
-                                                    <table
-                                                   id="hqpayroll"
-                                                    data-search="true"
-                                                    data-show-columns="true"
-                                                    data-show-export="true"
-                                                    data-click-to-select="true"
-                                                    data-pagination="true"
-                                                    data-response-handler="responseHandler">
+                                                <div class="table-responsive mt-4">
+                                                    <table class="table table-bordered table-striped table-hover" id="hqpayroll">
                                                         <thead>
                                                             <tr>
                                                                 <th>Serial No</th>
@@ -181,14 +174,7 @@
 
 											<div class="tab-pane" id="top-tab3">
                                                 <div class="table-responsive ">
-                                                    <table
-                                                    id="hqpayslips"
-                                                    data-search="true"
-                                                    data-show-columns="true"
-                                                    data-show-export="true"
-                                                    data-click-to-select="true"
-                                                    data-pagination="true"
-                                                    data-response-handler="responseHandler">
+                                                    <table id="hqpayslips" class="table table-bordered">
                                                         <thead>
                                                             <tr>
                                                                 <th>S/N</th>
@@ -289,3 +275,6 @@
     </div>
     <!-- /Page Wrapper -->
 @endsection
+@push('custom-javascripts')
+
+@endpush

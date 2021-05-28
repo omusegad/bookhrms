@@ -24,17 +24,12 @@
                     </div>
                 </div>
                 <!-- /Page Header -->
-                
-                <div class="row mb-3">
-                    <div class="col-lg-4">
-                        <input type="text" id="myInput" class="form-control"  placeholder="Search for names ......">
-                    </div>
-               </div>
+
 
                 <div class="row">
                     <div class="col-md-12">
                         <div class="table-responsive">
-                        <table id="jobgroup" class="table table-striped custom-table mb-0">
+                        <table class="table table-striped" id="leaves">
                                 <thead>
                                     <tr>
                                         <th>ID</th>
@@ -51,11 +46,12 @@
                                         <td>{{$count++}}</td>
                                         <td>{{ $data->hName}}</td>
                                         <td> {{$data->holidayDate ? $data->holidayDate: " " }}</td>
-                                        <td class="text-right">
-                                            <a class="dropdown-item" href="#" data-toggle="modal" data-target="#edit_leave">
+                                        <td class="text-center">
+                                            <a  href="{{ route('holidays.edit', $data->id) }}">
                                                 <i class="fa fa-pencil m-r-5"></i>
                                             </a>
                                         </td>
+
                                     </tr>
                                   @endforeach
                                 </tbody>
@@ -88,7 +84,7 @@
                                     <input class="form-control" placeholder="Holiday Name" type="text"  name="hName" required>
                                 </div>
                                 <div class="form-group">
-                                    <input class="form-control" type="date"  name="holidayDate" required>
+                                    <input class="form-control" type="date"  name="holidayDate">
                                 </div>
 
                                 <div class="submit-section">
@@ -100,43 +96,6 @@
                 </div>
             </div>
             <!-- /Add Leave Modal -->
-
-
-
-            <!-- Edit Leave Modal -->
-            {{-- <div id="add_leave" class="modal custom-modal fade" role="dialog">
-                <div class="modal-dialog modal-dialog-centered" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title">Edit Holiday</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            @if(session()->has('message'))
-                              <div class="alert alert-success">
-                                {{session('message')}}
-                              </div>
-                            @endif
-                            <form method="POST" action="{{route('holidays.update', )}}">
-                                @csrf
-                                <div class="form-group">
-                                    <input class="form-control" placeholder="Holiday Name" type="text"  name="hName" required>
-                                </div>
-                                <div class="form-group">
-                                    <input class="form-control" type="date"  name="holidayDate" required>
-                                </div>
-
-                                <div class="submit-section">
-                                    <button type="submit" class="btn btn-primary submit-btn">Submit</button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div> --}}
-            <!-- /edit Leave Modal -->
 
         </div>
         <!-- /Page Wrapper -->
