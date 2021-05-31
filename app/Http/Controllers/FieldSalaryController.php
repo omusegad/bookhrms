@@ -27,8 +27,6 @@ class FieldSalaryController extends Controller
         })->get();
         $fieldsalary = User::where('employee_type','FIELD')->with('salary')->get();
 
-
-
         return view('salaries.field.index', compact('userpayroll','fieldsalary'));
 
     }

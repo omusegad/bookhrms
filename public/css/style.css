@@ -8237,8 +8237,9 @@ Nandi Aic customization ==========
 }
 
 
-.nav-tabs .nav-item {
-    background: #f2f2f2;
+.nav-link {
     border-right: 1px solid;
-    border-top: 4px solid #CF0000;
+    background: #34444C;
+    color: #fff;
+    margin-right: 2px;
 }

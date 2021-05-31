@@ -289,7 +289,13 @@ class SalaryController extends Controller{
     }
 
 
-   
+    // public function getMonthListFromDate(Carbon $start){
+    //     foreach (CarbonPeriod::create($start, '1 month', Carbon::today()) as $month) {
+    //         $months[$month->format('m-Y')] = $month->format('F Y');
+    //     }
+    //     return $months;
+    // }
+
 
 
 }

@@ -125,6 +125,16 @@
             </div>
 
             <div class="row">
+                <div class="col-12 mb-3">
+                    <form method="POST" action="{{route('payroll.store')}}">
+                        @csrf
+                        
+                    <div class="row ">
+                        <div class="col-lg-12 text-right">
+                                <button type="submit" class="btn btn-outline-primary">Refresh All Payroll</button>
+                         </div>
+                    </div>
+                </div>
                 <div class="col-md-12">
                     <div class="table-responsive">
                         <table class="table table-striped  table-bordered" id="allsalaries">
@@ -152,8 +162,9 @@
                                     <th>NHIF (Ksh)</th>
                                     <th>Net Pay (Ksh)</th>
                                     <th>Reference</th>
+                                    <th>Approval Status</th>
+                                    <th>Status</th>
                                     <th class="text-right">Action</th>
-                                    <th>Payment Status</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -185,97 +196,22 @@
                                     <td> {{number_format($item->nhif) }}</td>
                                     <td> {{number_format($item->net_pay) }}</td>
                                     <td> {{$item->reference }}</td>
+                                    <td> {{$item->approval_status }}</td>
+                                    <td> {{$item->status }}</td>
                                     <td class="text-ceter">
-                                        <a class="" href="{{route('salaries.edit', $item->id )}}">
-                                            <i class="fa fa-pencil m-r-5"></i>
-                                        </a>
-                                    </td>
-                                    <td>
-                                        @php
-                                            $status = thisMonthsPayroll($item->users['id'])
-                                        @endphp
-                                        @if( $status =="pending" || empty($status))
-                                        <a id="process_salary" class="btn btn-outline-danger" data-url="{{ route('payroll.store', $item->id) }}" data-name="{{$item->users['fname'] . " ".$item->users['lName']  }}"   data-salaryid="{{$item->id }}" data-toggle="modal" data-target="#modal-leave-{{ $item->id }}">
-                                            Proccess Salary
-                                        </a>
+                                        <a class="" href="{{route('salaries.edit', $item->id )}}"><i class="fa fa-pencil m-r-5"></i> </a>
+                                        <a class="" href="{{route('salaries.edit', $item->id )}}"><i class="fa fa-pencil m-r-5"></i> </a>
 
-                                         <!-- Add Salary Modal -->
-                                         <div  class="modal custom-modal fade" role="dialog" id="modal-leave-{{ $item->id }}">
-                                            <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-                                                <div class="modal-content">
-                                                    <div class="modal-header">
-                                                        <h5 class="modal-title"> Would you like to proccesss this payment ?</h5>
-                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                            <span aria-hidden="true">&times;</span>
-                                                        </button>
-                                                    </div>
-                                                    <div class="modal-body">
-                                                        <form method="POST" action="{{route('payroll.store')}}">
-                                                            @csrf
-                                                            <div class="row">
-                                                                <input name="user_id" Placeholder="" value="{{$item->users['id']}}" class="form-control" type="hidden">
-                                                                <input name="basic_salary" Placeholder="" value="{{$item->basic_salary}}" class="form-control" type="hidden">
-                                                                <input name="gross_pay" Placeholder="" value="{{$item->gross_pay}}" class="form-control" type="hidden">
-                                                                <input name="nssf" Placeholder="" value="{{$item->nssf}}" class="form-control" type="hidden">
-                                                                <input name="nhif" Placeholder="" value="{{$item->nhif}}" class="form-control" type="hidden">
-                                                                <input name="payee" Placeholder="" value="{{$item->payee}}" class="form-control" type="hidden">
-                                                                <input name="net_pay" Placeholder="" value="{{$item->net_pay}}" class="form-control" type="hidden">
-                                                                <input name="bankName" Placeholder="" value="{{$item->bankName}}" class="form-control" type="hidden">
-                                                                <input name="bankBranch" Placeholder="" value="{{$item->bankBranch}}" class="form-control" type="hidden">
-                                                                <input name="bankCode" Placeholder="" value="{{$item->bankCode}}" class="form-control" type="hidden">
-                                                                <div class="col-sm-6">
-                                                                    <div class="form-group">
-                                                                        <label for=""> Beneficiary Name </label>
-                                                                        <input name="name" Placeholder="" value="{{$item->users['fname'] . " ".$item->users['lName']  }}" class="form-control" type="text" readonly>
-                                                                    </div>
-                                                                </div>
-
-                                                                <div class="col-sm-6">
-                                                                    <div class="form-group">
-                                                                        <label for=""> Beneficiary Account Number </label>
-                                                                        <input name="beneficiaryAccountNumber" Placeholder="" value="{{$item->beneficiaryAccountNumber }}" class="form-control" type="text" readonly>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-lg-12">
-                                                                    <div class="form-group">
-                                                                        <label>Payroll Status</label>
-                                                                        <select name="status" class="select form-control">
-                                                                            <option value="" disabled selected>Payroll Status</option>
-                                                                              <option value="pending">Pending</option>
-                                                                              <option value="processed">Proccess</option>
-                                                                              <option value="rejected">Reject</option>
-
-                                                                        </select>
-                                                                    </div>
-                                                                </div>
-
-                                                            </div>
-
-                                                            <div class="submit-section text-right">
-                                                                <button type="submit" class="btn btn-primary">Submit</button>
-                                                            </div>
-                                                        </form>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!-- /Add Salary Modal -->
-                                        @elseif($status == "processed")
-                                          <div class=" btn bg-success font-weight-bold text-white">
-                                            <i class="fa fa-lock text-white"></i>
-                                            {{ $status  }}
-                                          </div>
-                                        @elseif ($status == "rejected")
-                                            <div class="text-muted">
-                                               {{ $status  }}
-                                            </div>
-
-                                        @endif
                                     </td>
                                 </tr>
                               @endforeach
+                              {{-- <div class="submit-section text-right pb-3">
+                                <button type="submit" class="btn btn-primary">Generate Payroll</button>
+                              </div> --}}
+
                             </tbody>
                         </table>
+                    </form>
                     </div>
                 </div>
             </div>

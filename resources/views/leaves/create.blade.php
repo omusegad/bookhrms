@@ -23,10 +23,10 @@
                                     <a href="{{url('/my-leaves')}}" class="btn add-btn"> All Leave</a>
                                 </div>
                              @endrole
-                    </div>
+                        </div>
                 </div>
                 <!-- /Page Header -->
-
+                <hr>
 
                 <div class="row">
                     <div class="col-lg-12">
@@ -121,5 +121,57 @@
         </div>
         <!-- /Page Wrapper -->
 
+@push('custom-javascripts')
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('#start_date, #end_date').change(function(){
+            var today = new Date().getDay();
+            var startLeaveSDate =  new Date($("#start_date").val()) ;
+            var endLeaveSDate =  new Date($("#end_date").val()) ;
+            if(startLeaveSDate.getDay() > today && startLeaveSDate.getDay() == 6){
+                var start_date = new Date(startLeaveSDate.setDate(startLeaveSDate.getDate()+2));
+                console.log(start_date);
+                document.getElementById('start_date').value = moment(start_date, 'DD-MM-YYYY').format('YYYY-MM-DD');
+            }else if(startLeaveSDate.getDay() == 0){
+                 start_date = new Date (startLeaveSDate.setDate(startLeaveSDate.getDate()+1));
+                 document.getElementById('start_date').value = moment(start_date, 'DD-MM-YYYY').format('YYYY-MM-DD');
+
+            }else{
+                 start_date =  new Date($("#start_date").val()) ;
+                 document.getElementById('start_date').value = moment(start_date, 'DD-MM-YYYY').format('YYYY-MM-DD');
+            }
+
+            if(endLeaveSDate.getDay() == 6){
+                var end_date = new Date(endLeaveSDate.setDate(endLeaveSDate.getDate()+2));
+                document.getElementById('end_date').value = moment(end_date, 'DD-MM-YYYY').format('YYYY-MM-DD');
+                //console.log(end_date);
+            }else if(endLeaveSDate.getDay() == 0){
+                end_date = new Date(endLeaveSDate.setDate(endLeaveSDate.getDate()+1));
+                document.getElementById('end_date').value = moment(end_date, 'DD-MM-YYYY').format('YYYY-MM-DD');
+
+                //console.log(end_date);
+            }else{
+                end_date =  new Date($("#end_date").val()) ;
+                document.getElementById('end_date').value = moment(end_date, 'DD-MM-YYYY').format('YYYY-MM-DD');
+
+            }
+
+            let get_days = 1000*60*60*24; //  days
+            let daysdifference = end_date - start_date;
+            if(daysdifference > 0){
+                let number_of_days = Math.floor(daysdifference/get_days);
+                document.getElementById('days').value = number_of_days;
+               // console.log(moment(end_date).format('YYYY-MM-DD'));
+                console.log(number_of_days + ' days');
+           }else{
+            document.getElementById('days').value = 0;
+           }
+
+        });
+    });
+
+</script>
+@endpush
 
 @endsection
