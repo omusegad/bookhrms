@@ -54,7 +54,6 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/organogram', [OrganogramController::class, 'index']);
         Route::resource('roles', RolesController::class)->only(['index','store']);
         Route::resource('/employees',EmployeeController::class);
-        //Route::post('/export-employees',EmployeeController::class);
         Route::get('/field-employees',[FieldEmployeeController::class, 'index']);
         Route::get('/hq-employees',[HqEmployeeController::class, 'index']);
         Route::get('/field-employees',[FieldEmployeeController::class, 'index']);
@@ -86,6 +85,8 @@ Route::middleware(['auth'])->group(function () {
 
         //sms
         Route::resource('/sms', SmsController::class)->only(['index','create','store','upload']);
+        Route::get('/download-contacts', [SmsController::class, 'download']);
+
 
 
 

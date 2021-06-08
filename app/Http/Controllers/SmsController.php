@@ -2,14 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
+use App\Models\Sms;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\Mail;
 
 class SmsController extends Controller{
 
-
     public function index(){
-       return view('sms.index');
+       $contacts = Sms::all();
+       return view('sms.index', compact('contacts'));
     }
 
     /**
@@ -35,8 +38,13 @@ class SmsController extends Controller{
 
     }
 
-    public function upload(Request $request){
-
+    public function download(){
+        $path= public_path(). "/download/contact_format_sample.xlsx";
+        $headers = array(
+            'Content-Type: application/xlsx',
+        );
+        return Response::download($path, 'contact_format_sample.xlsx', $headers);
+        return back()->with('message','Download Successfully');
     }
 
 

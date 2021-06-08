@@ -17,7 +17,7 @@ class CreateSmsTable extends Migration
             $table->id();
             $table->string('phoneNumber');
             $table->string('textMessage');
-            $table->enum('status', array('sent','failed','dratf'))->default('draft');
+            $table->enum('status', array('sent', 'failed', 'dratf'))->default('dratf');
             $table->timestamps();
         });
     }
