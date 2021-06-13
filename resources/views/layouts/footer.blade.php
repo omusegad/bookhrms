@@ -1,4 +1,6 @@
-<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+{{-- <script src="https://code.jquery.com/jquery-3.5.1.js"></script> --}}
+
+<script src="{{ asset('js/jquery-3.5.1.js') }}"></script>
 <script src="{{ asset('js/app.js') }}"></script>
 <script src="{{ asset('js/popper.min.js') }}"></script>
 <script src="{{ asset('js/bootstrap.min.js') }}"></script>
@@ -32,35 +34,6 @@
                 $('#files').val("");
             });
 
-          //  check box on tables
-            var $tblChkBox = $(".allusers");
-                $("#selectall").on("click", function () {
-                $($tblChkBox).prop('checked', $(this).prop('checked'));
-            });
-
-            // add multiple select / deselect functionality
-            $("#selectall,#selecthq").click(function () {
-                $('.name').attr('checked', this.checked);
-            });
-
-
-            $(function() {
-                    $table = $('#hqsalary,#users,#hqusers,#fieldusers').bootstrapTable({
-                        search: true,
-                        showColumns: true,
-                        exportTypes: [' ','csv']
-                    });
-           });
-
-           // Table search
-           $("#myInput").on("keyup", function() {
-                var value = $(this).val().toLowerCase();
-                $(".table tr").filter(function() {
-                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-                });
-            });
-
-
             /// upload previe file
             $("#UploadedFile").change(function () {
                 const file = this.files[0];
@@ -75,20 +48,33 @@
             });
 
             //===== BEGGINNING OF DATATABLES ====//
-            var table = $('#hsalaries,#allsalaries,#fieldsalaries,#hqpayroll,#hqpayslips,#employees,#hqstaff,#fieldstaff,#leaves').DataTable( {
+            var table = $('#hsalaries,#employees,#allsalaries,#fieldsalaries,#hqpayroll,#hqpayslips,#employees,#hqstaff,#fieldstaff,#leaves').DataTable( {
                     dom: 'Bfrtip',
                     lengthChange: false,
-                    buttons: ['excel','print'],
+                    buttons: ['excel','pdf'],
+                    'columnDefs': [
+                        {
+                            'targets': 0,
+                            "orderable": false,
+                            className: 'select-checkbox',
+
+                        }
+                    ],
                     select: {
-                                style : "multi"
-                            }
+                            style: 'multi',
+                            selector: 'td:first-child'
+                            },
+                    });
 
-                } );
+                    // Check/uncheck all checkboxes in the table
+                    $('#select_all').on('click', function(){
+                        var rows = table.rows({ 'search': 'applied' }).nodes();
+                        $('input[type="checkbox"]', rows).prop('checked', this.checked);
+                    });
 
-                table.buttons().container()
+                 table.buttons().container()
                 .appendTo( '#hqpayroll_wrapper .col-md-6:eq(0)' );
            //===== END OF DATATABLES ====//
-
 
     });
 

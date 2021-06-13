@@ -127,11 +127,13 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="table-responsive">
+                        <form action="" method="POST">
+                            <button type=submit>Generate Payroll</button>
                         <table class="table table-striped  table-bordered" id="allsalaries">
                             <thead>
                                 <tr>
                                     <th>
-                                       <input type="checkbox" id="selectall" class="regular-checkbox" />
+                                       <input type="checkbox" name="select_all"  id="select_all">
                                    </th>
                                     <th>Employee ID</th>
                                     <th>Staff Name</th>
@@ -160,7 +162,7 @@
                                 @foreach ($salaries as $item)
                                 <tr>
                                     <td>
-                                        <input type="checkbox"  name="userID[]" class="allusers" value="{{$item->users['id'] }}"  required/>
+                                        <input type="checkbox"  name="salaries[]" class="allusers" value="{{$item->users['id'] }}"  required/>
                                     </td>
                                     <td>{{$item->users['employeeID'] }}</td>
                                     <td>
@@ -276,6 +278,7 @@
                               @endforeach
                             </tbody>
                         </table>
+                    </form>
                     </div>
                 </div>
             </div>
@@ -428,3 +431,10 @@
     </div>
     <!-- /Page Wrapper -->
 @endsection
+
+@push('custom-javascripts')
+<script>
+
+</script>
+
+@endpush

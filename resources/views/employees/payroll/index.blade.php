@@ -9,16 +9,10 @@
         <div class="content container-fluid">
 
             <!-- Page Header -->
-            <div class="page-header">
+            <div class="page-header pb-3">
                 <div class="row align-items-center">
                     <div class="col">
                         <h3 class="page-title" >{{Auth::user()->fname }} {{Auth::user()->lName }} Payslip</h3>
-                        <ul class="breadcrumb">
-                            <li class="breadcrumb-item">
-                                <a href="{{ route('dashboard') }}">Dashboard</a>
-                            </li>
-                            <li class="breadcrumb-item active">Payslip : (Ksh)</li>
-                        </ul>
                     </div>
                 </div>
             </div>
@@ -42,6 +36,8 @@
                             <thead>
                                 <tr>
                                     <th>Staff No</th>
+                                    <th>Month</th>
+                                    <th>Year</th>
                                     <th>Employee Name</th>
                                     <th>Position</th>
                                     <th>Job Group</th>
@@ -54,8 +50,6 @@
                                     <th>Monthly Relief</th>
                                     <th>Other Deductions</th>
                                     <th>Net Pay</th>
-                                    <th>Month</th>
-                                    <th>Year</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -64,7 +58,13 @@
                                 @php($count =1)
                                 @foreach ($mypayroll as $item)
                                 <tr>
-                                    <td> {{$count++ }}</td>
+                                    <td> {{$item->user['employeeID'] }}</td>
+                                    <td>
+                                        {{ DateTime::createFromFormat('!m', $item->month)->format('F')}}
+                                    </td>
+                                    <td>
+                                        {{ $item->year}}
+                                    </td>
                                         <td>
                                                 {{$item->user['fname'] }} {{$item->user['lName'] }}
                                         </td>
@@ -95,15 +95,10 @@
                                 <td>
                                     {{number_format($item->net_pay)}}
                                 </td>
-                                <td>
-                                    {{ DateTime::createFromFormat('!m', $item->month)->format('F')}}
-                                </td>
-                                <td>
-                                    {{ $item->year}}
-                                </td>
+
                                 <td>
                                 <a href="{{ route('payslip.show',$item->user["id"]) }}">
-                                    <i class="fa 2x fa-download"></i>
+                                    <i class="fa 2x fa-download"></i> Download
                                 </a>
 
                                 </td>

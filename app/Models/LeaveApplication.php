@@ -18,10 +18,15 @@ class LeaveApplication extends Model
         return $this->belongsTo(User::class, 'user_id', 'id');
     }
 
-   public function leavetype()
-   {
+   public function leavetype(){
        return $this->belongsTo(LeaveType::class, 'aic_leave_type_id', 'id');
    }
+
+  /**
+   * Get all of the leaves for the LeaveApplication
+   *
+   * @return \Illuminate\Database\Eloquent\Relations\HasMany
+   */
 
 
 

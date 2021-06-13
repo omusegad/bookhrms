@@ -2,8 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\LeaveApplication;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Employees extends Model
 {
@@ -12,4 +13,5 @@ class Employees extends Model
     protected $guarded  = [
         'id','created_at','updated_at'
     ];
+
 }

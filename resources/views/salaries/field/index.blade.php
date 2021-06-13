@@ -34,9 +34,9 @@
 						<div class="row">
 							<div class="col-lg-12">
 										<ul class="nav nav-tabs nav-tabs-top">
-                                            <li class="nav-item"><a class="nav-link" href="#top-tab1" data-toggle="tab">Field Salaries</a></li>
-                                            <li class="nav-item"><a class="nav-link" href="#top-tab2" data-toggle="tab">Payroll To Bank</a></li>
-                                            <li class="nav-item"><a class="nav-link" href="#top-tab3" data-toggle="tab">Payslips</a></li>
+                                            <li class="nav-item"><a class="nav-link profile-tab" href="#top-tab1" data-toggle="tab">Field Salaries</a></li>
+                                            <li class="nav-item"><a class="nav-link profile-tab" href="#top-tab2" data-toggle="tab">Payroll To Bank</a></li>
+                                            <li class="nav-item"><a class="nav-link profile-tab" href="#top-tab3" data-toggle="tab">Payslips</a></li>
                                         </ul>
 
 										<div class="tab-content">
@@ -44,15 +44,14 @@
 
 
                                           <div class="table-responsive ">
-                                               <table class="table table-bordered" id="fieldsalaries">
+                                               <table class="table table-bordered" id="employees">
                                                                 <thead>
                                                                     <tr>
                                                                         <th>
-                                                                            <input type="checkbox" id="selectall" class="regular-checkbox text-muted" />
+                                                                            <input id="select_all" type="checkbox">
                                                                         </th>
-                                                                        <th>S/N</th>
-                                                                        <th>Staff Name</th>
                                                                         <th>Employee ID</th>
+                                                                        <th>Staff Name</th>
                                                                         <th>Job Group</th>
                                                                         <th>Region</th>
                                                                         <th>DCC</th>
@@ -63,7 +62,7 @@
                                                                         <th>Airtime ( Ksh)</th>
                                                                         <th>Hospitality Allowance (Ksh)</th>
                                                                         <th>Gross Pay (Ksh)</th>
-                                                                        <th>Status</th>
+                                                                        <th>Leave Status</th>
                                                                     </tr>
                                                                 </thead>
                                                                 <tbody>
@@ -71,7 +70,7 @@
                                                                     @if(!empty($item->salary))
                                                                             <tr>
                                                                                 <td>
-                                                                                    <input type="checkbox" name="userID[]" class="allusers" value="{{$item->id }}"  />
+                                                                                    <input type="checkbox"  name="salaries[]" class="allusers" value="{{$item->users['id'] }}"  required/>
                                                                                 </td>
                                                                                 <td>
                                                                                     {{$item->employeeID }}
@@ -81,7 +80,6 @@
                                                                                         {{$item->fname }} {{$item->lName }}
                                                                                  </a>
                                                                                 </td>
-                                                                                <td>{{$item->employeeID }}</td>
                                                                             <td>  {{  $item->jobgroup['jonGroupName']}}</td>
                                                                             <td>   {{  $item->region['rName']}}</td>
                                                                             <td>   {{  $item->dcc['dccName']}}</td>
@@ -94,7 +92,19 @@
                                                                             <td> {{number_format($item->salary['airtime_allowance']) }}</td>
                                                                             <td> {{number_format($item->salary['hospitality_allowance']) }}</td>
                                                                             <td> {{number_format($item->salary['gross_pay']) }}</td>
-                                                                            <td> {{$item->salary['status'] }}</td>
+                                                                            <td>
+                                                                                @if(getLeaveStatus($item->id)  == "pending")
+                                                                                <i class="fa fa-thumbs-down  text-danger" aria-hidden="true"></i>
+                                                                                {{ getLeaveStatus($item->id) }}
+                                                                              @elseif(getLeaveStatus($item->id)  == "approved")
+                                                                                <i class="fa fa-check-circle text-success"></i>
+                                                                                {{ getLeaveStatus($item->id) }}
+                                                                              @elseif(getLeaveStatus($item->id)  == "declined")
+                                                                                 <i class="fa fa-times-circle" aria-hidden="true"></i> {{ getLeaveStatus($item->id) }}
+                                                                              @else
+                                                                                 {{ "Active" }}
+                                                                              @endif
+                                                                            </td>
                                                                             </tr>
                                                                     @endif
                                                                 @endforeach
@@ -165,6 +175,8 @@
                                                             <tr>
                                                                 <th>S/N</th>
                                                                 <th>Employee No</th>
+                                                                <th>Month</th>
+                                                                <th>Year</th>
                                                                 <th>Employee Name</th>
                                                                 <th>Position</th>
                                                                 <th>Job Group</th>
@@ -180,8 +192,7 @@
                                                                 <th>Monthly Relief</th>
                                                                 <th>Other Deductions</th>
                                                                 <th>Net Pay</th>
-                                                                <th>Month</th>
-                                                                <th>Year</th>
+
                                                                 <th>Action</th>
                                                             </tr>
                                                         </thead>
@@ -193,6 +204,12 @@
                                                                     @if (!empty($item->payroll))
                                                                     <td>{{ $count++ }}</td>
                                                                     <td> {{$item->employeeID }}</td>
+                                                                    <td>
+                                                                        {{ \Carbon\Carbon::parse($item->month)->format('F') }}
+                                                                    </td>
+                                                                    <td>
+                                                                        {{ $item->payroll->year}}
+                                                                    </td>
                                                                     <td>
                                                                             {{$item->fname }} {{$item->lName }}
                                                                     </td>
@@ -228,16 +245,11 @@
                                                             <td>
                                                                 {{ !empty($item->payroll) ? number_format($item->payroll->net_pay):""}}
                                                             </td>
-                                                            <td>
-                                                                {{ \Carbon\Carbon::parse($item->month)->format('F') }}
-                                                            </td>
-                                                            <td>
-                                                                {{ $item->payroll->year}}
-                                                            </td>
+
                                                             <td>
 
                                                             <a href="{{ route('payslip.show',$item->payroll->user_id) }}">
-                                                                <i class="fa 2x fa-download"></i>
+                                                                <i class="fa 2x fa-download"></i> Download
                                                             </a>
 
                                                             </td>

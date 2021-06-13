@@ -20,8 +20,7 @@ class EmployeeController extends Controller{
     use UploadTrait;
 
     public function index(){
-      $users = User::with('employeeStatus','region','dcc','lcc','jobgroup')->orderBy('fname')->get();
-    //  dd( $user);
+      $users = User::with('employeeStatus','region','dcc','lcc','jobgroup','leaves')->orderBy('fname')->get();
       return view('employees.index', compact('users'));
     }
 

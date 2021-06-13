@@ -47,7 +47,7 @@
                     </tr>
                     <tr>
                         <th>Job Group</th>
-                        <td style="text-align: right">{{ $payslip->user['jobgroup'] ? $payslip->user['jobgroup']  : " " }}</td>
+                        <td style="text-align: right">{{ $payslip->user['jobgroup'] ? $payslip->user['jobgroup']['jonGroupName']  : " " }}</td>
                     </tr>
                     <tr>
                         <th>KRA PIN</th>
@@ -87,8 +87,10 @@
                         <td style="text-align: right">KES {{ number_format($payslip->gross_pay - ($payslip->nssf - $payslip->personalRelief)) }}</td>
                     </tr>
                     <tr>
-                        <th>Deductions</th>
-                        <td style="text-align: right"></td>
+                        <th>Other</th>
+                        <td style="text-align: right">
+                            {{ $payslip->otherDeductions  ? number_format($payslip->otherDeductions) : '0'}}
+                        </td>
                     </tr>
                     <tr>
                         <th>PAYE</th>

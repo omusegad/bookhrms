@@ -21,7 +21,6 @@ class DashboardController extends Controller{
         // Artisan::call('config:cache');
         // Artisan::call('route:cache');
 
-        //Artisan::call('cache:clear');
         $totalRegions = Region::All()->count(); // total regions
         $employees    = User::All()->count(); // total regions
         $totalDcc     = Dccregions::All()->count(); //totall dccs

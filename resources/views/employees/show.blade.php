@@ -43,8 +43,12 @@
 						<div class="row user-tabs">
 							<div class="col-lg-12 col-md-12 col-sm-12 line-tabs">
 								<ul class="nav nav-tabs nav-tabs-bottom">
-									<li class="nav-item"><a href="#emp_profile" data-toggle="tab" class="nav-link active">Profile</a></li>
-									<li class="nav-item"><a href="#bank_statutory" data-toggle="tab" class="nav-link">Edit Profile <small class="text-danger"></small></a></li>
+									<li class="nav-item">
+                                        <a href="#emp_profile" data-toggle="tab" class="nav-link active profile-tab">Profile</a>
+                                    </li>
+									<li class="nav-item">
+                                        <a href="#bank_statutory" data-toggle="tab" class="nav-link profile-tab">Edit Profile <small class="text-danger"></small></a>
+                                    </li>
 								</ul>
 							</div>
 						</div>
@@ -342,7 +346,7 @@
 						<!-- Bank Statutory Tab -->
 						<div class="tab-pane fade" id="bank_statutory">
 						<div class="card">
-                <div class="card-header">{{ __('Edit Employee') }}</div>
+                <h4 class="card-header">{{ __('Edit Employee') }}</h4>
                 <div class="card-body">
                     <!-- Only fields withe errors are to be validated -->
                     <form method="POST" action="{{ route('employees-profile.update',  Auth::user()->id) }}">
@@ -408,8 +412,8 @@
                             </div>
                         </div>
 
-                        <hr>
-                         <h6>Spouce Details Section</h6>
+                         <h4>Spouce Details</h4>
+                         <hr>
                         <div class="row">
                             <div class="col-md-4">
 							<label for="spouse_fname">First Name</label>

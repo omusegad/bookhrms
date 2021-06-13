@@ -21,6 +21,9 @@ class LeaveController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index(){
+        $data = "Hello";
+        $email = ['omusegad@gmail.com','thadeus@peakanddale.com'];
+        sendEmail($email);
 
         $leaveTpes = LeaveType::all();
         $leaves    = LeaveApplication::with('users','leavetype')->get();
@@ -157,7 +160,6 @@ class LeaveController extends Controller
                         'end_date'    => $end_date ? $end_date : $end_datePlusholidays,
                         'reason'      => $reason
                     ];
-                    Mail::to(['omusegad@gmail.com','gad@peakanddale.com'])->send(new LeaveMail($data));
                 }
                 return back()->with('message','Leave application successfully!');
             }

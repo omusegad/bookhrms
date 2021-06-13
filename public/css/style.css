@@ -8236,10 +8236,11 @@ Nandi Aic customization ==========
     height: auto;
 }
 
+a.profile-tab {
+    border-bottom: 1px solid red!important;
+}
 
-.nav-link {
-    border-right: 1px solid;
-    background: #34444C;
+a.nav-link.active.profile-tab {
+    background: red!important;
     color: #fff;
-    margin-right: 2px;
 }

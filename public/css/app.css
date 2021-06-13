@@ -10022,7 +10022,6 @@ PRINT, EXCEL BUTTONS
 
 table.dataTable tbody tr.selected {
     color: #000;
-    background-color: #AADFFA;
 }
 
 .dt-buttons.btn-group.flex-wrap {
