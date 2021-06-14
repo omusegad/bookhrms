@@ -127,10 +127,11 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="table-responsive">
-                        <form action="" method="POST">
-                            <button type=submit>Generate Payroll</button>
+                        <form method="POST" action="{{url('payroll/process-all')}}">
+                            @csrf
                         <table class="table table-striped  table-bordered" id="allsalaries">
                             <thead>
+                                <button type="submit" class="btn btn-outline-primary text-right">Refresh All Payroll</button>
                                 <tr>
                                     <th>
                                        <input type="checkbox" name="select_all"  id="select_all">
@@ -162,7 +163,7 @@
                                 @foreach ($salaries as $item)
                                 <tr>
                                     <td>
-                                        <input type="checkbox"  name="salaries[]" class="allusers" value="{{$item->users['id'] }}"  required/>
+                                        <input type="checkbox"  name="salaries[]" class="allusers" value="{{$item->users['id'] }}"/>
                                     </td>
                                     <td>{{$item->users['employeeID'] }}</td>
                                     <td>
@@ -196,6 +197,7 @@
                                         @php
                                             $status = thisMonthsPayroll($item->users['id'])
                                         @endphp
+
                                         @if( $status =="pending" || empty($status))
                                         <a id="process_salary" class="btn btn-outline-danger" data-url="{{ route('payroll.store', $item->id) }}" data-name="{{$item->users['fname'] . " ".$item->users['lName']  }}"   data-salaryid="{{$item->id }}" data-toggle="modal" data-target="#modal-leave-{{ $item->id }}">
                                             Proccess Salary

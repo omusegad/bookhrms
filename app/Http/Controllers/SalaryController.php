@@ -20,6 +20,8 @@ class SalaryController extends Controller{
      * @return \Illuminate\Http\Response
      */
     public function index(){
+        $employees = User::all();
+        $jobgroup  = Jobgroup::all();
         $salaries  = Salary::with('users')->get();
         $totalBasicSalary  = Salary::sum('basic_salary');
         $totalHseAllowance  = Salary::sum('hse_allowance');
@@ -30,8 +32,7 @@ class SalaryController extends Controller{
         $totalPayee  = Salary::sum('payee');
         $totalNetPay  = Salary::sum('net_pay');
 
-
-      return view('salaries.index', compact('salaries','totalAirtimeAllowance','totalNetPay','totalPayee','totalIncomeTax','totalNhifAllowance','totalTransportAllowance','totalHseAllowance','totalBasicSalary'));
+      return view('salaries.index', compact('salaries','jobgroup','employees','totalAirtimeAllowance','totalNetPay','totalPayee','totalIncomeTax','totalNhifAllowance','totalTransportAllowance','totalHseAllowance','totalBasicSalary'));
 
       }
 
@@ -45,9 +46,9 @@ class SalaryController extends Controller{
     public function store(Request $request){
 
         $data = $request->all();
+       
        ///Get active nssf band
        $nssf  = Nssf::where('status', 'active')->pluck('amount')->first();
-
         //Check if salary exists
         $existingSalary = Salary::where('user_id', $data['user_id'])->first();
         if($existingSalary){

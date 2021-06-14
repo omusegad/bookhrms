@@ -48,7 +48,7 @@
             });
 
             //===== BEGGINNING OF DATATABLES ====//
-            var table = $('#hsalaries,#employees,#allsalaries,#fieldsalaries,#hqpayroll,#hqpayslips,#employees,#hqstaff,#fieldstaff,#leaves').DataTable( {
+            var table = $('#holidays,#hsalaries,#employees,#allsalaries,#fieldleaves,#hqleaves,#fieldsalaries,#hqpayroll,#hqpayslips,#employees,#hqstaff,#fieldstaff,#leaves').DataTable( {
                     dom: 'Bfrtip',
                     lengthChange: false,
                     buttons: ['excel','pdf'],

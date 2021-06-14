@@ -28,7 +28,6 @@ class PayrollController extends Controller
      */
     public function store(Request $request){
         $record = $request->all();
-        dd($record);
 
         $checkMonth = Payroll::where('user_id', $record['user_id'])->where('month', now()->month)->where('year', now()->year)->get();
         if($checkMonth->isEmpty()){
@@ -51,7 +50,7 @@ class PayrollController extends Controller
                     'status'     =>  $record['status'],
 
                 ]);
-            return back()->with('message','Payment Updated successfully!');
+        return back()->with('message','Payment Updated successfully!');
 
            }else{
                 Payroll::updateOrCreate([
@@ -77,9 +76,67 @@ class PayrollController extends Controller
         }
 
 
-
     }
 
+    public function processall(Request $request){
+        $data = $request->all();
+        //dd($data);
+
+        if(!$data){
+            return back()->with('message','Please select what you would like proccessed!');
+        }
+
+       // return  $data;
+        foreach($data['salaries'] as $id ){
+            $record     =  Salary::where('user_id', (int)$id)->first();
+
+            $checkMonth =  Payroll::where('month', now()->month)
+                           ->where('year', now()->year)->get(); //Check month
+            // dd($checkMonth);
+           // return $checkMonth;
+           if($checkMonth->isEmpty()){
+                Payroll::Create([
+                    'user_id'    => $id,
+                    'approvedBy' =>  Auth::user()->id,
+                    'basic_salary'  =>  $record['basic_salary'],
+                    'gross_pay'  =>  $record['gross_pay'],
+                    'nssf'  =>  $record['nssf'],
+                    'nhif'  =>  $record['nhif'],
+                    'payee'  =>  $record['payee'],
+                    'net_pay'  =>  $record['net_pay'],
+                    'bankName'  =>  $record['bankName'],
+                    'bankBranch'  =>  $record['bankBranch'],
+                    'bankCode'  =>  $record['bankCode'],
+                    'beneficiaryAccountNumber'  =>  $record['beneficiaryAccountNumber'],
+                    'reference'  => "Salary",
+                    'month'      => now()->month,
+                    'year'       => now()->year,
+                ]);
+           }else{
+                Payroll::updateOrCreate([
+                    'user_id'    => $id,
+                    'approvedBy' =>  Auth::user()->id,
+                    'basic_salary'  =>  $record['basic_salary'],
+                    'gross_pay'  =>  $record['gross_pay'],
+                    'nssf'  =>  $record['nssf'],
+                    'nhif'  =>  $record['nhif'],
+                    'payee'  =>  $record['payee'],
+                    'net_pay'  =>  $record['net_pay'],
+                    'bankName'  =>  $record['bankName'],
+                    'bankBranch'  =>  $record['bankBranch'],
+                    'bankCode'  =>  $record['bankCode'],
+                    'beneficiaryAccountNumber'  =>  $record['beneficiaryAccountNumber'],
+                    'reference'  => "Salary",
+                    'month'      => now()->month,
+                    'year'       => now()->year,
+                ]);
+           }
+
+        }
+
+      return redirect()->route('hq-salaries.index');
+
+    }
 
 
 }

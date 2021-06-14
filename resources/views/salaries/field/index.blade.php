@@ -70,7 +70,7 @@
                                                                     @if(!empty($item->salary))
                                                                             <tr>
                                                                                 <td>
-                                                                                    <input type="checkbox"  name="salaries[]" class="allusers" value="{{$item->users['id'] }}"  required/>
+                                                                                    <input type="checkbox"  name="salaries[]" class="allusers" value="{{$item->users['id'] }}"/>
                                                                                 </td>
                                                                                 <td>
                                                                                     {{$item->employeeID }}

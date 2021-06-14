@@ -21,9 +21,9 @@ class LeaveController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index(){
-        $data = "Hello";
-        $email = ['omusegad@gmail.com','thadeus@peakanddale.com'];
-        sendEmail($email);
+        // $data = "Hello";
+        // $email = ['omusegad@gmail.com','thadeus@peakanddale.com'];
+        // sendEmail($email);
 
         $leaveTpes = LeaveType::all();
         $leaves    = LeaveApplication::with('users','leavetype')->get();
@@ -109,10 +109,12 @@ class LeaveController extends Controller
                             'end_date'    => $end_date ? $end_date : $end_datePlusholidays,
                             'reason'      => $reason
                         ];
-                        Mail::to(['omusegad@gmail.com','gad@peakanddale.com'])->send(new LeaveMail($data));
+                       // Mail::to(['omusegad@gmail.com','gad@peakanddale.com'])->send(new LeaveMail($data));
 
                     }
-                    return back()->with('message','Leave application successfully!');
+                   // return back()->with('message','Leave application successfully!');
+                   return redirect()->route('leaves.index')->with('message','Leave application successfully!');
+
                  }
 
             }
@@ -137,9 +139,11 @@ class LeaveController extends Controller
                         'end_date'    => $end_date ? $end_date : $end_datePlusholidays,
                         'reason'      => $reason
                     ];
-                    Mail::to(['omusegad@gmail.com','gad@peakanddale.com'])->send(new LeaveMail($data));
+                    //Mail::to(['omusegad@gmail.com','gad@peakanddale.com'])->send(new LeaveMail($data));
                 }
-                return back()->with('message','Leave application successfully!');
+                //return back()->with('message','Leave application successfully!');
+                return redirect()->route('leaves.index')->with('message','Leave application successfully!');
+
             }else{
                 $newRemainingDays =( $getLeaveType['leaveDays'] - $appliedDays );
                 $created = LeaveApplication::create([
@@ -161,7 +165,9 @@ class LeaveController extends Controller
                         'reason'      => $reason
                     ];
                 }
-                return back()->with('message','Leave application successfully!');
+                // return back()->with('message','Leave application successfully!');
+                return redirect()->route('leaves.index')->with('message','Leave application successfully!');
+
             }
         }
 

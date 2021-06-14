@@ -61,7 +61,9 @@
                         <table id="leaves" class="table table-bordered">
                             <thead>
                                 <tr>
-                                    <th>S/N</th>
+                                    <th>
+                                        <input type="checkbox" name="select_all"  id="select_all">
+                                    </th>
                                     <th>Applied Date</th>
                                     <th>Name</th>
                                     <th>Position</th>
@@ -82,7 +84,9 @@
                              @foreach($leaves as $data)
                              @if(!empty($data))
                                         <tr>
-                                            <td>{{$count++}}</td>
+                                            <td>
+                                                <input type="checkbox"  name="salaries[]" class="allusers" value="{{ $data->users['id'] }}"/>
+                                            </td>
                                             <td>{{ date('d-m-y', strtotime($data->created_at)) }} </td>
                                             <td>
                                                 {{$data->users['fname']}} {{$data->users['lName']}}

@@ -25,31 +25,58 @@
                 </div>
                 <!-- /Page Header -->
 
+                <div class="row">
+                    <div class="col-lg-12">
+                        @if(session()->has('message'))
+                            <div class="alert alert-danger">
+                                <a href="#" class="close" data-dismiss="alert">&times;</a>
+                            {{session('message')}}
+                            </div>
+                        @endif
+                    </div>
+                 </div>
 
                 <div class="row">
                     <div class="col-md-12">
                         <div class="table-responsive">
-                        <table class="table table-striped" id="leaves">
+                        <table class="table table-striped" id="holidays">
                                 <thead>
                                     <tr>
-                                        <th>ID</th>
+                                        <th>
+                                            <input type="checkbox" name="select_all"  id="select_all">
+                                        </th>
                                         <th>Holiday Name</th>
                                         <th>Date</th>
                                         <!-- <th class="text-center">Status</th> -->
-                                        <th class="text-right">Actions</th>
+                                        <th class="text-center">Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                 @php ($count = 1)
                                  @foreach($holidays as $data)
                                     <tr>
-                                        <td>{{$count++}}</td>
+                                        <td>
+                                            <input type="checkbox"  name="salaries[]" class="allusers" value="{{ $data->id }}"  required/>
+                                        </td>
                                         <td>{{ $data->hName}}</td>
                                         <td> {{$data->holidayDate ? $data->holidayDate: " " }}</td>
                                         <td class="text-center">
+                                            @can('delete articles')
+                                            <div class="action-btn">
                                             <a  href="{{ route('holidays.edit', $data->id) }}">
                                                 <i class="fa fa-pencil m-r-5"></i>
                                             </a>
+                                            </div>
+                                            <div class="action-btn">
+                                                 <form action="{{ route('holidays.destroy',$data->id)}}" method="POST">
+                                                     @csrf
+                                                     @method('DELETE')
+                                                     <button type="submit" class="">
+                                                         <i class="fa fa-trash-o m-r-5"></i>
+                                                     </button>
+                                                 </form>
+                                            </div>
+                                         @endcan
                                         </td>
 
                                     </tr>

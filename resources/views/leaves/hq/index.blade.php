@@ -13,17 +13,19 @@
                 <div class="page-header">
                     <div class="row align-items-center">
                         <div class="col">
-                            <h3 class="page-title">Hq Employee Leaves</h3>
+                            <h3 class="page-title">Hq Leaves</h3>
                         </div>
                 </div>
 
             <div class="row">
                     <div class="col-md-12">
                         <div class="table-responsive">
-                            <table class="table table-striped" id="leaves">
+                            <table class="table table-striped" id="hqleaves">
                                 <thead>
                                     <tr>
-                                        <th>S/N</th>
+                                        <th>
+                                            <input type="checkbox" name="select_all"  id="select_all">
+                                        </th>
                                         <th>Name</th>
                                         <th>Position</th>
                                         <th>Employee No</th>
@@ -42,7 +44,9 @@
                               @foreach($leaves as $item)
                               @if($item->users)
                                 <tr>
-                                    <td>{{$count++}}</td>
+                                    <td>
+                                        <input type="checkbox"  name="salaries[]" class="allusers" value="{{ $item->users['id'] }}"/>
+                                    </td>
                                     <td>
                                         {{$item->users['fname'] }} {{$item->users['lName'] }}
                                     </td>

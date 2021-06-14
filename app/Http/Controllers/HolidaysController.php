@@ -52,4 +52,9 @@ class HolidaysController extends Controller
         return back()->with('message','Holiday updated successfully!');
     }
 
+    public function destroy($id){
+        Holiday::find($id)->delete();
+        return back()->with('message','Holiday deleted successfully!');
+    }
+
 }
