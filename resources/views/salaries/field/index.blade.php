@@ -268,6 +268,7 @@
 						</div>
 					</section>
 					<!-- /Tabs -->
+
                     </div>
                 </div>
         <!-- /Page Content -->

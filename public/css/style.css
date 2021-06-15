@@ -8237,7 +8237,8 @@ Nandi Aic customization ==========
 }
 
 a.profile-tab {
-    border-bottom: 1px solid red!important;
+    border: 1px solid red!important;
+    margin-right:4px!important;
 }
 
 a.nav-link.active.profile-tab {

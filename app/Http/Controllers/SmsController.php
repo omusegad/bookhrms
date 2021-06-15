@@ -4,15 +4,19 @@ namespace App\Http\Controllers;
 
 use Carbon\Carbon;
 use App\Models\Sms;
+use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\Mail;
+use AfricasTalking\SDK\AfricasTalking;
+use Illuminate\Support\Facades\Response;
 
 class SmsController extends Controller{
 
     public function index(){
        $contacts = Sms::all();
-       return view('sms.index', compact('contacts'));
+       $users =  User::all();
+
+       return view('sms.index', compact('contacts','users'));
     }
 
     /**
@@ -25,16 +29,21 @@ class SmsController extends Controller{
     }
 
     public function store(Request $request){
-        dd($request->all());
-        // $email = "omusegad@gmail.com";
-        // $data = array('name'=>"Virat Gandhi");
+        $data = $request->all();
+        $username = 'grubkenya'; // use 'sandbox' for development in the test environment
+        $apiKey   = '02fdb18693fd102893f1d2e5e13343864c61163f1b93d693bfda6a06faae749a'; // use your sandbox app API key for development in the test environment
+        $AT       = new AfricasTalking($username, $apiKey);
 
-        // Mail::send(['text'=>'mail'], $data, function($message) {
-        //    $message->to("ommusegad@gmail.com", 'Tutorials Point')->subject
-        //       ('Laravel Basic Testing Mail');
-        //    $message->from("omusegad@gmail.com",'Virat Gandhi');
-        // });
-        // echo "Basic Email Sent. Check your inbox.";
+        // Get one of the services
+        $sms      = $AT->sms();
+
+        // Use the service
+        $result   = $sms->send([
+            'to'      => $data['phoneNumber'],
+            'message' => $data['message']
+        ]);
+
+        return back()->with('message','Text message sent successfully');
 
     }
 
@@ -45,6 +54,27 @@ class SmsController extends Controller{
         );
         return Response::download($path, 'contact_format_sample.xlsx', $headers);
         return back()->with('message','Download Successfully');
+    }
+
+    public function senttoall(Request $request){
+        $data = $request->all();
+
+
+        $username = 'grubkenya'; // use 'sandbox' for development in the test environment
+        $apiKey   = '02fdb18693fd102893f1d2e5e13343864c61163f1b93d693bfda6a06faae749a'; // use your sandbox app API key for development in the test environment
+        $AT       = new AfricasTalking($username, $apiKey);
+
+        // Get one of the services
+        $sms      = $AT->sms();
+
+        // Use the service
+        $result   = $sms->send([
+            'to'      => $data['phoneNumber'],
+            'message' => $data['message']
+        ]);
+
+        return back()->with('message','Text message sent successfully');
+
     }
 
 

@@ -22,8 +22,13 @@ class LeaveController extends Controller
      */
     public function index(){
         // $data = "Hello";
-        // $email = ['omusegad@gmail.com','thadeus@peakanddale.com'];
-        // sendEmail($email);
+        // Artisan::call('cache:clear');
+        // Artisan::call('view:clear');
+        // Artisan::call('config:cache');
+        // Artisan::call('route:cache');
+
+        $email = ['omusegad@gmail.com','thadeus@peakanddale.com'];
+        sendEmail($email);
 
         $leaveTpes = LeaveType::all();
         $leaves    = LeaveApplication::with('users','leavetype')->get();
