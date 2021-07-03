@@ -1,4 +1,15 @@
 <?php return array (
+  'barryvdh/laravel-debugbar' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'Barryvdh\\Debugbar\\ServiceProvider',
+    ),
+    'aliases' => 
+    array (
+      'Debugbar' => 'Barryvdh\\Debugbar\\Facade',
+    ),
+  ),
   'barryvdh/laravel-dompdf' => 
   array (
     'providers' => 
@@ -79,13 +90,6 @@
     'providers' => 
     array (
       0 => 'NunoMaduro\\Collision\\Adapters\\Laravel\\CollisionServiceProvider',
-    ),
-  ),
-  'rap2hpoutre/fast-excel' => 
-  array (
-    'providers' => 
-    array (
-      0 => 'Rap2hpoutre\\FastExcel\\Providers\\FastExcelServiceProvider',
     ),
   ),
   'spatie/laravel-permission' => 

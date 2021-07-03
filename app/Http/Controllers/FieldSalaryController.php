@@ -99,12 +99,5 @@ class FieldSalaryController extends Controller
 
      }
 
-  // Download excel
-  public function exportexcel(Request $request){
-    dd($request);
-    return Excel::download(new FieldSalaryExport, 'hq-employees-salary.xlsx');
-}
-
-
 
 }

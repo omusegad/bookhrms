@@ -27,6 +27,8 @@
         "webpack": "^5.38.1"
     },
     "dependencies": {
-        "@fortawesome/fontawesome-free": "^5.15.3"
+        "@fortawesome/fontawesome-free": "^5.15.3",
+        "datatables.net-bs4": "^3.2.2",
+        "datatables.net-buttons-bs4": "^1.7.1"
     }
 }

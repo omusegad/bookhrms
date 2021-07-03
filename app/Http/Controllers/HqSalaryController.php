@@ -8,9 +8,7 @@ use App\Models\Salary;
 use App\Models\Payroll;
 use App\Models\Jobgroup;
 use Illuminate\Http\Request;
-use App\Exports\HqPayrollExport;
 use Illuminate\Support\Facades\Auth;
-use Maatwebsite\Excel\Facades\Excel;
 
 class HqSalaryController extends Controller
 {
@@ -30,11 +28,6 @@ class HqSalaryController extends Controller
 
         return view('salaries.hq.index', compact('userpayroll','hqsalary'));
 
-    }
-
-    // Download excel
-    public function exportexcel(){
-        return Excel::download(new HqPayrollExport, 'hq-employees-salary.xlsx');
     }
 
 

@@ -15,6 +15,7 @@ class CreateEmployeeSalaryTable extends Migration
         Schema::create('employee_salary', function (Blueprint $table) {
             $table->id();
             $table->unsignedInteger('user_id')->index();
+           $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->string("education");
             $table->string("grade");
             $table->string("job_group");
@@ -30,10 +31,12 @@ class CreateEmployeeSalaryTable extends Migration
             $table->float("payAfterTax")->nullable();
             $table->float("net_salary")->nullable();
             $table->timestamps();
+
         });
+
     }
 
-   
+
 
 
     /**

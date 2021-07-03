@@ -1,5 +1,3 @@
-{{-- <script src="https://code.jquery.com/jquery-3.5.1.js"></script> --}}
-
 <script src="{{ asset('js/jquery-3.5.1.js') }}"></script>
 <script src="{{ asset('js/app.js') }}"></script>
 <script src="{{ asset('js/popper.min.js') }}"></script>
@@ -15,11 +13,13 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
-<script src="https://cdn.datatables.net/buttons/1.7.0/js/buttons.html5.min.js"></script>
-<script src="https://cdn.datatables.net/buttons/1.7.0/js/buttons.print.min.js"></script>
-<script src="https://cdn.datatables.net/buttons/1.7.0/js/buttons.colVis.min.js"></script>
-<script src="https://cdn.datatables.net/buttons/1.7.0/js/buttons.print.min.js"></script>
-<script src="https://cdn.datatables.net/select/1.3.3/js/dataTables.select.min.js"></script>
+<script src="{{ asset('js/buttons.html5.min.js')}}"></script>
+<script src="{{ asset('js/buttons.print.min.js') }}"></script>
+<script src="{{ asset('js/buttons.colVis.min.js') }}"></script>
+<script src="{{ asset('js/buttons.print.min.js') }}"></script>
+<script src="{{ asset('js/sweetalert.min.js') }}"></script>
+<script src="{{ asset('js/dataTables.select.min.js') }}"></script>
+
 
 <script type="text/javascript">
     $(document).ready(function(){
@@ -48,35 +48,35 @@
             });
 
             //===== BEGGINNING OF DATATABLES ====//
-            var table = $('#holidays,#hsalaries,#employees,#allsalaries,#fieldleaves,#hqleaves,#fieldsalaries,#hqpayroll,#hqpayslips,#employees,#hqstaff,#fieldstaff,#leaves').DataTable( {
+            let tableIds = "#holidays,#hsalaries,#employees,#fieldleaves,#hqleaves,#fieldsalaries,#hqpayroll,#hqpayslips,#employees,#hqstaff,#fieldstaff,#leaves"
+
+            var table = $(tableIds).DataTable( {
                     dom: 'Bfrtip',
                     lengthChange: false,
                     buttons: ['excel','pdf'],
                     'columnDefs': [
                         {
                             'targets': 0,
-                            "orderable": false,
-                            className: 'select-checkbox',
+                            'checkboxes': {
+                               'selectRow': true
+                            }
 
                         }
                     ],
                     select: {
                             style: 'multi',
-                            selector: 'td:first-child'
+                                style: 'os', // 'single', 'multi', 'os', 'multi+shift'
+                                selector: 'td:first-child',
                             },
-                    });
-
-                    // Check/uncheck all checkboxes in the table
-                    $('#select_all').on('click', function(){
-                        var rows = table.rows({ 'search': 'applied' }).nodes();
-                        $('input[type="checkbox"]', rows).prop('checked', this.checked);
+                            'order': [[1, 'asc']]
                     });
 
                  table.buttons().container()
                 .appendTo( '#hqpayroll_wrapper .col-md-6:eq(0)' );
            //===== END OF DATATABLES ====//
 
-    });
+
+});
 
     </script>
     @stack('custom-javascripts')

@@ -67,14 +67,10 @@ Route::middleware(['auth'])->group(function () {
         Route::resource('/lccs-regions', LccController::class);
         Route::resource('/job-groups', JobgroupController::class);
         Route::resource('/salaries', SalaryController::class);
-
+        Route::get('/mysalaries', [SalaryController::class, 'getsalaries']);
 
         Route::resource('/field-salaries',FieldSalaryController::class)->only(['index','store']);
         Route::resource('/hq-salaries',HqSalaryController::class)->only(['index','store']);
-
-        Route::get('/salaries-export-excel', [SalaryController::class, 'exportexcel']);
-        Route::get('/hq-salaries-export-excel', [HqSalaryController::class, 'exportexcel']);
-        Route::get('/field-salaries-export-excel', [FieldSalaryController::class, 'exportexcel']);
 
         Route::resource('/salary-settings', SalarySettingsController::class);
         Route::resource('/holidays', HolidaysController::class);
@@ -88,8 +84,6 @@ Route::middleware(['auth'])->group(function () {
         //sms
         Route::resource('/sms', SmsController::class)->only(['index','create','store','upload']);
         Route::get('/download-contacts', [SmsController::class, 'download']);
-
-
 
 
         Route::resource('/my-payroll',MyPayrollController::class)->only(['index']);

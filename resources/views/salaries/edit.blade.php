@@ -155,14 +155,14 @@
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <label>Bank Name</label>
-                                        <input name="bankName" value="KCB Kapsabet" class="form-control" type="text" readonly>
+                                        <input name="bankName" value="{{$salary->bankName ? $salary->bankName : old('bankName') }}" class="form-control" type="text">
                                     </div>
                                 </div>
 
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <label>Branch Name</label>
-                                        <input name="bankBranch" value="Kapsabet" class="form-control" type="text" readonly>
+                                        <input name="bankBranch" value="{{$salary->bankBranch ? $salary->bankBranch : old('bankBranch') }}" class="form-control" type="text">
                                     </div>
                                 </div>
 

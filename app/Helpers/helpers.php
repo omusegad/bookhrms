@@ -20,7 +20,7 @@ if (! function_exists('thisMonthsPayroll')) {
             'month'   => now()->month
             ])->first();
        // dd($payStatus);
-       return isset($payStatus['status']) && !empty($payStatus['status']) ?: '';
+       return $payStatus['status'] ?? null ;
     }
 }
 

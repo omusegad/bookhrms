@@ -6,6 +6,9 @@
 						<ul>
 							<li><a href="{{ route('dashboard') }}">
 							<i class="fa fa-dashboard"></i> <span> Dashboard </span></a></li>
+                            <li><a href="">
+                                <i class="fa fa-person"></i> <span> Officials </span></a>
+                            </li>
 							<li class="submenu">
 								<a href="#">
 								<i class="fa fa-users"></i>
