@@ -74,8 +74,8 @@ Route::middleware(['auth'])->group(function () {
 
         Route::resource('/salary-settings', SalarySettingsController::class);
         Route::resource('/holidays', HolidaysController::class);
-        Route::resource('/payroll', PayrollController::class)->only(['index','store']);
-        Route::post('payroll/process-all', [PayrollController::class, 'processall']);
+        Route::resource('/payroll', PayrollController::class);
+        Route::post('/process-all', [PayrollController::class, 'processall'])->name('payroll.all');
 
         Route::resource('/payslip', PayslipController::class);
         Route::resource('/hq-leaves',HqLeaveController::class)->only(['index']);

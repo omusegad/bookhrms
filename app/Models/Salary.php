@@ -13,9 +13,14 @@ class Salary extends Model
         'id','created_at','updated_at'
     ];
 
-    public function users()
-    {
-        return $this->hasOne(User::class, 'id', 'user_id')->orderBy('fname');
+
+    /**
+     * Get the user that owns the Salary
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function users(){
+        return $this->belongsTo(User::class, 'user_id', 'id');
     }
 
 

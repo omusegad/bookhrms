@@ -49,7 +49,6 @@
 
             //===== BEGGINNING OF DATATABLES ====//
             let tableIds = "#holidays,#hsalaries,#employees,#fieldleaves,#hqleaves,#fieldsalaries,#hqpayroll,#hqpayslips,#employees,#hqstaff,#fieldstaff,#leaves"
-
             var table = $(tableIds).DataTable( {
                     dom: 'Bfrtip',
                     lengthChange: false,
@@ -73,7 +72,7 @@
 
                  table.buttons().container()
                 .appendTo( '#hqpayroll_wrapper .col-md-6:eq(0)' );
-           //===== END OF DATATABLES ====//
+            //===== END OF DATATABLES ====//
 
 
 });

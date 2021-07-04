@@ -18,13 +18,73 @@ app('router')->setCompiledRoutes(
     0 => false,
     1 => 
     array (
+      '/_debugbar/open' => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'debugbar.openhandler',
+          ),
+          1 => NULL,
+          2 => 
+          array (
+            'GET' => 0,
+            'HEAD' => 1,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => false,
+          6 => NULL,
+        ),
+      ),
+      '/_debugbar/assets/stylesheets' => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'debugbar.assets.css',
+          ),
+          1 => NULL,
+          2 => 
+          array (
+            'GET' => 0,
+            'HEAD' => 1,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => false,
+          6 => NULL,
+        ),
+      ),
+      '/_debugbar/assets/javascript' => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'debugbar.assets.js',
+          ),
+          1 => NULL,
+          2 => 
+          array (
+            'GET' => 0,
+            'HEAD' => 1,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => false,
+          6 => NULL,
+        ),
+      ),
       '/api/user' => 
       array (
         0 => 
         array (
           0 => 
           array (
-            '_route' => 'generated::kGLElZd6GfuPs8qy',
+            '_route' => 'generated::fXM6DyHiy1fO85M6',
           ),
           1 => NULL,
           2 => 
@@ -61,7 +121,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::ynT3NvKguOHkQvjF',
+            '_route' => 'generated::UhVYknvdM8Zr6JIU',
           ),
           1 => NULL,
           2 => 
@@ -116,7 +176,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::WvYHLbStjR4B29e8',
+            '_route' => 'generated::t5RJS5Ikk0OBYV3f',
           ),
           1 => NULL,
           2 => 
@@ -207,7 +267,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::uSPR94B7smmYfDGQ',
+            '_route' => 'generated::bOhl0dT1RHipjEv3',
           ),
           1 => NULL,
           2 => 
@@ -246,7 +306,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::dfB2pw46xtAN5c3y',
+            '_route' => 'generated::XWcYkAd9lZqS8xxZ',
           ),
           1 => NULL,
           2 => 
@@ -266,7 +326,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::U11C27dq8qApHfK7',
+            '_route' => 'generated::tPMI3cGeDFenAKn8',
           ),
           1 => NULL,
           2 => 
@@ -378,7 +438,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::aS8pmqrwhJAGZqHV',
+            '_route' => 'generated::aOt5W6aBQt63JfNZ',
           ),
           1 => NULL,
           2 => 
@@ -398,7 +458,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::ZcBOfpEHGAUPJ1cI',
+            '_route' => 'generated::4moJU39w8b0Q3FES',
           ),
           1 => NULL,
           2 => 
@@ -860,6 +920,26 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
+      '/mysalaries' => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'generated::4vqp1bO5pkMQ1pZV',
+          ),
+          1 => NULL,
+          2 => 
+          array (
+            'GET' => 0,
+            'HEAD' => 1,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => false,
+          6 => NULL,
+        ),
+      ),
       '/field-salaries' => 
       array (
         0 => 
@@ -925,66 +1005,6 @@ app('router')->setCompiledRoutes(
           2 => 
           array (
             'POST' => 0,
-          ),
-          3 => NULL,
-          4 => false,
-          5 => false,
-          6 => NULL,
-        ),
-      ),
-      '/salaries-export-excel' => 
-      array (
-        0 => 
-        array (
-          0 => 
-          array (
-            '_route' => 'generated::F1frvFnMkl3n9aQ2',
-          ),
-          1 => NULL,
-          2 => 
-          array (
-            'GET' => 0,
-            'HEAD' => 1,
-          ),
-          3 => NULL,
-          4 => false,
-          5 => false,
-          6 => NULL,
-        ),
-      ),
-      '/hq-salaries-export-excel' => 
-      array (
-        0 => 
-        array (
-          0 => 
-          array (
-            '_route' => 'generated::HpVgI2ot69CtBF9J',
-          ),
-          1 => NULL,
-          2 => 
-          array (
-            'GET' => 0,
-            'HEAD' => 1,
-          ),
-          3 => NULL,
-          4 => false,
-          5 => false,
-          6 => NULL,
-        ),
-      ),
-      '/field-salaries-export-excel' => 
-      array (
-        0 => 
-        array (
-          0 => 
-          array (
-            '_route' => 'generated::HLSvFiRBQx4OWM3V',
-          ),
-          1 => NULL,
-          2 => 
-          array (
-            'GET' => 0,
-            'HEAD' => 1,
           ),
           3 => NULL,
           4 => false,
@@ -1140,13 +1160,33 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      '/payroll/process-all' => 
+      '/payroll/create' => 
       array (
         0 => 
         array (
           0 => 
           array (
-            '_route' => 'generated::Y8o9AkhAseNo9U3g',
+            '_route' => 'payroll.create',
+          ),
+          1 => NULL,
+          2 => 
+          array (
+            'GET' => 0,
+            'HEAD' => 1,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => false,
+          6 => NULL,
+        ),
+      ),
+      '/process-all' => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'payroll.all',
           ),
           1 => NULL,
           2 => 
@@ -1317,7 +1357,7 @@ app('router')->setCompiledRoutes(
         array (
           0 => 
           array (
-            '_route' => 'generated::s3y6Vc60tFOFffkJ',
+            '_route' => 'generated::DCUxPEjf8BSpHh5I',
           ),
           1 => NULL,
           2 => 
@@ -1374,11 +1414,81 @@ app('router')->setCompiledRoutes(
     ),
     2 => 
     array (
-      0 => '{^(?|/pa(?|ssword/reset/([^/]++)(*:34)|yslip/([^/]++)(?|(*:58)|/edit(*:70)|(*:77)))|/employees(?|/([^/]++)(?|(*:111)|/edit(*:124)|(*:132))|\\-profile/([^/]++)(*:159))|/l(?|eave(?|s/([^/]++)(?|(*:193)|/edit(*:206)|(*:214))|\\-(?|types/([^/]++)(?|(*:245)|/edit(*:258)|(*:266))|settings/([^/]++)(?|(*:295)|/edit(*:308)|(*:316))))|ccs\\-regions/([^/]++)(?|(*:351)|/edit(*:364)|(*:372)))|/regions/([^/]++)(?|(*:402)|/edit(*:415)|(*:423))|/dccs\\-regions/([^/]++)(?|(*:458)|/edit(*:471)|(*:479))|/job\\-groups/([^/]++)(?|(*:512)|/edit(*:525)|(*:533))|/salar(?|ies/([^/]++)(?|(*:566)|/edit(*:579)|(*:587))|y\\-settings/([^/]++)(?|(*:619)|/edit(*:632)|(*:640)))|/holidays/([^/]++)(?|(*:671)|/edit(*:684)|(*:692)))/?$}sDu',
+      0 => '{^(?|/_debugbar/(?|c(?|lockwork/([^/]++)(*:42)|ache/([^/]++)(?:/([^/]++))?(*:76))|telescope/([^/]++)(*:102))|/pa(?|ssword/reset/([^/]++)(*:138)|y(?|roll/([^/]++)(?|(*:166)|/edit(*:179)|(*:187))|slip/([^/]++)(?|(*:212)|/edit(*:225)|(*:233))))|/employees(?|/([^/]++)(?|(*:269)|/edit(*:282)|(*:290))|\\-profile/([^/]++)(*:317))|/l(?|eave(?|s/([^/]++)(?|(*:351)|/edit(*:364)|(*:372))|\\-(?|types/([^/]++)(?|(*:403)|/edit(*:416)|(*:424))|settings/([^/]++)(?|(*:453)|/edit(*:466)|(*:474))))|ccs\\-regions/([^/]++)(?|(*:509)|/edit(*:522)|(*:530)))|/regions/([^/]++)(?|(*:560)|/edit(*:573)|(*:581))|/dccs\\-regions/([^/]++)(?|(*:616)|/edit(*:629)|(*:637))|/job\\-groups/([^/]++)(?|(*:670)|/edit(*:683)|(*:691))|/salar(?|ies/([^/]++)(?|(*:724)|/edit(*:737)|(*:745))|y\\-settings/([^/]++)(?|(*:777)|/edit(*:790)|(*:798)))|/holidays/([^/]++)(?|(*:829)|/edit(*:842)|(*:850)))/?$}sDu',
     ),
     3 => 
     array (
-      34 => 
+      42 => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'debugbar.clockwork',
+          ),
+          1 => 
+          array (
+            0 => 'id',
+          ),
+          2 => 
+          array (
+            'GET' => 0,
+            'HEAD' => 1,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => true,
+          6 => NULL,
+        ),
+      ),
+      76 => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'debugbar.cache.delete',
+            'tags' => NULL,
+          ),
+          1 => 
+          array (
+            0 => 'key',
+            1 => 'tags',
+          ),
+          2 => 
+          array (
+            'DELETE' => 0,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => true,
+          6 => NULL,
+        ),
+      ),
+      102 => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'debugbar.telescope',
+          ),
+          1 => 
+          array (
+            0 => 'id',
+          ),
+          2 => 
+          array (
+            'GET' => 0,
+            'HEAD' => 1,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => true,
+          6 => NULL,
+        ),
+      ),
+      138 => 
       array (
         0 => 
         array (
@@ -1401,7 +1511,95 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      58 => 
+      166 => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'payroll.show',
+          ),
+          1 => 
+          array (
+            0 => 'payroll',
+          ),
+          2 => 
+          array (
+            'GET' => 0,
+            'HEAD' => 1,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => true,
+          6 => NULL,
+        ),
+      ),
+      179 => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'payroll.edit',
+          ),
+          1 => 
+          array (
+            0 => 'payroll',
+          ),
+          2 => 
+          array (
+            'GET' => 0,
+            'HEAD' => 1,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => false,
+          6 => NULL,
+        ),
+      ),
+      187 => 
+      array (
+        0 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'payroll.update',
+          ),
+          1 => 
+          array (
+            0 => 'payroll',
+          ),
+          2 => 
+          array (
+            'PUT' => 0,
+            'PATCH' => 1,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => true,
+          6 => NULL,
+        ),
+        1 => 
+        array (
+          0 => 
+          array (
+            '_route' => 'payroll.destroy',
+          ),
+          1 => 
+          array (
+            0 => 'payroll',
+          ),
+          2 => 
+          array (
+            'DELETE' => 0,
+          ),
+          3 => NULL,
+          4 => false,
+          5 => true,
+          6 => NULL,
+        ),
+      ),
+      212 => 
       array (
         0 => 
         array (
@@ -1424,7 +1622,7 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      70 => 
+      225 => 
       array (
         0 => 
         array (
@@ -1447,7 +1645,7 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      77 => 
+      233 => 
       array (
         0 => 
         array (
@@ -1489,7 +1687,7 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      111 => 
+      269 => 
       array (
         0 => 
         array (
@@ -1512,7 +1710,7 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      124 => 
+      282 => 
       array (
         0 => 
         array (
@@ -1535,7 +1733,7 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      132 => 
+      290 => 
       array (
         0 => 
         array (
@@ -1577,7 +1775,7 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      159 => 
+      317 => 
       array (
         0 => 
         array (
@@ -1600,7 +1798,7 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      193 => 
+      351 => 
       array (
         0 => 
         array (
@@ -1623,7 +1821,7 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      206 => 
+      364 => 
       array (
         0 => 
         array (
@@ -1646,7 +1844,7 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      214 => 
+      372 => 
       array (
         0 => 
         array (
@@ -1688,7 +1886,7 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      245 => 
+      403 => 
       array (
         0 => 
         array (
@@ -1711,7 +1909,7 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      258 => 
+      416 => 
       array (
         0 => 
         array (
@@ -1734,7 +1932,7 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      266 => 
+      424 => 
       array (
         0 => 
         array (
@@ -1776,7 +1974,7 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      295 => 
+      453 => 
       array (
         0 => 
         array (
@@ -1799,7 +1997,7 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      308 => 
+      466 => 
       array (
         0 => 
         array (
@@ -1822,7 +2020,7 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      316 => 
+      474 => 
       array (
         0 => 
         array (
@@ -1864,7 +2062,7 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      351 => 
+      509 => 
       array (
         0 => 
         array (
@@ -1887,7 +2085,7 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      364 => 
+      522 => 
       array (
         0 => 
         array (
@@ -1910,7 +2108,7 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      372 => 
+      530 => 
       array (
         0 => 
         array (
@@ -1952,7 +2150,7 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      402 => 
+      560 => 
       array (
         0 => 
         array (
@@ -1975,7 +2173,7 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      415 => 
+      573 => 
       array (
         0 => 
         array (
@@ -1998,7 +2196,7 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      423 => 
+      581 => 
       array (
         0 => 
         array (
@@ -2040,7 +2238,7 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      458 => 
+      616 => 
       array (
         0 => 
         array (
@@ -2063,7 +2261,7 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      471 => 
+      629 => 
       array (
         0 => 
         array (
@@ -2086,7 +2284,7 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      479 => 
+      637 => 
       array (
         0 => 
         array (
@@ -2128,7 +2326,7 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      512 => 
+      670 => 
       array (
         0 => 
         array (
@@ -2151,7 +2349,7 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      525 => 
+      683 => 
       array (
         0 => 
         array (
@@ -2174,7 +2372,7 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      533 => 
+      691 => 
       array (
         0 => 
         array (
@@ -2216,7 +2414,7 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      566 => 
+      724 => 
       array (
         0 => 
         array (
@@ -2239,7 +2437,7 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      579 => 
+      737 => 
       array (
         0 => 
         array (
@@ -2262,7 +2460,7 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      587 => 
+      745 => 
       array (
         0 => 
         array (
@@ -2304,7 +2502,7 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      619 => 
+      777 => 
       array (
         0 => 
         array (
@@ -2327,7 +2525,7 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      632 => 
+      790 => 
       array (
         0 => 
         array (
@@ -2350,7 +2548,7 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      640 => 
+      798 => 
       array (
         0 => 
         array (
@@ -2392,7 +2590,7 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      671 => 
+      829 => 
       array (
         0 => 
         array (
@@ -2415,7 +2613,7 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      684 => 
+      842 => 
       array (
         0 => 
         array (
@@ -2438,7 +2636,7 @@ app('router')->setCompiledRoutes(
           6 => NULL,
         ),
       ),
-      692 => 
+      850 => 
       array (
         0 => 
         array (
@@ -2495,7 +2693,228 @@ app('router')->setCompiledRoutes(
   ),
   'attributes' => 
   array (
-    'generated::kGLElZd6GfuPs8qy' => 
+    'debugbar.openhandler' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'GET',
+        1 => 'HEAD',
+      ),
+      'uri' => '_debugbar/open',
+      'action' => 
+      array (
+        'domain' => NULL,
+        'middleware' => 
+        array (
+          0 => 'Barryvdh\\Debugbar\\Middleware\\DebugbarEnabled',
+        ),
+        'uses' => 'Barryvdh\\Debugbar\\Controllers\\OpenHandlerController@handle',
+        'as' => 'debugbar.openhandler',
+        'controller' => 'Barryvdh\\Debugbar\\Controllers\\OpenHandlerController@handle',
+        'namespace' => 'Barryvdh\\Debugbar\\Controllers',
+        'prefix' => '_debugbar',
+        'where' => 
+        array (
+        ),
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+    ),
+    'debugbar.clockwork' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'GET',
+        1 => 'HEAD',
+      ),
+      'uri' => '_debugbar/clockwork/{id}',
+      'action' => 
+      array (
+        'domain' => NULL,
+        'middleware' => 
+        array (
+          0 => 'Barryvdh\\Debugbar\\Middleware\\DebugbarEnabled',
+        ),
+        'uses' => 'Barryvdh\\Debugbar\\Controllers\\OpenHandlerController@clockwork',
+        'as' => 'debugbar.clockwork',
+        'controller' => 'Barryvdh\\Debugbar\\Controllers\\OpenHandlerController@clockwork',
+        'namespace' => 'Barryvdh\\Debugbar\\Controllers',
+        'prefix' => '_debugbar',
+        'where' => 
+        array (
+        ),
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+    ),
+    'debugbar.telescope' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'GET',
+        1 => 'HEAD',
+      ),
+      'uri' => '_debugbar/telescope/{id}',
+      'action' => 
+      array (
+        'domain' => NULL,
+        'middleware' => 
+        array (
+          0 => 'Barryvdh\\Debugbar\\Middleware\\DebugbarEnabled',
+        ),
+        'uses' => 'Barryvdh\\Debugbar\\Controllers\\TelescopeController@show',
+        'as' => 'debugbar.telescope',
+        'controller' => 'Barryvdh\\Debugbar\\Controllers\\TelescopeController@show',
+        'namespace' => 'Barryvdh\\Debugbar\\Controllers',
+        'prefix' => '_debugbar',
+        'where' => 
+        array (
+        ),
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+    ),
+    'debugbar.assets.css' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'GET',
+        1 => 'HEAD',
+      ),
+      'uri' => '_debugbar/assets/stylesheets',
+      'action' => 
+      array (
+        'domain' => NULL,
+        'middleware' => 
+        array (
+          0 => 'Barryvdh\\Debugbar\\Middleware\\DebugbarEnabled',
+        ),
+        'uses' => 'Barryvdh\\Debugbar\\Controllers\\AssetController@css',
+        'as' => 'debugbar.assets.css',
+        'controller' => 'Barryvdh\\Debugbar\\Controllers\\AssetController@css',
+        'namespace' => 'Barryvdh\\Debugbar\\Controllers',
+        'prefix' => '_debugbar',
+        'where' => 
+        array (
+        ),
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+    ),
+    'debugbar.assets.js' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'GET',
+        1 => 'HEAD',
+      ),
+      'uri' => '_debugbar/assets/javascript',
+      'action' => 
+      array (
+        'domain' => NULL,
+        'middleware' => 
+        array (
+          0 => 'Barryvdh\\Debugbar\\Middleware\\DebugbarEnabled',
+        ),
+        'uses' => 'Barryvdh\\Debugbar\\Controllers\\AssetController@js',
+        'as' => 'debugbar.assets.js',
+        'controller' => 'Barryvdh\\Debugbar\\Controllers\\AssetController@js',
+        'namespace' => 'Barryvdh\\Debugbar\\Controllers',
+        'prefix' => '_debugbar',
+        'where' => 
+        array (
+        ),
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+    ),
+    'debugbar.cache.delete' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'DELETE',
+      ),
+      'uri' => '_debugbar/cache/{key}/{tags?}',
+      'action' => 
+      array (
+        'domain' => NULL,
+        'middleware' => 
+        array (
+          0 => 'Barryvdh\\Debugbar\\Middleware\\DebugbarEnabled',
+        ),
+        'uses' => 'Barryvdh\\Debugbar\\Controllers\\CacheController@delete',
+        'as' => 'debugbar.cache.delete',
+        'controller' => 'Barryvdh\\Debugbar\\Controllers\\CacheController@delete',
+        'namespace' => 'Barryvdh\\Debugbar\\Controllers',
+        'prefix' => '_debugbar',
+        'where' => 
+        array (
+        ),
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+    ),
+    'generated::fXM6DyHiy1fO85M6' => 
     array (
       'methods' => 
       array (
@@ -2510,15 +2929,15 @@ app('router')->setCompiledRoutes(
           0 => 'api',
           1 => 'auth:api',
         ),
-        'uses' => 'C:32:"Opis\\Closure\\SerializableClosure":291:{@/vnEScUCXFfdTHjgdD4pE52JlkKu9ukXH5nyfZM0c6k=.a:5:{s:3:"use";a:0:{}s:8:"function";s:79:"function (\\Illuminate\\Http\\Request $request) {
+        'uses' => 'C:32:"Opis\\Closure\\SerializableClosure":291:{@AmppqlkStBFfmleEtx2Q2M25j5EXq0Nl7UW7LRHYBqc=.a:5:{s:3:"use";a:0:{}s:8:"function";s:79:"function (\\Illuminate\\Http\\Request $request) {
     return $request->user();
-}";s:5:"scope";s:37:"Illuminate\\Routing\\RouteFileRegistrar";s:4:"this";N;s:4:"self";s:32:"0000000029c6034d000000007f120fb0";}}',
+}";s:5:"scope";s:37:"Illuminate\\Routing\\RouteFileRegistrar";s:4:"this";N;s:4:"self";s:32:"000000004921ca12000000007a1dce66";}}',
         'namespace' => NULL,
         'prefix' => 'api',
         'where' => 
         array (
         ),
-        'as' => 'generated::kGLElZd6GfuPs8qy',
+        'as' => 'generated::fXM6DyHiy1fO85M6',
       ),
       'fallback' => false,
       'defaults' => 
@@ -2569,7 +2988,7 @@ app('router')->setCompiledRoutes(
       'lockSeconds' => NULL,
       'waitSeconds' => NULL,
     ),
-    'generated::ynT3NvKguOHkQvjF' => 
+    'generated::UhVYknvdM8Zr6JIU' => 
     array (
       'methods' => 
       array (
@@ -2589,7 +3008,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::ynT3NvKguOHkQvjF',
+        'as' => 'generated::UhVYknvdM8Zr6JIU',
       ),
       'fallback' => false,
       'defaults' => 
@@ -2675,7 +3094,7 @@ app('router')->setCompiledRoutes(
       'lockSeconds' => NULL,
       'waitSeconds' => NULL,
     ),
-    'generated::WvYHLbStjR4B29e8' => 
+    'generated::t5RJS5Ikk0OBYV3f' => 
     array (
       'methods' => 
       array (
@@ -2695,7 +3114,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::WvYHLbStjR4B29e8',
+        'as' => 'generated::t5RJS5Ikk0OBYV3f',
       ),
       'fallback' => false,
       'defaults' => 
@@ -2888,7 +3307,7 @@ app('router')->setCompiledRoutes(
       'lockSeconds' => NULL,
       'waitSeconds' => NULL,
     ),
-    'generated::uSPR94B7smmYfDGQ' => 
+    'generated::bOhl0dT1RHipjEv3' => 
     array (
       'methods' => 
       array (
@@ -2908,7 +3327,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::uSPR94B7smmYfDGQ',
+        'as' => 'generated::bOhl0dT1RHipjEv3',
       ),
       'fallback' => false,
       'defaults' => 
@@ -2960,7 +3379,7 @@ app('router')->setCompiledRoutes(
       'lockSeconds' => NULL,
       'waitSeconds' => NULL,
     ),
-    'generated::dfB2pw46xtAN5c3y' => 
+    'generated::XWcYkAd9lZqS8xxZ' => 
     array (
       'methods' => 
       array (
@@ -2982,7 +3401,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::dfB2pw46xtAN5c3y',
+        'as' => 'generated::XWcYkAd9lZqS8xxZ',
       ),
       'fallback' => false,
       'defaults' => 
@@ -2997,7 +3416,7 @@ app('router')->setCompiledRoutes(
       'lockSeconds' => NULL,
       'waitSeconds' => NULL,
     ),
-    'generated::U11C27dq8qApHfK7' => 
+    'generated::tPMI3cGeDFenAKn8' => 
     array (
       'methods' => 
       array (
@@ -3019,7 +3438,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::U11C27dq8qApHfK7',
+        'as' => 'generated::tPMI3cGeDFenAKn8',
       ),
       'fallback' => false,
       'defaults' => 
@@ -3364,7 +3783,7 @@ app('router')->setCompiledRoutes(
       'lockSeconds' => NULL,
       'waitSeconds' => NULL,
     ),
-    'generated::aS8pmqrwhJAGZqHV' => 
+    'generated::aOt5W6aBQt63JfNZ' => 
     array (
       'methods' => 
       array (
@@ -3386,7 +3805,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::aS8pmqrwhJAGZqHV',
+        'as' => 'generated::aOt5W6aBQt63JfNZ',
       ),
       'fallback' => false,
       'defaults' => 
@@ -3401,7 +3820,7 @@ app('router')->setCompiledRoutes(
       'lockSeconds' => NULL,
       'waitSeconds' => NULL,
     ),
-    'generated::ZcBOfpEHGAUPJ1cI' => 
+    'generated::4moJU39w8b0Q3FES' => 
     array (
       'methods' => 
       array (
@@ -3423,7 +3842,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::ZcBOfpEHGAUPJ1cI',
+        'as' => 'generated::4moJU39w8b0Q3FES',
       ),
       'fallback' => false,
       'defaults' => 
@@ -5531,6 +5950,43 @@ app('router')->setCompiledRoutes(
       'lockSeconds' => NULL,
       'waitSeconds' => NULL,
     ),
+    'generated::4vqp1bO5pkMQ1pZV' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'GET',
+        1 => 'HEAD',
+      ),
+      'uri' => 'mysalaries',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'web',
+          1 => 'auth',
+        ),
+        'uses' => 'App\\Http\\Controllers\\SalaryController@getsalaries',
+        'controller' => 'App\\Http\\Controllers\\SalaryController@getsalaries',
+        'namespace' => NULL,
+        'prefix' => NULL,
+        'where' => 
+        array (
+        ),
+        'as' => 'generated::4vqp1bO5pkMQ1pZV',
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+    ),
     'field-salaries.index' => 
     array (
       'methods' => 
@@ -5663,117 +6119,6 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-      ),
-      'fallback' => false,
-      'defaults' => 
-      array (
-      ),
-      'wheres' => 
-      array (
-      ),
-      'bindingFields' => 
-      array (
-      ),
-      'lockSeconds' => NULL,
-      'waitSeconds' => NULL,
-    ),
-    'generated::F1frvFnMkl3n9aQ2' => 
-    array (
-      'methods' => 
-      array (
-        0 => 'GET',
-        1 => 'HEAD',
-      ),
-      'uri' => 'salaries-export-excel',
-      'action' => 
-      array (
-        'middleware' => 
-        array (
-          0 => 'web',
-          1 => 'auth',
-        ),
-        'uses' => 'App\\Http\\Controllers\\SalaryController@exportexcel',
-        'controller' => 'App\\Http\\Controllers\\SalaryController@exportexcel',
-        'namespace' => NULL,
-        'prefix' => NULL,
-        'where' => 
-        array (
-        ),
-        'as' => 'generated::F1frvFnMkl3n9aQ2',
-      ),
-      'fallback' => false,
-      'defaults' => 
-      array (
-      ),
-      'wheres' => 
-      array (
-      ),
-      'bindingFields' => 
-      array (
-      ),
-      'lockSeconds' => NULL,
-      'waitSeconds' => NULL,
-    ),
-    'generated::HpVgI2ot69CtBF9J' => 
-    array (
-      'methods' => 
-      array (
-        0 => 'GET',
-        1 => 'HEAD',
-      ),
-      'uri' => 'hq-salaries-export-excel',
-      'action' => 
-      array (
-        'middleware' => 
-        array (
-          0 => 'web',
-          1 => 'auth',
-        ),
-        'uses' => 'App\\Http\\Controllers\\HqSalaryController@exportexcel',
-        'controller' => 'App\\Http\\Controllers\\HqSalaryController@exportexcel',
-        'namespace' => NULL,
-        'prefix' => NULL,
-        'where' => 
-        array (
-        ),
-        'as' => 'generated::HpVgI2ot69CtBF9J',
-      ),
-      'fallback' => false,
-      'defaults' => 
-      array (
-      ),
-      'wheres' => 
-      array (
-      ),
-      'bindingFields' => 
-      array (
-      ),
-      'lockSeconds' => NULL,
-      'waitSeconds' => NULL,
-    ),
-    'generated::HLSvFiRBQx4OWM3V' => 
-    array (
-      'methods' => 
-      array (
-        0 => 'GET',
-        1 => 'HEAD',
-      ),
-      'uri' => 'field-salaries-export-excel',
-      'action' => 
-      array (
-        'middleware' => 
-        array (
-          0 => 'web',
-          1 => 'auth',
-        ),
-        'uses' => 'App\\Http\\Controllers\\FieldSalaryController@exportexcel',
-        'controller' => 'App\\Http\\Controllers\\FieldSalaryController@exportexcel',
-        'namespace' => NULL,
-        'prefix' => NULL,
-        'where' => 
-        array (
-        ),
-        'as' => 'generated::HLSvFiRBQx4OWM3V',
       ),
       'fallback' => false,
       'defaults' => 
@@ -6339,6 +6684,43 @@ app('router')->setCompiledRoutes(
       'lockSeconds' => NULL,
       'waitSeconds' => NULL,
     ),
+    'payroll.create' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'GET',
+        1 => 'HEAD',
+      ),
+      'uri' => 'payroll/create',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'web',
+          1 => 'auth',
+        ),
+        'as' => 'payroll.create',
+        'uses' => 'App\\Http\\Controllers\\PayrollController@create',
+        'controller' => 'App\\Http\\Controllers\\PayrollController@create',
+        'namespace' => NULL,
+        'prefix' => '/',
+        'where' => 
+        array (
+        ),
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+    ),
     'payroll.store' => 
     array (
       'methods' => 
@@ -6375,13 +6757,160 @@ app('router')->setCompiledRoutes(
       'lockSeconds' => NULL,
       'waitSeconds' => NULL,
     ),
-    'generated::Y8o9AkhAseNo9U3g' => 
+    'payroll.show' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'GET',
+        1 => 'HEAD',
+      ),
+      'uri' => 'payroll/{payroll}',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'web',
+          1 => 'auth',
+        ),
+        'as' => 'payroll.show',
+        'uses' => 'App\\Http\\Controllers\\PayrollController@show',
+        'controller' => 'App\\Http\\Controllers\\PayrollController@show',
+        'namespace' => NULL,
+        'prefix' => '/',
+        'where' => 
+        array (
+        ),
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+    ),
+    'payroll.edit' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'GET',
+        1 => 'HEAD',
+      ),
+      'uri' => 'payroll/{payroll}/edit',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'web',
+          1 => 'auth',
+        ),
+        'as' => 'payroll.edit',
+        'uses' => 'App\\Http\\Controllers\\PayrollController@edit',
+        'controller' => 'App\\Http\\Controllers\\PayrollController@edit',
+        'namespace' => NULL,
+        'prefix' => '/',
+        'where' => 
+        array (
+        ),
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+    ),
+    'payroll.update' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'PUT',
+        1 => 'PATCH',
+      ),
+      'uri' => 'payroll/{payroll}',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'web',
+          1 => 'auth',
+        ),
+        'as' => 'payroll.update',
+        'uses' => 'App\\Http\\Controllers\\PayrollController@update',
+        'controller' => 'App\\Http\\Controllers\\PayrollController@update',
+        'namespace' => NULL,
+        'prefix' => '/',
+        'where' => 
+        array (
+        ),
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+    ),
+    'payroll.destroy' => 
+    array (
+      'methods' => 
+      array (
+        0 => 'DELETE',
+      ),
+      'uri' => 'payroll/{payroll}',
+      'action' => 
+      array (
+        'middleware' => 
+        array (
+          0 => 'web',
+          1 => 'auth',
+        ),
+        'as' => 'payroll.destroy',
+        'uses' => 'App\\Http\\Controllers\\PayrollController@destroy',
+        'controller' => 'App\\Http\\Controllers\\PayrollController@destroy',
+        'namespace' => NULL,
+        'prefix' => '/',
+        'where' => 
+        array (
+        ),
+      ),
+      'fallback' => false,
+      'defaults' => 
+      array (
+      ),
+      'wheres' => 
+      array (
+      ),
+      'bindingFields' => 
+      array (
+      ),
+      'lockSeconds' => NULL,
+      'waitSeconds' => NULL,
+    ),
+    'payroll.all' => 
     array (
       'methods' => 
       array (
         0 => 'POST',
       ),
-      'uri' => 'payroll/process-all',
+      'uri' => 'process-all',
       'action' => 
       array (
         'middleware' => 
@@ -6396,7 +6925,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::Y8o9AkhAseNo9U3g',
+        'as' => 'payroll.all',
       ),
       'fallback' => false,
       'defaults' => 
@@ -6852,7 +7381,7 @@ app('router')->setCompiledRoutes(
       'lockSeconds' => NULL,
       'waitSeconds' => NULL,
     ),
-    'generated::s3y6Vc60tFOFffkJ' => 
+    'generated::DCUxPEjf8BSpHh5I' => 
     array (
       'methods' => 
       array (
@@ -6874,7 +7403,7 @@ app('router')->setCompiledRoutes(
         'where' => 
         array (
         ),
-        'as' => 'generated::s3y6Vc60tFOFffkJ',
+        'as' => 'generated::DCUxPEjf8BSpHh5I',
       ),
       'fallback' => false,
       'defaults' => 

@@ -41,7 +41,6 @@
     37 => 'App\\Providers\\RouteServiceProvider',
     38 => 'Spatie\\Permission\\PermissionServiceProvider',
     39 => 'Barryvdh\\DomPDF\\ServiceProvider',
-    40 => 'Maatwebsite\\Excel\\ExcelServiceProvider',
   ),
   'eager' => 
   array (
@@ -72,7 +71,6 @@
     24 => 'App\\Providers\\RouteServiceProvider',
     25 => 'Spatie\\Permission\\PermissionServiceProvider',
     26 => 'Barryvdh\\DomPDF\\ServiceProvider',
-    27 => 'Maatwebsite\\Excel\\ExcelServiceProvider',
   ),
   'deferred' => 
   array (
