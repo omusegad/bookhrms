@@ -24,9 +24,11 @@ class HqSalaryController extends Controller
         })->get();
 
         $hqsalary = User::where('employee_type','HQ')->with('salary')->get();
-       //dd( $hqsalary );
+        $threeMonths = User::where('employee_type','HQ')->orderBy('fname')->whereHas('payroll', function($q) {
+            $q->where('month', '>=',  Carbon::now()->subMonth()->toDateTimeString());
+        })->get();
 
-        return view('salaries.hq.index', compact('userpayroll','hqsalary'));
+        return view('salaries.hq.index', compact('userpayroll','hqsalary','threeMonths'));
 
     }
 

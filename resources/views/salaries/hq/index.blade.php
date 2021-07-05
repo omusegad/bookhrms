@@ -33,9 +33,12 @@
 						<div class="row pb-4">
 							<div class="col-lg-12">
 										<ul class="nav nav-tabs nav-tabs-top">
-                                            <li class="nav-item "><a class="nav-link profile-tab" href="#top-tab1" data-toggle="tab">HQ Salaries</a></li>
-                                            <li class="nav-item"><a class="nav-link profile-tab" href="#top-tab2" data-toggle="tab">Payroll To Bank</a></li>
-                                            <li class="nav-item"><a class="nav-link profile-tab" href="#top-tab3" data-toggle="tab">Payslips</a></li>
+                                            <li class="nav-item ">
+                                                <a class="nav-link profile-tab" href="#top-tab1" data-toggle="tab">HQ Salaries</a></li>
+                                            <li class="nav-item">
+                                                <a class="nav-link profile-tab" href="#top-tab2" data-toggle="tab">Payroll To Bank</a></li>
+                                            <li class="nav-item">
+                                                <a class="nav-link profile-tab" href="#top-tab3" data-toggle="tab">Payslips</a></li>
                                         </ul>
 
 										<div class="tab-content">
@@ -191,7 +194,7 @@
                                                         <tbody>
 
                                                             @php($count =1)
-                                                            @foreach ($userpayroll as $item)
+                                                            @foreach ($threeMonths as $item)
                                                             <tr>
                                                                     @if (!empty($item->payroll))
                                                                     <td>{{ $count++ }}</td>

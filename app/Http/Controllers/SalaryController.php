@@ -10,6 +10,7 @@ use App\Models\Jobgroup;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\MonthlyTaxableIncome;
+use Illuminate\Support\Facades\Artisan;
 
 class SalaryController extends Controller{
     /**

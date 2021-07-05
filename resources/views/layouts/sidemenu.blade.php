@@ -89,8 +89,7 @@
                                 <li><a  href="{{ route('my-leaves.index') }}"> Leaves</a></li>
 
                             </ul>
-                            @endrole
-
+                        @endrole
 					</div>
                 </div>
             </div>

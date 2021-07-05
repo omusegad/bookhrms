@@ -27,7 +27,16 @@ class FieldSalaryController extends Controller
         })->get();
         $fieldsalary = User::where('employee_type','FIELD')->with('salary')->get();
 
-        return view('salaries.field.index', compact('userpayroll','fieldsalary'));
+        $lastThreeMonths = Carbon::now()->startOfMonth()->subMonth(3);
+        $latestMonth = Carbon::now()->startOfMonth();
+
+        $latestPayroll = Payroll::where('employee_type','FIELD');
+
+        $threeMonths = User::where('employee_type','FIELD')->orderBy('fname')->whereHas('payroll', function($q) {
+            $q->whereBetween('placed_at',[$dateS,$dateE]);
+        })->get();
+
+        return view('salaries.field.index', compact('userpayroll','fieldsalary','threeMonths'));
 
     }
 

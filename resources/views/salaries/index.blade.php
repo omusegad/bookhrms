@@ -446,9 +446,8 @@ jQuery(document).ready(function ($){
          }
       });
 
-      // Output form data to a console
+      //Output form data to a console
       var formData = $(form).serializeArray();
-
       $.ajaxSetup({
             headers: {
                 'X-CSRF-TOKEN': jQuery('meta[name="csrf-token"]').attr('content')
@@ -460,6 +459,7 @@ jQuery(document).ready(function ($){
             method: 'post',
             dataType: 'json',
             success: function (data) {
+
                 console.log(data.result);
                 if(data.result == 1){
                     swal({
@@ -469,13 +469,20 @@ jQuery(document).ready(function ($){
                         dangerMode: true,
                     })
                 }else{
-                    console.log(data);
                     swal({
-                        title: "Awesome !" + data.result + "success",
-                        text: data.message,
-                        icon: "success",
-                        dangerMode: false,
+                        title: "Maintenance Mode !",
+                        text: "Currently unser Maintenance Please contact superadmin",
+                        icon: "warning",
+                        dangerMode: true,
                     })
+
+                    // console.log(data);
+                    // swal({
+                    //     title: "Awesome : " + data.result + " Items proccessed",
+                    //     text: data.message,
+                    //     icon: "success",
+                    //     dangerMode: false,
+                    // })
                 }
             },
             error: function (data) {

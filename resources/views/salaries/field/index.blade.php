@@ -199,7 +199,7 @@
                                                         <tbody>
 
                                                             @php($count =1)
-                                                            @foreach ($userpayroll as $item)
+                                                            @foreach ($threeMonths as $item)
                                                             <tr>
                                                                     @if (!empty($item->payroll))
                                                                     <td>{{ $count++ }}</td>

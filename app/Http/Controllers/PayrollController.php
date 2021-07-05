@@ -89,63 +89,45 @@ class PayrollController extends Controller
                 ]);
             }else{
 
-                $count = 1;
-                for ($x = 0; $x <count($result); $x++) {
-                    //echo $result[$x];
-                    $record = $this->getSalary($result[$x]);
-                    if(isset($record)){
-                         $checkMonth = Payroll::where('user_id', $record['user_id'])->where('month', 2)->where('year', now()->year)->get();
-                            if($checkMonth->isEmpty()){
-                                Payroll::Create([
-                                    'user_id'    => $record['user_id'],
-                                    'approvedBy' =>  Auth::user()->id,
-                                    'basic_salary'  =>  $record['basic_salary'],
-                                    'gross_pay'  =>  $record['gross_pay'],
-                                    'nssf'  =>  $record['nssf'],
-                                    'nhif'  =>  $record['nhif'],
-                                    'payee'  =>  $record['payee'],
-                                    'net_pay'  =>  $record['net_pay'],
-                                    'bankName'  =>  $record['bankName'],
-                                    'bankBranch'  =>  $record['bankBranch'],
-                                    'bankCode'  =>  $record['bankCode'],
-                                    'incomeTax'  =>  $record['incomeTax'],
-                                    'personalRelief'  =>  $record['personalRelief'],
-                                    // 'otherDeductions'  =>  $record['otherDeductions'],
-                                    'beneficiaryAccountNumber'  =>  $record['beneficiaryAccountNumber'],
-                                    'reference'  => "Salary",
-                                    'month'      => 2, //now()->month,
-                                    'year'       => now()->year,
-                                ]);
-
-                            }else{
-                                Payroll::whereId($record['user_id'])->update([
-                                    'user_id'    => $record['user_id'],
-                                    'approvedBy' =>  Auth::user()->id,
-                                    'basic_salary'  =>  $record['basic_salary'],
-                                    'gross_pay'  =>  $record['gross_pay'],
-                                    'nssf'  =>  $record['nssf'],
-                                    'nhif'  =>  $record['nhif'],
-                                    'payee'  =>  $record['payee'],
-                                    'net_pay'  =>  $record['net_pay'],
-                                    'bankName'  =>  $record['bankName'],
-                                    'bankBranch'  =>  $record['bankBranch'],
-                                    'bankCode'  =>  $record['bankCode'],
-                                    'incomeTax'  =>  $record['incomeTax'],
-                                    'personalRelief'  =>  $record['personalRelief'],
-                                    // 'otherDeductions'  =>  $record['otherDeductions'],
-                                    'beneficiaryAccountNumber'  =>  $record['beneficiaryAccountNumber'],
-                                    'reference'  => "Salary",
-                                    'month'      => 2, //now()->month,
-                                    'year'       => now()->year,
-                                ]);
-                            }
-                    }
-
-                }
                 return response()->json([
-                    "result"   => $count,
-                    "message" => "Payroll proccessed successfully!"
-                ]);
+                    'result' => "MENT",
+                    'message' => "Please select salaries to process this payroll !",
+              ]);
+              exit;
+
+                // $count = 1;
+                // for ($x = 0; $x <count($result); $x++) {
+                //     //echo $result[$x];
+                //     $count++;
+                //     $record = $this->getSalary($result[$x]);
+                //     if(isset($record)){
+                //         Payroll::Create([
+                //             'user_id'    => $record['user_id'],
+                //             'approvedBy' =>  Auth::user()->id,
+                //             'basic_salary'  =>  $record['basic_salary'],
+                //             'gross_pay'  =>  $record['gross_pay'],
+                //             'nssf'  =>  $record['nssf'],
+                //             'nhif'  =>  $record['nhif'],
+                //             'payee'  =>  $record['payee'],
+                //             'net_pay'  =>  $record['net_pay'],
+                //             'bankName'  =>  $record['bankName'],
+                //             'bankBranch'  =>  $record['bankBranch'],
+                //             'bankCode'  =>  $record['bankCode'],
+                //             'incomeTax'  =>  $record['incomeTax'],
+                //             'personalRelief'  =>  $record['personalRelief'],
+                //             // 'otherDeductions'  =>  $record['otherDeductions'],
+                //             'beneficiaryAccountNumber'  =>  $record['beneficiaryAccountNumber'],
+                //             'reference'  => "Salary",
+                //             'month'      => 6, //now()->month,
+                //             'year'       => now()->year,
+                //         ]);
+                //     }
+
+                // }
+                // return response()->json([
+                //     "result"   => $count,
+                //     "message" => "Payroll proccessed successfully!"
+                // ]);
 
             }
 

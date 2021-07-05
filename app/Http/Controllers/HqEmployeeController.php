@@ -17,13 +17,4 @@ class HqEmployeeController extends Controller
         return view('employees.hq.index', compact('users'));
     }
 
-    // Download excel
-    public function exportexcel(Request $request){
-        dd($request->input('userID'));
-        return Excel::download(new HqPayrollExport, 'hq-employees-salary.xlsx');
-    }
-
-
-
-
 }

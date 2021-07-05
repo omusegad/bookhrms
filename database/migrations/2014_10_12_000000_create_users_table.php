@@ -75,7 +75,6 @@ class CreateUsersTable extends Migration
     public function down()
     {
         Schema::dropIfExists('users');
-        $table->text('experience')->nullable();
 
     }
 }

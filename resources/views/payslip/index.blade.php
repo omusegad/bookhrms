@@ -29,7 +29,7 @@
                     <img  src="{{ asset('storage/uploads/images/nandi-logo.jpg') }}"  width="600" height="160"/>
                 </div>
                 <hr>
-               <h5>Payslip for month of   {{ date("F",strtotime($payslip->year)) }}  , {{ now()->year }}</h5>
+               <h5>Payslip for month of   {{ date("F",strtotime($payslip->year)) }}  , {{ $payslip->year }}</h5>
         </div>
         <div>
             <table class="table table-bordered">

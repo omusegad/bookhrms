@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateEmployeeSalariesTable extends Migration
+class CreateSalariesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -15,7 +15,7 @@ class CreateEmployeeSalariesTable extends Migration
     {
         Schema::create('salaries', function (Blueprint $table) {
             $table->id();
-            $table->unsignedInteger('user_id')->index();
+            $table->foreignId('user_id')->constrained()->nullable()->onUpdate('cascade')->onDelete('cascade');
             $table->unsignedInteger('approvedBy')->index()->nullable();
             $table->string("job_group");
             $table->float("basic_salary");
@@ -30,6 +30,7 @@ class CreateEmployeeSalariesTable extends Migration
             $table->float("nssf");
             $table->float("nhif");
             $table->float('net_pay');
+            $table->string('otherDeductions');
             $table->string('bankName');
             $table->string('bankBranch');
             $table->string('bankCode');
@@ -48,6 +49,6 @@ class CreateEmployeeSalariesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('employee_salaries');
+        Schema::dropIfExists('salaries');
     }
 }

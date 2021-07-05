@@ -14,7 +14,7 @@ class CreatePayrollTable extends Migration
     public function up(){
         Schema::create('payroll', function (Blueprint $table) {
             $table->id();
-            $table->unsignedInteger('user_id');
+            $table->foreignId('user_id')->constrained()->nullable()->onUpdate('cascade')->onDelete('cascade');
             $table->unsignedInteger('approvedBy');
             $table->float("basic_salary");
             $table->float("gross_pay");
