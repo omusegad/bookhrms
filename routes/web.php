@@ -24,6 +24,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\MyPayrollController;
 use App\Http\Controllers\FieldLeaveController;
 use App\Http\Controllers\HqEmployeeController;
+use App\Http\Controllers\LeadershipController;
 use App\Http\Controllers\LeaveTypesController;
 use App\Http\Controllers\OrganogramController;
 use App\Http\Controllers\FieldSalaryController;
@@ -68,6 +69,7 @@ Route::middleware(['auth'])->group(function () {
         Route::resource('/job-groups', JobgroupController::class);
         Route::resource('/salaries', SalaryController::class);
         Route::get('/mysalaries', [SalaryController::class, 'getsalaries']);
+        Route::get('/officials',[LeadershipController::class, 'index'])->name('officials');
 
         Route::resource('/field-salaries',FieldSalaryController::class)->only(['index','store']);
         Route::resource('/hq-salaries',HqSalaryController::class)->only(['index','store']);

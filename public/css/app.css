@@ -10027,3 +10027,8 @@ table.dataTable tbody tr.selected {
 .dt-buttons.btn-group.flex-wrap {
     margin-bottom: -56px!important;
 }
+
+.leader-title {
+    background: #d3d3d3;
+    padding: 10px;
+}
