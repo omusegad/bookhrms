@@ -459,7 +459,6 @@ jQuery(document).ready(function ($){
             method: 'post',
             dataType: 'json',
             success: function (data) {
-
                 console.log(data.result);
                 if(data.result == 1){
                     swal({
@@ -469,20 +468,14 @@ jQuery(document).ready(function ($){
                         dangerMode: true,
                     })
                 }else{
-                    swal({
-                        title: "Maintenance Mode !",
-                        text: "Currently unser Maintenance Please contact superadmin",
-                        icon: "warning",
-                        dangerMode: true,
-                    })
 
-                    // console.log(data);
-                    // swal({
-                    //     title: "Awesome : " + data.result + " Items proccessed",
-                    //     text: data.message,
-                    //     icon: "success",
-                    //     dangerMode: false,
-                    // })
+                    console.log(data);
+                    swal({
+                        title: "Awesome : " + data.result + " Items proccessed",
+                        text: data.message,
+                        icon: "success",
+                        dangerMode: false,
+                    })
                 }
             },
             error: function (data) {

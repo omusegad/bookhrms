@@ -11,9 +11,29 @@
             <!-- Page Header -->
             <div class="page-header pb-3">
                 <div class="row align-items-center">
-                    <div class="col">
+                    <div class="col-lg-4">
                         <h3 class="page-title" >{{Auth::user()->fname }} {{Auth::user()->lName }} Payslip</h3>
                     </div>
+                    {{-- <div class="col-lg-8">
+                        <form action="">
+                             <div class="row">
+                                <div class="col-lg-4">
+                                    <div class="form-group">
+                                        <input type="text" name="month" placeholder="Month" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">
+                                    <div class="form-group">
+                                        <input type="text" name="year" placeholder="year" class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <button type="submit">Search</button>
+                            </div>
+                       </form>
+
+                    </div> --}}
                 </div>
             </div>
             <!-- /Page Header -->
@@ -88,7 +108,7 @@
                                     {{number_format($item->incomeTax)}}
                                 </td>
                                 <td>
-                                    <a class="p-2 bordered text-danger" href="{{ route('payslip.show',$item->id) }}">
+                                    <a class="p-2 bordered text-danger" href="{{ route('payslip.show',$item->user['id']) }}">
                                         <i class="fa 2x fa-download"></i> Download
                                     </a>
                                 </td>
